@@ -37,14 +37,16 @@ if (isset ( $_REQUEST ['botonAceptar'] )) {
             echo "<span class='textoElegante textoEnorme textoAzul'>Bloques que componen esta p&aacute;gina:</span><hr>";
             $prefijo=$this->miConfigurador->getVariableConfiguracion('prefijo');
             
+            $esquema=$this->miConfigurador->getVariableConfiguracion('dbesquema');
+            
             $cadenaSql = "SELECT ";
             $cadenaSql .= "" . $prefijo . "bloque_pagina.id_bloque, ";
             $cadenaSql .= "" . $prefijo . "bloque_pagina.seccion, ";
             $cadenaSql .= "" . $prefijo . "bloque_pagina.posicion, ";
             $cadenaSql .= "" . $prefijo . "bloque.nombre ";
             $cadenaSql .= "FROM ";
-            $cadenaSql .= "" . $prefijo . "bloque_pagina,";
-            $cadenaSql .= "" . $prefijo . "bloque ";
+            $cadenaSql .= "".$esquema.".". $prefijo . "bloque_pagina,";
+            $cadenaSql .="".$esquema.".". $prefijo . "bloque ";
             $cadenaSql .= "WHERE ";
             $cadenaSql .= "" . $prefijo . "bloque_pagina.id_pagina='" . $registro [0] [0] . "' ";
             $cadenaSql .= "AND ";
@@ -69,16 +71,16 @@ if (isset ( $_REQUEST ['botonAceptar'] )) {
                 		<td><? echo $registro[$contador][1] ?></td>
                 		<td><? echo $registro[$contador][2] ?></td>
                 	</tr>	
-                    <?
+              <?php 
                 }
                 ?>
                                 </table>
                     </div>
 
-<?
+<?php
             }
         }
     }
-}
+
 
 ?>

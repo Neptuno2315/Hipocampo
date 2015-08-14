@@ -18,6 +18,7 @@ $esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
  * 
  */
 $atributosGlobales['campoSeguro']='true';
+$_REQUEST['tiempo']=time();
 
 //-------------------------------------------------------------------------------------------------
 
@@ -118,6 +119,7 @@ $valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
  * (b) asociando el tiempo en que se está creando el formulario
  */ 
 $valorCodificado .= "&tiempo=" . $_REQUEST ['tiempo'];
+$valorCodificado .= "&campoSeguro=" . $_REQUEST ['tiempo'];
 //Paso 2: codificar la cadena resultante
 $valorCodificado = $this->miConfigurador->fabricaConexiones->crypto->codificar ( $valorCodificado );
 
