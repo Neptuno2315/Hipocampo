@@ -2,9 +2,9 @@
 
 
 /* Z-INDEX */
- .formError { z-index: 990; }
-    .formError .formErrorContent { z-index: 991; }
-    .formError .formErrorArrow { z-index: 996; }
+ .formError { z-index: 1990; }
+    .formError .formErrorContent { z-index: 1991; }
+    .formError .formErrorArrow { z-index: 1996; }
 
     .ui-dialog .formError { z-index: 5000; }
     .ui-dialog .formError .formErrorContent { z-index: 5001; }
@@ -24,7 +24,7 @@
 	left: 300px;
 	display: block;
 	cursor: pointer;
-	text-align: left;
+	text-align: center;
 }
 
 .formError.inline {
@@ -43,10 +43,10 @@
 
 .formError .formErrorContent {
 	width: 100%;
-	background: #ee0101;
+	background: #FFFCD6;
 	position:relative;
-	color: #fff;
-	min-width: 120px;
+	color: #000;
+	min-width: 100px;
 	font-size: 11px;
 	border: 2px solid #ddd;
 	box-shadow: 0 0 6px #000;

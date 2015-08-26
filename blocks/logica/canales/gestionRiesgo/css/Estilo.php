@@ -1,7 +1,20 @@
 <?php
 $indice=0;
-$estilo[$indice++]="estiloBloque.css";
 $estilo[$indice++]="validationEngine.jquery.css";
+$estilo[$indice++]="jquery-ui_smoot.css";
+$estilo[$indice++]="timepicker.css";
+$estilo[$indice++]="jquery-te.css";
+$estilo[$indice++]="jquery.auto-complete.css";
+$estilo[$indice++]="chosen.css";
+$estilo[$indice++]="select2.css";
+$estilo[$indice++]="jquery_switch.css";
+//$estilo[$indice++]="humanity/jquery-ui-1.10.3.custom.css";
+//Tablas
+//$estilo[$indice++]="demo_page.css";
+//$estilo[$indice++]="demo_table.css";
+//$estilo[$indice++]="jquery.dataTables.css";
+$estilo[$indice++]="jquery.dataTables_themeroller.css";
+
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque.=$this->miConfigurador->getVariableConfiguracion("site");

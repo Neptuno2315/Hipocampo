@@ -27,68 +27,40 @@ unset ( $atributos );
 	
 	$items = array (
 			"tabDescripcion" => $this->lenguaje->getCadena ( "tabDescripcion" ),
-			"tabAnalisis" => $this->lenguaje->getCadena ( "tabAnalisis" ),
-			"tabResultado" => $this->lenguaje->getCadena ( "tabResultado" ) 
+			"tabAnalisis" => $this->lenguaje->getCadena ( "tabAnalisis" ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "jqueryui";
 	$atributos ["pestañas"] = "true";
 	echo $this->miFormulario->listaNoOrdenada ( $atributos );
 	
+	$esteCampo = "tabDescripcion";
+	$atributos ['id'] = $esteCampo;
+	$atributos ["estilo"] = "jqueryui";
+	$atributos ['tipoEtiqueta'] = 'inicio';
+	// $atributos ["leyenda"] = "Contratos ViceRectoria";
+	echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+	unset ( $atributos );
 	{
 		
-		// Pestaña de Descripcion Zona Estudio Gestión Riesgo
-		$esteCampo = "tabDescripcion";
-		$atributos ['id'] = $esteCampo;
-		$atributos ["estilo"] = "jqueryui";
-		$atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Contratos ViceRectoria";
-		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-		unset ( $atributos );
-		{
-			
-			include ($this->ruta . "formulario/tabs/tabDescripcion.php");
-			// -----------------Fin Division para la pestaña 2-------------------------
-		}
-		echo $this->miFormulario->agrupacion ( 'fin' );
-		unset ( $atributos );
+		include ($this->ruta . "formulario/tabs/tabDescripcion.php");
+		// -----------------Fin Division para la pestaña 2-------------------------
 	}
+	echo $this->miFormulario->agrupacion ( 'fin' );
 	
+	$esteCampo = "tabAnalisis";
+	$atributos ['id'] = $esteCampo;
+	$atributos ["estilo"] = "jqueryui";
+	$atributos ['tipoEtiqueta'] = 'inicio';
+	// $atributos ["leyenda"] = "Contratos ViceRectoria";
+	echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+	unset ( $atributos );
 	{
-		// Pestaña Analisis de Variables Gestión Riesgo
-		$esteCampo = "tabAnalisis";
-		$atributos ['id'] = $esteCampo;
-		$atributos ["estilo"] = "jqueryui";
-		$atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Contratos ViceRectoria";
-		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-		unset ( $atributos );
-		{
-			
-			include ($this->ruta . "formulario/tabs/tabAnalisis.php");
-			// -----------------Fin Division para la pestaña 2-------------------------
-		}
-		echo $this->miFormulario->agrupacion ( 'fin' );
-		unset ( $atributos );
+		
+		include ($this->ruta . "formulario/tabs/tabAnalisis.php");
+		// -----------------Fin Division para la pestaña 2-------------------------
 	}
-	
-	{
-		// Pestaña Resultados o Informe del Analisis Gestión Riesgo
-		$esteCampo = "tabResultado";
-		$atributos ['id'] = $esteCampo;
-		$atributos ["estilo"] = "jqueryui";
-		$atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Contratos ViceRectoria";
-		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-		unset ( $atributos );
-		{
-			
-			include ($this->ruta . "formulario/tabs/tabResultado.php");
-			// -----------------Fin Division para la pestaña 1-------------------------
-		}
-		echo $this->miFormulario->agrupacion ( 'fin' );
-		unset ( $atributos );
-	}
+	echo $this->miFormulario->agrupacion ( 'fin' );
 }
 echo $this->miFormulario->division ( "fin" );
 ?>

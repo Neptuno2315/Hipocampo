@@ -1,4 +1,13 @@
 <?php
+# Caso de Uso 
+
+
+$this->idioma["tabDescripcion"]="Descripción Zona de Estudio";
+$this->idioma["tabAnalisis"]="Analisis de Variables";
+$this->idioma["tabResultado"]="Resultado o Informe ";
+
+
+
 $this->idioma["usuario"]="Identificación:";
 $this->idioma["clave"]="Clave:";
 $this->idioma["usuarioTitulo"]="Número de documento";
