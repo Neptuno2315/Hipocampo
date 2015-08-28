@@ -84,6 +84,11 @@ class ArmadorPagina {
             0
         );
 
+        
+        echo "</div>\n";
+        $this->piePagina();
+        echo "</body>\n";
+        
         foreach ($this->bloques as $unBloque) {
 
             $posicion = ord($unBloque [self::SECCION]) - 65;
@@ -111,9 +116,7 @@ class ArmadorPagina {
             $this->armarSeccionAmplia("E");
         }
 
-        echo "</div>\n";
-        $this->piePagina();
-        echo "</body>\n";
+    
     }
 
     private function piePagina() {
