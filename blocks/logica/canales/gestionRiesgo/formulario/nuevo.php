@@ -27,40 +27,61 @@ unset ( $atributos );
 	
 	$items = array (
 			"tabDescripcion" => $this->lenguaje->getCadena ( "tabDescripcion" ),
-			"tabAnalisis" => $this->lenguaje->getCadena ( "tabAnalisis" ) 
+			"tabAnalisis" => $this->lenguaje->getCadena ( "tabAnalisis" ),
+			"tabResultado" => $this->lenguaje->getCadena ( "tabResultado" )
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "jqueryui";
 	$atributos ["pestañas"] = "true";
 	echo $this->miFormulario->listaNoOrdenada ( $atributos );
 	
-	$esteCampo = "tabDescripcion";
-	$atributos ['id'] = $esteCampo;
-	$atributos ["estilo"] = "jqueryui";
-	$atributos ['tipoEtiqueta'] = 'inicio';
-	// $atributos ["leyenda"] = "Contratos ViceRectoria";
-	echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-	unset ( $atributos );
-	{
-		
-		include ($this->ruta . "formulario/tabs/tabDescripcion.php");
-		// -----------------Fin Division para la pestaña 2-------------------------
+	{ // Pestañas de Descripción Zona Estudio
+		$esteCampo = "tabDescripcion";
+		$atributos ['id'] = $esteCampo;
+		$atributos ["estilo"] = "jqueryui";
+		$atributos ['tipoEtiqueta'] = 'inicio';
+		// $atributos ["leyenda"] = "Contratos ViceRectoria";
+		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+		unset ( $atributos );
+		{
+			
+			include ($this->ruta . "formulario/tabs/tabDescripcion.php");
+			// -----------------Fin Division para la pestaña 2-------------------------
+		}
+		echo $this->miFormulario->agrupacion ( 'fin' );
+		unset ( $atributos );
 	}
-	echo $this->miFormulario->agrupacion ( 'fin' );
+	{ // Pestañas de Analisis de Variables
+		$esteCampo = "tabAnalisis";
+		$atributos ['id'] = $esteCampo;
+		$atributos ["estilo"] = "jqueryui";
+		$atributos ['tipoEtiqueta'] = 'inicio';
+		// $atributos ["leyenda"] = "Contratos ViceRectoria";
+		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+		unset ( $atributos );
+		{
+			
+			include ($this->ruta . "formulario/tabs/tabAnalisis.php");
+			// -----------------Fin Division para la pestaña 2-------------------------
+		}
+		echo $this->miFormulario->agrupacion ( 'fin' );
+	}
 	
-	$esteCampo = "tabAnalisis";
-	$atributos ['id'] = $esteCampo;
-	$atributos ["estilo"] = "jqueryui";
-	$atributos ['tipoEtiqueta'] = 'inicio';
-	// $atributos ["leyenda"] = "Contratos ViceRectoria";
-	echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-	unset ( $atributos );
-	{
-		
-		include ($this->ruta . "formulario/tabs/tabAnalisis.php");
-		// -----------------Fin Division para la pestaña 2-------------------------
+	{ // Pestañas de Resultado o Informe
+		$esteCampo = "tabResultado";
+		$atributos ['id'] = $esteCampo;
+		$atributos ["estilo"] = "jqueryui";
+		$atributos ['tipoEtiqueta'] = 'inicio';
+		// $atributos ["leyenda"] = "Contratos ViceRectoria";
+		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+		unset ( $atributos );
+		{
+			
+			include ($this->ruta . "formulario/tabs/tabResultado.php");
+			// -----------------Fin Division para la pestaña 2-------------------------
+		}
+		echo $this->miFormulario->agrupacion ( 'fin' );
 	}
-	echo $this->miFormulario->agrupacion ( 'fin' );
 }
 echo $this->miFormulario->division ( "fin" );
 ?>

@@ -108,15 +108,12 @@ class Sql extends \Sql {
 			
 			// +++++++++++++++++++ Sentencias de mi Caso de Uso ++++++++++++++++++++++++++++++++
 			
-			// INSERT INTO usuario(
-			// identificador, usuario)
-			// VALUES (?, ?);
-			
-				case 'guardar_usuario' :
-					$cadenaSql = "INSERT INTO dirmar.usuario (usuario)";
-					$cadenaSql .= "VALUES ('" . $variable . "');";
-					break;
-
+			case 'consultar_region' :
+				$cadenaSql = "SELECT id_region, descripcion ";
+				$cadenaSql .= "FROM parametros.region ";
+				$cadenaSql .= "WHERE estado_registro='t';";
+				
+				break;
 		}
 		
 		return $cadenaSql;
