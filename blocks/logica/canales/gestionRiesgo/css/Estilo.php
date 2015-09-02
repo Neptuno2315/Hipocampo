@@ -8,7 +8,6 @@ $estilo[$indice++]="jquery.auto-complete.css";
 $estilo[$indice++]="chosen.css";
 $estilo[$indice++]="select2.css";
 $estilo[$indice++]="jquery_switch.css";
-//$estilo[$indice++]="humanity/jquery-ui-1.10.3.custom.css";
 //Tablas
 //$estilo[$indice++]="demo_page.css";
 //$estilo[$indice++]="demo_table.css";

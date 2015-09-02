@@ -15,10 +15,37 @@ $this->idioma["gestionRiesgo"]="Gestión de Riesgo a la Navegación";
 $this->idioma["region"]="Región : ";
 $this->idioma["regionTitulo"]="Seleccione Región";
 
-
 $this->idioma["sector"]="Sector : ";
 $this->idioma["sectorTitulo"]="Seleccione Sector";
 
+$this->idioma["rango1"]="Cantidad Buques Mayor a 10.000GT : ";
+$this->idioma["rango1Titulo"]="Ingrese Número de Buques Comerciales Mayores a 10.000GT";
+
+$this->idioma["tiempo1"]="Periodo : ";
+$this->idioma["tiempo1Titulo"]="Seleccione Período";
+
+$this->idioma["rango2"]="Cantidad Buques entre 9.999 y 1.000GT : ";
+$this->idioma["rango2Titulo"]="Ingrese Número de Buques Comerciales Entre 9.999 y 1.000GT";
+
+$this->idioma["tiempo2"]="Periodo : ";
+$this->idioma["tiempo2Titulo"]="Seleccione Período";
+
+$this->idioma["rango3"]="Cantidad Buques Menores  a  1.000GT : ";
+$this->idioma["rango3Titulo"]="Ingrese Número de Buques Comerciales Menores a 1.000GT";
+
+$this->idioma["tiempo3"]="Periodo : ";
+$this->idioma["tiempo3Titulo"]="Seleccione Período";
+// $this->idioma["rango1"]="Región : ";
+// $this->idioma["regionTitulo"]="Seleccione Región";
+
+// $this->idioma["tiempo1"]="Región : ";
+// $this->idioma["regionTitulo"]="Seleccione Región";
+
+// $this->idioma["rango1"]="Región : ";
+// $this->idioma["regionTitulo"]="Seleccione Región";
+
+// $this->idioma["tiempo1"]="Región : ";
+// $this->idioma["regionTitulo"]="Seleccione Región";
 
 //-------------------------------------
 

@@ -43,6 +43,8 @@ function consulta_sectores(elem, request, response){
 				            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].valor+"</option>").appendTo("#<?php echo $this->campoSeguro('sector')?>");
 	        			    });
 	            $("#<?php echo $this->campoSeguro('sector')?>").removeAttr('disabled');
+	            $('#<?php echo $this->campoSeguro('sector')?>').width(200);
+	            $("#<?php echo $this->campoSeguro('sector')?>").select2();
 	            }          
 	   		}
 	});
