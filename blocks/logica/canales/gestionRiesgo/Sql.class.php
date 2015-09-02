@@ -118,7 +118,13 @@ class Sql extends \Sql {
 				$cadenaSql = "SELECT id_sector id, descripcion valor ";
 				$cadenaSql .= "FROM parametros.sector  ";
 				$cadenaSql .= "WHERE estado_registro='t'  ";
-				$cadenaSql .= "AND id_region ='".$variable."';";
+				$cadenaSql .= "AND id_region ='" . $variable . "';";
+				break;
+			
+			case 'consultar_periodo' :
+				$cadenaSql = "SELECT id_periodo id, descripcion valor ";
+				$cadenaSql .= "FROM parametros.periodo  ";
+				$cadenaSql .= "WHERE estado_registro='t'  ";
 				break;
 		}
 		

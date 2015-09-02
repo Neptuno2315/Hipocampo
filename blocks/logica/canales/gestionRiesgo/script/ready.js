@@ -27,11 +27,13 @@ $(function() {
 // Plugin de Select2 Campos de Selección	
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector')?>").select2();
-	$("#<?php echo $this->campoSeguro('tiempo1')?>").width(150);
-	$("#<?php echo $this->campoSeguro('tiempo1')?>").select2();
-	$("#<?php echo $this->campoSeguro('tiempo2')?>").width(150);
-	$("#<?php echo $this->campoSeguro('tiempo2')?>").select2();
-	$("#<?php echo $this->campoSeguro('tiempo3')?>").width(150);
-	$("#<?php echo $this->campoSeguro('tiempo3')?>").select2();
-
+	/*Buques Comerciales*/
+	$("#<?php echo $this->campoSeguro('tiempo1BC')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2BC')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo3BC')?>").select2();
+	/*BUques de Energía*/
+	$("#<?php echo $this->campoSeguro('tiempo1BE')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2BE')?>").select2();
+	
+	
 });
