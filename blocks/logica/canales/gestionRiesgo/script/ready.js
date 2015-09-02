@@ -31,9 +31,18 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('tiempo1BC')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo2BC')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo3BC')?>").select2();
-	/*BUques de Energía*/
+	/*Buques de Energía*/
 	$("#<?php echo $this->campoSeguro('tiempo1BE')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo2BE')?>").select2();
+	/*Buques Pasajeros*/
+	$("#<?php echo $this->campoSeguro('tiempo1BP')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2BP')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo3BP')?>").select2();
+	/*Buques Guerra*/
+	$("#<?php echo $this->campoSeguro('tiempo1BG')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2BG')?>").select2();
+	
+	
 	
 	
 });

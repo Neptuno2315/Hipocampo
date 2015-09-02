@@ -41,7 +41,6 @@ $this->idioma["tiempo3BCTitulo"]="Seleccione Período";
 
 // Buques de Energía
 
-
 $this->idioma["rango1BE"]="Cantidad Buques VLCCs/ULCCs : ";
 $this->idioma["rango1BETitulo"]="Ingrese Número de Buques VLCCs/ULCCs";
 
@@ -54,7 +53,47 @@ $this->idioma["rango2BETitulo"]="Ingrese Número de Buques LNG";
 $this->idioma["tiempo2BE"]="Periodo : ";
 $this->idioma["tiempo2BETitulo"]="Seleccione Período";
 
+//Buques Pasajeros
 
+$this->idioma["rango1BP"]="Cantidad Buques Transbordadores Regionales : ";
+$this->idioma["rango1BPTitulo"]="Ingrese Número de Buques Transbordadores Regionales";
+
+$this->idioma["tiempo1BP"]="Periodo : ";
+$this->idioma["tiempo1BPTitulo"]="Seleccione Período";
+
+$this->idioma["rango2BP"]="Cantidad Buques Ferris Rápidos : ";
+$this->idioma["rango2BPTitulo"]="Ingrese Número de Buques Ferris Rápidos";
+
+$this->idioma["tiempo2BP"]="Periodo : ";
+$this->idioma["tiempo2BPTitulo"]="Seleccione Período";
+
+$this->idioma["rango3BP"]="Cantidad Buques Buques de Crucero : ";
+$this->idioma["rango3BPTitulo"]="Ingrese Número de Buques de Crucero";
+
+$this->idioma["tiempo3BP"]="Periodo : ";
+$this->idioma["tiempo3BPTitulo"]="Seleccione Período";
+
+
+//Buques Guerra
+
+$this->idioma["rango1BG"]="Cantidad Buques Guerra Desplazando> 5.000 t :";
+$this->idioma["rango1BGTitulo"]="Ingrese Número de Buques Guerra Desplazando> 5.000 t";
+
+$this->idioma["tiempo1BG"]="Periodo : ";
+$this->idioma["tiempo1BGTitulo"]="Seleccione Período";
+
+$this->idioma["rango2BG"]="Cantidad Buques Guerra desplazando< 5.000 t :";
+$this->idioma["rango2BGTitulo"]="Ingrese Número de Buques de Guerra desplazando< 5.000 t";
+
+$this->idioma["tiempo2BG"]="Periodo : ";
+$this->idioma["tiempo2BGTitulo"]="Seleccione Período";
+/*
+$this->idioma["rango3BG"]="Cantidad Buques Buques de Crucero : ";
+$this->idioma["rango3BGTitulo"]="Ingrese Número de Buques de Crucero";
+
+$this->idioma["tiempo3BG"]="Periodo : ";
+$this->idioma["tiempo3BG	Titulo"]="Seleccione Período";
+*/
 
 //-------------------------------------
 
