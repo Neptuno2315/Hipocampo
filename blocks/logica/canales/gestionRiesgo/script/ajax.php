@@ -35,56 +35,31 @@ function consulta_sectores(elem, request, response){
 	    dataType: "json",
 	    data: { valor:$("#<?php echo $this->campoSeguro('region')?>").val()},
 	    success: function(data){ 
-	    			$("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val(data[0]);
-	    			$("#<?php echo $this->campoSeguro('tipo_bien')?>").val(data[1]);
-	    			  switch($("#<?php echo $this->campoSeguro('id_tipo_bien')?>").val())
-	    	            {
-	    	                           
-	    	                
-	    	                case '2':
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','block');   
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
-	    	                 break;
-	    	                
-	    	                case '3':
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','block');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('tipo_poliza')?>").select2();
-	    	         
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('1');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').attr('disabled','');
-	    	                    
-	    	                break;
-	    	                                
-	    	           
-	    	                break;
-	    	                
-	    	                default:
-	    	                    $("#<?php echo $this->campoSeguro('devolutivo')?>").css('display','none');
-	    	                    $("#<?php echo $this->campoSeguro('consumo_controlado')?>").css('display','none');   
-	    	                    
-	    	                 
-	    	                 $("#<?php echo $this->campoSeguro('cantidad')?>").val('');
-	    	                 $('#<?php echo $this->campoSeguro('cantidad')?>').removeAttr('disabled');
-	    	                 
-	    	                break;
-	    	                
-	    	                }
-	    			
-	    }
-		                    
-	   });
-	};
+	        if(data[0]!=" "){
 
+	            $("#<?php echo $this->campoSeguro('sector')?>").html('');
+	            $("<option value=''>Seleccione ....</option>").appendTo("#<?php echo $this->campoSeguro('sector')?>");
+	            $.each(data , function(indice,valor){
+				            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].valor+"</option>").appendTo("#<?php echo $this->campoSeguro('sector')?>");
+	        			    });
+	            $("#<?php echo $this->campoSeguro('sector')?>").removeAttr('disabled');
+	            }          
+	   		}
+	});
 
+}
 	$(function() {
 
 	    $("#<?php echo $this->campoSeguro('region')?>").change(function() {
-	    	alert("eliana");
-	
-	 });
+	    	
+			if($("#<?php echo $this->campoSeguro('region')?>").val()!=''){
+				consulta_sectores();
+
+				}
+
+
+	    	
+		 });
 
 
 
