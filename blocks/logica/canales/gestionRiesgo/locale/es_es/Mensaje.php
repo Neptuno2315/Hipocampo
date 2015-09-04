@@ -87,6 +87,73 @@ $this->idioma["rango2BGTitulo"]="Ingrese Número de Buques de Guerra desplazando
 
 $this->idioma["tiempo2BG"]="Periodo : ";
 $this->idioma["tiempo2BGTitulo"]="Seleccione Período";
+
+//Buques Pesqueros
+
+$this->idioma["rango1BPQ"]="Cantidad Buques Pesqueros > 100 GT :";
+$this->idioma["rango1BPQTitulo"]="Ingrese Número de Buques Pesqueros > 100 GT";
+
+$this->idioma["tiempo1BPQ"]="Periodo : ";
+$this->idioma["tiempo1BPQTitulo"]="Seleccione Período";
+
+//Servicios Marítimos
+
+$this->idioma["rango1SM"]="Cantidad Buques de Investigación :";
+$this->idioma["rango1SMTitulo"]="Ingrese Número de Buques de Investigación";
+
+$this->idioma["tiempo1SM"]="Periodo : ";
+$this->idioma["tiempo1SMTitulo"]="Seleccione Período";
+
+$this->idioma["rango2SM"]="Cantidad Buques de Apoyo Aparejan :";
+$this->idioma["rango2SMTitulo"]="Ingrese Número de  Buques de Apoyo Aparejan";
+
+$this->idioma["tiempo2SM"]="Periodo : ";
+$this->idioma["tiempo2SMTitulo"]="Seleccione Período";
+
+$this->idioma["rango3SM"]="Cantidad Botes de Pilotos :";
+$this->idioma["rango3SMTitulo"]="Ingrese Número de  Botes de Pilotos";
+
+$this->idioma["tiempo3SM"]="Periodo : ";
+$this->idioma["tiempo3SMTitulo"]="Seleccione Período";
+
+$this->idioma["rango4SM"]="Cantidad Remolcadores :";
+$this->idioma["rango4SMTitulo"]="Ingrese Número de  Remolcadores";
+
+$this->idioma["tiempo4SM"]="Periodo : ";
+$this->idioma["tiempo4SMTitulo"]="Seleccione Período";
+
+$this->idioma["rango5SM"]="Cantidad Otros :";
+$this->idioma["rango5SMTitulo"]="Ingrese Número Otros Tipos";
+
+$this->idioma["tiempo5SM"]="Periodo : ";
+$this->idioma["tiempo5SMTitulo"]="Seleccione Período";
+
+//Acua-Avíones Privados
+
+$this->idioma["rango1AA"]="Cantidad de Lanchas y Yates > 100 GT :";
+$this->idioma["rango1AATitulo"]="Ingrese Número de Lanchas y Yates > 100 GT";
+
+$this->idioma["tiempo1AA"]="Periodo : ";
+$this->idioma["tiempo1AATitulo"]="Seleccione Período";
+
+$this->idioma["rango2AA"]="Cantidad de Lanchas y Yates < 100 GT :";
+$this->idioma["rango2AATitulo"]="Ingrese Número de  Lanchas y Yates < 100 GT";
+
+$this->idioma["tiempo2AA"]="Periodo : ";
+$this->idioma["tiempo2AATitulo"]="Seleccione Período";
+
+$this->idioma["rango3AA"]="Cantidad de Embarcaciones de Recreo Pequeño :";
+$this->idioma["rango3AATitulo"]="Ingrese Número de  Embarcaciones de Recreo Pequeño";
+
+$this->idioma["tiempo3AA"]="Periodo : ";
+$this->idioma["tiempo3AATitulo"]="Seleccione Período";
+
+$this->idioma["rango4AA"]="Cantidad de buques de Vela :";
+$this->idioma["rango4AATitulo"]="Ingrese Número de  Los buques de Vela";
+
+$this->idioma["tiempo4AA"]="Periodo : ";
+$this->idioma["tiempo4AATitulo"]="Seleccione Período";
+
 /*
 $this->idioma["rango3BG"]="Cantidad Buques Buques de Crucero : ";
 $this->idioma["rango3BGTitulo"]="Ingrese Número de Buques de Crucero";

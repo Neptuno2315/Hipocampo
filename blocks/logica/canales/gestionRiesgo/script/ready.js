@@ -41,8 +41,22 @@ $(function() {
 	/*Buques Guerra*/
 	$("#<?php echo $this->campoSeguro('tiempo1BG')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo2BG')?>").select2();
+	/*Buques Pesqueros*/
+	$("#<?php echo $this->campoSeguro('tiempo1BPQ')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2BPQ')?>").select2();
+	/*Servicios Marítimos*/
+	$("#<?php echo $this->campoSeguro('tiempo1SM')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2SM')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo3SM')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo4SM')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo5SM')?>").select2();
 	
-	
+	/*Acua-Avíones Privados*/
+	$("#<?php echo $this->campoSeguro('tiempo1AA')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo2AA')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo3AA')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo4AA')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo5AA')?>").select2();
 	
 	
 });
