@@ -3,7 +3,7 @@ $(function() {
 //Plugin para Validar Formulario Validation Engine
 	
     $("#<?php echo $this->campoSeguro('gestionRiesgo')?>").validationEngine({
-        promptPosition : "topRight:100", 
+        promptPosition : "topRight:-10", 
         scroll: false,
         autoHidePrompt: true,
         autoHideDelay: 2000
@@ -57,6 +57,10 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('tiempo3AA')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo4AA')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo5AA')?>").select2();
+	
+	/*Maxímo de Buques*/
+	$("#<?php echo $this->campoSeguro('tiempo_bq_gr')?>").select2();
+	$("#<?php echo $this->campoSeguro('tiempo_bq_pq')?>").select2();
 	
 	
 });

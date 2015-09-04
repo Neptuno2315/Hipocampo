@@ -154,6 +154,56 @@ $this->idioma["rango4AATitulo"]="Ingrese Número de  Los buques de Vela";
 $this->idioma["tiempo4AA"]="Periodo : ";
 $this->idioma["tiempo4AATitulo"]="Seleccione Período";
 
+
+
+
+//Tamaño de Buques
+
+$this->idioma["num_bq_gr"]="Máximo Número de Buques Grandes :";
+$this->idioma["num_bq_grTitulo"]="Ingrese Número Máximo de Buques Grandes";
+
+$this->idioma["tiempo_bq_gr"]="Periodo : ";
+$this->idioma["tiempo_bq_grTitulo"]="Seleccione Período";
+
+$this->idioma["num_bq_pq"]="Máximo Número de Buques Pequeños :";
+$this->idioma["num_bq_pqTitulo"]="Ingrese Número Maxímo de Buques Pequeños";
+
+$this->idioma["tiempo_bq_pq"]="Periodo : ";
+$this->idioma["tiempo_bq_pqTitulo"]="Seleccione Período";
+
+//Configuración Hidrovia
+
+
+$this->idioma["pr_co_ba"]="Profundidad / Corriente de aire / Bajo la Quilla (mt) : ";
+$this->idioma["tiempo_bq_pqTitulo"]="Ingrese Profundidad / Corriente de aire / Bajo la Quilla (Metros)";
+
+$this->idioma["ancho_canal"]="Ancho de Canal  (Km) : ";
+$this->idioma["ancho_canalTitulo"]="Ingrese Ancho de Canal (Kilometros)";
+
+$this->idioma["obtrucciones_visibilidad"]="Obstrucciones de Visibilidad : ";
+$this->idioma["obtrucciones_visibilidadTitulo"]="Ingrese Obstrucciones de Visibilidad";
+
+$this->idioma["complejidad_hidrovia"]="Complejidad Hidrovía : ";
+$this->idioma["complejidad_hidroviaTitulo"]="Ingrese Complejidad Hidrovía";
+
+$this->idioma["tipo_fondo"]="Tipo de Fondo : ";
+$this->idioma["tipo_fondoTitulo"]="Ingrese Tipo de Fondo(Suelo)";
+
+$this->idioma["estabilidad_sedimentos"]="Estabilidad Sedimentos : ";
+$this->idioma["estabilidad_sedimentosTitulo"]="Ingrese Estabilidad Sedimentos";
+
+$this->idioma["estabilidad_sedimentos"]="Estabilidad Sedimentos : ";
+$this->idioma["estabilidad_sedimentosTitulo"]="Ingrese Estabilidad Sedimentos";
+
+$this->idioma["ayudas_navegacion"]="Ayudas a la Navegación Mezcla y Configuración : ";
+$this->idioma["ayudas_navegacionTitulo"]="Ingrese Ayudas a la Navegación Mezcla y Configuración";
+
+$this->idioma["calidad_datos"]="Calidad de Datos Hidrográficos : ";
+$this->idioma["calidad_datosTitulo"]="Ingrese Calidad de Datos Hidrográficos";
+
+
+
+
 /*
 $this->idioma["rango3BG"]="Cantidad Buques Buques de Crucero : ";
 $this->idioma["rango3BGTitulo"]="Ingrese Número de Buques de Crucero";
