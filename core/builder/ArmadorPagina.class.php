@@ -61,7 +61,8 @@ class ArmadorPagina {
         $htmlPagina = "<head>\n";
         $htmlPagina .= "<title>" . $this->miConfigurador->getVariableConfiguracion("nombreAplicativo") . "</title>\n";
         $htmlPagina .= "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' >\n";
-        $htmlPagina .= "<link rel='shortcut icon' href='" . $this->host . $this->sitio . "/" . "favicon.ico' >\n";
+        $htmlPagina .= "<link rel='shortcut icon' href='" . $this->host . $this->sitio . "/" . "iconfinder.ico' >\n";
+//         echo $this->host . $this->sitio;exit();
         echo $htmlPagina;
 
         // Incluir estilos
