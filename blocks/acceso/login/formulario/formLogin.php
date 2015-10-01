@@ -30,7 +30,7 @@ class Formulario {
 		?>
 
 <div id="slider1_container"
-	style="position: absolute; top: -500px; left: 8px; width: 100%; height: 86%; overflow: hidden;">
+	style="position: absolute; top: -500px; left: 8px; width: 100%; height: 95%; overflow: hidden;">
 	<!-- Slides Container -->
 	<div u="slides"
 		style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 100%; height: 100px; overflow: hidden;">
