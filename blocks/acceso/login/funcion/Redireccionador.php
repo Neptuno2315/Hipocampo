@@ -15,28 +15,11 @@ class Redireccionador {
         $miPaginaActual = $miConfigurador->getVariableConfiguracion("pagina");
 
         switch ($opcion) {
-            case "index" :
-                //echo "Bienvenido, perfil Arka, todo poderoso.";
-                $variable = 'pagina=indexARKA';
-                $variable .= '&registro=' . $valor [0];
-                break;
 
-            case "claves" :
-                // echo "Bienvenido, perfil Compras";
-                $variable = 'pagina=cambiarClave';
-                $variable .= '&usuario=' . $valor [0]['id_usuario'];
-                break;
-
-            case "indexContabilidad" :
-                //echo "Bienvenido, perfil Contabilidad";
-                $variable = 'pagina=indexContabilidad';
-                $variable .= '&registro=' . $valor [0];
-                break;
-
-            case "indexAlmacen" :
-                //echo "Bienvenido, perfil Asistente Almacén";
-                $variable = 'pagina=indexAlmacen';
-                $variable .= '&registro=' . $valor [0];
+            case "indexPrincipal" :
+                $variable = 'pagina=indexAplicativo';
+                $variable .='&registro=' . $valor [0];
+                
                 break;
 
 
@@ -46,6 +29,7 @@ class Redireccionador {
                 if (isset($valor) && $valor != '') {
                     $variable .= "&error=" . $valor;
                 }
+                
                 break;
 
             default :
@@ -61,7 +45,7 @@ class Redireccionador {
         $variable = $miConfigurador->fabricaConexiones->crypto->codificar($variable);
         $_REQUEST [$enlace] = $enlace . '=' . $variable;
         $redireccion = $url . $_REQUEST [$enlace];
-
+ 
         echo "<script>location.replace('" . $redireccion . "')</script>";
     }
 

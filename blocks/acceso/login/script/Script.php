@@ -10,8 +10,8 @@ $indice=0;
 $funcion[$indice++]="md5.js";
 $funcion[$indice++]="jquery.validationEngine.js";
 $funcion[$indice++]="jquery.validationEngine-es.js";
-$funcion[$indice ++]="jssor.slider.mini.js";
-$funcion[$indice ++]="slider.js";
+// $funcion[$indice ++]="jssor.slider.mini.js";
+// $funcion[$indice ++]="slider.js";
 
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");

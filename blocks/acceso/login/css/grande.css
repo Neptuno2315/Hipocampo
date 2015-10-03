@@ -24,13 +24,17 @@ header {
 	top: 0;
 }
 
+body {
+	position: absolute;
+	top: -3px;
+	background-image: url("imagen/imagen2.JPG");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center 25%;
+}
 
-
-
-#cuadro_login {
-	
-text-align: center;
-
+#divMensaje {
+	top: 20%;
 }
 
 #slider1_container {
@@ -41,9 +45,27 @@ text-align: center;
 	height: 90%;
 	overflow: hidden;
 }
+.error{
+	background-position: 10px 15px;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    clear: both;
+    font-family: "Arial",Helvetica,sans-serif;
+    font-size: 15px;
+    margin: 27% 28%;
+    padding: 15px 15px 15px 50px;
+    width: 15%;
+    opacity: 0.85;
+    -moz-border-radius: 8px;
+	-webkit-border-radius: 8px; //
+	-moz-opacity: 0.5;
+	-webkit-opacity: 0.75;
+	
+	
+}
 
 #fondo_base {
-	top: 5px;
+	top: 20px;
 	position: absolute;
 	margin: 0;
 	width: 100%;
@@ -53,13 +75,12 @@ text-align: center;
 	opacity: 0.45;
 }
 
-
 #tituloAplicativo {
 	color: #2e052d;
 	width: 48%;
 	float: right;
-	font: 150% sans-serif; 
-	text-align: right; 
+	font: 150% sans-serif;
+	text-align: right;
 }
 
 #fondo_menu {
@@ -84,7 +105,7 @@ text-align: center;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px; //
-	-moz-opacity:0.5;
+	-moz-opacity: 0.5;
 	-webkit-opacity: 0.75;
 }
 

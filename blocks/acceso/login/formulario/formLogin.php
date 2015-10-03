@@ -29,17 +29,7 @@ class Formulario {
 		$rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
 		?>
 
-<div id="slider1_container"
-	style="position: absolute; top: -500px; left: 8px; width: 100%; height: 95%; overflow: hidden;">
-	<!-- Slides Container -->
-	<div u="slides"
-		style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 100%; height: 100px; overflow: hidden;">
-		<div>
-			<img u="image"
-				src="<?php echo $rutaBloque ?>/css/imagen/IMG_1641.JPG" />
-		</div>
-	</div>
-</div>
+
 <header>
 	<div id="fondo_base">
 		<div id="tituloAplicativo">
@@ -215,15 +205,7 @@ class Formulario {
 		?>
             </article>
 </section>
-<!--  <section>
-            <div id="fondo_texto">
-                <div id="texto">
-                    <h3>SISTEMA DE INFORMACIÓN</h3>
-                    <h3>DE GESTIÓN DE INVENTARIOS Y ALMACÉN</h3><BR>
-                    <h2>ARKA</h2>
-                </div>
-            </div>
-        </section> -->
+
 <footer>
 	<div id="footerLeft">
 		<p style="font-size: 15px;">
