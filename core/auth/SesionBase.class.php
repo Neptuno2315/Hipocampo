@@ -117,7 +117,6 @@ class SesionBase {
         $parametro ["sesionId"] = $this->sesionId;
         $parametro ["variable"] = $variable;
         $clausulaSQL = $this->miSql->getCadenaSql ( "buscarValorSesion", $parametro );
-        
         $resultado = $this->miConexion->ejecutarAcceso ( $clausulaSQL, "busqueda" );
         
         if ($resultado) {
