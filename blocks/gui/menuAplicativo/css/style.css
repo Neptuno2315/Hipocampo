@@ -1,0 +1,21 @@
+.mcd-menu img {
+	width: 20px;
+	height: 20px;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: .4em 0.5em;
+}
+
+
+.ui-button {
+	display: inline-block;
+	position: fixed;
+	 padding: .4em 0.5em;
+	line-height: normal;
+	margin-right: .1em;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	overflow: visible;
+}

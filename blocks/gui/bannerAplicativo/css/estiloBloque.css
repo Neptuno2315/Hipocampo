@@ -1,0 +1,36 @@
+#divGeneral2 {
+	
+}
+
+
+#marcoGeneral {
+	width: 97%;
+	top: -3px;
+	background-image: url("images/imagen.JPG");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center 25%;
+}
+
+#fondo_texto {
+	position: relative;
+	opacity: 0.35;
+	top: 1%;
+	width: 100%;
+	max-width: 100%;
+	height: 110px;
+	max-height: 200px;
+	left: 0;
+	background-color: #2e3436;
+	border-radius: 0px 10px 10px 0px;
+}
+
+#texto {
+	width: 97%;
+	height: 80%;
+	margin: initial;
+	color: #ffffff;
+	text-align: right;
+	left: 2%;
+	font-size: inherit;
+}
