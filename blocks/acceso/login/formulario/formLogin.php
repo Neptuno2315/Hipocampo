@@ -33,7 +33,7 @@ class Formulario {
 <header>
 	<div id="fondo_base">
 		<div id="tituloAplicativo">
-		Sistema de Gestión del riesgo y Diseño de Canales&nbsp&nbsp                                                                                                                                                                                                            
+		Sistema de Gestión del Riesgo y Diseño de Canales&nbsp&nbsp                                                                                                                                                                                                            
 		<B>HIPOCAMPO</B>&nbsp&nbsp	
 		</div>
 	</div>
