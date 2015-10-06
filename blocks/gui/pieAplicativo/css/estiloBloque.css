@@ -1,14 +1,7 @@
 
-#div.campoTextoContenidoSolo {
-   
-}
-
-
 #pie{
     border: 0;
-    
     display: block;
-    /* background-image: url(../imagen/pie_arka.png); */
     background-color: #FFFFFF;
     opacity: 0.7;
     background-size: 100%;

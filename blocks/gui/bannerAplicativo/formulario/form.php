@@ -45,7 +45,7 @@ class Formulario {
 				?>
 
 
-				<h3>SISTEMAS DE GESTION RIESGO A LA NAVEGACIÓN</h3>
+				<h3>SISTEMA DE GESTIÓN RIESGO A LA NAVEGACIÓN</h3>
 				<h3>Y DISEÑO DE CANALES</h3>
 				<h2>HIPOCAMPO</h2>
 

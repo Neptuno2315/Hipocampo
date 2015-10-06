@@ -23,14 +23,14 @@ $miSesion = Sesion::singleton ();
 			<li>
 				<a href="" class="">
 					<i class="fa fa-edit"><img SRC="<?php echo $rutaBloque ?>/css/images/risk.png"></i>
-					<strong>Riegos</strong>
+					<strong>Análisis Riegos</strong>
 					<small>Gestíon Riegos a la Navegación</small>
 				</a>
 			</li>
 			<li>
 				<a href="">
 					<i class="fa fa-gift"><img SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>
-					<strong>Datos</strong>
+					<strong>GeoDatos</strong>
 					<small>Información Geográfica</small>
 				</a>
 			</li>
