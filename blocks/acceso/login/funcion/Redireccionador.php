@@ -18,7 +18,8 @@ class Redireccionador {
 
             case "indexPrincipal" :
                 $variable = 'pagina=indexAplicativo';
-                $variable .='&registro=' . $valor [0];
+                $variable .='&registro=' .serialize($valor ['registro']);
+                $variable .='&usuario=' . $valor ['usuario'];
                 
                 break;
 
