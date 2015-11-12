@@ -2,8 +2,6 @@
 
 namespace blocks\gui\bannerUsuario\formulario;
 
-use component\GestorNotificaciones\Componente;
-
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
@@ -45,9 +43,9 @@ class Formulario {
 				?>
 
 
-				<h3>SISTEMA DE GESTIÓN RIESGO A LA NAVEGACIÓN</h3>
-				<h3>Y DISEÑO DE CANALES</h3>
-				<h2>HIPOCAMPO</h2>
+<h3>SISTEMA DE GESTIÓN RIESGO A LA NAVEGACIÓN</h3>
+<h3>DE DISEÑO DE CANALES</h3>
+<h2>HIPOCAMPO</h2>
 
 <?php
 			}
