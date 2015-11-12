@@ -37,25 +37,14 @@ $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 			</a>
 
 				<ul>
-					<li><a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i
-							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre']; ?></a></li>
-					<li><a href="#"><i class="fa fa-group"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>Our
-							Team</a>
-						<ul>
-							<li><a href="#"><i class="fa fa-female"><img
-										SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>Leyla
-									Sparks</a></li>
-							<li><a href="#"><i class="fa fa-male"></i>Gleb Ismailov</a>
-								<ul>
-									<li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
-									<li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
-								</ul></li>
-							<li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
-						</ul></li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
-					<li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
+					<li>
+						<a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-group"><img SRC="<?php echo $rutaBloque ?>/css/images/analizar.png"></i>Analizar Variables</a>
+					<li>
+						<a href="#"><i class="fa fa-group"><img SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i>Resultado o Informe</a>
+					</li>
 				</ul></li>
 			<li><a href=""> <i class="fa fa-gift"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>GeoDatos</strong>
@@ -65,7 +54,7 @@ $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong>Usuarios</strong>
 					<small>Gestión Usuarios</small>
 			</a></li>
-			<li><a href=""> <i class="fa fa-comments-o"></i> <strong>Blog</strong>
+			<!--<li><a href=""> <i class="fa fa-comments-o"></i> <strong>Blog</strong>
 					<small>what they say</small>
 			</a>
 				<ul>
@@ -87,7 +76,7 @@ $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 						</ul></li>
 					<li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
 					<li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
-				</ul></li>
+				</ul></li> --!>
 			<!-- <li class="float">
 				<a class="search">
 					<input type="text" value="Buscar ...">
