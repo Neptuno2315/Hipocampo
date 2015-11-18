@@ -2,14 +2,14 @@
 # Caso de Uso 
 
 //Pestañas
-$this->idioma["tabDescripcion"]="Descripción General Zona de Estudio";
-$this->idioma["tabAnalisis"]="Analisis de Variables";
+$this->idioma["tabDescripcion"]="Registro Descripción General Zona de Estudio";
+$this->idioma["tabConsultaModificacion"]="Consulta Y Modificacion Descripción General Zona de Estudio";
 $this->idioma["tabResultado"]="Resultado o Informe ";
 
 
 //Nombre Formulario
 
-$this->idioma["gestionRiesgo"]="Gestión de Riesgo a la Navegación";
+$this->idioma["zonaEstudio"]="Descripción Zona Estudio";
 
 //Mis Campos
 $this->idioma["region"]="Región : ";
@@ -200,6 +200,81 @@ $this->idioma["ayudas_navegacionTitulo"]="Ingrese Ayudas a la Navegación Mezcla
 
 $this->idioma["calidad_datos"]="Calidad de Datos Hidrográficos : ";
 $this->idioma["calidad_datosTitulo"]="Ingrese Calidad de Datos Hidrográficos";
+
+
+
+
+//Descripción del Sistema de Señalización Graficado Sobre Carta Náutica
+
+
+$this->idioma["bo_mo_for_re"]="Boyas monitorizados de forma remota con AIS : ";
+$this->idioma["bo_mo_for_reTitulo"]="Ingrese Cantidad Boyas monitorizados de forma remota con AIS";
+
+$this->idioma["bo_si_ais_no_super"]="Boyas sin AIS o no supervisados : ";
+$this->idioma["bo_si_ais_no_superTitulo"]="Ingrese Cantidad Boyas sin AIS o no supervisados";
+
+$this->idioma["racon"]="Número de Racon : ";
+$this->idioma["raconTitulo"]="Ingrese Cantidad Racon";
+
+$this->idioma["linterna"]="Número de  Linternas : ";
+$this->idioma["linternaTitulo"]="Ingrese Cantidad de Linternas";
+
+$this->idioma["ort_aton"]="Otras AtoN : ";
+$this->idioma["ort_atonTitulo"]="Ingrese la cantida de otro tipo de ayudas a la Navegación";
+
+$this->idioma["g_gps"]="Proporciona DGPS : ";
+$this->idioma["g_gpsTitulo"]="Seleccione Sin Proporciona un Sistema de GPS Diferencial";
+
+$this->idioma["ds_stm"]="Dispone de STM : ";
+$this->idioma["ds_stmTitulo"]="Seleccione Disponibilidad de Tráfico Marítimo";
+
+$this->idioma["ds_srv_pl"]="Disponible al Servicio del Piloto : ";
+$this->idioma["ds_srv_plTitulo"]="Seleccione Si Esta Disponible al Servicio de Piloto";
+
+$this->idioma["obser_des__sis_sn"]="Observaciones : ";
+$this->idioma["obser_des__sis_snTitulo"]="Ingrese Observaciones";
+
+
+//Condiciones de Navegación
+
+
+$this->idioma["opera_nc_di"]="Operaciones Noche / Día : ";
+$this->idioma["opera_nc_diTitulo"]="Seleccione  Operaciones ";
+
+$this->idioma["estado_mar"]="Estado Mar (DOUGLAS): ";
+$this->idioma["estado_marTitulo"]="Seleccione Estado Mar Según DOUGLAS";
+
+$this->idioma["obser_des__vi_mr"]="Observaciones de Viento y Corrientes(río,marea,océano) : ";
+$this->idioma["obser_des__vi_mrTitulo"]="Ingrese Observaciones Respectivas";
+
+$this->idioma["visibilidad"]="Restricción Visibilidad (Mn) : ";
+$this->idioma["visibilidadTitulo"]="Ingrese Restricción de Visibilidad";
+
+$this->idioma["con_hielo"]="Condiciones de Hielo : ";
+$this->idioma["con_hieloTitulo"]="Seleccione Condiciones d Hielo";
+
+$this->idioma["ilum_fondo"]="Iluminación de Fondo : ";
+$this->idioma["ilum_fondoTitulo"]="Seleccione Evaluación de Iluminación Fondo";
+
+$this->idioma["obser_escom"]="Observaciones Escombros: ";
+$this->idioma["obser_escomTitulo"]="Ingrese Observaciones Escombros";
+
+
+
+//Nivel Servicio
+
+
+
+
+$this->idioma["mn_stm"]="Monitoreo por parte del STM : ";
+$this->idioma["ds_srv_plTitulo"]="Ingrese Observaciones de Monitoreo";
+
+$this->idioma["obser_des__sis_sn"]="Observaciones : ";
+$this->idioma["obser_des__sis_snTitulo"]="Ingrese Observaciones";
+
+
+
+
 
 
 

@@ -108,6 +108,12 @@ class Sql extends \Sql {
 			
 			// +++++++++++++++++++ Sentencias de mi Caso de Uso ++++++++++++++++++++++++++++++++
 			
+			case 'consultar_estado_mar' :
+				$cadenaSql = "SELECT id_grado,desripcion ";
+				$cadenaSql .= "FROM parametros.estado_mar ";
+				$cadenaSql .= "WHERE estado_registro='t';";
+				break;
+			
 			case 'consultar_region' :
 				$cadenaSql = "SELECT id_region, descripcion ";
 				$cadenaSql .= "FROM parametros.region ";

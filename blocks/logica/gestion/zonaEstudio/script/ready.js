@@ -2,7 +2,7 @@ $(function() {
 
 //Plugin para Validar Formulario Validation Engine
 	
-    $("#<?php echo $this->campoSeguro('gestionRiesgo')?>").validationEngine({
+    $("#<?php echo $this->campoSeguro('zonaEstudio')?>").validationEngine({
         promptPosition : "topRight:-10", 
         scroll: false,
         autoHidePrompt: true,
@@ -11,8 +11,8 @@ $(function() {
 
 
     $(function() {
-        $("#<?php echo $this->campoSeguro('gestionRiesgo')?>").submit(function() {
-            $resultado=$("#<?php echo $this->campoSeguro('gestionRiesgo')?>").validationEngine("validate");
+        $("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit(function() {
+            $resultado=$("#<?php echo $this->campoSeguro('zonaEstudio')?>").validationEngine("validate");
              if ($resultado) {
                 return true;
             }
@@ -61,6 +61,16 @@ $(function() {
 	/*Maxímo de Buques*/
 	$("#<?php echo $this->campoSeguro('tiempo_bq_gr')?>").select2();
 	$("#<?php echo $this->campoSeguro('tiempo_bq_pq')?>").select2();
+	
+	/*Condiciones de Navegación*/
+	$("#<?php echo $this->campoSeguro('opera_nc_di')?>").select2();
+	$("#<?php echo $this->campoSeguro('estado_mar')?>").select2();
+	$("#<?php echo $this->campoSeguro('con_hielo')?>").select2();
+	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();
+	
+	
+	
+	
 	
 	
 });

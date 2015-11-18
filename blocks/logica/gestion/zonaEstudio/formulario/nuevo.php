@@ -27,8 +27,8 @@ unset ( $atributos );
 	
 	$items = array (
 			"tabDescripcion" => $this->lenguaje->getCadena ( "tabDescripcion" ),
-			"tabAnalisis" => $this->lenguaje->getCadena ( "tabAnalisis" ),
-			"tabResultado" => $this->lenguaje->getCadena ( "tabResultado" )
+			"tabConsultaModificacion" => $this->lenguaje->getCadena ( "tabConsultaModificacion" ),
+			
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "jqueryui";
@@ -52,7 +52,7 @@ unset ( $atributos );
 		unset ( $atributos );
 	}
 	{ // Pestañas de Analisis de Variables
-		$esteCampo = "tabAnalisis";
+		$esteCampo = "tabConsultaModificacion";
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
@@ -61,7 +61,7 @@ unset ( $atributos );
 		unset ( $atributos );
 		{
 			
-			include ($this->ruta . "formulario/tabs/tabAnalisis.php");
+			include ($this->ruta . "formulario/tabs/tabConsultaModificacion.php");
 			// -----------------Fin Division para la pestaña 2-------------------------
 		}
 		echo $this->miFormulario->agrupacion ( 'fin' );
