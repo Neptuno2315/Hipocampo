@@ -112,6 +112,7 @@ class Select extends HtmlBase {
 
     function armarSelect() {
         $this->cadena_html = "<select ";
+        $this->cadena_html .=" title=\"".$this->atributos['titulo']."\"";
 
         if (isset($this->atributos [self::DESHABILITADO]) && $this->atributos [self::DESHABILITADO]) {
             $this->cadena_html .= "disabled ";
