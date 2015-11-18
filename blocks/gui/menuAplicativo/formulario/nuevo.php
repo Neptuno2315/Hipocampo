@@ -22,6 +22,43 @@ $enlaceZonaEstudio ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
 $enlaceZonaEstudio ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceZonaEstudio ['enlace'], $directorio );
 $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 
+
+
+
+
+// **********Administrador Datos Geograficos**************//
+
+$enlaceAdministradorGeografico ['enlace'] = "pagina=administrador";
+$enlaceAdministradorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
+$enlaceAdministradorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAdministradorGeografico ['enlace'], $directorio );
+$enlaceAdministradorGeografico ['nombre'] = "Administrador";
+
+
+
+
+// **********Visualizador Datos Geograficos**************//
+
+$enlaceVisualizadorGeografico ['enlace'] = "pagina=visualizador";
+$enlaceVisualizadorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
+$enlaceVisualizadorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
+$enlaceVisualizadorGeografico ['nombre'] = "Visualizador";
+
+
+
+
+// **********Visualizador Datos Geograficos**************//
+
+$enlaceAplicativo ['enlace'] = "index.php";
+$enlaceAplicativo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
+$enlaceAplicativo ['nombre'] = "Cerrar Session";
+
+
+
+
+
+
+
+
 ?>
 <div class="container">
 	<nav>
@@ -35,7 +72,6 @@ $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 						SRC="<?php echo $rutaBloque ?>/css/images/risk.png"></i> <strong>Análisis
 						Riegos</strong> <small>Gestión Riegos a la Navegación</small>
 			</a>
-
 				<ul>
 					<li>
 						<a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
@@ -47,13 +83,30 @@ $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 					</li>
 				</ul></li>
 			<li><a href=""> <i class="fa fa-gift"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>GeoDatos</strong>
+						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos Geográficos</strong>
 					<small>Información Geográfica</small>
-			</a></li>
+			</a>
+			<ul>
+					<li>
+						<a href="<?php echo $enlaceAdministradorGeografico ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/administrador.png"></i><?php echo $enlaceAdministradorGeografico ['nombre'];?></a>
+					</li>
+					<li>
+						<a href="<?php echo $enlaceVisualizadorGeografico ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/geoposition	.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
+					</li>
+				</ul>
+			
+			</li>
 			<li><a href=""> <i class="fa fa-globe"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong>Usuarios</strong>
 					<small>Gestión Usuarios</small>
 			</a></li>
+			<li><a href="<?php echo $enlaceAplicativo['enlace']; ?>"> <i class="fa fa-globe"><img
+						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong><?php echo  $enlaceAplicativo['nombre']; ?></strong>
+					<small>Salir</small>
+			</a></li>
+			
+			
+			
 			<!--<li><a href=""> <i class="fa fa-comments-o"></i> <strong>Blog</strong>
 					<small>what they say</small>
 			</a>
