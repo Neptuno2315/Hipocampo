@@ -101,7 +101,7 @@ $enlaceAplicativo ['nombre'] = "Cerrar Session";
 					<small>Gestión Usuarios</small>
 			</a></li>
 			<li><a href="<?php echo $enlaceAplicativo['enlace']; ?>"> <i class="fa fa-globe"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong><?php echo  $enlaceAplicativo['nombre']; ?></strong>
+						SRC="<?php echo $rutaBloque ?>/css/images/salir.png"></i> <strong><?php echo  $enlaceAplicativo['nombre']; ?></strong>
 					<small>Salir</small>
 			</a></li>
 			
