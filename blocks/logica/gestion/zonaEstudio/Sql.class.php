@@ -109,9 +109,15 @@ class Sql extends \Sql {
 			// +++++++++++++++++++ Sentencias de mi Caso de Uso ++++++++++++++++++++++++++++++++
 			
 			case 'consultar_estado_mar' :
-				$cadenaSql = "SELECT id_grado,desripcion ";
-				$cadenaSql .= "FROM parametros.estado_mar ";
-				$cadenaSql .= "WHERE estado_registro='t';";
+				
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='EstadoMar' ; ";
+				
+				
 				break;
 			
 			case 'consultar_region' :
@@ -128,9 +134,13 @@ class Sql extends \Sql {
 				break;
 			
 			case 'consultar_periodo' :
-				$cadenaSql = "SELECT id_periodo id, descripcion valor ";
-				$cadenaSql .= "FROM parametros.periodo  ";
-				$cadenaSql .= "WHERE estado_registro='t'  ";
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='CaracterizacionPeriodoTiempo' ; ";
+				
 				break;
 		}
 		

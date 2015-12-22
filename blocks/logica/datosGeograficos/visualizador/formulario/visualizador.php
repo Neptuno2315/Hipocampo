@@ -8,6 +8,7 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 $esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 
+// $URL=$rutaBloque.":8080/geoexplorer";
 $URL=$rutaBloque.":8080/geoexplorer";
 echo "<br>";
 
@@ -15,8 +16,9 @@ echo "<br>";
 
 
 
-
-
 <center>
-	<iframe src="<?php echo $URL;?>" width="98%" height="500"> </iframe>
+
+<iframe style="border: none;" height="450" width="100%" src="http://172.16.146.128:8080/geoexplorer/viewer/#maps/22"></iframe>
+	<!--<iframe src="<?php echo $URL;?>" width="98%" height="500"> </iframe> -->
+	
 </center>
