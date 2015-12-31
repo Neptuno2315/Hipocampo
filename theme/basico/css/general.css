@@ -4,13 +4,13 @@ body {
 	margin: 0;
 }
 
+
 #marcoGeneral {
-	width: 95%;
-	margin: 0 auto;
-	border: 1px solid #EEEEEE;
-	background-color: #FFFFFF;
-	padding: 0px 10px;
-	display: table;
+    width: 98%;
+    margin: 0 auto;
+    /* border: 1px solid #EEEEEE; */
+    background-color: #FFFFFF;
+    opacity: 0.8;
 }
 
 #seccionAmplia {
@@ -31,6 +31,8 @@ body {
 #seccionCentralAmpliada {
 	width: 80%;
 	float: right;
+	position: relative;
+    top: 165px;
 }
 
 #seccionD {

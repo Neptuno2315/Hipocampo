@@ -23,10 +23,14 @@ class Link extends HtmlBase {
 		
 		if (isset ( $atributos [self::ENLACE] ) && $atributos [self::ENLACE] != "") {
 			$this->cadenaHTML .= "href='" . $atributos [self::ENLACE] . "' ";
+			
+			$this->cadenaHTML .= "  target='_blank' 	";
 		}
 		
 		if (isset ( $atributos [self::ENLACECODIFICAR] ) && $atributos [self::ENLACECODIFICAR] != "") {
 			$this->cadenaHTML .= "href='" . $this->miConfigurador->fabricaConexiones->crypto->$atributos [self::ENLACE] . "' ";
+			
+			$this->cadenaHTML .= "  target='_blank' 	";
 		}
 		
 		if (isset ( $atributos ["tabIndex"] )) {
