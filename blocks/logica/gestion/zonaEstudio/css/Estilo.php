@@ -1,13 +1,12 @@
 <?php
 $indice=0;
 $estilo[$indice++]="validationEngine.jquery.css";
-$estilo[$indice++]="jquery-ui_smoot.css";
-$estilo[$indice++]="timepicker.css";
-$estilo[$indice++]="jquery-te.css";
+
+
 $estilo[$indice++]="jquery.auto-complete.css";
-$estilo[$indice++]="chosen.css";
+
 $estilo[$indice++]="select2.css";
-$estilo[$indice++]="jquery_switch.css";
+
 $estilo[$indice++]="estiloBloque.css";
 //Tablas
 //$estilo[$indice++]="demo_page.css";

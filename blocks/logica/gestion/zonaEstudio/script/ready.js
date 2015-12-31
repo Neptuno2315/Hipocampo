@@ -6,69 +6,78 @@ $(function() {
 		promptPosition : "topRight:-10",
 		scroll : false,
 		autoHidePrompt : true,
-		autoHideDelay : 2000
+		autoHideDelay : 9000
 	});
 
 	$(function() {
 		$("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit(
 				function() {
+
+					event.preventDefault();
+
+					
+					$("#vol_traf").slideToggle(1000);
+					$("#conf_hidro").slideToggle(1000);
+					$("#se_gr_ca").slideToggle(1000);
+					$("#cond_nave").slideToggle(1000);
+					$("#niv_serv").slideToggle(1000);
+					
+					
 					$resultado = $(
 							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
 							.validationEngine("validate");
 					if ($resultado) {
+
 						return true;
+					} else {
+						return false;
+
 					}
-					return false;
 				});
 	});
 
 	// Plugin para Pestañas
 	$("#tabs").tabs();
 
-	$("#qw").accordion();
-
-	$("#AgrupacionTrafico").click(function(event) {
+	$("#AgrupacionTrafico").dblclick(function(event) {
 
 		event.preventDefault();
 
-		$("#vol_traf").slideToggle();
+		$("#vol_traf").slideToggle(1000);
 
 	});
 
-	$("#AgrupacionCH").click(function(event) {
+	$("#AgrupacionCH").dblclick(function(event) {
 
 		event.preventDefault();
 
-		$("#conf_hidro").slideToggle();
+		$("#conf_hidro").slideToggle(1000);
 
 	});
 
-	$("#AgrupacionSnS").click(function(event) {
+	$("#AgrupacionSnS").dblclick(function(event) {
 
 		event.preventDefault();
 
-		$("#se_gr_ca").slideToggle();
+		$("#se_gr_ca").slideToggle(1000);
 
 	});
 
-	$("#AgrupacionCNC").click(function(event) {
+	$("#AgrupacionCNC").dblclick(function(event) {
 
 		event.preventDefault();
 
-		$("#cond_nave").slideToggle();
+		$("#cond_nave").slideToggle(1000);
 
 	});
-	
 
-	$("#AgrupacionNS").click(function(event) {
+	$("#AgrupacionNS").dblclick(function(event) {
 
 		event.preventDefault();
 
-		$("#niv_serv").slideToggle();
+		$("#niv_serv").slideToggle(1000);
 
 	});
-	
-	
 
 	// Plugin de Select2 Campos de Selección
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
