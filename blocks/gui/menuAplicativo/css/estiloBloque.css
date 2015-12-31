@@ -1,7 +1,4 @@
-body { 
-	background: #EEE; 
-	overflow-x:hidden;
-}
+
 .clearfix:before,
 .clearfix:after {
     content: " ";
@@ -20,8 +17,9 @@ body {
     margin: 0px auto;
     padding: 10px 0;
     clear: both;
-    opacity:0.8;
-    z-index:1;
+    opacity:0.9;
+    z-index:4;
+    top: 155px;
     
 }
 @media only screen and (min-width: 1200px) {

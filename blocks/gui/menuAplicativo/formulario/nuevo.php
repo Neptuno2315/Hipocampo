@@ -70,7 +70,7 @@ $enlaceAplicativo ['nombre'] = "Cerrar Session";
 			</a></li>
 			<li><a href="" class=""> <i class="fa fa-edit"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/risk.png"></i> <strong>Análisis
-						Riegos</strong> <small>Gestión Riegos a la Navegación</small>
+						Riesgos</strong> <small>Gestión Riesgos a la Navegación</small>
 			</a>
 				<ul>
 					<li>
