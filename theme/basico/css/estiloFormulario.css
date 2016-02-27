@@ -98,16 +98,17 @@ div.mensajeAlerta {
 }
 
 div.formulario {
-	width: 98%;
+	width: 100%;
 	margin: 0px auto 0 auto;
-	float: left;
+	float: rigth;
 	border-collapse: collapse;
 	border-width: 0px;
 	border-style: solid;
 	border-color: #CCCCCC;
 	background-color: #FFFFFF;
 	border-spacing: 0px;
-	padding: 10px;
+	/*padding: 10px;*/
+	
 }
 
 div.formularioConJqgrid {

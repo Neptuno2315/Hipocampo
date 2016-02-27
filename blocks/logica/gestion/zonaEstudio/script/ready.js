@@ -15,14 +15,12 @@ $(function() {
 
 					event.preventDefault();
 
-					
 					$("#vol_traf").slideToggle(1000);
 					$("#conf_hidro").slideToggle(1000);
 					$("#se_gr_ca").slideToggle(1000);
 					$("#cond_nave").slideToggle(1000);
 					$("#niv_serv").slideToggle(1000);
-					
-					
+
 					$resultado = $(
 							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
 							.validationEngine("validate");
@@ -122,5 +120,38 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('estado_mar')?>").select2();
 	$("#<?php echo $this->campoSeguro('con_hielo')?>").select2();
 	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();
+
+});
+
+$("#ventanaA").steps({
+	headerTag : "h3",
+	bodyTag : "section",
+	enableAllSteps : true,
+	enablePagination : true,
+	transitionEffect : "slideLeft",
+	onStepChanging : function(event, currentIndex, newIndex) {
+		$resultado = $("#registrarContrato").validationEngine("validate");
+
+		if ($resultado) {
+
+			return true;
+		}
+		return false;
+
+	},
+	onFinished : function(event, currentIndex) {
+
+		$("#registrarContrato").submit();
+
+	},
+	labels : {
+		cancel : "Cancelar",
+		current : "Paso Siguiente :",
+		pagination : "Paginación",
+		finish : "Guardar Información",
+		next : "Siquiente",
+		previous : "Atras",
+		loading : "Cargando ..."
+	}
 
 });
