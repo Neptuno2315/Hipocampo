@@ -73,7 +73,7 @@
 
 .wizard > .steps > ul > li
 {
-    width: 25%;
+    width: 50%; 
 }
 
 .wizard > .steps > ul > li,
@@ -116,7 +116,7 @@
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #9A6B56;
+    background: #39444D;
     color: #fff;
     cursor: default;
 }
@@ -125,7 +125,7 @@
 .wizard > .steps .done a:hover,
 .wizard > .steps .done a:active
 {
-    background: #DDC2B4;
+    background: #C3CAD1;
     color: #fff;
 }
 
@@ -253,7 +253,7 @@
 .wizard > .actions a:hover,
 .wizard > .actions a:active
 {
-    background: #9A634C;
+    background: #39444D;
     color: #fff;
     display: block;
     padding: 0.5em 1em;

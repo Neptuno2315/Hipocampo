@@ -263,18 +263,37 @@ $this->idioma["obser_escomTitulo"]="Ingrese Observaciones Escombros";
 
 //Nivel Servicio
 
-
-
-
 $this->idioma["mn_stm"]="Monitoreo por parte del STM : ";
 $this->idioma["ds_srv_plTitulo"]="Ingrese Observaciones de Monitoreo";
 
 $this->idioma["obser_des__sis_sn"]="Observaciones : ";
 $this->idioma["obser_des__sis_snTitulo"]="Ingrese Observaciones";
 
+/**
+ * 
+ * Peligros
+ * 
+ */
 
+//Profundidad y Olas
+	
+$this->idioma["cal_max_buques"]="Calado Máximo de los Buques : ";
+$this->idioma["cal_max_buquesTitulo"]="Calado Máximo de los Buques en metros";
 
+$this->idioma["hg_bj_quilla"]="Holgura Bajo la Quilla : ";
+$this->idioma["hg_bj_quillaTitulo"]="Ingrese Holgura Bajo la Quilla en metros";
 
+$this->idioma["mx_oleaje_pre"]="Máxima Oleaje Predicho : ";
+$this->idioma["mx_oleaje_preTitulo"]="Ingrese Máxima Oleaje Predicho en metros";
+
+$this->idioma["sd_mx_anual"]="Sedimentación Maxima Anual : ";
+$this->idioma["sd_mx_anualTitulo"]="Ingrese Sedimentación Maxima Anual en metros";
+
+$this->idioma["pr_mn_seguridad"]="Profundidad Mínima Seguridad : ";
+$this->idioma["pr_mn_seguridadTitulo"]="Ingrese Profundidad Mínima Seguridad en metros";
+
+$this->idioma["ach_canal"]="Anchura del Canal : ";
+$this->idioma["ach_canalTitulo"]="Ingrese Anchura del Canal en kilometros";
 
 
 
