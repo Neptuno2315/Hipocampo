@@ -120,6 +120,14 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('estado_mar')?>").select2();
 	$("#<?php echo $this->campoSeguro('con_hielo')?>").select2();
 	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();
+	
+	
+	/* Predicción Máxima Viento y Tormentas */
+	$("#<?php echo $this->campoSeguro('pr_maxima')?>").select2();
+	
+	
+	/* Predicción Efecto Combinado */
+	$("#<?php echo $this->campoSeguro('pr_maxima_dgl')?>").select2();
 
 });
 
