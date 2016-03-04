@@ -316,6 +316,14 @@ $this->idioma ["prl_max_crTitulo"] = "Ingrese Distancia de Punto Más Peligroso 
 $this->idioma ["ob_prl_max_cr"] = "Observaciones :";
 $this->idioma ["ob_prl_max_crTitulo"] = "Ingrese Observaciones";
 
+// Visibilidad
+
+$this->idioma ["pr_mn_vs"] = "Distancia de Predicción :<br>Mínima(NM)";
+$this->idioma ["pr_mn_vsTitulo"] = "Ingrese Distancia de Predicción Mínima en Millas Náuticas(NM)";
+
+$this->idioma ["prc_mn_vs"] = "Porcentaje(%) :";
+$this->idioma ["ob_prl_max_crTitulo"] = "Ingrese Porcentaje";
+
 // Terrenos y Peligros
 
 /*
