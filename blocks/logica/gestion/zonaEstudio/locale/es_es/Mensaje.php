@@ -324,15 +324,38 @@ $this->idioma ["pr_mn_vsTitulo"] = "Ingrese Distancia de Predicción Mínima en 
 $this->idioma ["prc_mn_vs"] = "Porcentaje(%) :";
 $this->idioma ["ob_prl_max_crTitulo"] = "Ingrese Porcentaje";
 
-// Terrenos y Peligros
+$this->idioma ["prd_pr_vs"] = "Distancia Promedio (NM): ";
+$this->idioma ["prd_pr_vsTitulo"] = "Ingrese Distancia Promedio de Visibilidad en Millas Náuticas(NM)";
 
-/*
- * $this->idioma["rango3BG"]="Cantidad Buques Buques de Crucero : ";
- * $this->idioma["rango3BGTitulo"]="Ingrese Número de Buques de Crucero";
- *
- * $this->idioma["tiempo3BG"]="Periodo : ";
- * $this->idioma["tiempo3BG Titulo"]="Seleccione Período";
- */
+$this->idioma ["pds_pr_vs"] = "Porcentaje(%) :";
+$this->idioma ["pds_pr_vsTitulo"] = "Ingrese Porcentaje";
+
+// Luz de Fondo
+
+$this->idioma ["tm_bj_sl"] = "Temas Bajo el Sol :<br>Distancia(NM)";
+$this->idioma ["tm_bj_slTitulo"] = "Ingrese Distancia a Temas Bajo Sol en Millas Náuticas(NM)";
+
+$this->idioma ["prc_tm_bj_sl"] = "Porcentaje(%) :";
+$this->idioma ["prc_tm_bj_slTitulo"] = "Ingrese Porcentaje";
+
+$this->idioma ["prd_respl"] = "Resplandor Luz de Fondo :<br>Distancia(NM)";
+$this->idioma ["prd_resplTitulo"] = "Ingrese Distancia de Resplandor de Luz de Fondo en Millas Náuticas(NM)";
+
+$this->idioma ["prc_prd_respl"] = "Porcentaje(%) :";
+$this->idioma ["prc_prd_resplTitulo"] = "Ingrese Porcentaje";
+
+// Factor Humano Calidad
+$this->idioma ["pr_aton"] = "Provisión de las AtoN : ";
+$this->idioma ["pr_atonTitulo"] = "Seleccione  Calidad de Provisión de las Ayudas a la Navegación";
+
+$this->idioma ["pl_tr_mr"] = "Pilotaje / Servicio :<br>Tráfico Marítimo&nbsp&nbsp&nbsp&nbsp";
+$this->idioma ["prc_tm_bj_slTitulo"] = "Seleccione  Calidad de Pilotaje / Servicio Marítimo";
+
+$this->idioma ["gr_cmp_trp"] = "Grande Compentencia :<br>Tripulantes de los Buques";
+$this->idioma ["gr_cmp_trpTitulo"] = "Seleccione Grandes Compentencia de los  Tripulantes de los Buques";
+
+$this->idioma ["pq_cmp_trp"] = "Pequeña Compentencia :<br>Tripulantes de los Buques";
+$this->idioma ["pq_cmp_trpTitulo"] = "Seleccione Pequeña Compentencia de los Tripulantes de los Buques";
 
 // -------------------------------------
 

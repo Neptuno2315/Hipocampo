@@ -20,6 +20,14 @@ $(function() {
 					$("#se_gr_ca").slideToggle(1000);
 					$("#cond_nave").slideToggle(1000);
 					$("#niv_serv").slideToggle(1000);
+					$("#Prd_olas").slideToggle(1000);
+					$("#fluj_marea").slideToggle(1000);
+					$("#vnt_torm").slideToggle(1000);
+					$("#efect_comb").slideToggle(1000);
+					$("#terr_pelgr").slideToggle(1000);
+					$("#visib").slideToggle(1000);
+					$("#luz_fnd").slideToggle(1000);
+					$("#cald").slideToggle(1000);
 
 					$resultado = $(
 							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
@@ -77,6 +85,74 @@ $(function() {
 
 	});
 
+	$("#AgrupacionPRO").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#Prd_olas").slideToggle(1000);
+
+	});
+
+	$("#AgrupacionFM").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#fluj_marea").slideToggle(1000);
+
+	});
+
+
+	$("#AgrupacionVT").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#vnt_torm").slideToggle(1000);
+
+	});
+
+
+	$("#AgrupacionEC").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#efect_comb").slideToggle(1000);
+
+	});
+
+	$("#AgrupacionTP").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#terr_pelgr").slideToggle(1000);
+
+	});
+
+	$("#AgrupacionVS").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#visib").slideToggle(1000);
+
+	});
+	
+	$("#AgrupacionLF").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#luz_fnd").slideToggle(1000);
+
+	});
+	
+	
+	$("#AgrupacionCLD").dblclick(function(event) {
+
+		event.preventDefault();
+
+		$("#cald").slideToggle(1000);
+
+	});
+	
+	
 	// Plugin de Select2 Campos de Selección
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector')?>").select2();
@@ -120,14 +196,18 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('estado_mar')?>").select2();
 	$("#<?php echo $this->campoSeguro('con_hielo')?>").select2();
 	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();
-	
-	
+
 	/* Predicción Máxima Viento y Tormentas */
 	$("#<?php echo $this->campoSeguro('pr_maxima')?>").select2();
-	
-	
+
 	/* Predicción Efecto Combinado */
 	$("#<?php echo $this->campoSeguro('pr_maxima_dgl')?>").select2();
+
+	/* Factor Humano Calidad */
+	$("#<?php echo $this->campoSeguro('pr_aton')?>").select2();
+	$("#<?php echo $this->campoSeguro('pl_tr_mr')?>").select2();
+	$("#<?php echo $this->campoSeguro('gr_cmp_trp')?>").select2();
+	$("#<?php echo $this->campoSeguro('pq_cmp_trp')?>").select2();
 
 });
 
