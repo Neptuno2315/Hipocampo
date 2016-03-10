@@ -2327,9 +2327,9 @@ class registrarForm {
 						$atributos ['anchoCaja'] = 70;
 						$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 						$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-						$atributos ['anchoEtiqueta'] = 200;
+						$atributos ['anchoEtiqueta'] = 130;
 						
-						$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_estado_mar" );
+						$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_escala_douglas" );
 						$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 						
 						$atributos ['matrizItems'] = $matrizItems;
@@ -2884,8 +2884,8 @@ class registrarForm {
 							$atributos ['columnas'] = 1;
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['validar'] = 'required';
-							$atributos ['limitar'] = false;
-							$atributos ['anchoCaja'] = 70;
+							$atributos ['limitar'] = true;
+							$atributos ['anchoCaja'] = 100;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['anchoEtiqueta'] = 180;
 							
@@ -2958,15 +2958,15 @@ class registrarForm {
 							$atributos ["etiquetaObligatorio"] = true;
 							$atributos ['tab'] = $tab;
 							$atributos ['tamanno'] = 1;
-							$atributos ['columnas'] = 2;
+							$atributos ['columnas'] = 1;
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['validar'] = 'required';
-							$atributos ['limitar'] = false;
+							$atributos ['limitar'] = true;
 							$atributos ['anchoCaja'] = 70;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['anchoEtiqueta'] = 180;
 							
-							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_escala_beaufort" );
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_escala_douglas" );
 							
 							$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );

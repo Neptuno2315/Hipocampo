@@ -108,14 +108,25 @@ class Sql extends \Sql {
 			
 			// +++++++++++++++++++ Sentencias de mi Caso de Uso ++++++++++++++++++++++++++++++++
 			
-			case 'consultar_estado_mar' :
+			case 'consultar_escala_douglas' :
 				
 				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
 				$cadenaSql .= "FROM parametros.parametro pm  ";
 				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
 				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
 				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='EstadoMar' ; ";
+				$cadenaSql .= "AND  tp.descripcion='EscalaDouglas' ; ";
+				
+				break;
+			
+			case 'consultar_escala_beaufort' :
+				
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='EscalaBeaufort' ; ";
 				
 				break;
 			
@@ -133,16 +144,6 @@ class Sql extends \Sql {
 				break;
 			
 			case 'consultar_periodo' :
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='CaracterizacionPeriodoTiempo' ; ";
-				
-				break;
-			
-			case 'consultar_escala_beaufort' :
 				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
 				$cadenaSql .= "FROM parametros.parametro pm  ";
 				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";

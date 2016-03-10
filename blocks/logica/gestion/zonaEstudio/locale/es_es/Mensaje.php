@@ -228,7 +228,7 @@ $this->idioma ["obser_des__sis_snTitulo"] = "Ingrese Observaciones";
 $this->idioma ["opera_nc_di"] = "Operaciones Noche / Día : ";
 $this->idioma ["opera_nc_diTitulo"] = "Seleccione  Operaciones ";
 
-$this->idioma ["estado_mar"] = "Estado Mar (DOUGLAS): ";
+$this->idioma ["estado_mar"] = "Estado Mar:<br>(Escala Douglas)";
 $this->idioma ["estado_marTitulo"] = "Seleccione Estado Mar Según DOUGLAS";
 
 $this->idioma ["obser_des__vi_mr"] = "Observaciones de Viento y Corrientes(río,marea,océano) : ";
