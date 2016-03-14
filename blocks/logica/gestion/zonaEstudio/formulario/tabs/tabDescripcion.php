@@ -3522,7 +3522,7 @@ class registrarForm {
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['anchoEtiqueta'] = 148;
 							
-							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
 							
 							$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
@@ -3553,7 +3553,7 @@ class registrarForm {
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['anchoEtiqueta'] = 148;
 							
-							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
 							
 							$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
@@ -3591,7 +3591,7 @@ class registrarForm {
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 								$atributos ['anchoEtiqueta'] = 148;
 								
-								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
+								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
 								
 								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
@@ -3622,7 +3622,7 @@ class registrarForm {
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 								$atributos ['anchoEtiqueta'] = 148;
 								
-								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
+								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
 								
 								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );

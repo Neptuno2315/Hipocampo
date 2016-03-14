@@ -198,9 +198,11 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();
 
 	/* Predicción Máxima Viento y Tormentas */
+	$("#<?php echo $this->campoSeguro('pr_maxima')?>").width(650);
 	$("#<?php echo $this->campoSeguro('pr_maxima')?>").select2();
 
 	/* Predicción Efecto Combinado */
+	$("#<?php echo $this->campoSeguro('pr_maxima_dgl')?>").width(650);
 	$("#<?php echo $this->campoSeguro('pr_maxima_dgl')?>").select2();
 
 	/* Factor Humano Calidad */
@@ -209,6 +211,8 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('gr_cmp_trp')?>").select2();
 	$("#<?php echo $this->campoSeguro('pq_cmp_trp')?>").select2();
 
+
+	
 });
 
 $("#ventanaA").steps({

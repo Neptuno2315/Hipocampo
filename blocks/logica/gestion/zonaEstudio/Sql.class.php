@@ -130,6 +130,17 @@ class Sql extends \Sql {
 				
 				break;
 			
+			case 'consultar_calidad' :
+				
+				$cadenaSql = "SELECT pm.descripcion id, pm.descripcion_detallada valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='Calidad' ; ";
+				
+				break;
+			
 			case 'consultar_region' :
 				$cadenaSql = "SELECT id_region, descripcion ";
 				$cadenaSql .= "FROM parametros.region ";
