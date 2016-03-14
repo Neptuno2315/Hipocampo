@@ -239,7 +239,7 @@ $this->idioma ["obser_des__vi_mr"] = "Observaciones de Viento y Corrientes(río,
 $this->idioma ["obser_des__vi_mrTitulo"] = "Ingrese Observaciones Respectivas";
 
 $this->idioma ["visibilidad"] = "Restricción Visibilidad (NM) : ";
-$this->idioma ["visibilidadTitulo"] = "Ingrese Restricción de Visibilidad en NM (Millas Náutica)";
+$this->idioma ["visibilidadTitulo"] = "Ingrese Restricción de Visibilidad en Millas Náuticas";
 
 $this->idioma ["con_hielo"] = "Condiciones de Hielo : ";
 $this->idioma ["con_hieloTitulo"] = "Seleccione Condiciones d Hielo";

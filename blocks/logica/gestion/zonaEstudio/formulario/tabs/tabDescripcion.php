@@ -174,7 +174,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -236,7 +236,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -299,7 +299,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -371,7 +371,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -433,7 +433,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -505,7 +505,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -567,7 +567,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -629,7 +629,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -701,7 +701,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -763,7 +763,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -825,7 +825,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
@@ -897,7 +897,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -969,7 +969,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1031,7 +1031,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1093,7 +1093,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1155,7 +1155,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1217,7 +1217,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1289,7 +1289,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1351,7 +1351,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1413,7 +1413,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1475,7 +1475,7 @@ class registrarForm {
 								$atributos ['estilo'] = 'jqueryui';
 								$atributos ['marco'] = true;
 								$atributos ['estiloMarco'] = '';
-								$atributos ["etiquetaObligatorio"] = false;
+								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 2;
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
@@ -1540,7 +1540,7 @@ class registrarForm {
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['marco'] = true;
 							$atributos ['estiloMarco'] = '';
-							$atributos ["etiquetaObligatorio"] = false;
+							$atributos ["etiquetaObligatorio"] = true;
 							$atributos ['columnas'] = 2;
 							$atributos ['dobleLinea'] = false;
 							$atributos ['tabIndex'] = $tab;
@@ -1602,7 +1602,7 @@ class registrarForm {
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['marco'] = true;
 							$atributos ['estiloMarco'] = '';
-							$atributos ["etiquetaObligatorio"] = false;
+							$atributos ["etiquetaObligatorio"] = true;
 							$atributos ['columnas'] = 2;
 							$atributos ['dobleLinea'] = false;
 							$atributos ['tabIndex'] = $tab;
@@ -2403,7 +2403,7 @@ class registrarForm {
 						$esteCampo = 'con_hielo'; // Condiciones Hielo
 						$atributos ['nombre'] = $esteCampo;
 						$atributos ['id'] = $esteCampo;
-						$atributos ['seleccion'] = - 1;
+						$atributos ['seleccion'] = 0;
 						$atributos ['evento'] = '';
 						$atributos ['deshabilitado'] = false;
 						$atributos ["etiquetaObligatorio"] = true;
@@ -2456,23 +2456,8 @@ class registrarForm {
 						$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 						$atributos ['anchoEtiqueta'] = 290;
 						
-						$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_periodo" );
-						
-						$matrizItems = array (
-								array (
-										0,
-										"Buena" 
-								),
-								array (
-										1,
-										"Regular" 
-								),
-								array (
-										2,
-										"Mala" 
-								) 
-						);
-						
+						$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_iluminacion_fondo" );
+						$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );						
 						$atributos ['matrizItems'] = $matrizItems;
 						
 						// Utilizar lo siguiente cuando no se pase un arreglo:
