@@ -156,6 +156,7 @@ $(function() {
 
 	/* Condiciones de Navegación */
 	$("#<?php echo $this->campoSeguro('opera_nc_di')?>").select2();
+	$("#<?php echo $this->campoSeguro('estado_mar')?>").width(650);
 	$("#<?php echo $this->campoSeguro('estado_mar')?>").select2();
 	$("#<?php echo $this->campoSeguro('con_hielo')?>").select2();
 	$("#<?php echo $this->campoSeguro('ilum_fondo')?>").select2();

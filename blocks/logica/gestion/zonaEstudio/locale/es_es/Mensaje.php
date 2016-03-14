@@ -168,6 +168,9 @@ $this->idioma ["tiempo_bq_pqTitulo"] = "Seleccione Período";
 // Configuración Hidrovia
 
 $this->idioma ["pr_co_ba"] = "Profundidad / Corriente de aire / Bajo la Quilla (mt) : ";
+$this->idioma ["pr_co_baTitulo"] = "Profundidad / Corriente de aire / Bajo la Quilla en metros";
+
+
 $this->idioma ["tiempo_bq_pqTitulo"] = "Ingrese Profundidad / Corriente de aire / Bajo la Quilla (Metros)";
 
 $this->idioma ["ancho_canal"] = "Ancho de Canal  (Km) : ";
@@ -202,9 +205,10 @@ $this->idioma ["bo_mo_for_reTitulo"] = "Ingrese Cantidad Boyas monitorizados de 
 $this->idioma ["bo_si_ais_no_super"] = "Boyas sin AIS o no supervisados : ";
 $this->idioma ["bo_si_ais_no_superTitulo"] = "Ingrese Cantidad Boyas sin AIS o no supervisados";
 
-$this->idioma ["raconTitulo"] = "Ingrese Cantidad Racon";
-
 $this->idioma ["racon"] = "Número de Racon : ";
+$this->idioma ["raconTitulo"] = "Ingrese Cantidad de Baliza de Radar";
+
+
 $this->idioma ["linterna"] = "Número de  Linternas : ";
 $this->idioma ["linternaTitulo"] = "Ingrese Cantidad de Linternas";
 
@@ -229,13 +233,13 @@ $this->idioma ["opera_nc_di"] = "Operaciones Noche / Día : ";
 $this->idioma ["opera_nc_diTitulo"] = "Seleccione  Operaciones ";
 
 $this->idioma ["estado_mar"] = "Estado Mar:<br>(Escala Douglas)";
-$this->idioma ["estado_marTitulo"] = "Seleccione Estado Mar Según DOUGLAS";
+$this->idioma ["estado_marTitulo"] = "Seleccione Estado Mar Según Escala DOUGLAS";
 
 $this->idioma ["obser_des__vi_mr"] = "Observaciones de Viento y Corrientes(río,marea,océano) : ";
 $this->idioma ["obser_des__vi_mrTitulo"] = "Ingrese Observaciones Respectivas";
 
-$this->idioma ["visibilidad"] = "Restricción Visibilidad (Mn) : ";
-$this->idioma ["visibilidadTitulo"] = "Ingrese Restricción de Visibilidad";
+$this->idioma ["visibilidad"] = "Restricción Visibilidad (NM) : ";
+$this->idioma ["visibilidadTitulo"] = "Ingrese Restricción de Visibilidad en NM (Millas Náutica)";
 
 $this->idioma ["con_hielo"] = "Condiciones de Hielo : ";
 $this->idioma ["con_hieloTitulo"] = "Seleccione Condiciones d Hielo";
