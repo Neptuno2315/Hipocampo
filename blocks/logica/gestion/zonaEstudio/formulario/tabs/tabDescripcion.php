@@ -167,7 +167,7 @@ class registrarForm {
 							echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 							unset ( $atributos );
 							{
-								$esteCampo = 'rango1BC';
+								$esteCampo = 'rango1BC'; //Cantidad Buques Mayor a 10.000GT
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -179,7 +179,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -189,7 +189,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -229,7 +229,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2BC';
+								$esteCampo = 'rango2BC';//Cantidad Buques entre 9.999 y 1.000GT
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -241,7 +241,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -251,7 +251,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -292,7 +292,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango3BC';
+								$esteCampo = 'rango3BC';//Cantidad Buques Menores a 1.000GT
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -304,7 +304,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -314,7 +314,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -364,7 +364,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1BE';
+								$esteCampo = 'rango1BE';// Cantidad Buques VLCCs/ULCCs
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -376,7 +376,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -386,7 +386,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -426,7 +426,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2BE';
+								$esteCampo = 'rango2BE';//Cantidad Buques LNG
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -438,7 +438,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -448,7 +448,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -498,7 +498,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1BP';
+								$esteCampo = 'rango1BP';//Cantidad Buques Transbordadores Regionales
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -510,7 +510,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -520,7 +520,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -560,7 +560,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2BP';
+								$esteCampo = 'rango2BP';//Cantidad Buques Ferris Rápidos 
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -572,7 +572,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -582,7 +582,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -622,7 +622,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango3BP';
+								$esteCampo = 'rango3BP';//Cantidad Buques Buques de Crucero 
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -634,7 +634,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -644,7 +644,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -694,7 +694,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1BG';
+								$esteCampo = 'rango1BG';// Cantidad Buques Guerra Desplazando> 5.000
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -706,7 +706,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -716,7 +716,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -756,7 +756,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2BG';
+								$esteCampo = 'rango2BG';// Cantidad Buques Guerra desplazando< 5.000 t 
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -768,7 +768,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -778,7 +778,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -818,7 +818,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango3BG';
+								$esteCampo = 'rango3BG';//Cantidad Buques Pesqueros > 100 GT
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -830,7 +830,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -840,7 +840,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -890,7 +890,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1BPQ';
+								$esteCampo = 'rango1BPQ';//Cantidad Buques de Investigación
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -902,7 +902,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -912,7 +912,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -962,7 +962,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1SM';
+								$esteCampo = 'rango1SM';//Cantidad Buques de Investigación
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -974,7 +974,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -984,7 +984,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1024,7 +1024,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2SM';
+								$esteCampo = 'rango2SM';//Cantidad Buques de Apoyo Aparejan
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1036,7 +1036,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1046,7 +1046,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1086,7 +1086,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango3SM';
+								$esteCampo = 'rango3SM';//Cantidad Botes de Pilotos
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1098,7 +1098,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1108,7 +1108,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1148,7 +1148,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango4SM';
+								$esteCampo = 'rango4SM'; //Cantidad Remolcadores
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1160,7 +1160,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1170,7 +1170,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1210,7 +1210,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango5SM';
+								$esteCampo = 'rango5SM';//Cantidad Otros 
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1222,7 +1222,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1232,7 +1232,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1282,7 +1282,7 @@ class registrarForm {
 							unset ( $atributos );
 							{
 								
-								$esteCampo = 'rango1AA';
+								$esteCampo = 'rango1AA';//Cantidad de Lanchas y Yates > 100 GT
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1294,7 +1294,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1304,7 +1304,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1344,7 +1344,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango2AA';
+								$esteCampo = 'rango2AA';//Cantidad de Lanchas y Yates < 100 GT 
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1356,7 +1356,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1366,7 +1366,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1406,7 +1406,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango3AA';
+								$esteCampo = 'rango3AA';//Cantidad de Embarcaciones de Recreo Pequeño
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1418,7 +1418,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1428,7 +1428,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1468,7 +1468,7 @@ class registrarForm {
 								echo $this->miFormulario->campoCuadroLista ( $atributos );
 								unset ( $atributos );
 								
-								$esteCampo = 'rango4AA';
+								$esteCampo = 'rango4AA';//Cantidad de buques de Vela
 								$atributos ['id'] = $esteCampo;
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['tipo'] = 'text';
@@ -1480,7 +1480,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1490,7 +1490,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -1545,7 +1545,7 @@ class registrarForm {
 							$atributos ['dobleLinea'] = false;
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-							$atributos ['validar'] = 'custom[onlyNumberSp]';
+							$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 							
 							if (isset ( $_REQUEST [$esteCampo] )) {
 								$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1555,7 +1555,7 @@ class registrarForm {
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 15;
-							$atributos ['maximoTamanno'] = '';
+							$atributos ['maximoTamanno'] = '10';
 							$atributos ['anchoEtiqueta'] = 270;
 							$tab ++;
 							
@@ -1607,7 +1607,7 @@ class registrarForm {
 							$atributos ['dobleLinea'] = false;
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-							$atributos ['validar'] = 'custom[onlyNumberSp]';
+							$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[10]';
 							
 							if (isset ( $_REQUEST [$esteCampo] )) {
 								$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -1617,7 +1617,7 @@ class registrarForm {
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 15;
-							$atributos ['maximoTamanno'] = '';
+							$atributos ['maximoTamanno'] = '10';
 							$atributos ['anchoEtiqueta'] = 270;
 							$tab ++;
 							
@@ -3652,42 +3652,7 @@ class registrarForm {
 			}
 		}
 		
-		// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-		
-		/*
-		 *
-		 */
-		
-		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "botones";
-		$atributos ["estilo"] = "marcoBotones";
-		echo $this->miFormulario->division ( "inicio", $atributos );
-		unset ( $atributos );
-		{
-			// -----------------CONTROL: Botón ----------------------------------------------------------------
-			$esteCampo = 'botonAceptar';
-			$atributos ["id"] = $esteCampo;
-			$atributos ["tabIndex"] = $tab;
-			$atributos ["tipo"] = 'boton';
-			// submit: no se coloca si se desea un tipo button genérico
-			$atributos ['submit'] = 'true';
-			$atributos ["estiloMarco"] = '';
-			$atributos ["estiloBoton"] = 'jqueryui';
-			// verificar: true para verificar el formulario antes de pasarlo al servidor.
-			$atributos ["verificar"] = '';
-			$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
-			$tab ++;
-			
-			// Aplica atributos globales al control
-			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoBoton ( $atributos );
-			unset ( $atributos );
-		}
-		// ------------------Fin Division para los botones-------------------------
-		echo $this->miFormulario->division ( "fin" );
-		unset ( $atributos );
+	
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
 		/**
