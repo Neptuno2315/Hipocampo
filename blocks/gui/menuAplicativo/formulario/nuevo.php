@@ -50,7 +50,7 @@ $enlaceVisualizadorGeografico ['nombre'] = "Visualizador";
 
 $enlaceAplicativo ['enlace'] = "index.php";
 $enlaceAplicativo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
-$enlaceAplicativo ['nombre'] = "Cerrar Session";
+$enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 
 
 

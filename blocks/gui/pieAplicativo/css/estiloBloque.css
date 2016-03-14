@@ -18,22 +18,22 @@
 #colm2 {
 	font-size: x-small;
 	width: 16%;
+	color: white;
 	left: 30.5px;
-	top: 515px;
+	bottom: 20px;
 	position: fixed;
 	z-index:4;
 }
 
 #colm3 {
-	font-size: x-small;
-	width: 19%;
-	float: right;
-	text-align: right;
-	position: fixed;
-    left: 1084px;
-    top: 525px;
+    font-size: x-small;
+    float: right;
+    text-align: right;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
     opacity: 0.9;
-    z-index:4;
+    z-index: 4;
 }
 
 
