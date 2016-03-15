@@ -32,6 +32,7 @@ form div label {
 	text-align: right;
 	border-width: 0px;
 	border-style: solid;
+	color: black;
 }
 
 form input[type="text"]:focus {
