@@ -264,28 +264,28 @@ $this->idioma ["obser_des__sis_snTitulo"] = "Ingrese Observaciones";
 
 // Profundidad y Olas
 
-$this->idioma ["cal_max_buques"] = "Calado Máximo de los Buques : ";
+$this->idioma ["cal_max_buques"] = "Calado Máximo de los Buques (m): ";
 $this->idioma ["cal_max_buquesTitulo"] = "Calado Máximo de los Buques en metros";
 
-$this->idioma ["hg_bj_quilla"] = "Holgura Bajo la Quilla : ";
+$this->idioma ["hg_bj_quilla"] = "Holgura Bajo la Quilla (m): ";
 $this->idioma ["hg_bj_quillaTitulo"] = "Ingrese Holgura Bajo la Quilla en metros";
 
-$this->idioma ["mx_oleaje_pre"] = "Máxima Oleaje Predicho : ";
+$this->idioma ["mx_oleaje_pre"] = "Máxima Oleaje Predicho (m): ";
 $this->idioma ["mx_oleaje_preTitulo"] = "Ingrese Máxima Oleaje Predicho en metros";
 
-$this->idioma ["sd_mx_anual"] = "Sedimentación Maxima Anual : ";
+$this->idioma ["sd_mx_anual"] = "Sedimentación Maxima Anual (m): ";
 $this->idioma ["sd_mx_anualTitulo"] = "Ingrese Sedimentación Maxima Anual en metros";
 
-$this->idioma ["pr_mn_seguridad"] = "Profundidad Mínima Seguridad : ";
+$this->idioma ["pr_mn_seguridad"] = "Profundidad Mínima Seguridad (m): ";
 $this->idioma ["pr_mn_seguridadTitulo"] = "Ingrese Profundidad Mínima Seguridad en metros";
 
-$this->idioma ["ach_canal"] = "Anchura del Canal : ";
+$this->idioma ["ach_canal"] = "Anchura del Canal (Km): ";
 $this->idioma ["ach_canalTitulo"] = "Ingrese Anchura del Canal en kilometros";
 
 // Flujo Marea
 
 $this->idioma ["ts_maxima"] = "Tasa Máxima  : ";
-$this->idioma ["ts_maximaTitulo"] = "Tasa Máxima en metros entre 0 y 1 ";
+$this->idioma ["ts_maximaTitulo"] = "Tasa Máxima en entre 0 y 1 ";
 
 $this->idioma ["ob_fluj_marea"] = "Observaciones Flujo de Marea : ";
 $this->idioma ["ob_fluj_mareaTitulo"] = "Ingrese Observaciones Flujo de Marea";

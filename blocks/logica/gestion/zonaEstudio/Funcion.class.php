@@ -40,6 +40,8 @@ class Funcion {
 	function action() {
 		$resultado = true;
 		
+				
+		
 		// Aquí se coloca el código que procesará los diferentes formularios que pertenecen al bloque
 		// aunque el código fuente puede ir directamente en este script, para facilitar el mantenimiento
 		// se recomienda que aqui solo sea el punto de entrada para incluir otros scripts que estarán

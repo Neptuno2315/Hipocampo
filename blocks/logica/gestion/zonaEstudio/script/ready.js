@@ -12,110 +12,15 @@ $(function() {
 	// Plugin para Pestañas
 	$("#tabs").tabs();
 
-	$("#AgrupacionTrafico").dblclick(function(event) {
 
-		event.preventDefault();
-
-		$("#vol_traf").slideToggle(1000);
-
+	$("#Libreria1").accordion({
+		heightStyle:"content",
+		collapsible: true,
+		disabled: false
+		
 	});
-
-	$("#AgrupacionCH").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#conf_hidro").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionSnS").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#se_gr_ca").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionCNC").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#cond_nave").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionNS").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#niv_serv").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionPRO").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#Prd_olas").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionFM").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#fluj_marea").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionVT").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#vnt_torm").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionEC").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#efect_comb").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionTP").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#terr_pelgr").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionVS").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#visib").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionLF").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#luz_fnd").slideToggle(1000);
-
-	});
-
-	$("#AgrupacionCLD").dblclick(function(event) {
-
-		event.preventDefault();
-
-		$("#cald").slideToggle(1000);
-
-	});
-
+	
+	
 	// Plugin de Select2 Campos de Selección
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector')?>").select2();
@@ -179,29 +84,12 @@ $(function() {
 
 $("#ventanaA").steps(
 		{
-			headerTag : "h3",
+			headerTag : "h4",
 			bodyTag : "section",
 			enableAllSteps : true,
 			enablePagination : true,
 			transitionEffect : "slideLeft",
 			onStepChanging : function(event, currentIndex, newIndex) {
-
-				event.preventDefault();
-
-				$("#vol_traf").slideToggle(1000);
-				$("#conf_hidro").slideToggle(1000);
-				$("#se_gr_ca").slideToggle(1000);
-				$("#cond_nave").slideToggle(1000);
-				$("#niv_serv").slideToggle(1000);
-				$("#Prd_olas").slideToggle(1000);
-				$("#fluj_marea").slideToggle(1000);
-				$("#vnt_torm").slideToggle(1000);
-				$("#efect_comb").slideToggle(1000);
-				$("#terr_pelgr").slideToggle(1000);
-				$("#visib").slideToggle(1000);
-				$("#luz_fnd").slideToggle(1000);
-				$("#cald").slideToggle(1000);
-
 				$resultado = $("#<?php echo $this->campoSeguro('zonaEstudio')?>").validationEngine("validate");
 
 				if ($resultado) {
@@ -209,10 +97,9 @@ $("#ventanaA").steps(
 					return true;
 				}
 				return false;
-
 			},
 			onFinished : function(event, currentIndex) {
-
+				$("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit();
 			},
 			labels : {
 				cancel : "Cancelar",
