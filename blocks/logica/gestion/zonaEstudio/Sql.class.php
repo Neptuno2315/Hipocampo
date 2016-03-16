@@ -152,6 +152,28 @@ class Sql extends \Sql {
 				
 				break;
 			
+			case 'consultar_tipo_fondo_marino' :
+				
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='FondosMarinos' ; ";
+				
+				break;
+			
+			case 'consultar_estabilidad_sedimentación' :
+				
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='TasaSedimentacion' ; ";
+				
+				break;
+			
 			case 'consultar_region' :
 				$cadenaSql = "SELECT id_region, descripcion ";
 				$cadenaSql .= "FROM parametros.region ";
