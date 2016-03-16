@@ -5,6 +5,8 @@ use logica\canales\gestionRiesgo\Sql;
 // Conección a Base de Datos
 $conexion = "parametros";
 $esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+$conexion = "geografico";
+$esteRecursoGEO=$this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 //
 
 if (isset ( $_REQUEST ['funcion'] )) {
@@ -14,7 +16,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 		case 'SeleccionSector' :
 			
 			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_sector', $_REQUEST ['valor'] );
-			$resultado = $esteRecursoDBP->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			$resultado = $esteRecursoGEO->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			echo json_encode ( $resultado );
 			exit();
 			break;

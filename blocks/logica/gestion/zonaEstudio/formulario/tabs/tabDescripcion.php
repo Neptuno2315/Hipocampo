@@ -92,12 +92,11 @@ class registrarForm {
 			
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
 			
-			$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-			$atributos ['matrizItems'] = $matrizItems;
+			// $atributos ['matrizItems'] = $matrizItems;
 			
 			// Utilizar lo siguiente cuando no se pase un arreglo:
-			// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+			$atributos ['baseDatos'] = 'geografico';
 			// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
 			$tab ++;
 			$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -152,12 +151,6 @@ class registrarForm {
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					unset ( $atributos );
 					{
-						
-						// $esteCampo = "AgrupacionTrafico";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Volumen de Tráfico</h3>";
 						
@@ -1667,14 +1660,6 @@ class registrarForm {
 							}
 							echo $this->miFormulario->division ( "fin" );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionCH";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Configuración de la Hidrovía";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Configuración de la Hidrovía</h3>";
 						
@@ -1938,15 +1923,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 						}
 					}
-					
-					// echo $this->miFormulario->agrupacion ( 'fin' );
-					// unset ( $atributos );
-					
-					// $esteCampo = "AgrupacionSnS";
-					// $atributos ['id'] = $esteCampo;
-					// $atributos ['leyenda'] = "Descripción del Sistema de Señalización Graficado Sobre Carta Náutica";
-					// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-					// unset ( $atributos );
 					
 					echo "<h3>Descripción del Sistema de Señalización Graficado Sobre Carta Náutica</h3>";
 					
@@ -2263,14 +2239,6 @@ class registrarForm {
 						}
 						echo $this->miFormulario->division ( "fin" );
 					}
-					// echo $this->miFormulario->agrupacion ( 'fin' );
-					// unset ( $atributos );
-					
-					// $esteCampo = "AgrupacionCNC";
-					// $atributos ['id'] = $esteCampo;
-					// $atributos ['leyenda'] = "Condiciones de Navegación";
-					// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-					// unset ( $atributos );
 					
 					echo "<h3>Condiciones de Navegación</h3>";
 					
@@ -2499,7 +2467,7 @@ class registrarForm {
 							$atributos ['dobleLinea'] = 0;
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-							$atributos ['validar'] = 'maxSize[4000]';
+							$atributos ['validar'] = 'maxSize[5000]';
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 20;
@@ -2514,14 +2482,7 @@ class registrarForm {
 						}
 						echo $this->miFormulario->division ( "fin" );
 					}
-					// echo $this->miFormulario->agrupacion ( 'fin' );
-					// unset ( $atributos );
 					
-					// $esteCampo = "AgrupacionNS";
-					// $atributos ['id'] = $esteCampo;
-					// $atributos ['leyenda'] = "Nivel Servicio";
-					// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-					// unset ( $atributos );
 					echo "<h3>Nivel Servicio</h3>";
 					
 					{
@@ -2547,7 +2508,7 @@ class registrarForm {
 							$atributos ['dobleLinea'] = 0;
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-							$atributos ['validar'] = 'maxSize[4000]';
+							$atributos ['validar'] = 'maxSize[5000]';
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 20;
@@ -2589,12 +2550,6 @@ class registrarForm {
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					unset ( $atributos );
 					{
-						
-						// $esteCampo = "AgrupacionPRO";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Profundidad y Olas";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Profundidad y Olas</h3>";
 						
@@ -2650,7 +2605,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[number],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2660,7 +2615,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2681,7 +2636,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[number],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2691,7 +2646,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2712,7 +2667,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[number],min[0],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2722,7 +2677,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2743,7 +2698,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[number],min[0.1],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2753,7 +2708,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2774,7 +2729,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[onlyNumberSp]';
+								$atributos ['validar'] = 'required,custom[number],min[0.1],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2784,7 +2739,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2796,15 +2751,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionFM";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Flujo de la Marea";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Flujo de la Marea</h3>";
 						
@@ -2829,7 +2775,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number],min[0],max[1]';
+								$atributos ['validar'] = 'required,custom[number],min[0],max[1],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -2839,7 +2785,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 270;
 								$tab ++;
 								
@@ -2862,7 +2808,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'maxSize[4000]';
+								$atributos ['validar'] = 'maxSize[5000]';
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 20;
@@ -2878,14 +2824,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionVT";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Viento y Tormentas";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Viento y Tormentas</h3>";
 						
@@ -2942,7 +2880,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'maxSize[4000]';
+								$atributos ['validar'] = 'maxSize[5000]';
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 20;
@@ -2958,14 +2896,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionEC";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Efecto Combinado";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						echo "<h3>Efecto Combinado</h3>";
 						
 						{
@@ -3022,7 +2952,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'maxSize[4000]';
+								$atributos ['validar'] = 'maxSize[5000]';
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 20;
@@ -3038,14 +2968,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionTP";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Terreno y Peligros";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Terreno y Peligros</h3>";
 						
@@ -3070,7 +2992,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number], min[0.01]';
+								$atributos ['validar'] = 'required,custom[number], min[0.01],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3080,7 +3002,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 150;
 								$tab ++;
 								
@@ -3101,7 +3023,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = '';
+								$atributos ['validar'] = 'maxSize[5000]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3139,7 +3061,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = 'required,custom[number], min[0.01]';
+									$atributos ['validar'] = 'required,custom[number], min[0.01],maxSize[10]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3149,7 +3071,7 @@ class registrarForm {
 									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 									$atributos ['deshabilitado'] = false;
 									$atributos ['tamanno'] = 15;
-									$atributos ['maximoTamanno'] = '';
+									$atributos ['maximoTamanno'] = '10';
 									$atributos ['anchoEtiqueta'] = 150;
 									$tab ++;
 									
@@ -3170,7 +3092,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = '';
+									$atributos ['validar'] = 'maxSize[5000]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3197,14 +3119,7 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
 						
-						// $esteCampo = "AgrupacionVS";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Visibilidad";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						echo "<h3>Visibilidad</h3>";
 						{
 							
@@ -3227,7 +3142,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number], min[0.01]';
+								$atributos ['validar'] = 'required,custom[number], min[0.01],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3237,7 +3152,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 150;
 								$tab ++;
 								
@@ -3258,7 +3173,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number], min[0],max[100]';
+								$atributos ['validar'] = 'required,custom[number], min[0],max[100],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3268,7 +3183,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 90;
 								$tab ++;
 								
@@ -3297,7 +3212,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = 'required,custom[number], min[0.01]';
+									$atributos ['validar'] = 'required,custom[number], min[0.01],maxsize[10]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3307,7 +3222,7 @@ class registrarForm {
 									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 									$atributos ['deshabilitado'] = false;
 									$atributos ['tamanno'] = 15;
-									$atributos ['maximoTamanno'] = '';
+									$atributos ['maximoTamanno'] = '10';
 									$atributos ['anchoEtiqueta'] = 150;
 									$tab ++;
 									
@@ -3328,7 +3243,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = 'required,custom[number], min[0],max[100]';
+									$atributos ['validar'] = 'required,custom[number], min[0],max[100],maxSize[10]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3338,7 +3253,7 @@ class registrarForm {
 									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 									$atributos ['deshabilitado'] = false;
 									$atributos ['tamanno'] = 15;
-									$atributos ['maximoTamanno'] = '';
+									$atributos ['maximoTamanno'] = '10';
 									$atributos ['anchoEtiqueta'] = 90;
 									$tab ++;
 									
@@ -3355,15 +3270,6 @@ class registrarForm {
 							echo $this->miFormulario->division ( "fin" );
 							unset ( $atributos );
 						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-						
-						// $esteCampo = "AgrupacionLF";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Luz de Fondo";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
-						
 						echo "<h3>Luz de Fondo</h3>";
 						
 						{
@@ -3387,7 +3293,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number], min[0.01]';
+								$atributos ['validar'] = 'required,custom[number], min[0.01],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3397,7 +3303,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 150;
 								$tab ++;
 								
@@ -3418,7 +3324,7 @@ class registrarForm {
 								$atributos ['dobleLinea'] = false;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['validar'] = 'required,custom[number], min[0],max[100]';
+								$atributos ['validar'] = 'required,custom[number], min[0],max[100],maxSize[10]';
 								
 								if (isset ( $_REQUEST [$esteCampo] )) {
 									$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3428,7 +3334,7 @@ class registrarForm {
 								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 								$atributos ['deshabilitado'] = false;
 								$atributos ['tamanno'] = 15;
-								$atributos ['maximoTamanno'] = '';
+								$atributos ['maximoTamanno'] = '10';
 								$atributos ['anchoEtiqueta'] = 90;
 								$tab ++;
 								
@@ -3457,7 +3363,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = 'required,custom[number], min[0.01]';
+									$atributos ['validar'] = 'required,custom[number], min[0.01],maxSize[10]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3467,7 +3373,7 @@ class registrarForm {
 									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 									$atributos ['deshabilitado'] = false;
 									$atributos ['tamanno'] = 15;
-									$atributos ['maximoTamanno'] = '';
+									$atributos ['maximoTamanno'] = '10';
 									$atributos ['anchoEtiqueta'] = 150;
 									$tab ++;
 									
@@ -3488,7 +3394,7 @@ class registrarForm {
 									$atributos ['dobleLinea'] = false;
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['validar'] = 'required,custom[number], min[0],max[100]';
+									$atributos ['validar'] = 'required,custom[number], min[0],max[100],maxSize[10]';
 									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
@@ -3498,7 +3404,7 @@ class registrarForm {
 									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 									$atributos ['deshabilitado'] = false;
 									$atributos ['tamanno'] = 15;
-									$atributos ['maximoTamanno'] = '';
+									$atributos ['maximoTamanno'] = '10';
 									$atributos ['anchoEtiqueta'] = 90;
 									$tab ++;
 									
@@ -3536,12 +3442,6 @@ class registrarForm {
 					echo $this->miFormulario->division ( "inicio", $atributos );
 					unset ( $atributos );
 					{
-						
-						// $esteCampo = "AgrupacionCLD";
-						// $atributos ['id'] = $esteCampo;
-						// $atributos ['leyenda'] = "Calidad de: ";
-						// echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-						// unset ( $atributos );
 						
 						echo "<h3>Calidad de: </h3>";
 						
@@ -3722,7 +3622,8 @@ class registrarForm {
 		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-		$valorCodificado .= "&opcion=documento";
+		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
+		$valorCodificado .= "&opcion=RegistrarInformacionZona";
 		/**
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para

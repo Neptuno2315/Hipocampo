@@ -31,16 +31,14 @@ class Funcion {
 		
 		return $resultado;
 	}
-	function mifuncion() {
-		include_once ($this->ruta . "funcion/formProcessor.php");
+	function registrar() {
+		include_once ($this->ruta . "funcion/registrarInformacionZona.php");
 	}
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
 	function action() {
 		$resultado = true;
-		
-				
 		
 		// Aquí se coloca el código que procesará los diferentes formularios que pertenecen al bloque
 		// aunque el código fuente puede ir directamente en este script, para facilitar el mantenimiento
@@ -55,9 +53,9 @@ class Funcion {
 			
 			switch ($_REQUEST ['opcion']) {
 				
-				case 'procesarFuncion' :
+				case 'RegistrarInformacionZona' :
 					
-					$this->mifuncion ();
+					$this->registrar ();
 					break;
 			}
 		}

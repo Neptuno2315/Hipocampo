@@ -182,10 +182,10 @@ $this->idioma ["obtrucciones_visibilidadTitulo"] = "Ingrese Obstrucciones de Vis
 $this->idioma ["complejidad_hidrovia"] = "Complejidad Hidrovía : ";
 $this->idioma ["complejidad_hidroviaTitulo"] = "Ingrese Complejidad Hidrovía";
 
+$this->idioma ["tipo_fondo"] = "Tipo de Fondo : ";
 $this->idioma ["tipo_fondoTitulo"] = "Ingrese Tipo de Fondo(Suelo)";
 
-$this->idioma ["estabilidad_sedimentos"] = "Estabilidad Sedimentos : ";
-$this->idioma ["tipo_fondo"] = "Tipo de Fondo : ";
+$this->idioma ["estabilidad_sedimentos"] = "Estabilidad Sedimentos :<br>Tasa Sedimentación";
 $this->idioma ["estabilidad_sedimentosTitulo"] = "Ingrese Estabilidad Sedimentos";
 
 $this->idioma ["estabilidad_sedimentos"] = "Estabilidad Sedimentos : ";
@@ -326,7 +326,7 @@ $this->idioma ["pr_mn_vs"] = "Distancia de Predicción :<br>Mínima(NM)";
 $this->idioma ["pr_mn_vsTitulo"] = "Ingrese Distancia de Predicción Mínima en Millas Náuticas(NM)";
 
 $this->idioma ["prc_mn_vs"] = "Porcentaje(%) :";
-$this->idioma ["ob_prl_max_crTitulo"] = "Ingrese Porcentaje";
+$this->idioma ["prc_mn_vsTitulo"] = "Ingrese Porcentaje";
 
 $this->idioma ["prd_pr_vs"] = "Distancia Promedio (NM): ";
 $this->idioma ["prd_pr_vsTitulo"] = "Ingrese Distancia Promedio de Visibilidad en Millas Náuticas(NM)";

@@ -12,25 +12,26 @@ $(function() {
 	// Plugin para Pestañas
 	$("#tabs").tabs();
 
-	$("#Libreria1").accordion({
-		heightStyle : "content",
-		collapsible : true,
-		disabled : false,
-		beforeActivate : function(evento, ui) {
+	$("#Libreria1").accordion(
+			{
+				heightStyle : "content",
+				collapsible : true,
+				disabled : false,
+				beforeActivate : function(evento, ui) {
 
-			$resultado = $(
-					"#<?php echo $this->campoSeguro('zonaEstudio')?>")
-					.validationEngine("validate");
+					$resultado = $(
+							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
+							.validationEngine("validate");
 
-			if ($resultado) {
+					if ($resultado) {
 
-				return true;
-			}
-			return false;
+						return true;
+					}
+					return false;
 
-		}
+				}
 
-	});
+			});
 
 	$("#Libreria2").accordion(
 			{
@@ -132,37 +133,46 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('pl_tr_mr')?>").select2();
 	$("#<?php echo $this->campoSeguro('gr_cmp_trp')?>").select2();
 	$("#<?php echo $this->campoSeguro('pq_cmp_trp')?>").select2();
-	
-	/*Configuracion Hidrovía*/
-	
+
+	/* Configuracion Hidrovía */
+
 	$("#<?php echo $this->campoSeguro('tipo_fondo')?>").width(160);
 	$("#<?php echo $this->campoSeguro('tipo_fondo')?>").select2();
-	
+
 	$("#<?php echo $this->campoSeguro('estabilidad_sedimentos')?>").width(160);
 	$("#<?php echo $this->campoSeguro('estabilidad_sedimentos')?>").select2();
 
 });
 
-$("#ventanaA").steps({
-	headerTag : "h4",
-	bodyTag : "section",
-	enableAllSteps : true,
-	enablePagination : true,
-	transitionEffect : "slideLeft",
-	onStepChanging : function(event, currentIndex, newIndex) {
-		return true;
-	},
-	onFinished : function(event, currentIndex) {
-		$("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit();
-	},
-	labels : {
-		cancel : "Cancelar",
-		current : "Paso Siguiente :",
-		pagination : "Paginación",
-		finish : "Guardar Información",
-		next : "Siquiente",
-		previous : "Atras",
-		loading : "Cargando ..."
-	}
+$("#ventanaA").steps(
+		{
+			headerTag : "h4",
+			bodyTag : "section",
+			enableAllSteps : true,
+			enablePagination : true,
+			transitionEffect : "slideLeft",
+			onStepChanging : function(event, currentIndex, newIndex) {
+				$resultado = $(
+						"#<?php echo $this->campoSeguro('zonaEstudio')?>")
+						.validationEngine("validate");
 
-});
+				if ($resultado) {
+
+					return true;
+				}
+				return false;
+			},
+			onFinished : function(event, currentIndex) {
+				$("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit();
+			},
+			labels : {
+				cancel : "Cancelar",
+				current : "Paso Siguiente :",
+				pagination : "Paginación",
+				finish : "Guardar Información",
+				next : "Siquiente",
+				previous : "Atras",
+				loading : "Cargando ..."
+			}
+
+		});
