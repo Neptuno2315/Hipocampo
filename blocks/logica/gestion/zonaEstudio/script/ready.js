@@ -16,7 +16,18 @@ $(function() {
 	$("#Libreria1").accordion({
 		heightStyle:"content",
 		collapsible: true,
-		disabled: false
+		disabled: false,
+		beforeActivate: function(evento, ui) {
+		
+			$resultado = $("#<?php echo $this->campoSeguro('zonaEstudio')?>").validationEngine("validate");
+
+			if ($resultado) {
+
+				return true;
+			}
+			return false;
+			
+		},
 		
 	});
 	
