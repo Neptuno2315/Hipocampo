@@ -216,7 +216,7 @@ $this->idioma ["ort_aton"] = "Otras AtoN : ";
 $this->idioma ["ort_atonTitulo"] = "Ingrese la cantida de otro tipo de ayudas a la Navegación";
 
 $this->idioma ["g_gps"] = "Proporciona DGPS : ";
-$this->idioma ["g_gpsTitulo"] = "Seleccione Sin Proporciona un Sistema de GPS Diferencial";
+$this->idioma ["g_gpsTitulo"] = "Seleccione Si Proporciona un Sistema de GPS Diferencial";
 
 $this->idioma ["ds_stm"] = "Dispone de STM : ";
 $this->idioma ["ds_stmTitulo"] = "Seleccione Disponibilidad de Tráfico Marítimo";
