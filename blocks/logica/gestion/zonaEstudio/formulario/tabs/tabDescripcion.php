@@ -137,6 +137,40 @@ class registrarForm {
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
 			
+			
+			$esteCampo = 'nombre_pry'; //Nombre o Titulo Proyecto
+			$atributos ['id'] = $esteCampo;
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['columnas'] = 1;
+			$atributos ['dobleLinea'] = false;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = 'required,maxSize[4000]';
+				
+			if (isset ( $_REQUEST [$esteCampo] )) {
+				$atributos ['valor'] = $_REQUEST [$esteCampo];
+			} else {
+				$atributos ['valor'] = '';
+			}
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 65;
+			$atributos ['maximoTamanno'] = '4000';
+			$atributos ['anchoEtiqueta'] = 120;
+			$tab ++;
+				
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroTexto ( $atributos );
+			unset ( $atributos );
+			
+			
+			
 			$atributos ["id"] = "ventanaA";
 			echo $this->miFormulario->division ( "inicio", $atributos );
 			unset ( $atributos );

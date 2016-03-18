@@ -17,6 +17,9 @@ $this->idioma ["regionTitulo"] = "Seleccione Región";
 $this->idioma ["sector"] = "Sector : ";
 $this->idioma ["sectorTitulo"] = "Seleccione Sector";
 
+$this->idioma ["nombre_pry"] = "Nombre o Titulo :<br>Proyecto&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+$this->idioma ["nombre_pryTitulo"] = "Ingrese Nombre o Titulo Proyecto";
+
 // Buques Comerciales
 
 $this->idioma ["rango1BC"] = "Cantidad Buques Mayor a 10.000GT : ";
@@ -170,7 +173,6 @@ $this->idioma ["tiempo_bq_pqTitulo"] = "Seleccione Período";
 $this->idioma ["pr_co_ba"] = "Profundidad / Corriente de aire / Bajo la Quilla (mt) : ";
 $this->idioma ["pr_co_baTitulo"] = "Profundidad / Corriente de aire / Bajo la Quilla en metros";
 
-
 $this->idioma ["tiempo_bq_pqTitulo"] = "Ingrese Profundidad / Corriente de aire / Bajo la Quilla (Metros)";
 
 $this->idioma ["ancho_canal"] = "Ancho de Canal  (Km) : ";
@@ -207,7 +209,6 @@ $this->idioma ["bo_si_ais_no_superTitulo"] = "Ingrese Cantidad Boyas sin AIS o n
 
 $this->idioma ["racon"] = "Número de Racon : ";
 $this->idioma ["raconTitulo"] = "Ingrese Cantidad de Baliza de Radar";
-
 
 $this->idioma ["linterna"] = "Número de  Linternas : ";
 $this->idioma ["linternaTitulo"] = "Ingrese Cantidad de Linternas";
