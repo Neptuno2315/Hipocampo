@@ -137,8 +137,7 @@ class registrarForm {
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
 			
-			
-			$esteCampo = 'nombre_pry'; //Nombre o Titulo Proyecto
+			$esteCampo = 'nombre_pry'; // Nombre o Titulo Proyecto
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -151,7 +150,7 @@ class registrarForm {
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ['validar'] = 'required,maxSize[4000]';
-				
+			
 			if (isset ( $_REQUEST [$esteCampo] )) {
 				$atributos ['valor'] = $_REQUEST [$esteCampo];
 			} else {
@@ -163,13 +162,11 @@ class registrarForm {
 			$atributos ['maximoTamanno'] = '4000';
 			$atributos ['anchoEtiqueta'] = 120;
 			$tab ++;
-				
+			
 			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoCuadroTexto ( $atributos );
 			unset ( $atributos );
-			
-			
 			
 			$atributos ["id"] = "ventanaA";
 			echo $this->miFormulario->division ( "inicio", $atributos );
@@ -2563,27 +2560,14 @@ class registrarForm {
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['anchoEtiqueta'] = 180;
 							
-							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_periodo" );
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_Operaciones_Noche_Dia" );
 							
-							$matrizItems = array (
-									array (
-											0,
-											"Noche" 
-									),
-									array (
-											1,
-											"Día" 
-									),
-									array (
-											2,
-											"Noche-Día" 
-									) 
-							);
+							$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
 							
 							$atributos ['matrizItems'] = $matrizItems;
 							
 							// Utilizar lo siguiente cuando no se pase un arreglo:
-							// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+							//$atributos ['baseDatos'] = 'parametros';
 							// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
 							$tab ++;
 							$atributos = array_merge ( $atributos, $atributosGlobales );

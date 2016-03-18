@@ -196,6 +196,16 @@ class Sql extends \Sql {
 				$cadenaSql .= "AND  tp.descripcion='CaracterizacionPeriodoTiempo' ; ";
 				
 				break;
+			
+			case 'consultar_Operaciones_Noche_Dia' :
+				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
+				$cadenaSql .= "FROM parametros.parametro pm  ";
+				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.estado_registro='t' ";
+				$cadenaSql .= "AND  tp.descripcion='OperacionesNocheDia' ; ";
+				
+				break;
 		}
 		
 		return $cadenaSql;
