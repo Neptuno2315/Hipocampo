@@ -2632,7 +2632,7 @@ class registrarForm {
 							echo $this->miFormulario->campoTextArea ( $atributos );
 							unset ( $atributos );
 							
-							$esteCampo = 'visibilidad'; // visibilidad
+							$esteCampo = 'visibilidad'; // Restricción Visibilidad (NM) 
 							$atributos ['id'] = $esteCampo;
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['tipo'] = 'text';

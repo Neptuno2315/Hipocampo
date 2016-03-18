@@ -41,7 +41,34 @@ class FormProcessor {
 				"estabilidad_sed" => $_REQUEST ['estabilidad_sedimentos'],
 				"ayudas_nv" => $_REQUEST ['ayudas_nv'],
 				"calidad_dthd" => $_REQUEST ['calidad_datos'],
-				"operaciones_ddn" => $_REQUEST ['calidad_datos'],
+				"operaciones_ddn" => $_REQUEST ['opera_nc_di'],
+				"estado_mr" => $_REQUEST ['estado_mar'],
+				"observaciones_vncr" => $_REQUEST ['obser_des__vi_mr'],
+				"restricciones_vs" => $_REQUEST ['visibilidad'],
+				"condiciones_hl" => $_REQUEST ['con_hielo'],
+				"iluminacion_fn" => $_REQUEST ['ilum_fondo'],
+				"observaciones_scm" => $_REQUEST ['obser_escom'],
+				"monitoreo_stm" => $_REQUEST ['mn_stm'] 
+		);
+		
+		// INSERT INTO informacion_carta_nautica(
+		// id_inf_carta_nautica, id_zona_estudio, boyas_ais, boyas_nais,
+		// racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm,
+		// disponible_servpl, observaciones, estado_registro, fecha_registro)
+		// VALUES (?, ?, ?, ?,
+		// ?, ?, ?, ?, ?,
+		// ?, ?, ?, ?);
+		$arregloCartaNautica = array (
+				"id_zona_estudio" => $_REQUEST ['aa'],
+				"boyas_ais" => $_REQUEST ['bo_mo_for_re'],
+				"boyas_nais" => $_REQUEST ['bo_si_ais_no_super'],
+				"racon_num" => $_REQUEST ['racon'],
+				"linternas_num" => $_REQUEST ['linterna'],
+				"otras_aton" => $_REQUEST ['ort_aton'],
+				"proporciona_dgps" => $_REQUEST ['g_gps'],
+				"disponibilidad_stm" => $_REQUEST ['ds_stm'],
+				"disponible_servpl" => $_REQUEST ['ds_srv_pl'],
+				"observaciones" => $_REQUEST ['obser_des__sis_sn'] 
 		);
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'guardar_usuario', $_REQUEST ['usuario'] );
