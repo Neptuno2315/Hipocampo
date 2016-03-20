@@ -71,6 +71,43 @@ class FormProcessor {
 				"observaciones" => $_REQUEST ['obser_des__sis_sn'] 
 		);
 		
+		
+		
+// 		INSERT INTO peligros(
+// 				id_peligros, id_zona_estudio, calado_mxbq, holgura_bjqll, maxima_olpr,
+// 				sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr,
+// 				prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb,
+// 				distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr,
+// 				distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs,
+// 				distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl,
+// 				calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr,
+// 				estado_registro, fecha_registro)
+
+		$arregloPeligros=array(
+				"id_zona_estudio"=>$_REQUEST['aa'],
+				"calado_mxbq"=>$_REQUEST['cal_max_buques'],
+				"holgura_bjqll"=>$_REQUEST['hg_bj_quilla'],
+				"maxima_olpr"=>$_REQUEST['mx_oleaje_pre'],
+				"sedimentacion_mxa"=>$_REQUEST['sd_mx_anual'],
+				"profundidad_minsg"=>$_REQUEST['pr_mn_seguridad'],
+				"anchura_cnl"=>$_REQUEST['ach_canal'],
+				"tasa_mx"=>$_REQUEST['ts_maxima'],
+				"observaciones_flmr"=>$_REQUEST['ob_fluj_marea'],
+				"prediccion_mxvntr"=>$_REQUEST['pr_maxima'],
+				"observaciones_vttr"=>$_REQUEST['ob_temp_dirr'],
+				"prediccion_cbm"=>$_REQUEST['pr_maxima_dgl'],
+				"observaciones_efcb"=>$_REQUEST['ob_temp_dirr_com'],
+				"distancia_pntcr"=>$_REQUEST['pnt_cr_tr'],
+				"observaciones_pntcr"=>$_REQUEST['ob_pt_ct_tr'],
+				"distancia_plgcr"=>$_REQUEST['prl_max_cr'],
+				"observaciones_plgcr"=>$_REQUEST['ob_prl_max_cr'],
+				"distancia_prmnvs"=>$_REQUEST['']
+				
+				
+		);
+		
+		
+		
 		$cadenaSql = $this->miSql->getCadenaSql ( 'guardar_usuario', $_REQUEST ['usuario'] );
 		echo $cadenaSql;
 		$miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
