@@ -13,81 +13,8 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-		// var_dump ( $_REQUEST );
 		
-		// $conexion = "logica";
-		// $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		$arregloPreTrafico = array (
-				'rango1BC',
-				'tiempo1BC',
-				'rango2BC',
-				'tiempo2BC',
-				'rango3BC',
-				'tiempo3BC',
-				'rango1BE',
-				'tiempo1BE',
-				'rango2BE',
-				'tiempo2BE',
-				'rango1BP',
-				'tiempo1BP',
-				'rango2BP',
-				'tiempo2BP',
-				'rango3BP',
-				'tiempo3BP',
-				'rango1BG',
-				'tiempo1BG',
-				'rango2BG',
-				'tiempo2BG',
-				'rango1BPQ',
-				'tiempo1BPQ',
-				'rango1SM',
-				'tiempo1SM',
-				'rango2SM',
-				'tiempo2SM',
-				'rango3SM',
-				'tiempo3SM',
-				'rango4SM',
-				'tiempo4SM',
-				'rango5SM',
-				'tiempo5SM',
-				'rango1AA',
-				'tiempo1AA',
-				'rango2AA',
-				'tiempo2AA',
-				'rango3AA',
-				'tiempo3AA',
-				'rango4AA',
-				'tiempo4AA',
-				'num_bq_gr',
-				'tiempo_bq_gr',
-				'num_bq_pq',
-				'tiempo_bq_pq' 
-		);
-		
-		foreach ( $arregloPreTrafico as $valor ) {
-			
-			$rangos = $_REQUEST [$valor];
-		}
-		
-		foreach ( $_REQUEST as $key => $value ) {
-			
-			echo $key . "=" . $value . "<br>";
-		}
-		
-		exit ();
-		
-		// INSERT INTO zona_estudio(
-		// id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
-		// obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv,
-		// calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr,
-		// restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm,
-		// monitoreo_stm, estado_registro, fecha_registro)
-		// VALUES (?, ?, ?, ?, ?,
-		// ?, ?, ?, ?, ?,
-		// ?, ?, ?, ?,
-		// ?, ?, ?, ?,
-		// ?, ?, ?);
-		
+		/* Arreglo Informacion y Registro Zona de Estudio */
 		$arregloZonaEstudio = array (
 				"id_sector" => $_REQUEST ['sector'],
 				"titulo_proy" => $_REQUEST ['nombre_pry'],
@@ -108,6 +35,107 @@ class FormProcessor {
 				"observaciones_scm" => $_REQUEST ['obser_escom'],
 				"monitoreo_stm" => $_REQUEST ['mn_stm'] 
 		);
+		
+		/* Algoritmo para rescatar variables de Trafico Maritimo 
+		 * para Evitar Variables Innesesarias 
+		 * que no tenga informacion Valida */
+		/* Inicio Algoritmo */
+		{
+			
+			$arregloPreTrafico = array (
+					'rango1BC',
+					'tiempo1BC',
+					'rango2BC',
+					'tiempo2BC',
+					'rango3BC',
+					'tiempo3BC',
+					'rango1BE',
+					'tiempo1BE',
+					'rango2BE',
+					'tiempo2BE',
+					'rango1BP',
+					'tiempo1BP',
+					'rango2BP',
+					'tiempo2BP',
+					'rango3BP',
+					'tiempo3BP',
+					'rango1BG',
+					'tiempo1BG',
+					'rango2BG',
+					'tiempo2BG',
+					'rango1BPQ',
+					'tiempo1BPQ',
+					'rango1SM',
+					'tiempo1SM',
+					'rango2SM',
+					'tiempo2SM',
+					'rango3SM',
+					'tiempo3SM',
+					'rango4SM',
+					'tiempo4SM',
+					'rango5SM',
+					'tiempo5SM',
+					'rango1AA',
+					'tiempo1AA',
+					'rango2AA',
+					'tiempo2AA',
+					'rango3AA',
+					'tiempo3AA',
+					'rango4AA',
+					'tiempo4AA',
+					'num_bq_gr',
+					'tiempo_bq_gr',
+					'num_bq_pq',
+					'tiempo_bq_pq' 
+			);
+			$conrador = 1;
+			foreach ( $arregloPreTrafico as $valor ) {
+				
+				if ($conrador == 1) {
+					
+					$arrayRango [] = array (
+							'variable' => $valor,
+							'valor_variable' => $_REQUEST [$valor] 
+					);
+					$conrador ++;
+				} else if ($conrador == 2) {
+					$arrayTiempo [] = $_REQUEST [$valor];
+					$conrador = 1;
+				}
+			}
+			
+			for($i = 0; $i <= 21; $i ++) {
+				
+				if ($arrayRango [$i] ['valor_variable'] != 0 && $arrayRango [$i] ['valor_variable'] != '') {
+					
+					$arregloTrafico [] = array (
+							"variable" => $arrayRango [$i] ['variable'],
+							"numero_buques" => $arrayRango [$i] ['valor_variable'],
+							"periodo" => $arrayTiempo [$i] 
+					);
+				}
+			}
+			
+			if (isset ( $arregloTrafico ) != false) {
+				
+				var_dump ( $arregloTrafico );
+			}
+		}
+		/* Fin Algoritmo */
+		
+		exit ();
+		
+		// INSERT INTO zona_estudio(
+		// id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
+		// obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv,
+		// calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr,
+		// restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm,
+		// monitoreo_stm, estado_registro, fecha_registro)
+		// VALUES (?, ?, ?, ?, ?,
+		// ?, ?, ?, ?, ?,
+		// ?, ?, ?, ?,
+		// ?, ?, ?, ?,
+		// ?, ?, ?);
 		
 		// INSERT INTO informacion_carta_nautica(
 		// id_inf_carta_nautica, id_zona_estudio, boyas_ais, boyas_nais,
