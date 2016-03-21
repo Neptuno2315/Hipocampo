@@ -1,12 +1,15 @@
 <?php
 include_once ('Redireccionador.php');
+include_once ("core/builder/InspectorHTML.class.php");
 class FormProcessor {
 	var $miConfigurador;
+	var $miInspectorHTML;
 	var $lenguaje;
 	var $miFormulario;
 	var $miSql;
 	var $conexion;
 	function __construct($lenguaje, $sql) {
+		$this->miInspectorHTML = \InspectorHTML::singleton ();
 		$this->miConfigurador = \Configurador::singleton ();
 		$this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
 		$this->lenguaje = $lenguaje;
@@ -14,31 +17,54 @@ class FormProcessor {
 	}
 	function procesarFormulario() {
 		
-		/* Arreglo Informacion y Registro Zona de Estudio */
-		$arregloZonaEstudio = array (
-				"id_sector" => $_REQUEST ['sector'],
-				"titulo_proy" => $_REQUEST ['nombre_pry'],
-				"profundidad_qll" => $_REQUEST ['pr_co_ba'],
-				"ancho_canl" => $_REQUEST ['pr_co_ba'],
-				"obtrucciones_vs" => $_REQUEST ['obtrucciones_visibilidad'],
-				"complejidad_hdr" => $_REQUEST ['complejidad_hidrovia'],
-				"tipo_fn" => $_REQUEST ['tipo_fondo'],
-				"estabilidad_sed" => $_REQUEST ['estabilidad_sedimentos'],
-				"ayudas_nv" => $_REQUEST ['ayudas_nv'],
-				"calidad_dthd" => $_REQUEST ['calidad_datos'],
-				"operaciones_ddn" => $_REQUEST ['opera_nc_di'],
-				"estado_mr" => $_REQUEST ['estado_mar'],
-				"observaciones_vncr" => $_REQUEST ['obser_des__vi_mr'],
-				"restricciones_vs" => $_REQUEST ['visibilidad'],
-				"condiciones_hl" => $_REQUEST ['con_hielo'],
-				"iluminacion_fn" => $_REQUEST ['ilum_fondo'],
-				"observaciones_scm" => $_REQUEST ['obser_escom'],
-				"monitoreo_stm" => $_REQUEST ['mn_stm'] 
-		);
+		/*
+		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
+		 */
+		{
+			if (isset ( $_REQUEST ['validadorCampos'] )) {
+				$validadorCampos = $this->miInspectorHTML->decodificarCampos ( $_REQUEST ['validadorCampos'] );
+				$respuesta = $this->miInspectorHTML->validacionCampos ( $_REQUEST, $validadorCampos, false );
+				if ($respuesta != false) {
+					
+					$_REQUEST = $respuesta;
+				} else {
+					// Lo que se desea hacer si los parámetros son inválidos
+					echo "Usted ha ingresado parámetros de forma incorrecta al sistema.";
+				}
+			}
+		}
 		
-		/* Algoritmo para rescatar variables de Trafico Maritimo 
-		 * para Evitar Variables Innesesarias 
-		 * que no tenga informacion Valida */
+		/* Arreglo Informacion y Cadena Sql Registro Zona de Estudio */
+		{
+			$arregloZonaEstudio = array (
+					"id_sector" => $_REQUEST ['sector'],
+					"titulo_proy" => $_REQUEST ['nombre_pry'],
+					"profundidad_qll" => $_REQUEST ['pr_co_ba'],
+					"ancho_canl" => $_REQUEST ['pr_co_ba'],
+					"obtrucciones_vs" => $_REQUEST ['obtrucciones_visibilidad'],
+					"complejidad_hdr" => $_REQUEST ['complejidad_hidrovia'],
+					"tipo_fn" => $_REQUEST ['tipo_fondo'],
+					"estabilidad_sed" => $_REQUEST ['estabilidad_sedimentos'],
+					"ayudas_nv" => $_REQUEST ['ayudas_navegacion'],
+					"calidad_dthd" => $_REQUEST ['calidad_datos'],
+					"operaciones_ddn" => $_REQUEST ['opera_nc_di'],
+					"estado_mr" => $_REQUEST ['estado_mar'],
+					"observaciones_vncr" => $_REQUEST ['obser_des__vi_mr'],
+					"restricciones_vs" => $_REQUEST ['visibilidad'],
+					"condiciones_hl" => $_REQUEST ['con_hielo'],
+					"iluminacion_fn" => $_REQUEST ['ilum_fondo'],
+					"observaciones_scm" => $_REQUEST ['obser_escom'],
+					"monitoreo_stm" => $_REQUEST ['mn_stm'] 
+			);
+			//Se guarda array para crear una trasaccion
+			$cadenaSql[] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
+		}
+		exit ();
+		/*
+		 * Algoritmo para rescatar variables de Trafico Maritimo
+		 * para Evitar Variables Innesesarias
+		 * que no tenga informacion Valida
+		 */
 		/* Inicio Algoritmo */
 		{
 			
@@ -199,7 +225,7 @@ class FormProcessor {
 				"calidad_pqcmtr" => $_REQUEST ['pq_cmp_trp'] 
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'guardar_usuario', $_REQUEST ['usuario'] );
+		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $_REQUEST ['usuario'] );
 		echo $cadenaSql;
 		$miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
 		var_dump ( $esteRecursoDB );

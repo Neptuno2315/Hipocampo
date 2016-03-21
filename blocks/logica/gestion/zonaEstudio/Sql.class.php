@@ -106,8 +106,9 @@ class Sql extends \Sql {
 				$cadenaSql .= ') ';
 				break;
 			
-			// +++++++++++++++++++ Sentencias de mi Caso de Uso ++++++++++++++++++++++++++++++++
-			
+			/*
+			 * Consultas para creacion Formulario
+			 */
 			case 'consultar_escala_douglas' :
 				
 				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
@@ -205,6 +206,50 @@ class Sql extends \Sql {
 				$cadenaSql .= "AND  tp.estado_registro='t' ";
 				$cadenaSql .= "AND  tp.descripcion='OperacionesNocheDia' ; ";
 				
+				break;
+			
+			/*
+			 * Sentenias de Registro de Informacion
+			 */
+			/*
+			 * INSERT INTO zona_estudio(id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
+			 * obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv,
+			 * calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr,
+			 * restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm,
+			 * monitoreo_stm, estado_registro, fecha_registro)
+			 * VALUES (?, ?, ?, ?, ?,
+			 * ?, ?, ?, ?, ?,
+			 * ?, ?, ?, ?,
+			 * ?, ?, ?, ?,
+			 * ?, ?, ?);
+			 */
+			
+			case 'registrar_zona_estudio' :
+				$cadenaSql = " INSERT INTO zona_estudio(id_sector, titulo_proy, profundidad_qll, ancho_canl,  ";
+				$cadenaSql .= "obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv, ";
+				$cadenaSql .= "calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr, ";
+				$cadenaSql .= "restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm, monitoreo_stm) ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "'" . $variable ['id_sector'] . "',";
+				$cadenaSql .= "'" . $variable ['titulo_proy'] . "',";
+				$cadenaSql .= "'" . $variable ['profundidad_qll'] . "',";
+				$cadenaSql .= "'" . $variable ['ancho_canl'] . "',";
+				$cadenaSql .= "'" . $variable ['obtrucciones_vs'] . "',";
+				$cadenaSql .= "'" . $variable ['complejidad_hdr'] . "',";
+				$cadenaSql .= "'" . $variable ['tipo_fn'] . "',";
+				$cadenaSql .= "'" . $variable ['estabilidad_sed'] . "',";
+				$cadenaSql .= "'" . $variable ['ayudas_nv'] . "',";
+				$cadenaSql .= "'" . $variable ['calidad_dthd'] . "',";
+				$cadenaSql .= "'" . $variable ['operaciones_ddn'] . "',";
+				$cadenaSql .= "'" . $variable ['estado_mr'] . "',";
+				$cadenaSql .= ($variable ['observaciones_vncr'] != '') ? "'" . $variable ['observaciones_vncr'] . "'," : "NULL,";
+				$cadenaSql .= "'" . $variable ['restricciones_vs'] . "',";
+				$cadenaSql .= "'" . $variable ['condiciones_hl'] . "',";
+				$cadenaSql .= "'" . $variable ['iluminacion_fn'] . "',";
+				$cadenaSql .= ($variable ['observaciones_scm'] != '') ? "'" . $variable ['observaciones_scm'] . "'," : "NULL,";
+				$cadenaSql .= "'" . $variable ['monitoreo_stm'] . "'); ";
+				echo $cadenaSql;
+				exit ();
 				break;
 		}
 		
