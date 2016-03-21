@@ -13,10 +13,68 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-		var_dump ( $_REQUEST );
+		// var_dump ( $_REQUEST );
+		
+		// $conexion = "logica";
+		// $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		$arregloPreTrafico = array (
+				'rango1BC',
+				'tiempo1BC',
+				'rango2BC',
+				'tiempo2BC',
+				'rango3BC',
+				'tiempo3BC',
+				'rango1BE',
+				'tiempo1BE',
+				'rango2BE',
+				'tiempo2BE',
+				'rango1BP',
+				'tiempo1BP',
+				'rango2BP',
+				'tiempo2BP',
+				'rango3BP',
+				'tiempo3BP',
+				'rango1BG',
+				'tiempo1BG',
+				'rango2BG',
+				'tiempo2BG',
+				'rango1BPQ',
+				'tiempo1BPQ',
+				'rango1SM',
+				'tiempo1SM',
+				'rango2SM',
+				'tiempo2SM',
+				'rango3SM',
+				'tiempo3SM',
+				'rango4SM',
+				'tiempo4SM',
+				'rango5SM',
+				'tiempo5SM',
+				'rango1AA',
+				'tiempo1AA',
+				'rango2AA',
+				'tiempo2AA',
+				'rango3AA',
+				'tiempo3AA',
+				'rango4AA',
+				'tiempo4AA',
+				'num_bq_gr',
+				'tiempo_bq_gr',
+				'num_bq_pq',
+				'tiempo_bq_pq' 
+		);
+		
+		foreach ( $arregloPreTrafico as $valor ) {
+			
+			$rangos = $_REQUEST [$valor];
+		}
+		
+		foreach ( $_REQUEST as $key => $value ) {
+			
+			echo $key . "=" . $value . "<br>";
+		}
+		
 		exit ();
-		$conexion = "logica";
-		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
 		// INSERT INTO zona_estudio(
 		// id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
