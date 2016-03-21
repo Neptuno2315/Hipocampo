@@ -248,8 +248,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['iluminacion_fn'] . "',";
 				$cadenaSql .= ($variable ['observaciones_scm'] != '') ? "'" . $variable ['observaciones_scm'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['monitoreo_stm'] . "'); ";
-				echo $cadenaSql;
-				exit ();
 				break;
 		}
 		

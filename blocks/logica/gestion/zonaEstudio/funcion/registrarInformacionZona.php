@@ -56,9 +56,11 @@ class FormProcessor {
 					"observaciones_scm" => $_REQUEST ['obser_escom'],
 					"monitoreo_stm" => $_REQUEST ['mn_stm'] 
 			);
-			//Se guarda array para crear una trasaccion
-			$cadenaSql[] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
+			// Se guarda en un array para crear una trasaccion
+			$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
 		}
+		
+		var_dump ( $cadenaSql );
 		exit ();
 		/*
 		 * Algoritmo para rescatar variables de Trafico Maritimo
@@ -133,12 +135,14 @@ class FormProcessor {
 			for($i = 0; $i <= 21; $i ++) {
 				
 				if ($arrayRango [$i] ['valor_variable'] != 0 && $arrayRango [$i] ['valor_variable'] != '') {
-					
-					$arregloTrafico [] = array (
-							"variable" => $arrayRango [$i] ['variable'],
-							"numero_buques" => $arrayRango [$i] ['valor_variable'],
-							"periodo" => $arrayTiempo [$i] 
-					);
+					if ($arrayTiempo [$i] != '') {
+						
+						$arregloTrafico [] = array (
+								"variable" => $arrayRango [$i] ['variable'],
+								"numero_buques" => $arrayRango [$i] ['valor_variable'],
+								"periodo" => $arrayTiempo [$i] 
+						);
+					}
 				}
 			}
 			
