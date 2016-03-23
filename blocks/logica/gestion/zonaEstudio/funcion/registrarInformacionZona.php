@@ -29,8 +29,7 @@ class FormProcessor {
 					
 					$_REQUEST = $respuesta;
 				} else {
-					// Lo que se desea hacer si los parámetros son inválidos
-					echo "Usted ha ingresado parámetros de forma incorrecta al sistema.";
+					Redireccionador::redireccionar ( 'ErrorModificacionFormulario' );
 				}
 			}
 		}
@@ -220,12 +219,6 @@ class FormProcessor {
 		} else if ($transaccion == false) {
 			Redireccionador::redireccionar ( 'NoInserto' );
 		}
-		
-		// $miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
-		
-		var_dump ( $_REQUEST );
-		
-		// Aquí va la lógica de procesamiento
 	}
 	function resetForm() {
 		foreach ( $_REQUEST as $clave => $valor ) {

@@ -62,14 +62,24 @@ class registrarForm {
 				
 				case 'RegistroExito' :
 					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Registro con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'];
+					$atributos ['mensaje'] = 'Se Registro con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					break;
+				
+				case 'RegistroError' :
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error en el Registro de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					break;
+				
+				case 'ErrorProcesamiento' :
+					
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Datos No Validos o Error al Procesar la Información.<br>Verifique los Datos.';
 					
 					break;
 			}
-			
+			echo "<br><br>";
 			$esteCampo = 'mensajeGeneral';
 			$atributos ['id'] = $esteCampo;
-			$atributos ['tipo'] = 'success';
 			$atributos ['estilo'] = 'textoCentrar';
 			
 			$tab ++;

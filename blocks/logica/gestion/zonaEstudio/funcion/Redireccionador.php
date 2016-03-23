@@ -25,11 +25,18 @@ class Redireccionador {
 			case "NoInserto" :
 				
 				$variable = 'pagina=zonaEstudio';
-				
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=RegistroError";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 			
-			default :
-				$variable = '';
+			case 'ErrorModificacionFormulario' :
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=ErrorProcesamiento";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				
+				break;
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );
@@ -42,8 +49,7 @@ class Redireccionador {
 		$redireccion = $url . $_REQUEST [$enlace];
 		
 		echo "<script>location.replace('" . $redireccion . "')</script>";
-		
-	
+		exit ();
 	}
 }
 ?>
