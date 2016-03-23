@@ -247,6 +247,62 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['periodo'] . "');";
 				
 				break;
+			
+			case 'registrar_informacion_carta_nautica' :
+				$cadenaSql = " INSERT INTO informacion_carta_nautica(id_zona_estudio, boyas_ais, boyas_nais, ";
+				$cadenaSql .= " racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm,disponible_servpl, observaciones) ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
+				$cadenaSql .= "'" . $variable ['boyas_ais'] . "',";
+				$cadenaSql .= "'" . $variable ['boyas_nais'] . "',";
+				$cadenaSql .= "'" . $variable ['racon_num'] . "',";
+				$cadenaSql .= "'" . $variable ['linternas_num'] . "',";
+				$cadenaSql .= "'" . $variable ['otras_aton'] . "',";
+				$cadenaSql .= "'" . $variable ['proporciona_dgps'] . "',";
+				$cadenaSql .= "'" . $variable ['disponibilidad_stm'] . "',";
+				$cadenaSql .= "'" . $variable ['disponible_servpl'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones'] . "');";
+				break;
+			
+			case 'registrar_peligros' :
+				$cadenaSql = "  INSERT INTO peligros(id_zona_estudio,calado_mxbq, holgura_bjqll, maxima_olpr, ";
+				$cadenaSql .= " sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr, ";
+				$cadenaSql .= " prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb, ";
+				$cadenaSql .= " distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr, ";
+				$cadenaSql .= "  distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs, ";
+				$cadenaSql .= " distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl, ";
+				$cadenaSql .= " calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr) ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
+				$cadenaSql .= "'" . $variable ['calado_mxbq'] . "',";
+				$cadenaSql .= "'" . $variable ['holgura_bjqll'] . "',";
+				$cadenaSql .= "'" . $variable ['maxima_olpr'] . "',";
+				$cadenaSql .= "'" . $variable ['sedimentacion_mxa'] . "',";
+				$cadenaSql .= "'" . $variable ['profundidad_minsg'] . "',";
+				$cadenaSql .= "'" . $variable ['anchura_cnl'] . "',";
+				$cadenaSql .= "'" . $variable ['tasa_mx'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones_flmr'] . "',";
+				$cadenaSql .= "'" . $variable ['prediccion_mxvntr'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones_vttr'] . "',";
+				$cadenaSql .= "'" . $variable ['prediccion_cbm'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones_efcb'] . "',"; //
+				$cadenaSql .= "'" . $variable ['distancia_pntcr'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones_pntcr'] . "',";
+				$cadenaSql .= "'" . $variable ['distancia_plgcr'] . "',";
+				$cadenaSql .= "'" . $variable ['observaciones_plgcr'] . "',";
+				$cadenaSql .= "'" . $variable ['distancia_prmnvs'] . "',";
+				$cadenaSql .= "'" . $variable ['porcentaje_prmnvs'] . "',";
+				$cadenaSql .= "'" . $variable ['distancia_prmvs'] . "',";
+				$cadenaSql .= "'" . $variable ['porcentaje_prmvs'] . "',"; //
+				$cadenaSql .= "'" . $variable ['distancia_tmbsl'] . "',";
+				$cadenaSql .= "'" . $variable ['porcentaje_tmbsl'] . "',";
+				$cadenaSql .= "'" . $variable ['distancia_rpl'] . "',";
+				$cadenaSql .= "'" . $variable ['porcentaje_rpl'] . "',";
+				$cadenaSql .= "'" . $variable ['calidad_praton'] . "',";
+				$cadenaSql .= "'" . $variable ['calidad_plserv'] . "',";
+				$cadenaSql .= "'" . $variable ['calidad_grcmtr'] . "',";
+				$cadenaSql .= "'" . $variable ['calidad_pqcmtr'] . "');";
+				break;
 		}
 		
 		return $cadenaSql;

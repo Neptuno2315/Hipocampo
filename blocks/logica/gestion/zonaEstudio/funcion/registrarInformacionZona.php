@@ -148,36 +148,15 @@ class FormProcessor {
 				
 				/* Arreglo Informacion Trafico y Cadena Sql Registro Trafico Maritimo */
 				foreach ( $arregloTrafico as $valor ) {
-					
+					// Se guarda en un array para crear una trasaccion
 					$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_trafico_maritimo', $valor );
 				}
 			}
 		}
 		/* Fin Algoritmo */
 		
-		exit ();
-		
-		// INSERT INTO zona_estudio(
-		// id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
-		// obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv,
-		// calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr,
-		// restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm,
-		// monitoreo_stm, estado_registro, fecha_registro)
-		// VALUES (?, ?, ?, ?, ?,
-		// ?, ?, ?, ?, ?,
-		// ?, ?, ?, ?,
-		// ?, ?, ?, ?,
-		// ?, ?, ?);
-		
-		// INSERT INTO informacion_carta_nautica(
-		// id_inf_carta_nautica, id_zona_estudio, boyas_ais, boyas_nais,
-		// racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm,
-		// disponible_servpl, observaciones, estado_registro, fecha_registro)
-		// VALUES (?, ?, ?, ?,
-		// ?, ?, ?, ?, ?,
-		// ?, ?, ?, ?);
+		/* Arreglo Informacion Informacion Carta Nautica y Cadena Sql Registro Informacion Carta Nautica */
 		$arregloCartaNautica = array (
-				"id_zona_estudio" => $_REQUEST ['aa'],
 				"boyas_ais" => $_REQUEST ['bo_mo_for_re'],
 				"boyas_nais" => $_REQUEST ['bo_si_ais_no_super'],
 				"racon_num" => $_REQUEST ['racon'],
@@ -189,18 +168,11 @@ class FormProcessor {
 				"observaciones" => $_REQUEST ['obser_des__sis_sn'] 
 		);
 		
-		// INSERT INTO peligros(
-		// id_peligros, id_zona_estudio, calado_mxbq, holgura_bjqll, maxima_olpr,
-		// sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr,
-		// prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb,
-		// distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr,
-		// distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs,
-		// distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl,
-		// calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr,
-		// estado_registro, fecha_registro)
+		// Se guarda en un array para crear una trasaccion
+		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_informacion_carta_nautica', $arregloCartaNautica );
 		
+		/* Arreglo Peligros y Cadena Sql Registro Peligros */
 		$arregloPeligros = array (
-				"id_zona_estudio" => $_REQUEST ['aa'],
 				"calado_mxbq" => $_REQUEST ['cal_max_buques'],
 				"holgura_bjqll" => $_REQUEST ['hg_bj_quilla'],
 				"maxima_olpr" => $_REQUEST ['mx_oleaje_pre'],
@@ -231,11 +203,16 @@ class FormProcessor {
 				"calidad_pqcmtr" => $_REQUEST ['pq_cmp_trp'] 
 		);
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $_REQUEST ['usuario'] );
-		echo $cadenaSql;
-		$miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
-		var_dump ( $esteRecursoDB );
+		// Se guarda en un array para crear una trasaccion
+		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_peligros', $arregloPeligros );
+		
+		var_dump ( $cadenaSql );
 		exit ();
+		
+		// $miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
+		
+// 		var_dump ( $esteRecursoDB );
+		
 		// Aquí va la lógica de procesamiento
 		
 		// Al final se ejecuta la redirección la cual pasará el control a otra página
