@@ -1,4 +1,5 @@
 <?php
+use logica\gestion\zonaEstudio\funcion\Redireccionador;
 include_once ('Redireccionador.php');
 include_once ("core/builder/InspectorHTML.class.php");
 class FormProcessor {
@@ -206,18 +207,27 @@ class FormProcessor {
 		// Se guarda en un array para crear una trasaccion
 		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_peligros', $arregloPeligros );
 		
-		var_dump ( $cadenaSql );
-		exit ();
+		// Conexion de Base de Datos
+		$conexion = "logica";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+		// Ejecucción Transaccion
+		
+		$transaccion = $esteRecursoDB->transaccion ( $cadenaSql );
+		
+		if ($transaccion == true) {
+			Redireccionador::redireccionar ( 'Inserto' );
+			exit ();
+		} else if ($transaccion == false) {
+			Redireccionador::redireccionar ( 'NoInserto' );
+			exit ();
+		}
 		
 		// $miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
 		
-// 		var_dump ( $esteRecursoDB );
+		// var_dump ( $esteRecursoDB );
 		
 		// Aquí va la lógica de procesamiento
-		
-		// Al final se ejecuta la redirección la cual pasará el control a otra página
-		$variable = 'cualquierDato';
-		Redireccionador::redireccionar ( 'opcion1', $variable );
 	}
 	function resetForm() {
 		foreach ( $_REQUEST as $clave => $valor ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace logica\canales\zonaEstudio\funcion;
+namespace logica\gestion\zonaEstudio\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
@@ -8,20 +8,27 @@ if (! isset ( $GLOBALS ["autorizado"] )) {
 }
 class Redireccionador {
 	public static function redireccionar($opcion, $valor = "") {
-		
-	    $miConfigurador = \Configurador::singleton ();
+		$miConfigurador = \Configurador::singleton ();
 		
 		switch ($opcion) {
 			
-			case "opcion1" :
+			case "Inserto" :
 				
-				$variable = 'pagina=segundaPagina';
-				$variable .= '&variable' . $valor;				
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=RegistroExito";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				
 				break;
-				
-			default:
-			    $variable='';
 			
+			case "NoInserto" :
+				
+				$variable = 'pagina=zonaEstudio';
+				
+				break;
+			
+			default :
+				$variable = '';
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );
