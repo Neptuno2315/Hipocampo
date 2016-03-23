@@ -261,7 +261,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['proporciona_dgps'] . "',";
 				$cadenaSql .= "'" . $variable ['disponibilidad_stm'] . "',";
 				$cadenaSql .= "'" . $variable ['disponible_servpl'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones'] . "');";
+				$cadenaSql .= ($variable ['observaciones'] != '') ? "'" . $variable ['observaciones'] . "');" : "NULL);";
 				break;
 			
 			case 'registrar_peligros' :
@@ -281,15 +281,15 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['profundidad_minsg'] . "',";
 				$cadenaSql .= "'" . $variable ['anchura_cnl'] . "',";
 				$cadenaSql .= "'" . $variable ['tasa_mx'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones_flmr'] . "',";
+				$cadenaSql .= ($variable ['observaciones_flmr'] != '') ? "'" . $variable ['observaciones_flmr'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['prediccion_mxvntr'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones_vttr'] . "',";
+				$cadenaSql .= ($variable ['observaciones_vttr'] != '') ? "'" . $variable ['observaciones_vttr'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['prediccion_cbm'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones_efcb'] . "',"; //
+				$cadenaSql .= ($variable ['observaciones_efcb'] != '') ? "'" . $variable ['observaciones_efcb'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['distancia_pntcr'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones_pntcr'] . "',";
+				$cadenaSql .= ($variable ['observaciones_pntcr'] != '') ? "'" . $variable ['observaciones_pntcr'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['distancia_plgcr'] . "',";
-				$cadenaSql .= "'" . $variable ['observaciones_plgcr'] . "',";
+				$cadenaSql .= ($variable ['observaciones_plgcr'] != '') ? "'" . $variable ['observaciones_plgcr'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['distancia_prmnvs'] . "',";
 				$cadenaSql .= "'" . $variable ['porcentaje_prmnvs'] . "',";
 				$cadenaSql .= "'" . $variable ['distancia_prmvs'] . "',";
