@@ -18,6 +18,8 @@ class Redireccionador {
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=RegistroExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				
 				break;
 			
 			case "NoInserto" :
