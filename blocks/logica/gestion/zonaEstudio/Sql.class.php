@@ -235,7 +235,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['condiciones_hl'] . "',";
 				$cadenaSql .= "'" . $variable ['iluminacion_fn'] . "',";
 				$cadenaSql .= ($variable ['observaciones_scm'] != '') ? "'" . $variable ['observaciones_scm'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['monitoreo_stm'] . "'); ";
+				$cadenaSql .= ($variable ['monitoreo_stm'] != '') ? "'" . $variable ['monitoreo_stm'] . "');" : "NULL);";
 				break;
 			
 			case "registrar_trafico_maritimo" :
@@ -262,6 +262,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['disponibilidad_stm'] . "',";
 				$cadenaSql .= "'" . $variable ['disponible_servpl'] . "',";
 				$cadenaSql .= ($variable ['observaciones'] != '') ? "'" . $variable ['observaciones'] . "');" : "NULL);";
+				
 				break;
 			
 			case 'registrar_peligros' :
@@ -302,6 +303,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['calidad_plserv'] . "',";
 				$cadenaSql .= "'" . $variable ['calidad_grcmtr'] . "',";
 				$cadenaSql .= "'" . $variable ['calidad_pqcmtr'] . "');";
+				
 				break;
 		}
 		

@@ -217,15 +217,13 @@ class FormProcessor {
 		
 		if ($transaccion == true) {
 			Redireccionador::redireccionar ( 'Inserto' );
-			exit ();
 		} else if ($transaccion == false) {
 			Redireccionador::redireccionar ( 'NoInserto' );
-			exit ();
 		}
 		
 		// $miresultado = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso" );
 		
-		// var_dump ( $esteRecursoDB );
+		var_dump ( $_REQUEST );
 		
 		// Aquí va la lógica de procesamiento
 	}
