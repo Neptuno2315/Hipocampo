@@ -60,8 +60,6 @@ class FormProcessor {
 			$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
 		}
 		
-		var_dump ( $cadenaSql );
-		exit ();
 		/*
 		 * Algoritmo para rescatar variables de Trafico Maritimo
 		 * para Evitar Variables Innesesarias
@@ -148,7 +146,11 @@ class FormProcessor {
 			
 			if (isset ( $arregloTrafico ) != false) {
 				
-				var_dump ( $arregloTrafico );
+				/* Arreglo Informacion Trafico y Cadena Sql Registro Trafico Maritimo */
+				foreach ( $arregloTrafico as $valor ) {
+					
+					$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_trafico_maritimo', $valor );
+				}
 			}
 		}
 		/* Fin Algoritmo */

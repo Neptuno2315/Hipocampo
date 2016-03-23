@@ -211,18 +211,6 @@ class Sql extends \Sql {
 			/*
 			 * Sentenias de Registro de Informacion
 			 */
-			/*
-			 * INSERT INTO zona_estudio(id_zona_estudio, id_sector, titulo_proy, profundidad_qll, ancho_canl,
-			 * obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv,
-			 * calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr,
-			 * restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm,
-			 * monitoreo_stm, estado_registro, fecha_registro)
-			 * VALUES (?, ?, ?, ?, ?,
-			 * ?, ?, ?, ?, ?,
-			 * ?, ?, ?, ?,
-			 * ?, ?, ?, ?,
-			 * ?, ?, ?);
-			 */
 			
 			case 'registrar_zona_estudio' :
 				$cadenaSql = " INSERT INTO zona_estudio(id_sector, titulo_proy, profundidad_qll, ancho_canl,  ";
@@ -248,6 +236,16 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['iluminacion_fn'] . "',";
 				$cadenaSql .= ($variable ['observaciones_scm'] != '') ? "'" . $variable ['observaciones_scm'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['monitoreo_stm'] . "'); ";
+				break;
+			
+			case "registrar_trafico_maritimo" :
+				$cadenaSql = " INSERT INTO trafico(id_zona_estudio, variable_trf, numero_bq, periodo_trf) ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
+				$cadenaSql .= "'" . $variable ['variable'] . "',";
+				$cadenaSql .= "'" . $variable ['numero_buques'] . "',";
+				$cadenaSql .= "'" . $variable ['periodo'] . "');";
+				
 				break;
 		}
 		
