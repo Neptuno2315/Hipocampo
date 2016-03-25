@@ -50,6 +50,29 @@ function consulta_sectores(elem, request, response){
 	});
 
 }
+function consultas_sector(elem, request, response){
+	  $.ajax({
+	    url: "<?php echo $urlSector?>",
+	    dataType: "json",
+	    data: { valor:$("#<?php echo $this->campoSeguro('region_consulta')?>").val()},
+	    success: function(data){ 
+	        if(data[0]!=" "){
+
+	            $("#<?php echo $this->campoSeguro('sector_consulta')?>").html('');
+	            $("<option value=''>Seleccione ....</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta')?>");
+	            $.each(data , function(indice,valor){
+				            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].valor+"</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta')?>");
+	        			    });
+	            $("#<?php echo $this->campoSeguro('sector_consulta')?>").removeAttr('disabled');
+	            $('#<?php echo $this->campoSeguro('sector_consulta')?>').width(200);
+	            $("#<?php echo $this->campoSeguro('sector_consulta')?>").select2();
+	            }          
+	   		}
+	});
+
+}
+
+
 	$(function() {
 
 	    $("#<?php echo $this->campoSeguro('region')?>").change(function() {
@@ -64,6 +87,18 @@ function consulta_sectores(elem, request, response){
 		 });
 
 
+	    $("#<?php echo $this->campoSeguro('region_consulta')?>").change(function() {
+	    	
+		if($("#<?php echo $this->campoSeguro('region_consulta')?>").val()!=''){
+			consultas_sector();
+
+			}
+
+
+    	
+	 });
+
+	    
 
 		});
 	</script>

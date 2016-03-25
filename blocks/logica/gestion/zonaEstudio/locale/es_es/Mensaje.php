@@ -362,6 +362,28 @@ $this->idioma ["gr_cmp_trpTitulo"] = "Seleccione Grandes Compentencia de los  Tr
 $this->idioma ["pq_cmp_trp"] = "Pequeña Compentencia :<br>Tripulantes de los Buques";
 $this->idioma ["pq_cmp_trpTitulo"] = "Seleccione Pequeña Compentencia de los Tripulantes de los Buques";
 
+//----- Controles de Formulario Consulta
+
+
+$this->idioma ["region_consulta"] = "Región : ";
+$this->idioma ["region_consultaTitulo"] = "Seleccione Región";
+
+$this->idioma ["sector_consulta"] = "Sector : ";
+$this->idioma ["sector_consultaTitulo"] = "Seleccione Sector";
+
+$this->idioma ["nombre_pry_consulta"] = "Nombre o Titulo :<br>Proyecto&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+$this->idioma ["nombre_pry_consultaTitulo"] = "Ingrese Nombre o Titulo Proyecto";
+
+$this->idioma ["fecha_inicio_consulta"] = "Fecha Inicio:<br>Rango&nbsp&nbsp&nbsp&nbsp&nbsp";
+$this->idioma ["fecha_inicio_consultaTitulo"] = "Seleccione Fecha Inicio para Rango de Buqueda de Registro";
+
+$this->idioma ["fecha_final_consulta"] = "Fecha Final:<br>Rango&nbsp&nbsp&nbsp&nbsp&nbsp";
+$this->idioma ["fecha_final_consultaTitulo"] = "Seleccione Fecha Final para Rango de Buqueda de Registro";
+
+
+
+
+
 // -------------------------------------
 
 $this->idioma ["usuario"] = "Identificación:";
@@ -372,5 +394,6 @@ $this->idioma ["botonAceptar"] = "Aceptar";
 $this->idioma ["botonCancelar"] = "Cancelar";
 $this->idioma ["noDefinido"] = "No definido";
 $this->idioma ["botonIngresar"] = "Ingresar";
+$this->idioma ["botonConsultar"] = "Consultar";
 
 ?>
