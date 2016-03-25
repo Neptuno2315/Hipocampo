@@ -26,9 +26,8 @@ unset ( $atributos );
 	// -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
 	
 	$items = array (
-			"tabDescripcion" => $this->lenguaje->getCadena ( "tabDescripcion" ),
 			"tabConsultaModificacion" => $this->lenguaje->getCadena ( "tabConsultaModificacion" ),
-			
+			"tabDescripcion" => $this->lenguaje->getCadena ( "tabDescripcion" ) 
 	);
 	$atributos ["items"] = $items;
 	$atributos ["estilo"] = "jqueryui";
@@ -40,7 +39,6 @@ unset ( $atributos );
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Contratos ViceRectoria";
 		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
 		{
@@ -56,7 +54,6 @@ unset ( $atributos );
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Contratos ViceRectoria";
 		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
 		{
@@ -66,22 +63,7 @@ unset ( $atributos );
 		}
 		echo $this->miFormulario->agrupacion ( 'fin' );
 	}
-	
-// 	{ // Pestañas de Resultado o Informe
-// 		$esteCampo = "tabResultado";
-// 		$atributos ['id'] = $esteCampo;
-// 		$atributos ["estilo"] = "jqueryui";
-// 		$atributos ['tipoEtiqueta'] = 'inicio';
-// 		// $atributos ["leyenda"] = "Contratos ViceRectoria";
-// 		echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-// 		unset ( $atributos );
-// 		{
-			
-// 			include ($this->ruta . "formulario/tabs/tabResultado.php");
-// 			// -----------------Fin Division para la pestaña 2-------------------------
-// 		}
-// 		echo $this->miFormulario->agrupacion ( 'fin' );
-// 	}
 }
 echo $this->miFormulario->division ( "fin" );
+unset($atributos);
 ?>
