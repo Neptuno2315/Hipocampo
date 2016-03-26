@@ -53,6 +53,12 @@ class Frontera {
 					
 					break;
 				
+				case 'consultarInformacionZona' :
+					
+					include_once ($this->ruta . "/formulario/resultadoConsulta.php");
+					
+					break;
+				
 				default :
 					
 					include_once ($this->ruta . "/formulario/nuevo.php");

@@ -46,7 +46,7 @@ class consultarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = $esteBloque ['nombre'];
+		$esteCampo = "consultaZonaEstudio";
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -275,7 +275,7 @@ class consultarForm {
 			$tab ++;
 			
 			// Aplica atributos globales al control
-// 			$atributos = array_merge ( $atributos, $atributosGlobales );
+			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoBoton ( $atributos );
 			unset($atributos);
 			
@@ -300,12 +300,12 @@ class consultarForm {
 		// En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
 		// Paso 1: crear el listado de variables
 		
-		$valorCodificado = "action=" . $esteBloque ["nombre"];
+		$valorCodificado = "actionBloque=consultaZonaEstudio";
 		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
-		$valorCodificado .= "&opcion=ConsultarInformacionZona";
+		$valorCodificado .= "&opcion=consultarInformacionZona";
 		/**
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
