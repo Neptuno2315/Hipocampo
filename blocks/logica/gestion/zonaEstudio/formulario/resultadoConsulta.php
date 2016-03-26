@@ -20,7 +20,7 @@ class registrarForm {
 		$this->miSql = $sql;
 	}
 	function miForm() {
-		var_dump($_REQUEST);
+		
 		// Rescatar los datos de este bloque
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -45,7 +45,7 @@ class registrarForm {
 		$atributosGlobales ['campoSeguro'] = 'true';
 		
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = $esteBloque ['nombre'];
+		$esteCampo = "resultadoConsulta";
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		// Si no se coloca, entonces toma el valor predeterminado 'application/x-www-form-urlencoded'
@@ -68,8 +68,8 @@ class registrarForm {
 		 * PROCESAR VARIABLES DE CONSULTA
 		 */
 		{
-			
-			$conexion = "contractual";
+			var_dump($_REQUEST);exit;
+			$conexion = "logica";
 			$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 			
 			
@@ -231,7 +231,7 @@ class registrarForm {
 		// En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
 		// Paso 1: crear el listado de variables
 		
-		$valorCodificado = "actionBloque=" . $esteBloque ["nombre"];
+		$valorCodificado = "action=resultadoConsulta";
 		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];

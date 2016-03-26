@@ -26,6 +26,22 @@ $url .= "/index.php?";
 	$urlSector = $url . $cadena;
 }
 
+{ // Url para autocompletar los Titulos o Nombres de lo Proyectos
+  // Variables
+	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+	$cadenaACodificar .= "&procesarAjax=true";
+	$cadenaACodificar .= "&action=index.php";
+	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+	$cadenaACodificar .= "&funcion=busquedaTituloZona";
+	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+	// Codificar las variables
+	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+	// URL definitiva
+	$urlTituloZona = $url . $cadena;
+}
+
 ?>
 <script type='text/javascript'>
 
@@ -79,11 +95,7 @@ function consultas_sector(elem, request, response){
 	    	
 			if($("#<?php echo $this->campoSeguro('region')?>").val()!=''){
 				consulta_sectores();
-
 				}
-
-
-	    	
 		 });
 
 
@@ -93,11 +105,21 @@ function consultas_sector(elem, request, response){
 			consultas_sector();
 
 			}
+	 	 });
 
 
-    	
-	 });
 
+        $("#<?php echo $this->campoSeguro('nombre_pry_consulta') ?>").autocomplete({
+        	minChars: 3,
+        	serviceUrl: '<?php echo $urlTituloZona; ?>',
+        	onSelect: function (suggestion) {
+            	
+        	        $("#<?php echo $this->campoSeguro('id_zona') ?>").val(suggestion.data);
+        	    }
+                    
+        });
+
+	    
 	    
 
 		});

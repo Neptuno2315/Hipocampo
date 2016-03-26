@@ -305,6 +305,18 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['calidad_pqcmtr'] . "');";
 				
 				break;
+			
+			/*
+			 * Sentencias Consulta Información
+			 */
+			
+			case 'consultar_titulos_zonas' :
+				$cadenaSql = "SELECT id_zona_estudio AS data , titulo_proy AS  value  ";
+				$cadenaSql .= " FROM zona_estudio ";
+				$cadenaSql .= "WHERE cast(titulo_proy as text) ILIKE '%" . $variable . "%' ";
+				$cadenaSql .= "LIMIT 10; ";
+				
+				break;
 		}
 		
 		return $cadenaSql;
