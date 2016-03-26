@@ -141,7 +141,7 @@ class Pgsql extends ConectorDb {
 			
 			// Utilizar un esquema específico para toda la sesión
 			if ($this->dbesquema != '') {
-				$this->ejecutar_acceso_db ( 'SET search_path TO ' . $this->dbesquema );
+				$this->ejecutar_acceso_db ( 'ALTER DATABASE '.$this->db.' SET search_path TO ' . $this->dbesquema );
 			}
 			return $this->enlace;
 		} else {
