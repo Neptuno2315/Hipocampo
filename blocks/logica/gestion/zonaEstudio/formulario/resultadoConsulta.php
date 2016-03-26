@@ -108,7 +108,7 @@ class registrarForm {
 					'fecha_inicial' => $fecha_inicio,
 					'fecha_final' => $fecha_final 
 			);
-			var_dump($arreglo);exit;
+			var_dump($arreglo);
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( 'consultarContrato', $arreglo );
 			
@@ -131,7 +131,7 @@ class registrarForm {
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Consultar Contratos";
+		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		
 		if ($contratos) {
@@ -184,7 +184,7 @@ class registrarForm {
 			// echo $this->miFormulario->marcoAgrupacion("fin");
 		} else {
 			
-			$mensaje = "No Se Encontraron Contratos<br>Verifique los Parametros de Busqueda";
+			$mensaje = "No Se Encontraron Proyectos y/o Zonas Estudio <br>Verifique los Parametros de Busqueda";
 			
 			// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 			$esteCampo = 'mensajeRegistro';
