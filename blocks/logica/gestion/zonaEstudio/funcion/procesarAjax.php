@@ -1,12 +1,9 @@
 <?php
 // Conección a Base de Datos
-$conexion = "parametros";
-$esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 $conexion = "geografico";
 $esteRecursoGEO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 $conexion = "logica";
-$esteRecursoLG= $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-
+$esteRecursoLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 
 //
 

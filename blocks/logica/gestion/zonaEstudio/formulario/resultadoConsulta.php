@@ -68,61 +68,51 @@ class registrarForm {
 		 * PROCESAR VARIABLES DE CONSULTA
 		 */
 		{
-			var_dump($_REQUEST);exit;
 			$conexion = "logica";
-			$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+			$esteRecursoDBLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 			
-			
-			if (isset ( $_REQUEST ['id_contrato'] ) && $_REQUEST ['id_contrato'] != '') {
-				$contrato = $_REQUEST ['id_contrato'];
+			if (isset ( $_REQUEST ['region_consulta'] ) && $_REQUEST ['region_consulta'] != '') {
+				$region = $_REQUEST ['region_consulta'];
 			} else {
-				$contrato = '';
+				$region = '';
 			}
 			
-			if (isset ( $_REQUEST ['unidad_ejecutora'] ) && $_REQUEST ['unidad_ejecutora'] != '') {
-				$unidad_ejecutora = $_REQUEST ['unidad_ejecutora'];
+			if (isset ( $_REQUEST ['sector_consulta'] ) && $_REQUEST ['sector_consulta'] != '') {
+				$sector = $_REQUEST ['sector_consulta'];
 			} else {
-				$unidad_ejecutora = '';
+				$sector = '';
 			}
 			
-			if (isset ( $_REQUEST ['clase_contrato'] ) && $_REQUEST ['clase_contrato'] != '') {
-				$clase_contrato = $_REQUEST ['clase_contrato'];
+			if (isset ( $_REQUEST ['id_zona'] ) && $_REQUEST ['id_zona'] != '') {
+				$zona = $_REQUEST ['id_zona'];
 			} else {
-				$clase_contrato = '';
+				$zona = '';
 			}
 			
-			if (isset ( $_REQUEST ['id_contratista'] ) && $_REQUEST ['id_contratista'] != '') {
-				$contratista = $_REQUEST ['id_contratista'];
-			} else {
-				$contratista = '';
-			}
-			
-			
-			if (isset ( $_REQUEST ['fecha_inicio_sub'] ) && $_REQUEST ['fecha_inicio_sub'] != '') {
-				$fecha_inicio = $_REQUEST ['fecha_inicio_sub'];
+			if (isset ( $_REQUEST ['fecha_inicio_consulta'] ) && $_REQUEST ['fecha_inicio_consulta'] != '') {
+				$fecha_inicio = $_REQUEST ['fecha_inicio_consulta'];
 			} else {
 				$fecha_inicio = '';
 			}
 			
-			if (isset ( $_REQUEST ['id_contratista'] ) && $_REQUEST ['id_contratista'] != '') {
-				$fecha_final = $_REQUEST ['id_contratista'];
+			if (isset ( $_REQUEST ['fecha_final_consulta'] ) && $_REQUEST ['fecha_final_consulta'] != '') {
+				$fecha_final = $_REQUEST ['fecha_final_consulta'];
 			} else {
 				$fecha_final = '';
 			}
-			
+			/*Arreglo de Variables*/
 			$arreglo = array (
-					'id_contrato'=>$contrato,
-					'unidad_ejecutora' => $unidad_ejecutora,
-					'clase_contrato' => $clase_contrato,
-					'id_contratista' => $contratista,
+					'region' => $region,
+					'sector' => $sector,
+					'zona_estudio' => $zona,
 					'fecha_inicial' => $fecha_inicio,
 					'fecha_final' => $fecha_final 
 			);
+			var_dump($arreglo);exit;
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( 'consultarContrato', $arreglo );
 			
-			$contratos = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
+			$contratos = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		}
 		
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -159,19 +149,16 @@ class registrarForm {
             </thead>
             <tbody>";
 			
-			foreach (  $contratos as $valor ) {
+			foreach ( $contratos as $valor ) {
 				$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
 				$variable .= "&opcion=modificarContratos";
 				$variable .= "&id_solicitud_necesidad=" . $valor ['id_sol_necesidad'];
 				$variable .= "&id_contrato=" . $valor ['id_contrato'];
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				$variable .= "&bloqueNombre=" . $_REQUEST['bloque'];
-				$variable .= "&bloqueGrupo=" . $_REQUEST['bloqueGrupo'];
-				$variable .= "&tiempo=" . $_REQUEST['tiempo'];
+				$variable .= "&bloqueNombre=" . $_REQUEST ['bloque'];
+				$variable .= "&bloqueGrupo=" . $_REQUEST ['bloqueGrupo'];
+				$variable .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
-				
-				
-				
 				
 				$mostrarHtml = "<tr>
                     <td><center>" . $valor ['vigencia'] . "</center></td>

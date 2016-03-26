@@ -113,14 +113,20 @@ function consultas_sector(elem, request, response){
         	minChars: 3,
         	serviceUrl: '<?php echo $urlTituloZona; ?>',
         	onSelect: function (suggestion) {
-            	
-        	        $("#<?php echo $this->campoSeguro('id_zona') ?>").val(suggestion.data);
+            	    $("#<?php echo $this->campoSeguro('id_zona') ?>").val(suggestion.data);
         	    }
                     
         });
 
 	    
-	    
+	    $("#<?php echo $this->campoSeguro('nombre_pry_consulta')?>").blur(function() {
+
+	    	if($("#<?php echo $this->campoSeguro('id_zona') ?>")!=''){
+
+	    		$("#<?php echo $this->campoSeguro('nombre_pry_consulta')?>").val('');
+		    	
+		    	}
+	 	 });
 
 		});
 	</script>

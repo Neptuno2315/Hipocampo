@@ -161,7 +161,7 @@ class consultarForm {
 			$atributos ['tamanno'] = 65;
 			$atributos ['maximoTamanno'] = '4000';
 			$atributos ['anchoEtiqueta'] = 120;
-			$atributos ['textoFondo'] = "Ingrese Mínimo 5 Caracteres de Búsqueda";
+			$atributos ['textoFondo'] = "Ingrese Mínimo 3 Caracteres de Búsqueda";
 			$tab ++;
 			
 			// Aplica atributos globales al control
