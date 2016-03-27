@@ -7,6 +7,12 @@
 // URL base
 $url = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+
+
+$urlDirectorio = $url;
+$urlDirectorio = $urlDirectorio . "/plugin/scripts/javascript/dataTable/Spanish.json";
+
+
 $url .= "/index.php?";
 
 // Variables
@@ -79,7 +85,9 @@ $(function() {
          	$('#tablaInfoZonas').ready(function() {
 
              $('#tablaInfoZonas').dataTable( {
-
+            	 language: {
+                     url: "<?php echo $urlDirectorio?>"
+                 			},
 				processing: true,
 		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
                   searching: true,
