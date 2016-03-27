@@ -328,34 +328,26 @@ class Sql extends \Sql {
 			 */
 			
 			case 'consulta_zonas_estudio' :
-				var_dump($variable);exit;
+				
 				$cadenaSql = "SELECT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
 				$cadenaSql .= "FROM zona_estudio zn ";
 				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
-				if ($variable ['tipo_orden'] != '') {
-					$cadenaSql .= " AND ro.tipo_orden = '" . $variable ['tipo_orden'] . "' ";
+				if ($variable ['region'] != '') {
+					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";
 				}
 				
-				if ($variable ['numero_orden'] != '') {
-					$cadenaSql .= " AND ro.id_orden = '" . $variable ['numero_orden'] . "' ";
+				if ($variable ['sector'] != '') {
+					$cadenaSql .= " AND sec.id_sector = '" . $variable ['sector'] . "' ";
 				}
 				
-				if ($variable ['nit'] != '') {
-					$cadenaSql .= " AND cn.identificacion = '" . $variable ['nit'] . "' ";
-				}
-				
-				if ($variable ['sede'] != '') {
-					$cadenaSql .= " AND ro.sede = '" . $variable ['sede'] . "' ";
-				}
-				
-				if ($variable ['dependencia'] != '') {
-					$cadenaSql .= " AND ro.dependencia_solicitante = '" . $variable ['dependencia'] . "' ";
+				if ($variable ['zona_estudio'] != '') {
+					$cadenaSql .= " AND  zn.id_zona_estudio= '" . $variable ['zona_estudio'] . "' ";
 				}
 				
 				if ($variable ['fecha_inicial'] != '') {
-					$cadenaSql .= " AND ro.fecha_registro BETWEEN CAST ( '" . $variable ['fecha_inicial'] . "' AS DATE) ";
+					$cadenaSql .= " AND zn.fecha_registro BETWEEN CAST ( '" . $variable ['fecha_inicial'] . "' AS DATE) ";
 					$cadenaSql .= " AND  CAST ( '" . $variable ['fecha_final'] . "' AS DATE)  ";
 				}
 				

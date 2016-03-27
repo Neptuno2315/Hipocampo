@@ -17,7 +17,7 @@ $url .= "/index.php?";
 	$cadenaACodificar .= "&action=index.php";
 	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
 	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-	$cadenaACodificar .= "&funcion=SeleccionSector";
+	$cadenaACodificar .= "&funcion=consultarZonasEstudio";
 	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 	
 	if (isset ( $_REQUEST ['region_consulta'] ) && $_REQUEST ['region_consulta'] != '') {
@@ -76,15 +76,12 @@ $url .= "/index.php?";
 
 
 $(function() {
-         	$('#tablaTitulos').ready(function() {
+         	$('#tablaInfoZonas').ready(function() {
 
-             $('#tablaTitulos').dataTable( {
+             $('#tablaInfoZonas').dataTable( {
 //              	 serverSide: true,
-				language: {
-                url: "<?php echo $urlDirectorio?>"
-            			},
-             	processing: true,
-		"aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
+				processing: true,
+		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
 //                   ordering: true,
                   searching: true,
 //                deferRender: true,
@@ -97,21 +94,16 @@ $(function() {
          //          renderer: "bootstrap",
          //          retrieve: true,
                   ajax:{
-                      url:"<?php echo $urlFinal?>",
+                      url:"<?php echo $urlTabla?>",
                       dataSrc:"data"                                                                  
                   },
                   columns: [
-                  { data :"tipobien" },
-                  { data :"placa" },
-                  { data :"descripcion" },
-                  { data :"sede" },
-                  { data :"dependencia" },
-                  { data :"espaciofisico" },
-                  { data :"estadoelemento" },
-                  { data :"contratista" },
-                  { data :"detalle" },
-                  { data :"observaciones" },
-                  { data :"verificacion" },
+                  { data :"region" },
+                  { data :"sector" },
+                  { data :"titulo" },
+                  { data :"fecha" },
+                  { data :"moficar" },
+                  { data :"eliminar" },
                             ]
              });
                   

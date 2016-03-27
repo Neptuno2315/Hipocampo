@@ -113,10 +113,6 @@ class registrarForm {
 			$cadenaSql = $this->miSql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
 			$informacion_zona = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			
-			var_dump($informacion_zona);exit;
-			
 		}
 		
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -137,24 +133,19 @@ class registrarForm {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		unset($atributos);
+		unset ( $atributos );
 		if ($informacion_zona) {
 			
-			$mostrarHtml = "<table id='tablaTitulos'>
+			$mostrarHtml = "<table id='tablaInfoZonas'>
 									<thead>
 						                <tr>
 						              	    <th>Región</th>
 											<th>Sector</th>
 											<th>Titulo y/o Nombre<br>Proyecto</th>
 											<th>Fecha Registro</th>
-											<th>Dependencia</th>
-											<th>Espacio Físico</th>
-						                	<th>Estado Elemento</th>
-											<th>Contratista<br>A Cargo</th>
-											<th>Detalle Elemento</th> 
-											<th>Registrar<br>Observaciones</th> 
-											<th>Verificación</th> 
-											 </tr>
+											<th>Modificar</th> 
+											<th>Eliminar</th> 
+									    </tr>
 						            </thead>
 							</table>			
             ";
@@ -175,12 +166,12 @@ class registrarForm {
 			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->cuadroMensaje ( $atributos );
-			unset($atributos);
+			unset ( $atributos );
 			// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
 		}
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-		unset($atributos);
+		unset ( $atributos );
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
 		/**
