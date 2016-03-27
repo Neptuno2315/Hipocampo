@@ -92,7 +92,7 @@ $(function() {
 		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
                   searching: true,
                   "scrollY":"220px",
-                  "scrollCollapse": true,
+                 "scrollCollapse": false,
                   info:true,
 	   		    "pagingType": "full_numbers",
 

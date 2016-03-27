@@ -59,11 +59,10 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&procesarAjax=true";
-				$cadenaACodificar .= "&actionBloque=index.php";
-				$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+				$cadenaACodificar .= "&actionBloque=modifcarInformacionZona";
+				$cadenaACodificar .= "&opcion=modifcarInformacionZona";
+				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-				$cadenaACodificar .= "&funcion=modifcarInformacionZona";
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
@@ -75,11 +74,10 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$urlModificar = $url . $cadena;
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&procesarAjax=true";
-				$cadenaACodificar .= "&action=index.php";
-				$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+				$cadenaACodificar .= "&actionBloque=eliminarInformacionZona";
+				$cadenaACodificar .= "&opcion=eliminarInformacionZona";
+				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-				$cadenaACodificar .= "&funcion=eliminarInformacionZona";
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
