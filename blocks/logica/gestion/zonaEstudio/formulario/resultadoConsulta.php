@@ -68,6 +68,7 @@ class registrarForm {
 		 * PROCESAR VARIABLES DE CONSULTA
 		 */
 		{
+			// Datos Conexion
 			$conexion = "logica";
 			$esteRecursoDBLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 			
@@ -100,7 +101,7 @@ class registrarForm {
 			} else {
 				$fecha_final = '';
 			}
-			/*Arreglo de Variables*/
+			/* Arreglo de Variables */
 			$arreglo = array (
 					'region' => $region,
 					'sector' => $sector,
@@ -108,11 +109,14 @@ class registrarForm {
 					'fecha_inicial' => $fecha_inicio,
 					'fecha_final' => $fecha_final 
 			);
-			var_dump($arreglo);
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'consultarContrato', $arreglo );
+			$cadenaSql = $this->miSql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
-			$contratos = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			$informacion_zona = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			
+			var_dump($informacion_zona);exit;
+			
 		}
 		
 		$miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
@@ -133,55 +137,28 @@ class registrarForm {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		
-		if ($contratos) {
+		unset($atributos);
+		if ($informacion_zona) {
 			
-			echo "<table id='tabla'>";
-			
-			echo "<thead>
-                             <tr>
-                                <th>Vigencia</th>
-                    			<th>Número Contrato</th>            
-            					<th>Identificacion<br>Contratista</th>
-                                <th>Nombre<br>Contratista</th>
-                                <th>Actualizar<br>Contratista</th>
-                             </tr>
-            </thead>
-            <tbody>";
-			
-			foreach ( $contratos as $valor ) {
-				$variable = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
-				$variable .= "&opcion=modificarContratos";
-				$variable .= "&id_solicitud_necesidad=" . $valor ['id_sol_necesidad'];
-				$variable .= "&id_contrato=" . $valor ['id_contrato'];
-				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				$variable .= "&bloqueNombre=" . $_REQUEST ['bloque'];
-				$variable .= "&bloqueGrupo=" . $_REQUEST ['bloqueGrupo'];
-				$variable .= "&tiempo=" . $_REQUEST ['tiempo'];
-				$variable = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variable, $directorio );
-				
-				$mostrarHtml = "<tr>
-                    <td><center>" . $valor ['vigencia'] . "</center></td>
-                    <td><center>" . $valor ['numero_contrato'] . "</center></td>
-                   	<td><center>" . $valor ['identificacion'] . "</center></td>
-                    <td><center>" . $valor ['nombre'] . "</center></td>
-                    <td><center>
-                    	<a href='" . $variable . "'>
-                            <img src='" . $rutaBloque . "/css/images/modificar.png' width='15px'>
-                        </a>
-                  	</center> </td>
-                         </tr>";
-				echo $mostrarHtml;
-				unset ( $mostrarHtml );
-				unset ( $variable );
-			}
-			
-			echo "</tbody>";
-			
-			echo "</table>";
-			
-			// Fin de Conjunto de Controles
-			// echo $this->miFormulario->marcoAgrupacion("fin");
+			$mostrarHtml = "<table id='tablaTitulos'>
+									<thead>
+						                <tr>
+						              	    <th>Región</th>
+											<th>Sector</th>
+											<th>Titulo y/o Nombre<br>Proyecto</th>
+											<th>Fecha Registro</th>
+											<th>Dependencia</th>
+											<th>Espacio Físico</th>
+						                	<th>Estado Elemento</th>
+											<th>Contratista<br>A Cargo</th>
+											<th>Detalle Elemento</th> 
+											<th>Registrar<br>Observaciones</th> 
+											<th>Verificación</th> 
+											 </tr>
+						            </thead>
+							</table>			
+            ";
+			echo $mostrarHtml;
 		} else {
 			
 			$mensaje = "No Se Encontraron Proyectos y/o Zonas Estudio <br>Verifique los Parametros de Busqueda";
@@ -198,11 +175,12 @@ class registrarForm {
 			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->cuadroMensaje ( $atributos );
+			unset($atributos);
 			// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
 		}
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-		
+		unset($atributos);
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
 		/**
