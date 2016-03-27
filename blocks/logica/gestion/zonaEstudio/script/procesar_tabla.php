@@ -19,6 +19,7 @@ $url .= "/index.php?";
 	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 	$cadenaACodificar .= "&funcion=consultarZonasEstudio";
 	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+	$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 	
 	if (isset ( $_REQUEST ['region_consulta'] ) && $_REQUEST ['region_consulta'] != '') {
 		$region = $_REQUEST ['region_consulta'];
@@ -58,7 +59,7 @@ $url .= "/index.php?";
 			'fecha_final' => $fecha_final 
 	);
 	
-	$arreglo = serialize ( $arreglo );
+	$arreglo =base64_encode ( serialize ( $arreglo ));
 	
 	$cadenaACodificar .= "&arreglo=" . $arreglo;
 	
@@ -102,7 +103,7 @@ $(function() {
                   { data :"sector" },
                   { data :"titulo" },
                   { data :"fecha" },
-                  { data :"moficar" },
+                  { data :"modificar" },
                   { data :"eliminar" },
                             ]
              });

@@ -33,84 +33,66 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			break;
 		
 		case 'consultarZonasEstudio' :
-			$arreglo = unserialize ( $_REQUEST ['arreglo'] );
+			$arreglo =  unserialize ( base64_decode ($_REQUEST ['arreglo'] ) );
 			
 			$cadenaSql = $this->sql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
-			var_dump($resultado);exit;
+// 			var_dump ( $resultado );
+// 			exit ();
 			
-	
-			for($i = 0; $i < count ( $resultado ); $i ++) {
+			// URL base
+			$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+			$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+			$url .= "/index.php?";
+			
+			
+			foreach ( $resultado as $valor ) {
 				
-				if (isset ( $_REQUEST ['accesoCondor'] ) && $_REQUEST ['accesoCondor'] == 'true') {
-					$VariableDetalles = "pagina=elementoDetalle";
-				} else {
-					$VariableDetalles = "pagina=detalleElemento";
-				}
+				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&procesarAjax=true";
+				$cadenaACodificar .= "&actionBloque=index.php";
+				$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$cadenaACodificar .= "&funcion=modifcarInformacionZona";
+				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				// Codificar las variables
+				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 				
-				// pendiente la pagina para modificar parametro
-				$VariableDetalles .= "&opcion=detalle";
-				$VariableDetalles .= "&elemento=" . $resultado [$i] ['identificador_elemento_individual'];
-				$VariableDetalles .= "&funcionario=" . $arreglo ['funcionario'];
-				$VariableDetalles .= "&usuario=" . $_REQUEST ['usuario'];
-				$VariableDetalles .= "&periodo=" . $resultado_periodo [0] [0];
-				if (isset ( $_REQUEST ['accesoCondor'] ) && $_REQUEST ['accesoCondor'] == 'true') {
-					$VariableDetalles .= "&accesoCondor=true";
-				}
+				// URL definitiva
+				$urlModificar = $url . $cadena;
 				
-				$VariableDetalles = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $VariableDetalles, $directorio );
 				
-				$VariableObservaciones = "pagina=" . $miPaginaActual; // pendiente la pagina para modificar parametro
-				$VariableObservaciones .= "&opcion=observaciones";
-				$VariableObservaciones .= "&elemento_individual=" . $resultado [$i] ['identificador_elemento_individual'];
-				$VariableObservaciones .= "&funcionario=" . $arreglo ['funcionario'];
-				$VariableObservaciones .= "&placa=" . $resultado [$i] ['placa'];
-				$VariableObservaciones .= "&usuario=" . $_REQUEST ['usuario'];
-				$VariableObservaciones .= "&periodo=" . $resultado_periodo [0] [0];
-				if (isset ( $_REQUEST ['accesoCondor'] ) && $_REQUEST ['accesoCondor'] == 'true') {
-					$VariableObservaciones .= "&accesoCondor=true";
-				}
 				
-				$VariableObservaciones = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $VariableObservaciones, $directorio );
+				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&procesarAjax=true";
+				$cadenaACodificar .= "&action=index.php";
+				$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$cadenaACodificar .= "&funcion=eliminarInformacionZona";
+				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				// Codificar las variables
+				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 				
-				$identificaciones_elementos [] = $resultado [$i] ['identificador_elemento_individual'];
+				// URL definitiva
+				$urlEliminar = $url . $cadena;
 				
-				$nombre = 'item_' . $i;
-				$atributos ['id'] = $nombre;
-				$atributos ['nombre'] = $nombre;
-				$atributos ['marco'] = true;
-				$atributos ['estiloMarco'] = true;
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = 1;
-				$atributos ['tabIndex'] = $tab;
-				$atributos ['etiqueta'] = '';
-				$atributos ['seleccionado'] = ($resultado [$i] ['confirmada_existencia'] == 't') ? true : false;
-				$atributos ['evento'] = 'onclick';
-				$atributos ['eventoFuncion'] = ' verificarElementos(this.form)';
-				$atributos ['valor'] = $resultado [$i] ['identificador_elemento_individual'];
-				$atributos ['deshabilitado'] = false;
-				$tab ++;
 				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				
-				$item = ($resultado [$i] ['tipo_confirmada'] == 1) ? '&#8730 ' : $this->miFormulario->campoCuadroSeleccion ( $atributos );
 				
 				$resultadoFinal [] = array (
-						'tipobien' => "<center>" . $resultado [$i] ['nombre_tipo_bienes'] . "</center>",
-						'placa' => "<center>" . $resultado [$i] ['placa'] . "</center>",
-						'descripcion' => "<center>" . $resultado [$i] ['descripcion_elemento'] . "</center>",
-						'sede' => "<center>" . $resultado [$i] ['sede'] . "</center>",
-						'dependencia' => "<center>" . $resultado [$i] ['dependencia'] . "</center>",
-						'espaciofisico' => "<center>" . $resultado [$i] ['espaciofisico'] . "</center>",
-						'estadoelemento' => "<center>" . $resultado [$i] ['estado_bien'] . "</center>",
-						'contratista' => "<center>" . $resultado [$i] ['contratista'] . "</center>",
-						'detalle' => "<center><a href='" . $VariableDetalles . "'><u>Ver Detalles</u></a></center>",
-						'observaciones' => "<center><a href='" . $VariableObservaciones . "'>&#9658; &blk34;</a></center>",
-						'verificacion' => "<center>" . $item . "</center>" 
+						'region' => "<center>" . $resultado [$i] ['region'] . "</center>",
+						'sector' => "<center>" . $resultado [$i] ['sector'] . "</center>",
+						'titulo' => "<center>" . $resultado [$i] ['titulo_proy'] . "</center>",
+						'fecha' => "<center>" . $resultado [$i] ['fecha_registro'] . "</center>",
+						'modificar' => "<center><a href='" . $urlModificar . "'><u>&#9658; &blk34;</u></a></center>",
+						'eliminar' => "<center><a href='" . $urlEliminar . "'><u>X</u></a></center>", 
 				);
 			}
 			
