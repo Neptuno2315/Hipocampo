@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * Los datos del bloque se encuentran en el arreglo $esteBloque.
@@ -69,6 +68,7 @@ $url .= "/index.php?";
 	
 	// URL definitiva
 	$urlTabla = $url . $cadena;
+	
 }
 ?>
 <script type='text/javascript'>
