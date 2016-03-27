@@ -58,7 +58,7 @@ $url .= "/index.php?";
 			'fecha_final' => $fecha_final 
 	);
 	
-	$arreglo =base64_encode ( serialize ( $arreglo ));
+	$arreglo = base64_encode ( serialize ( $arreglo ) );
 	
 	$cadenaACodificar .= "&arreglo=" . $arreglo;
 	
@@ -68,7 +68,6 @@ $url .= "/index.php?";
 	
 	// URL definitiva
 	$urlTabla = $url . $cadena;
-	
 }
 ?>
 <script type='text/javascript'>
@@ -80,20 +79,15 @@ $(function() {
          	$('#tablaInfoZonas').ready(function() {
 
              $('#tablaInfoZonas').dataTable( {
-//              	 serverSide: true,
+
 				processing: true,
 		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
-//                   ordering: true,
                   searching: true,
-//                deferRender: true,
-      //             sScrollY: 500	,
-        //          bScrollCollapse: true,
+                  "scrollY":"220px",
+                  "scrollCollapse": true,
                   info:true,
-//                   lengthChange:true,
-   		    "pagingType": "full_numbers",
-//                   stateSave: true,
-         //          renderer: "bootstrap",
-         //          retrieve: true,
+	   		    "pagingType": "full_numbers",
+
                   ajax:{
                       url:"<?php echo $urlTabla?>",
                       dataSrc:"data"                                                                  
