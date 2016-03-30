@@ -12,7 +12,8 @@ body {
 	width: 100%;
     top: -3px;
     background-image: url("images/imagen2.JPG");
-    background-size: 200% 405%;
+    background-size: cover;
+    /*background-size: 200% 405%;*/
     background-repeat: no-repeat;
     background-color: gray;
     background-position: 49% 20%;

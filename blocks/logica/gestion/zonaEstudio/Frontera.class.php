@@ -59,11 +59,8 @@ class Frontera {
 					
 					break;
 				
-				case 'modifcarInformacionZona' :
-					var_dump ( $_REQUEST );
-					echo "modificar";exit;
-					include_once ($this->ruta . "/formulario/resultadoConsulta.php");
-					
+				case 'modificarInformacionZona' :
+					include_once ($this->ruta . "/formulario/modificacion.php");
 					break;
 				
 				case 'eliminarInformacionZona' :

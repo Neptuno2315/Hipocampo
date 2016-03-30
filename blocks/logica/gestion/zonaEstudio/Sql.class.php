@@ -319,12 +319,34 @@ class Sql extends \Sql {
 				
 				break;
 			
+			case 'consulta_zonas_estudio' :
+				
+				$cadenaSql = "SELECT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
+				$cadenaSql .= "FROM zona_estudio zn ";
+				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
+				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
+				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
+				if ($variable ['region'] != '') {
+					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";
+				}
+				
+				if ($variable ['sector'] != '') {
+					$cadenaSql .= " AND sec.id_sector = '" . $variable ['sector'] . "' ";
+				}
+				
+				if ($variable ['zona_estudio'] != '') {
+					$cadenaSql .= " AND  zn.id_zona_estudio= '" . $variable ['zona_estudio'] . "' ";
+				}
+				
+				if ($variable ['fecha_inicial'] != '') {
+					$cadenaSql .= " AND zn.fecha_registro BETWEEN CAST ( '" . $variable ['fecha_inicial'] . "' AS DATE) ";
+					$cadenaSql .= " AND  CAST ( '" . $variable ['fecha_final'] . "' AS DATE)  ";
+				}
+				
+				break;
+			
 			/*
-			 *
-			 *
-			 *
-			 *
-			 *
+			 * Sentencias Modificación Información
 			 */
 			
 			case 'consulta_zonas_estudio' :

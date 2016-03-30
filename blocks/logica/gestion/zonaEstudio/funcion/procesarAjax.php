@@ -60,12 +60,14 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 				$cadenaACodificar .= "&actionBloque=modifcarInformacionZona";
-				$cadenaACodificar .= "&opcion=modifcarInformacionZona";
+				$cadenaACodificar .= "&opcion=modificarInformacionZona";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
@@ -81,6 +83,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
