@@ -349,29 +349,21 @@ class Sql extends \Sql {
 			 * Sentencias Modificación Información
 			 */
 			
-			case 'consulta_zonas_estudio' :
+			case 'consultar_general_por_zona' :
 				
-				$cadenaSql = "SELECT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
+				$cadenaSql = "SELECT zn.*,id_peligros,  calado_mxbq, holgura_bjqll, maxima_olpr, 
+						       sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr, 
+						       prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb, 
+						       distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr, 
+						       distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs, 
+						       distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl, 
+						       calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr,id_inf_carta_nautica, boyas_ais, boyas_nais, 
+						       racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm, 
+						       disponible_servpl, observaciones ";
 				$cadenaSql .= "FROM zona_estudio zn ";
-				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
-				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
-				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
-				if ($variable ['region'] != '') {
-					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";
-				}
-				
-				if ($variable ['sector'] != '') {
-					$cadenaSql .= " AND sec.id_sector = '" . $variable ['sector'] . "' ";
-				}
-				
-				if ($variable ['zona_estudio'] != '') {
-					$cadenaSql .= " AND  zn.id_zona_estudio= '" . $variable ['zona_estudio'] . "' ";
-				}
-				
-				if ($variable ['fecha_inicial'] != '') {
-					$cadenaSql .= " AND zn.fecha_registro BETWEEN CAST ( '" . $variable ['fecha_inicial'] . "' AS DATE) ";
-					$cadenaSql .= " AND  CAST ( '" . $variable ['fecha_final'] . "' AS DATE)  ";
-				}
+				$cadenaSql .= "JOIN peligros pl ON pl.id_zona_estudio=zn.id_zona_estudio ";
+				$cadenaSql .= "JOIN informacion_carta_nautica ic ON ic.id_zona_estudio=zn.id_zona_estudio ";
+				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable. "' ;";
 				
 				break;
 		}

@@ -30,14 +30,16 @@ class registrarForm {
 		$conexion = "logica";
 		
 		$esteRecursoDBLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+		$esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		
+		$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_por_zona", $_REQUEST ['id_zona'] );
+		$informacion = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		
-		$cadenaSql=$this->miSql->getCadenaSql ( "consultar_region", $_REQUEST['id_zona']);
-		
-		
-		
-		
+		// var_dump($esteRecursoDBLG);
+		var_dump ( $informacion );
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
 		/**
@@ -81,7 +83,7 @@ class registrarForm {
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Modificar Proyecto de la Zona de Estudio : ".$_REQUEST['titulo_proyecto'];
+		$atributos ["leyenda"] = "Modificar Proyecto de la Zona de Estudio : " . $_REQUEST ['titulo_proyecto'];
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
 		
