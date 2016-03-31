@@ -40,7 +40,7 @@ class FormProcessor {
 					"id_sector" => $_REQUEST ['sector'],
 					"titulo_proy" => $_REQUEST ['nombre_pry'],
 					"profundidad_qll" => $_REQUEST ['pr_co_ba'],
-					"ancho_canl" => $_REQUEST ['pr_co_ba'],
+					"ancho_canl" => $_REQUEST ['ancho_canal'],
 					"obtrucciones_vs" => $_REQUEST ['obtrucciones_visibilidad'],
 					"complejidad_hdr" => $_REQUEST ['complejidad_hidrovia'],
 					"tipo_fn" => $_REQUEST ['tipo_fondo'],

@@ -37,9 +37,35 @@ class registrarForm {
 		
 		$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_por_zona", $_REQUEST ['id_zona'] );
 		$informacion = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		
+		$informacion = $informacion [0];
 		// var_dump($esteRecursoDBLG);
-		var_dump ( $informacion );
+// 		var_dump ( $informacion );
+		
+		$arreglo_zona = array (
+				"sector" => $informacion ['id_sector'],
+				"nombre_pry" => $informacion ['titulo_proy'],
+				"pr_co_ba" => $informacion ['profundidad_qll'],
+				"pr_co_ba" => $informacion ['ancho_canl'],
+				"obtrucciones_visibilidad" => $informacion ['obtrucciones_vs'],
+				"complejidad_hidrovia" => $informacion ['complejidad_hdr'],
+				"tipo_fondo" => $informacion ['tipo_fn'],
+				"estabilidad_sedimentos" => $informacion ['estabilidad_sed'],
+				"ayudas_navegacion" => $informacion ['ayudas_nv'],
+				"calidad_datos" => $informacion ['calidad_dthd'],
+				"opera_nc_di" => $informacion ['operaciones_ddn'],
+				"estado_mar" => $informacion ['estado_mr'],
+				"obser_des__vi_mr" => $informacion ['observaciones_vncr'],
+				"visibilidad" => $informacion ['restricciones_vs'],
+				"con_hielo" => $informacion ['condiciones_hl'],
+				"ilum_fondo" => $informacion ['iluminacion_fn'],
+				"obser_escom" => $informacion ['observaciones_scm'],
+				"mn_stm" => $informacion ['monitoreo_stm'] 
+		);
+		
+		$_REQUEST=array_merge($_REQUEST,$arreglo_zona);
+		var_dump ( $arreglo_zona );
+		
+		
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
 		/**
