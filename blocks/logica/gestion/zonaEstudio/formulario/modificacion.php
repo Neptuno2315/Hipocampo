@@ -38,14 +38,12 @@ class registrarForm {
 		$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_por_zona", $_REQUEST ['id_zona'] );
 		$informacion = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$informacion = $informacion [0];
-		// var_dump($esteRecursoDBLG);
-// 		var_dump ( $informacion );
 		
 		$arreglo_zona = array (
 				"sector" => $informacion ['id_sector'],
 				"nombre_pry" => $informacion ['titulo_proy'],
 				"pr_co_ba" => $informacion ['profundidad_qll'],
-				"pr_co_ba" => $informacion ['ancho_canl'],
+				"ancho_canal" => $informacion ['ancho_canl'],
 				"obtrucciones_visibilidad" => $informacion ['obtrucciones_vs'],
 				"complejidad_hidrovia" => $informacion ['complejidad_hdr'],
 				"tipo_fondo" => $informacion ['tipo_fn'],
@@ -56,16 +54,23 @@ class registrarForm {
 				"estado_mar" => $informacion ['estado_mr'],
 				"obser_des__vi_mr" => $informacion ['observaciones_vncr'],
 				"visibilidad" => $informacion ['restricciones_vs'],
-				"con_hielo" => $informacion ['condiciones_hl'],
+				"con_hielo" => ($informacion ['condiciones_hl'] != 'f') ? 1 : 0,
 				"ilum_fondo" => $informacion ['iluminacion_fn'],
 				"obser_escom" => $informacion ['observaciones_scm'],
-				"mn_stm" => $informacion ['monitoreo_stm'] 
+				"mn_stm" => $informacion ['monitoreo_stm'],
+				"bo_mo_for_re" => $informacion ['boyas_ais'],
+				"bo_si_ais_no_super" => $informacion ['boyas_nais'],
+				"racon" => $informacion ['racon_num'],
+				"linterna" => $informacion ['linternas_num'],
+				"ort_aton" => $informacion ['otras_aton'],
+				"g_gps" => ($informacion ['proporciona_dgps'] != 'f') ? 1 : 0,
+				"ds_stm" => ($informacion ['disponibilidad_stm'] != 'f') ? 1 : 0,
+				"ds_srv_pl" => ($informacion ['disponible_servpl'] != 'f') ? 1 : 0,
+				"obser_des__sis_sn" => $informacion ['observaciones'] 
 		);
 		
-		$_REQUEST=array_merge($_REQUEST,$arreglo_zona);
+		$_REQUEST = array_merge ( $_REQUEST, $arreglo_zona );
 		var_dump ( $arreglo_zona );
-		
-		
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
 		/**
@@ -1872,7 +1877,11 @@ class registrarForm {
 								$esteCampo = 'tipo_fondo';
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -1903,7 +1912,11 @@ class registrarForm {
 								$esteCampo = 'estabilidad_sedimentos';
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -2185,12 +2198,6 @@ class registrarForm {
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[9]';
-							
-							if (isset ( $_REQUEST [$esteCampo] )) {
-								$atributos ['valor'] = $_REQUEST [$esteCampo];
-							} else {
-								$atributos ['valor'] = '';
-							}
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 15;
@@ -2216,7 +2223,11 @@ class registrarForm {
 							$esteCampo = 'g_gps'; // GPS diferencial
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = 0;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = 0;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = false;
@@ -2255,7 +2266,11 @@ class registrarForm {
 							$esteCampo = 'ds_stm'; // Servicion de Trafico Maritimo
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = 0;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = 0;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = false;
@@ -2296,7 +2311,11 @@ class registrarForm {
 							$esteCampo = 'ds_srv_pl'; // Disponible al Servicio de Pilotos
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = 0;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = 0;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = false;
@@ -2338,6 +2357,11 @@ class registrarForm {
 							$atributos ['id'] = $esteCampo;
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['tipo'] = 'text';
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['valor'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['valor'] = '';
+							}
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['marco'] = true;
 							$atributos ['estiloMarco'] = '';
@@ -2377,7 +2401,11 @@ class registrarForm {
 							$esteCampo = 'opera_nc_di'; // Operaciones Noche / Dia
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = - 1;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = - 1;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = true;
@@ -2409,7 +2437,11 @@ class registrarForm {
 							$esteCampo = 'estado_mar'; // Estado Mar
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = - 1;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = - 1;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = true;
@@ -2441,6 +2473,11 @@ class registrarForm {
 							$esteCampo = 'obser_des__vi_mr'; // Observaciones Condiciones Navegacion
 							$atributos ['id'] = $esteCampo;
 							$atributos ['nombre'] = $esteCampo;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['valor'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['valor'] = '';
+							}
 							$atributos ['tipo'] = 'text';
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['marco'] = true;
@@ -2477,7 +2514,6 @@ class registrarForm {
 							$atributos ['tabIndex'] = $tab;
 							$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 							$atributos ['validar'] = 'required,custom[number],min[0.1],maxSize[10]';
-							
 							if (isset ( $_REQUEST [$esteCampo] )) {
 								$atributos ['valor'] = $_REQUEST [$esteCampo];
 							} else {
@@ -2536,7 +2572,11 @@ class registrarForm {
 							
 							$esteCampo = 'ilum_fondo'; // Iluminación de Fondo
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = - 1;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = - 1;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = true;
@@ -2581,6 +2621,11 @@ class registrarForm {
 							$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 							$atributos ['deshabilitado'] = false;
 							$atributos ['tamanno'] = 20;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['valor'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['valor'] = '';
+							}
 							$atributos ['maximoTamanno'] = '';
 							$atributos ['anchoEtiqueta'] = 220;
 							$tab ++;
@@ -2609,6 +2654,11 @@ class registrarForm {
 							$atributos ['id'] = $esteCampo;
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['tipo'] = 'text';
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['valor'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['valor'] = '';
+							}
 							$atributos ['estilo'] = 'jqueryui';
 							$atributos ['marco'] = true;
 							$atributos ['estiloMarco'] = '';
