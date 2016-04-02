@@ -79,9 +79,10 @@ table.dataTable tr.even td.sorting_3 { background-color: #c5c5c5; }
  * Table information
  */
 .dataTables_info {
-	padding-top: 3px;
+	padding-top: 11px;
 	clear: both;
 	float: left;
+	font-size: xx-small;
 }
 
 
@@ -89,6 +90,8 @@ table.dataTable tr.even td.sorting_3 { background-color: #c5c5c5; }
  * Pagination
  */
 .dataTables_paginate {
+	padding-top: 8px;
+	padding-right: 180px;
 	float: right;
 	text-align: right;
 }
@@ -177,6 +180,24 @@ table.dataTable tr.even td.sorting_3 { background-color: #c5c5c5; }
 	*cursor: hand;
 	color: #333 !important;
 }
+
+
+.paging_simple a.paginate_button,
+.paging_simple a.paginate_active {
+	border: 1px solid #aaa;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	*cursor: hand;
+	color: #333 !important;
+}
+
+
+
+
 
 .paging_full_numbers a.paginate_button {
 	background-color: #ddd;

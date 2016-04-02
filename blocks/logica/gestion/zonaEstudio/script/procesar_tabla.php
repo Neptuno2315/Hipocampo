@@ -91,10 +91,10 @@ $(function() {
 				processing: true,
 		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
                   searching: true,
-                  "scrollY":"220px",
+                  "scrollY":"280px",
                  "scrollCollapse": false,
                   info:true,
-	   		    "pagingType": "full_numbers",
+	   		    "pagingType": "simple",
 
                   ajax:{
                       url:"<?php echo $urlTabla?>",
