@@ -359,8 +359,9 @@ class Sql extends \Sql {
 						       distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl, 
 						       calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr,id_inf_carta_nautica, boyas_ais, boyas_nais, 
 						       racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm, 
-						       disponible_servpl, observaciones ";
+						       disponible_servpl, observaciones,sec.id_sector sector, sec.id_region region ";
 				$cadenaSql .= "FROM zona_estudio zn ";
+				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector ";
 				$cadenaSql .= "JOIN peligros pl ON pl.id_zona_estudio=zn.id_zona_estudio ";
 				$cadenaSql .= "JOIN informacion_carta_nautica ic ON ic.id_zona_estudio=zn.id_zona_estudio ";
 				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable. "' ;";

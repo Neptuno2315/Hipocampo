@@ -92,6 +92,7 @@ $(function() {
 			});
 
 	// Plugin de Select2 Campos de Selección
+	$("#<?php echo $this->campoSeguro('region')?>").width(200);
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector')?>").select2();
 	/* Buques Comerciales */
