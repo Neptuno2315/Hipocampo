@@ -106,8 +106,75 @@ class registrarForm {
 			// var_dump ( $arreglo_zona );
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_trafico_por_zona", $_REQUEST ['id_zona'] );
-			$informacion = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			$informacion = $informacion [0];
+			$trafico = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			
+			
+			$arregloPreTrafico = array (
+					'rango1BC',
+					'tiempo1BC',
+					'rango2BC',
+					'tiempo2BC',
+					'rango3BC',
+					'tiempo3BC',
+					'rango1BE',
+					'tiempo1BE',
+					'rango2BE',
+					'tiempo2BE',
+					'rango1BP',
+					'tiempo1BP',
+					'rango2BP',
+					'tiempo2BP',
+					'rango3BP',
+					'tiempo3BP',
+					'rango1BG',
+					'tiempo1BG',
+					'rango2BG',
+					'tiempo2BG',
+					'rango1BPQ',
+					'tiempo1BPQ',
+					'rango1SM',
+					'tiempo1SM',
+					'rango2SM',
+					'tiempo2SM',
+					'rango3SM',
+					'tiempo3SM',
+					'rango4SM',
+					'tiempo4SM',
+					'rango5SM',
+					'tiempo5SM',
+					'rango1AA',
+					'tiempo1AA',
+					'rango2AA',
+					'tiempo2AA',
+					'rango3AA',
+					'tiempo3AA',
+					'rango4AA',
+					'tiempo4AA',
+					'num_bq_gr',
+					'tiempo_bq_gr',
+					'num_bq_pq',
+					'tiempo_bq_pq'
+			);
+			$conrador = 1;
+			foreach ( $arregloPreTrafico as $valor ) {
+			
+				if ($conrador == 1) {
+						
+					$arrayRango [] = array (
+							'variable' => $valor,
+							'valor_variable' => $_REQUEST [$valor]
+					);
+					$conrador ++;
+				} else if ($conrador == 2) {
+					$arrayTiempo [] = $_REQUEST [$valor];
+					$conrador = 1;
+				}
+			}
+			
+			
+			var_dump($arrayRango);
+			var_dump($arrayTiempo);
 		}
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------

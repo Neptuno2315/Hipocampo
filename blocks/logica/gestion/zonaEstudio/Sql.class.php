@@ -364,7 +364,14 @@ class Sql extends \Sql {
 				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector ";
 				$cadenaSql .= "JOIN peligros pl ON pl.id_zona_estudio=zn.id_zona_estudio ";
 				$cadenaSql .= "JOIN informacion_carta_nautica ic ON ic.id_zona_estudio=zn.id_zona_estudio ";
-				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable. "' ;";
+				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable . "' ;";
+				break;
+			
+			case 'consultar_general_trafico_por_zona' :
+				$cadenaSql = "SELECT id_trafico, id_zona_estudio, variable_trf, numero_bq, periodo_trf ";
+				$cadenaSql .= "FROM trafico ";
+				$cadenaSql .= "WHERE estado_registro='TRUE' ";
+				$cadenaSql .= "AND id_zona_estudio='" . $variable . "' ;";
 				
 				break;
 		}
