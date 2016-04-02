@@ -66,8 +66,37 @@ class registrarForm {
 				"g_gps" => ($informacion ['proporciona_dgps'] != 'f') ? 1 : 0,
 				"ds_stm" => ($informacion ['disponibilidad_stm'] != 'f') ? 1 : 0,
 				"ds_srv_pl" => ($informacion ['disponible_servpl'] != 'f') ? 1 : 0,
-				"obser_des__sis_sn" => $informacion ['observaciones'] 
+				"obser_des__sis_sn" => $informacion ['observaciones'], // ----
+				"cal_max_buques" => $informacion ['calado_mxbq'],
+				"hg_bj_quilla" => $informacion ['holgura_bjqll'],
+				"mx_oleaje_pre" => $informacion ['maxima_olpr'],
+				"sd_mx_anual" => $informacion ['sedimentacion_mxa'],
+				"pr_mn_seguridad" => $informacion ['profundidad_minsg'],
+				"ach_canal" => $informacion ['anchura_cnl'],
+				"ts_maxima" => $informacion ['tasa_mx'],
+				"ob_fluj_marea" => $informacion ['observaciones_flmr'],
+				"pr_maxima" => $informacion ['prediccion_mxvntr'],
+				"ob_temp_dirr" => $informacion ['observaciones_vttr'],
+				"pr_maxima_dgl" => $informacion ['prediccion_cbm'],
+				"ob_temp_dirr_com" => $informacion ['observaciones_efcb'],
+				"pnt_cr_tr" => $informacion ['distancia_pntcr'],
+				"ob_pt_ct_tr" => $informacion ['observaciones_pntcr'],
+				"prl_max_cr" => $informacion ['distancia_plgcr'],
+				"ob_prl_max_cr" => $informacion ['observaciones_plgcr'],
+				"pr_mn_vs" => $informacion ['distancia_prmnvs'],
+				"prc_mn_vs" => $informacion ['porcentaje_prmnvs'],
+				"prd_pr_vs" => $informacion ['distancia_prmvs'],
+				"pds_pr_vs" => $informacion ['porcentaje_prmvs'],
+				"tm_bj_sl" => $informacion ['distancia_tmbsl'],
+				"prc_tm_bj_sl" => $informacion ['porcentaje_tmbsl'],
+				"prd_respl" => $informacion ['distancia_rpl'],
+				"prc_prd_respl" => $informacion ['porcentaje_rpl'],
+				"pr_aton" => $informacion ['calidad_praton'],
+				"pl_tr_mr" => $informacion ['calidad_plserv'],
+				"gr_cmp_trp" => $informacion ['calidad_grcmtr'],
+				"pq_cmp_trp" => $informacion ['calidad_pqcmtr'] 
 		);
+		// ,
 		
 		$_REQUEST = array_merge ( $_REQUEST, $arreglo_zona );
 		var_dump ( $arreglo_zona );
@@ -2966,6 +2995,11 @@ class registrarForm {
 								$atributos ['columnas'] = 90;
 								$atributos ['filas'] = 5;
 								$atributos ['dobleLinea'] = 0;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['valor'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['valor'] = '';
+								}
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 								$atributos ['validar'] = 'maxSize[5000]';
@@ -2999,7 +3033,11 @@ class registrarForm {
 								$esteCampo = 'pr_maxima'; // Predicción Máxima Escala Beaufort
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -3037,6 +3075,11 @@ class registrarForm {
 								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 90;
 								$atributos ['filas'] = 5;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['valor'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['valor'] = '';
+								}
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -3070,7 +3113,11 @@ class registrarForm {
 								$esteCampo = 'pr_maxima_dgl'; // Predicción Máxima Escala Douglas
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -3109,6 +3156,11 @@ class registrarForm {
 								$atributos ["etiquetaObligatorio"] = true;
 								$atributos ['columnas'] = 90;
 								$atributos ['filas'] = 5;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['valor'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['valor'] = '';
+								}
 								$atributos ['dobleLinea'] = 0;
 								$atributos ['tabIndex'] = $tab;
 								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
@@ -3615,7 +3667,11 @@ class registrarForm {
 								$esteCampo = 'pr_aton'; // Provision de Las AtoN
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -3646,7 +3702,11 @@ class registrarForm {
 								$esteCampo = 'pl_tr_mr'; // Pilotaje /Trafico Marítimo
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = true;
@@ -3684,7 +3744,11 @@ class registrarForm {
 									$esteCampo = 'gr_cmp_trp'; // Grandes Compentencias de los Tripulantes de lo Buques
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = true;
@@ -3715,7 +3779,11 @@ class registrarForm {
 									$esteCampo = 'pq_cmp_trp'; // Pequeña Competencia de tripulantes de Los buques $atributos ['id'] = $esteCampo;
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = true;
