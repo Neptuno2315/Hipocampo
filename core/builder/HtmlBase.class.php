@@ -134,6 +134,8 @@ class HtmlBase {
     
     const REDIRLUGAR = 'redirLugar';
     
+    const OPCIONDEFAULT = 'opcionDefault';
+    
     /**
      * Atributos HTML
      * Se definen como constantes para evitar errores al duplicar

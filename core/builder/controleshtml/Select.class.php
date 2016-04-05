@@ -139,6 +139,10 @@ class Select extends HtmlBase {
 		if ($this->atributos [self::SELECCION] == - 1) {
 			$this->cadena_html .= "<option value=''>Seleccione .....</option>\n";
 		}
+		// Si no se especifica una seleccion se agrega un espacio en blanco
+		if ($this->atributos [self::SELECCION] != - 1 && isset ( $this->atributos [self::OPCIONDEFAULT] ) == true && $this->atributos [self::OPCIONDEFAULT] == true) {
+			$this->cadena_html .= "<option value=''>Seleccione .....</option>\n";
+		}
 		
 		// Si el control esta asociado a otro control que aparece si no hay un valor en la lista
 		if (isset ( $this->atributos ["otraOpcion"] )) {
