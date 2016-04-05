@@ -34,6 +34,9 @@ class Funcion {
 	function registrar() {
 		include_once ($this->ruta . "funcion/registrarInformacionZona.php");
 	}
+	function modificar() {
+		include_once ($this->ruta . "funcion/modificarInformacionZona.php");
+	}
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -56,6 +59,11 @@ class Funcion {
 				case 'RegistrarInformacionZona' :
 					
 					$this->registrar ();
+					break;
+				
+				case 'ModificarInformacionZona' :
+					
+					$this->modificar ();
 					break;
 			}
 		}

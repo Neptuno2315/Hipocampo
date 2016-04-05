@@ -185,7 +185,7 @@ class registrarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo = "ModificarZonaEstudio";
+		$esteCampo =  $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -4028,7 +4028,7 @@ class registrarForm {
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		unset ( $atributos );
-		var_dump($_REQUEST);
+		
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
