@@ -20,7 +20,7 @@ class registrarForm {
 		$this->miSql = $sql;
 	}
 	function miForm() {
-		var_dump ( $_REQUEST );
+		
 		/**
 		 * IMPORTANTE: Este formulario está utilizando jquery.
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
@@ -108,8 +108,6 @@ class registrarForm {
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_trafico_por_zona", $_REQUEST ['id_zona'] );
 			$trafico = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
-			
-			
 			$arregloPreTrafico = array (
 					'rango1BC',
 					'tiempo1BC',
@@ -154,27 +152,23 @@ class registrarForm {
 					'num_bq_gr',
 					'tiempo_bq_gr',
 					'num_bq_pq',
-					'tiempo_bq_pq'
+					'tiempo_bq_pq' 
 			);
 			$conrador = 1;
-			foreach ( $arregloPreTrafico as $valor ) {
 			
-				if ($conrador == 1) {
+			for($contador = 0; $contador <= (count ( $arregloPreTrafico ) - 1); $contador ++) {
+				
+				foreach ( $trafico as $valor ) {
+					if ($valor ['variable_trf'] == $arregloPreTrafico [$contador]) {
 						
-					$arrayRango [] = array (
-							'variable' => $valor,
-							'valor_variable' => $_REQUEST [$valor]
-					);
-					$conrador ++;
-				} else if ($conrador == 2) {
-					$arrayTiempo [] = $_REQUEST [$valor];
-					$conrador = 1;
+						$_REQUEST [$valor ['variable_trf']] = $valor ['numero_bq'];
+						$_REQUEST [$arregloPreTrafico [$contador + 1]] = $valor ['periodo_trf'];
+					}
 				}
 			}
 			
-			
-			var_dump($arrayRango);
-			var_dump($arrayTiempo);
+			// var_dump ( $_REQUEST );
+			// exit ();
 		}
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
@@ -376,7 +370,6 @@ class registrarForm {
 									$atributos ['tabIndex'] = $tab;
 									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 									$atributos ['validar'] = 'required,custom[onlyNumberSp],min[0],maxSize[9]';
-									
 									if (isset ( $_REQUEST [$esteCampo] )) {
 										$atributos ['valor'] = $_REQUEST [$esteCampo];
 									} else {
@@ -397,7 +390,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1BC';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -459,7 +457,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2BC';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -522,7 +525,12 @@ class registrarForm {
 									$esteCampo = 'tiempo3BC';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -594,7 +602,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1BE';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -656,7 +669,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2BE';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -728,7 +746,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1BP';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -790,7 +813,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2BP';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -852,7 +880,12 @@ class registrarForm {
 									$esteCampo = 'tiempo3BP';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -924,7 +957,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1BG';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -986,7 +1024,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2BG';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1048,7 +1091,12 @@ class registrarForm {
 									$esteCampo = 'tiempo3BG';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1120,7 +1168,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1BPQ';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1192,7 +1245,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1SM';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1254,7 +1312,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2SM';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1316,7 +1379,12 @@ class registrarForm {
 									$esteCampo = 'tiempo3SM';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1378,7 +1446,12 @@ class registrarForm {
 									$esteCampo = 'tiempo4SM';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1440,7 +1513,12 @@ class registrarForm {
 									$esteCampo = 'tiempo5SM';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1512,7 +1590,12 @@ class registrarForm {
 									$esteCampo = 'tiempo1AA';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1574,7 +1657,12 @@ class registrarForm {
 									$esteCampo = 'tiempo2AA';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1636,7 +1724,12 @@ class registrarForm {
 									$esteCampo = 'tiempo3AA';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1698,7 +1791,12 @@ class registrarForm {
 									$esteCampo = 'tiempo4AA';
 									$atributos ['nombre'] = $esteCampo;
 									$atributos ['id'] = $esteCampo;
-									$atributos ['seleccion'] = - 1;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['opcionDefault'] = true;
 									$atributos ['evento'] = '';
 									$atributos ['deshabilitado'] = false;
 									$atributos ["etiquetaObligatorio"] = false;
@@ -1763,7 +1861,12 @@ class registrarForm {
 								$esteCampo = 'tiempo_bq_gr'; // Periodo de Buques Pequeños
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
+								$atributos ['opcionDefault'] = true;
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = false;
@@ -1824,7 +1927,12 @@ class registrarForm {
 								$esteCampo = 'tiempo_bq_pq'; // Periodo de Buques Grandes
 								$atributos ['nombre'] = $esteCampo;
 								$atributos ['id'] = $esteCampo;
-								$atributos ['seleccion'] = - 1;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
+								$atributos ['opcionDefault'] = true;
 								$atributos ['evento'] = '';
 								$atributos ['deshabilitado'] = false;
 								$atributos ["etiquetaObligatorio"] = false;
@@ -3920,6 +4028,7 @@ class registrarForm {
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		unset ( $atributos );
+		var_dump($_REQUEST);
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
@@ -3941,7 +4050,9 @@ class registrarForm {
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
-		$valorCodificado .= "&opcion=RegistrarInformacionZona";
+		$valorCodificado .= "&opcion=ModificarInformacionZona";
+		$valorCodificado .= "&usuario=".$_REQUEST['usuario'];
+		$valorCodificado .= "&id_zona=".$_REQUEST['id_zona'];
 		/**
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
