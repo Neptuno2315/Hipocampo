@@ -73,10 +73,9 @@ $(function() {
 	$("#Libreria3").accordion(
 			{
 				heightStyle : "content",
-				collapsible : true,
+				collapsible : false,
 				disabled : false,
-				active : false,
-				activate : function(event, ui) {
+				beforeActivate : function(event, ui) {
 
 					$resultado = $(
 							"#<?php echo $this->campoSeguro('zonaEstudio')?>")

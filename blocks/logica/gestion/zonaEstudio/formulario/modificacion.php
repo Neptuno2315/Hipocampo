@@ -108,67 +108,68 @@ class registrarForm {
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_trafico_por_zona", $_REQUEST ['id_zona'] );
 			$trafico = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
-			$arregloPreTrafico = array (
-					'rango1BC',
-					'tiempo1BC',
-					'rango2BC',
-					'tiempo2BC',
-					'rango3BC',
-					'tiempo3BC',
-					'rango1BE',
-					'tiempo1BE',
-					'rango2BE',
-					'tiempo2BE',
-					'rango1BP',
-					'tiempo1BP',
-					'rango2BP',
-					'tiempo2BP',
-					'rango3BP',
-					'tiempo3BP',
-					'rango1BG',
-					'tiempo1BG',
-					'rango2BG',
-					'tiempo2BG',
-					'rango1BPQ',
-					'tiempo1BPQ',
-					'rango1SM',
-					'tiempo1SM',
-					'rango2SM',
-					'tiempo2SM',
-					'rango3SM',
-					'tiempo3SM',
-					'rango4SM',
-					'tiempo4SM',
-					'rango5SM',
-					'tiempo5SM',
-					'rango1AA',
-					'tiempo1AA',
-					'rango2AA',
-					'tiempo2AA',
-					'rango3AA',
-					'tiempo3AA',
-					'rango4AA',
-					'tiempo4AA',
-					'num_bq_gr',
-					'tiempo_bq_gr',
-					'num_bq_pq',
-					'tiempo_bq_pq' 
-			);
-			$conrador = 1;
-			
-			for($contador = 0; $contador <= (count ( $arregloPreTrafico ) - 1); $contador ++) {
+			if ($trafico != false) {
 				
-				foreach ( $trafico as $valor ) {
-					if ($valor ['variable_trf'] == $arregloPreTrafico [$contador]) {
-						
-						$_REQUEST [$valor ['variable_trf']] = $valor ['numero_bq'];
-						$_REQUEST [$arregloPreTrafico [$contador + 1]] = $valor ['periodo_trf'];
+				$arregloPreTrafico = array (
+						'rango1BC',
+						'tiempo1BC',
+						'rango2BC',
+						'tiempo2BC',
+						'rango3BC',
+						'tiempo3BC',
+						'rango1BE',
+						'tiempo1BE',
+						'rango2BE',
+						'tiempo2BE',
+						'rango1BP',
+						'tiempo1BP',
+						'rango2BP',
+						'tiempo2BP',
+						'rango3BP',
+						'tiempo3BP',
+						'rango1BG',
+						'tiempo1BG',
+						'rango2BG',
+						'tiempo2BG',
+						'rango1BPQ',
+						'tiempo1BPQ',
+						'rango1SM',
+						'tiempo1SM',
+						'rango2SM',
+						'tiempo2SM',
+						'rango3SM',
+						'tiempo3SM',
+						'rango4SM',
+						'tiempo4SM',
+						'rango5SM',
+						'tiempo5SM',
+						'rango1AA',
+						'tiempo1AA',
+						'rango2AA',
+						'tiempo2AA',
+						'rango3AA',
+						'tiempo3AA',
+						'rango4AA',
+						'tiempo4AA',
+						'num_bq_gr',
+						'tiempo_bq_gr',
+						'num_bq_pq',
+						'tiempo_bq_pq' 
+				);
+				$conrador = 1;
+				
+				for($contador = 0; $contador <= (count ( $arregloPreTrafico ) - 1); $contador ++) {
+					
+					foreach ( $trafico as $valor ) {
+						if ($valor ['variable_trf'] == $arregloPreTrafico [$contador]) {
+							
+							$_REQUEST [$valor ['variable_trf']] = $valor ['numero_bq'];
+							$_REQUEST [$arregloPreTrafico [$contador + 1]] = $valor ['periodo_trf'];
+						}
 					}
 				}
 			}
-			
-			// var_dump ( $_REQUEST );
-			// exit ();
+
 		}
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
@@ -185,7 +186,7 @@ class registrarForm {
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
-		$esteCampo =  $esteBloque ['nombre'];
+		$esteCampo = $esteBloque ['nombre'];
 		$atributos ['id'] = $esteCampo;
 		$atributos ['nombre'] = $esteCampo;
 		
@@ -4029,7 +4030,6 @@ class registrarForm {
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		unset ( $atributos );
 		
-		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
 		/**
@@ -4051,8 +4051,8 @@ class registrarForm {
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
 		$valorCodificado .= "&opcion=ModificarInformacionZona";
-		$valorCodificado .= "&usuario=".$_REQUEST['usuario'];
-		$valorCodificado .= "&id_zona=".$_REQUEST['id_zona'];
+		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
+		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
 		/**
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
