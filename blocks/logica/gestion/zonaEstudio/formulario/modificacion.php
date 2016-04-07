@@ -4053,7 +4053,7 @@ class registrarForm {
 		$valorCodificado .= "&opcion=ModificarInformacionZona";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
-		/**
+		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
 		 * codificar el nombre de cada campo.

@@ -374,6 +374,38 @@ class Sql extends \Sql {
 				$cadenaSql .= "AND id_zona_estudio='" . $variable . "' ;";
 				
 				break;
+			
+			case 'actualizar_zona_estudio' :
+				$cadenaSql = " UPDATE zona_estudio";
+				$cadenaSql .= " SET ";
+				$cadenaSql .= " id_sector='" . $variable ['id_sector'] . "',";
+				$cadenaSql .= " titulo_proy='" . $variable ['titulo_proy'] . "',";
+				$cadenaSql .= " profundidad_qll='" . $variable ['profundidad_qll'] . "', ";
+				$cadenaSql .= " ancho_canl='" . $variable ['ancho_canl'] . "',";
+				$cadenaSql .= " obtrucciones_vs='" . $variable ['obtrucciones_vs'] . "', ";
+				$cadenaSql .= " complejidad_hdr='" . $variable ['complejidad_hdr'] . "',";
+				$cadenaSql .= " tipo_fn='" . $variable ['tipo_fn'] . "', ";
+				$cadenaSql .= " estabilidad_sed='" . $variable ['estabilidad_sed'] . "', ";
+				$cadenaSql .= " ayudas_nv='" . $variable ['ayudas_nv'] . "',";
+				$cadenaSql .= " calidad_dthd='" . $variable ['calidad_dthd'] . "',";
+				$cadenaSql .= " operaciones_ddn='" . $variable ['operaciones_ddn'] . "', ";
+				$cadenaSql .= " estado_mr='" . $variable ['estado_mr'] . "', ";
+				$cadenaSql .= " observaciones_vncr='" . $variable ['observaciones_vncr'] . "',";
+				$cadenaSql .= " restricciones_vs='" . $variable ['restricciones_vs'] . "', ";
+				$cadenaSql .= " condiciones_hl='" . $variable ['condiciones_hl'] . "', ";
+				$cadenaSql .= " iluminacion_fn='" . $variable ['iluminacion_fn'] . "',";
+				$cadenaSql .= " observaciones_scm='" . $variable ['observaciones_scm'] . "',";
+				$cadenaSql .= " monitoreo_stm='" . $variable ['monitoreo_stm'] . "' ";
+				$cadenaSql .= " WHERE id_zona_estudio='" . $variable ['id_zona_estudio'] . "';";
+				
+				break;
+			
+			case 'anular_trafico_maritimo' :
+				
+				$cadenaSql = " UPDATE trafico";
+				$cadenaSql .= " SET estado_registro=FALSE ";
+				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
+				break;
 		}
 		
 		return $cadenaSql;

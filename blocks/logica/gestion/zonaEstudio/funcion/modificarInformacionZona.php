@@ -17,10 +17,6 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-		echo "llgue";
-		
-// 		var_dump ( $_REQUEST );
-		
 		
 		/*
 		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
@@ -37,8 +33,7 @@ class FormProcessor {
 				}
 			}
 		}
-		exit;
-		/* Arreglo Informacion y Cadena Sql Registro Zona de Estudio */
+		/* Arreglo Informacion y Cadena Sql Actualizar Zona de Estudio */
 		{
 			$arregloZonaEstudio = array (
 					"id_sector" => $_REQUEST ['sector'],
@@ -58,10 +53,12 @@ class FormProcessor {
 					"condiciones_hl" => $_REQUEST ['con_hielo'],
 					"iluminacion_fn" => $_REQUEST ['ilum_fondo'],
 					"observaciones_scm" => $_REQUEST ['obser_escom'],
-					"monitoreo_stm" => $_REQUEST ['mn_stm'] 
+					"monitoreo_stm" => $_REQUEST ['mn_stm'],
+					"id_zona_estudio" => $_REQUEST ['id_zona'] 
 			);
+			
 			// Se guarda en un array para crear una trasaccion
-			$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
+			$cadenaSql [] = $this->miSql->getCadenaSql ( 'actualizar_zona_estudio', $arregloZonaEstudio );
 		}
 		
 		/*
@@ -149,12 +146,16 @@ class FormProcessor {
 			}
 			
 			if (isset ( $arregloTrafico ) != false) {
-				
+				// Cambiar estado registro a trafico maritimo relacionado con la zona de estudio
+				$cadenaSql [] = $this->miSql->getCadenaSql ( 'anular_trafico_maritimo', $_REQUEST ['id_zona'] );
 				/* Arreglo Informacion Trafico y Cadena Sql Registro Trafico Maritimo */
 				foreach ( $arregloTrafico as $valor ) {
 					// Se guarda en un array para crear una trasaccion
 					$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_trafico_maritimo', $valor );
 				}
+			} else {
+				// Cambiar estado registro a trafico maritimo relacionado con la zona de estudio
+				$cadenaSql [] = $this->miSql->getCadenaSql ( 'anular_trafico_maritimo', $_REQUEST ['id_zona'] );
 			}
 		}
 		/* Fin Algoritmo */
@@ -169,11 +170,12 @@ class FormProcessor {
 				"proporciona_dgps" => $_REQUEST ['g_gps'],
 				"disponibilidad_stm" => $_REQUEST ['ds_stm'],
 				"disponible_servpl" => $_REQUEST ['ds_srv_pl'],
-				"observaciones" => $_REQUEST ['obser_des__sis_sn'] 
+				"observaciones" => $_REQUEST ['obser_des__sis_sn'],
+				"id_zona_estudio" => $_REQUEST ['id_zona']
 		);
 		
 		// Se guarda en un array para crear una trasaccion
-		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_informacion_carta_nautica', $arregloCartaNautica );
+		$cadenaSql [] = $this->miSql->getCadenaSql ( 'actualizar_informacion_carta_nautica', $arregloCartaNautica );
 		
 		/* Arreglo Peligros y Cadena Sql Registro Peligros */
 		$arregloPeligros = array (
