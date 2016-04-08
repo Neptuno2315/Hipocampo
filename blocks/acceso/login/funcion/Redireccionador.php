@@ -1,6 +1,6 @@
 <?php
 
-namespace registro\loginArka\funcion;
+namespace acceso\login\funcion;
 
 if (!isset($GLOBALS ["autorizado"])) {
     include ("index.php");
@@ -48,6 +48,7 @@ class Redireccionador {
         $redireccion = $url . $_REQUEST [$enlace];
  
         echo "<script>location.replace('" . $redireccion . "')</script>";
+        exit();
     }
 
 }

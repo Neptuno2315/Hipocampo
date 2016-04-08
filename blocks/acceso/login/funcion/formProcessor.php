@@ -1,8 +1,8 @@
 <?php
 
-namespace registro\loginArka;
+namespace acceso\login;
 
-use registro\loginArka\funcion\Redireccionador;
+use acceso\login\funcion\Redireccionador;
 // Se incluye la clase para log de usuarios
 include_once ("core/log/logger.class.php");
 include_once ('Redireccionador.php');

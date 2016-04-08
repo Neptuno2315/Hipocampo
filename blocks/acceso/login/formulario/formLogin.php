@@ -1,6 +1,6 @@
 <?php
 
-namespace registro\loginArka;
+namespace acceso\login;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -27,6 +27,7 @@ class Formulario {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 		$rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
 		$rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
+		var_dump($_REQUEST);
 		?>
 
 
