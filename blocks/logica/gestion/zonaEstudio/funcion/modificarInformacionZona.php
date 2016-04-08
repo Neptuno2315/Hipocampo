@@ -25,6 +25,7 @@ class FormProcessor {
 			if (isset ( $_REQUEST ['validadorCampos'] )) {
 				$validadorCampos = $this->miInspectorHTML->decodificarCampos ( $_REQUEST ['validadorCampos'] );
 				$respuesta = $this->miInspectorHTML->validacionCampos ( $_REQUEST, $validadorCampos, false );
+				
 				if ($respuesta != false) {
 					
 					$_REQUEST = $respuesta;
@@ -158,9 +159,10 @@ class FormProcessor {
 				$cadenaSql [] = $this->miSql->getCadenaSql ( 'anular_trafico_maritimo', $_REQUEST ['id_zona'] );
 			}
 		}
+		
 		/* Fin Algoritmo */
 		
-		/* Arreglo Informacion Informacion Carta Nautica y Cadena Sql Registro Informacion Carta Nautica */
+		/* Arreglo Informacion Informacion Carta Nautica y Cadena Sql Actulizar Informacion Carta Nautica */
 		$arregloCartaNautica = array (
 				"boyas_ais" => $_REQUEST ['bo_mo_for_re'],
 				"boyas_nais" => $_REQUEST ['bo_si_ais_no_super'],
@@ -171,13 +173,13 @@ class FormProcessor {
 				"disponibilidad_stm" => $_REQUEST ['ds_stm'],
 				"disponible_servpl" => $_REQUEST ['ds_srv_pl'],
 				"observaciones" => $_REQUEST ['obser_des__sis_sn'],
-				"id_zona_estudio" => $_REQUEST ['id_zona']
+				"id_zona_estudio" => $_REQUEST ['id_zona'] 
 		);
 		
 		// Se guarda en un array para crear una trasaccion
 		$cadenaSql [] = $this->miSql->getCadenaSql ( 'actualizar_informacion_carta_nautica', $arregloCartaNautica );
 		
-		/* Arreglo Peligros y Cadena Sql Registro Peligros */
+		/* Arreglo Peligros y Cadena Sql Actualizar Peligros */
 		$arregloPeligros = array (
 				"calado_mxbq" => $_REQUEST ['cal_max_buques'],
 				"holgura_bjqll" => $_REQUEST ['hg_bj_quilla'],
@@ -206,32 +208,24 @@ class FormProcessor {
 				"calidad_praton" => $_REQUEST ['pr_aton'],
 				"calidad_plserv" => $_REQUEST ['pl_tr_mr'],
 				"calidad_grcmtr" => $_REQUEST ['gr_cmp_trp'],
-				"calidad_pqcmtr" => $_REQUEST ['pq_cmp_trp'] 
+				"calidad_pqcmtr" => $_REQUEST ['pq_cmp_trp'],
+				"id_zona_estudio" => $_REQUEST ['id_zona'] 
 		);
 		
 		// Se guarda en un array para crear una trasaccion
-		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_peligros', $arregloPeligros );
+		$cadenaSql [] = $this->miSql->getCadenaSql ( 'actualizar_peligros', $arregloPeligros );
 		
 		// Conexion de Base de Datos
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
 		// Ejecucción Transaccion
-		
 		$transaccion = $esteRecursoDB->transaccion ( $cadenaSql );
 		
 		if ($transaccion == true) {
-			Redireccionador::redireccionar ( 'Inserto' );
+			Redireccionador::redireccionar ( 'Actualizo' );
 		} else if ($transaccion == false) {
-			Redireccionador::redireccionar ( 'NoInserto' );
-		}
-	}
-	function resetForm() {
-		foreach ( $_REQUEST as $clave => $valor ) {
-			
-			if ($clave != 'pagina' && $clave != 'development' && $clave != 'jquery' && $clave != 'tiempo') {
-				unset ( $_REQUEST [$clave] );
-			}
+			Redireccionador::redireccionar ( 'NoActualizo' );
 		}
 	}
 }

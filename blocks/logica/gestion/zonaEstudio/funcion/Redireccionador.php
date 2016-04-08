@@ -30,6 +30,24 @@ class Redireccionador {
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 			
+			case "Actualizo" :
+				
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=ActualizoExito";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				
+				break;
+			
+			case "NoActualizo" :
+				
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=ActualizacionError";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				break;
+			
 			case 'ErrorModificacionFormulario' :
 				$variable = 'pagina=zonaEstudio';
 				$variable .= "&opcion=mensaje";
