@@ -31,7 +31,7 @@ $(function() {
 	$("#Libreria1").accordion(
 			{
 				heightStyle : "content",
-				collapsible : true,
+				collapsible : false,
 				disabled : false,
 				beforeActivate : function(evento, ui) {
 

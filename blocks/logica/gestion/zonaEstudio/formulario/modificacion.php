@@ -169,7 +169,6 @@ class registrarForm {
 					}
 				}
 			}
-
 		}
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
@@ -2759,7 +2758,11 @@ class registrarForm {
 							$esteCampo = 'con_hielo'; // Condiciones Hielo
 							$atributos ['nombre'] = $esteCampo;
 							$atributos ['id'] = $esteCampo;
-							$atributos ['seleccion'] = 0;
+							if (isset ( $_REQUEST [$esteCampo] )) {
+								$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+							} else {
+								$atributos ['seleccion'] = 0;
+							}
 							$atributos ['evento'] = '';
 							$atributos ['deshabilitado'] = false;
 							$atributos ["etiquetaObligatorio"] = true;
@@ -2922,6 +2925,193 @@ class registrarForm {
 							<h4>Evaluación Peligros</h4>
 				<section>";
 			{
+				
+				$esteCampo = "AgrupacionPHumano";
+				$atributos ['id'] = $esteCampo;
+				$atributos ['leyenda'] = "Factor Humano";
+				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+				unset ( $atributos );
+				{
+					
+					$atributos ["id"] = "Libreria3";
+					$atributos ["estiloEnLinea"] = " ";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					unset ( $atributos );
+					{
+						
+						echo "<h3>Calidad de: </h3>";
+						
+						{
+							$atributos ["id"] = "cald";
+							$atributos ["estilo"] = " ";
+							$atributos ["estiloEnLinea"] = "display:block";
+							echo $this->miFormulario->division ( "inicio", $atributos );
+							unset ( $atributos );
+							{
+								$esteCampo = 'pr_aton'; // Provision de Las AtoN
+								$atributos ['nombre'] = $esteCampo;
+								$atributos ['id'] = $esteCampo;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
+								$atributos ['evento'] = '';
+								$atributos ['deshabilitado'] = false;
+								$atributos ["etiquetaObligatorio"] = true;
+								$atributos ['tab'] = $tab;
+								$atributos ['tamanno'] = 1;
+								$atributos ['columnas'] = 2;
+								$atributos ['estilo'] = 'jqueryui';
+								$atributos ['validar'] = 'required';
+								$atributos ['limitar'] = false;
+								$atributos ['anchoCaja'] = 70;
+								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+								$atributos ['anchoEtiqueta'] = 148;
+								
+								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
+								
+								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+								$atributos ['matrizItems'] = $matrizItems;
+								
+								// Utilizar lo siguiente cuando no se pase un arreglo:
+								// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+								// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+								$tab ++;
+								$atributos = array_merge ( $atributos, $atributosGlobales );
+								echo $this->miFormulario->campoCuadroLista ( $atributos );
+								unset ( $atributos );
+								
+								$esteCampo = 'pl_tr_mr'; // Pilotaje /Trafico Marítimo
+								$atributos ['nombre'] = $esteCampo;
+								$atributos ['id'] = $esteCampo;
+								if (isset ( $_REQUEST [$esteCampo] )) {
+									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+								} else {
+									$atributos ['seleccion'] = - 1;
+								}
+								$atributos ['evento'] = '';
+								$atributos ['deshabilitado'] = false;
+								$atributos ["etiquetaObligatorio"] = true;
+								$atributos ['tab'] = $tab;
+								$atributos ['tamanno'] = 1;
+								$atributos ['columnas'] = 2;
+								$atributos ['estilo'] = 'jqueryui';
+								$atributos ['validar'] = 'required';
+								$atributos ['limitar'] = false;
+								$atributos ['anchoCaja'] = 70;
+								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+								$atributos ['anchoEtiqueta'] = 148;
+								
+								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
+								
+								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+								$atributos ['matrizItems'] = $matrizItems;
+								
+								// Utilizar lo siguiente cuando no se pase un arreglo:
+								// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+								// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+								$tab ++;
+								$atributos = array_merge ( $atributos, $atributosGlobales );
+								echo $this->miFormulario->campoCuadroLista ( $atributos );
+								unset ( $atributos );
+								// ------------------Division para los botones-------------------------
+								$atributos ["id"] = "Salto Linea";
+								$atributos ["estiloEnLinea"] = "clear:both;";
+								echo $this->miFormulario->division ( "inicio", $atributos );
+								unset ( $atributos );
+								
+								{
+									
+									$esteCampo = 'gr_cmp_trp'; // Grandes Compentencias de los Tripulantes de lo Buques
+									$atributos ['nombre'] = $esteCampo;
+									$atributos ['id'] = $esteCampo;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['evento'] = '';
+									$atributos ['deshabilitado'] = false;
+									$atributos ["etiquetaObligatorio"] = true;
+									$atributos ['tab'] = $tab;
+									$atributos ['tamanno'] = 1;
+									$atributos ['columnas'] = 2;
+									$atributos ['estilo'] = 'jqueryui';
+									$atributos ['validar'] = 'required';
+									$atributos ['limitar'] = false;
+									$atributos ['anchoCaja'] = 70;
+									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+									$atributos ['anchoEtiqueta'] = 148;
+									
+									$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
+									
+									$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+									$atributos ['matrizItems'] = $matrizItems;
+									
+									// Utilizar lo siguiente cuando no se pase un arreglo:
+									// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+									// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+									$tab ++;
+									$atributos = array_merge ( $atributos, $atributosGlobales );
+									echo $this->miFormulario->campoCuadroLista ( $atributos );
+									unset ( $atributos );
+									
+									$esteCampo = 'pq_cmp_trp'; // Pequeña Competencia de tripulantes de Los buques $atributos ['id'] = $esteCampo;
+									$atributos ['nombre'] = $esteCampo;
+									$atributos ['id'] = $esteCampo;
+									if (isset ( $_REQUEST [$esteCampo] )) {
+										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
+									} else {
+										$atributos ['seleccion'] = - 1;
+									}
+									$atributos ['evento'] = '';
+									$atributos ['deshabilitado'] = false;
+									$atributos ["etiquetaObligatorio"] = true;
+									$atributos ['tab'] = $tab;
+									$atributos ['tamanno'] = 1;
+									$atributos ['columnas'] = 2;
+									$atributos ['estilo'] = 'jqueryui';
+									$atributos ['validar'] = 'required';
+									$atributos ['limitar'] = false;
+									$atributos ['anchoCaja'] = 70;
+									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+									$atributos ['anchoEtiqueta'] = 148;
+									
+									$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
+									
+									$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
+									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+									$atributos ['matrizItems'] = $matrizItems;
+									
+									// Utilizar lo siguiente cuando no se pase un arreglo:
+									// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
+									// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+									$tab ++;
+									$atributos = array_merge ( $atributos, $atributosGlobales );
+									echo $this->miFormulario->campoCuadroLista ( $atributos );
+									unset ( $atributos );
+								}
+								
+								// ------------------Fin Division para los botones-------------------------
+								echo $this->miFormulario->division ( "fin" );
+								unset ( $atributos );
+							}
+							echo $this->miFormulario->division ( "fin" );
+							unset ( $atributos );
+						}
+						// echo $this->miFormulario->agrupacion ( 'fin' );
+						// unset ( $atributos );
+					}
+					// ------------------Fin Division para los botones-------------------------
+					echo $this->miFormulario->division ( "fin" );
+					unset ( $atributos );
+				}
+				echo $this->miFormulario->agrupacion ( 'fin' );
+				unset ( $atributos );
 				
 				$esteCampo = "AgrupacionPNaturales";
 				$atributos ['id'] = $esteCampo;
@@ -3832,193 +4022,6 @@ class registrarForm {
 						// echo $this->miFormulario->agrupacion ( 'fin' );
 						// unset ( $atributos );
 					}
-					echo $this->miFormulario->division ( "fin" );
-					unset ( $atributos );
-				}
-				echo $this->miFormulario->agrupacion ( 'fin' );
-				unset ( $atributos );
-				
-				$esteCampo = "AgrupacionPHumano";
-				$atributos ['id'] = $esteCampo;
-				$atributos ['leyenda'] = "Factor Humano";
-				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
-				unset ( $atributos );
-				{
-					
-					$atributos ["id"] = "Libreria3";
-					$atributos ["estiloEnLinea"] = " ";
-					echo $this->miFormulario->division ( "inicio", $atributos );
-					unset ( $atributos );
-					{
-						
-						echo "<h3>Calidad de: </h3>";
-						
-						{
-							$atributos ["id"] = "cald";
-							$atributos ["estilo"] = " ";
-							$atributos ["estiloEnLinea"] = "display:block";
-							echo $this->miFormulario->division ( "inicio", $atributos );
-							unset ( $atributos );
-							{
-								$esteCampo = 'pr_aton'; // Provision de Las AtoN
-								$atributos ['nombre'] = $esteCampo;
-								$atributos ['id'] = $esteCampo;
-								if (isset ( $_REQUEST [$esteCampo] )) {
-									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-								} else {
-									$atributos ['seleccion'] = - 1;
-								}
-								$atributos ['evento'] = '';
-								$atributos ['deshabilitado'] = false;
-								$atributos ["etiquetaObligatorio"] = true;
-								$atributos ['tab'] = $tab;
-								$atributos ['tamanno'] = 1;
-								$atributos ['columnas'] = 2;
-								$atributos ['estilo'] = 'jqueryui';
-								$atributos ['validar'] = 'required';
-								$atributos ['limitar'] = false;
-								$atributos ['anchoCaja'] = 70;
-								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['anchoEtiqueta'] = 148;
-								
-								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
-								
-								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-								$atributos ['matrizItems'] = $matrizItems;
-								
-								// Utilizar lo siguiente cuando no se pase un arreglo:
-								// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
-								// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
-								$tab ++;
-								$atributos = array_merge ( $atributos, $atributosGlobales );
-								echo $this->miFormulario->campoCuadroLista ( $atributos );
-								unset ( $atributos );
-								
-								$esteCampo = 'pl_tr_mr'; // Pilotaje /Trafico Marítimo
-								$atributos ['nombre'] = $esteCampo;
-								$atributos ['id'] = $esteCampo;
-								if (isset ( $_REQUEST [$esteCampo] )) {
-									$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-								} else {
-									$atributos ['seleccion'] = - 1;
-								}
-								$atributos ['evento'] = '';
-								$atributos ['deshabilitado'] = false;
-								$atributos ["etiquetaObligatorio"] = true;
-								$atributos ['tab'] = $tab;
-								$atributos ['tamanno'] = 1;
-								$atributos ['columnas'] = 2;
-								$atributos ['estilo'] = 'jqueryui';
-								$atributos ['validar'] = 'required';
-								$atributos ['limitar'] = false;
-								$atributos ['anchoCaja'] = 70;
-								$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-								$atributos ['anchoEtiqueta'] = 148;
-								
-								$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
-								
-								$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-								$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-								$atributos ['matrizItems'] = $matrizItems;
-								
-								// Utilizar lo siguiente cuando no se pase un arreglo:
-								// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
-								// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
-								$tab ++;
-								$atributos = array_merge ( $atributos, $atributosGlobales );
-								echo $this->miFormulario->campoCuadroLista ( $atributos );
-								unset ( $atributos );
-								// ------------------Division para los botones-------------------------
-								$atributos ["id"] = "Salto Linea";
-								$atributos ["estiloEnLinea"] = "clear:both;";
-								echo $this->miFormulario->division ( "inicio", $atributos );
-								unset ( $atributos );
-								
-								{
-									
-									$esteCampo = 'gr_cmp_trp'; // Grandes Compentencias de los Tripulantes de lo Buques
-									$atributos ['nombre'] = $esteCampo;
-									$atributos ['id'] = $esteCampo;
-									if (isset ( $_REQUEST [$esteCampo] )) {
-										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-									} else {
-										$atributos ['seleccion'] = - 1;
-									}
-									$atributos ['evento'] = '';
-									$atributos ['deshabilitado'] = false;
-									$atributos ["etiquetaObligatorio"] = true;
-									$atributos ['tab'] = $tab;
-									$atributos ['tamanno'] = 1;
-									$atributos ['columnas'] = 2;
-									$atributos ['estilo'] = 'jqueryui';
-									$atributos ['validar'] = 'required';
-									$atributos ['limitar'] = false;
-									$atributos ['anchoCaja'] = 70;
-									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['anchoEtiqueta'] = 148;
-									
-									$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
-									
-									$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-									$atributos ['matrizItems'] = $matrizItems;
-									
-									// Utilizar lo siguiente cuando no se pase un arreglo:
-									// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
-									// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
-									$tab ++;
-									$atributos = array_merge ( $atributos, $atributosGlobales );
-									echo $this->miFormulario->campoCuadroLista ( $atributos );
-									unset ( $atributos );
-									
-									$esteCampo = 'pq_cmp_trp'; // Pequeña Competencia de tripulantes de Los buques $atributos ['id'] = $esteCampo;
-									$atributos ['nombre'] = $esteCampo;
-									$atributos ['id'] = $esteCampo;
-									if (isset ( $_REQUEST [$esteCampo] )) {
-										$atributos ['seleccion'] = $_REQUEST [$esteCampo];
-									} else {
-										$atributos ['seleccion'] = - 1;
-									}
-									$atributos ['evento'] = '';
-									$atributos ['deshabilitado'] = false;
-									$atributos ["etiquetaObligatorio"] = true;
-									$atributos ['tab'] = $tab;
-									$atributos ['tamanno'] = 1;
-									$atributos ['columnas'] = 2;
-									$atributos ['estilo'] = 'jqueryui';
-									$atributos ['validar'] = 'required';
-									$atributos ['limitar'] = false;
-									$atributos ['anchoCaja'] = 70;
-									$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-									$atributos ['anchoEtiqueta'] = 148;
-									
-									$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_calidad" );
-									
-									$matrizItems = $esteRecursoDBP->ejecutarAcceso ( $atributos ['cadena_sql'], "busqueda" );
-									$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-									$atributos ['matrizItems'] = $matrizItems;
-									
-									// Utilizar lo siguiente cuando no se pase un arreglo:
-									// $atributos['baseDatos']='ponerAquiElNombreDeLaConexión';
-									// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
-									$tab ++;
-									$atributos = array_merge ( $atributos, $atributosGlobales );
-									echo $this->miFormulario->campoCuadroLista ( $atributos );
-									unset ( $atributos );
-								}
-								
-								// ------------------Fin Division para los botones-------------------------
-								echo $this->miFormulario->division ( "fin" );
-								unset ( $atributos );
-							}
-							echo $this->miFormulario->division ( "fin" );
-							unset ( $atributos );
-						}
-						// echo $this->miFormulario->agrupacion ( 'fin' );
-						// unset ( $atributos );
-					}
-					// ------------------Fin Division para los botones-------------------------
 					echo $this->miFormulario->division ( "fin" );
 					unset ( $atributos );
 				}
