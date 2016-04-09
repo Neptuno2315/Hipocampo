@@ -42,7 +42,7 @@ $url .= "/index.php?";
 }
 
 ?>
-<script type='text/javascript'>
+<script type='text/javascript' async='async'>
 
 function consulta_sectores(elem, request, response){
 	  $.ajax({

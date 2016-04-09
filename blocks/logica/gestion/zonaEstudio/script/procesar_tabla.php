@@ -76,7 +76,7 @@ $url .= "/index.php?";
 	$urlTabla = $url . $cadena;
 }
 ?>
-<script type='text/javascript'>
+<script type='text/javascript' async='async'>
 
 
 
