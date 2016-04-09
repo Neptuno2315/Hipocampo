@@ -55,6 +55,11 @@ class Redireccionador {
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				
 				break;
+			
+			case 'paginaPrincipal' :
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				break;
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );

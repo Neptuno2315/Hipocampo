@@ -64,9 +64,7 @@ class Frontera {
 					break;
 				
 				case 'eliminarInformacionZona' :
-					var_dump ( $_REQUEST );
-					echo "eliminar";exit;
-					include_once ($this->ruta . "/formulario/resultadoConsulta.php");
+					include_once ($this->ruta . "/formulario/eliminacion.php");
 					
 					break;
 				

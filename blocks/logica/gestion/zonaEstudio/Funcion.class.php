@@ -37,6 +37,9 @@ class Funcion {
 	function modificar() {
 		include_once ($this->ruta . "funcion/modificarInformacionZona.php");
 	}
+	function eliminar() {
+		include_once ($this->ruta . "funcion/eliminarInformacionZona.php");
+	}
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -64,6 +67,11 @@ class Funcion {
 				case 'ModificarInformacionZona' :
 					
 					$this->modificar ();
+					break;
+				
+				case 'EliminarInformacionZona' :
+					
+					$this->eliminar ();
 					break;
 			}
 		}
