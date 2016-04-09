@@ -46,6 +46,25 @@ class Redireccionador {
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=ActualizacionError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				
+				break;
+			
+			case "Elimino" :
+				
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=EliminoExito";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				
+				break;
+			
+			case "NoElimino" :
+				
+				$variable = 'pagina=zonaEstudio';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=EliminoError";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 			
 			case 'ErrorModificacionFormulario' :

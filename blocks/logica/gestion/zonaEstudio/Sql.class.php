@@ -459,6 +459,33 @@ class Sql extends \Sql {
 				$cadenaSql .= " AND estado_registro=TRUE ";
 				
 				break;
+			
+			/*
+			 * Sentencias para deshabilitar Información Zona de Estudio
+			 */
+			
+			case 'eliminar_zona_estudio' :
+				$cadenaSql = " UPDATE zona_estudio ";
+				$cadenaSql .= " SET estado_registro=FALSE ";
+				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
+				
+				break;
+			
+			case 'eliminar_peligros' :
+				
+				$cadenaSql = " UPDATE peligros ";
+				$cadenaSql .= " SET estado_registro=FALSE ";
+				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
+				
+				break;
+			
+			case 'eliminar_info_carta_nautica' :
+				
+				$cadenaSql = " UPDATE informacion_carta_nautica ";
+				$cadenaSql .= " SET estado_registro=FALSE ";
+				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
+				
+				break;
 		}
 		
 		return $cadenaSql;

@@ -80,6 +80,16 @@ class registrarForm {
 					$atributos ['mensaje'] = 'Error en la Actualización de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
 					break;
 				
+				case 'EliminoExito' :
+					$atributos ['tipo'] = 'success';
+					$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					break;
+				
+				case 'EliminoError' :
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error en la Eliminación de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					break;
+				
 				case 'ErrorProcesamiento' :
 					
 					$atributos ['tipo'] = 'error';

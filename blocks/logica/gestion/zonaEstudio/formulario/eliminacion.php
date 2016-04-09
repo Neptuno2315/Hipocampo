@@ -147,7 +147,7 @@ class registrarForm {
 			echo $this->miFormulario->division ( "fin" );
 			unset ( $atributos );
 		}
-		var_dump ( $_REQUEST );
+		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		unset ( $atributos );
 		
@@ -173,6 +173,8 @@ class registrarForm {
 		$valorCodificado .= "&opcion=EliminarInformacionZona";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
+		$valorCodificado .= "&nombre_pry=" . $_REQUEST ['titulo_proyecto'];
+		
 		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
