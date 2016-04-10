@@ -209,26 +209,40 @@ class registrarForm {
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->formulario ( $atributos );
 		
-		$esteCampo = "marcoDatosBasicos";
-		$atributos ['id'] = $esteCampo;
-		$atributos ["estilo"] = "jqueryui";
-		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Modificar Proyecto de la Zona de Estudio : " . $_REQUEST ['titulo_proyecto'];
-		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		unset ( $atributos );
+		// $esteCampo = "marcoDatosBasicos";
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ["estilo"] = "jqueryui";
+		// $atributos ['tipoEtiqueta'] = 'inicio';
+		// $atributos ["leyenda"] = "Modificar Proyecto de la Zona de Estudio : " . $_REQUEST ['titulo_proyecto'];
+		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		// unset ( $atributos );
 		
+		// {
+		
+		// }
+		
+		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+		// unset ( $atributos );
+		
+		// ------------------Division para los botones-------------------------
+		$atributos ["id"] = "MarcoDatos";
+		$atributos ["estilo"] = "marcoBotones";
+		echo $this->miFormulario->division ( "inicio", $atributos );
 		{
-			$mostrarHtml = "<table id='tabla_datos_riesgos'></table>
-							<div id='barra_herramientas'></div>";
+			
+			$mostrarHtml = "<center>
+								<table id='tabla_datos_riesgos'>
+								</table>
+						        <div id='barra_herramientas'>
+					            </div>
+							</center>";
 			echo $mostrarHtml;
 			
-			
-			
+			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 		}
-		
-		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+		// ------------------Fin Division para los botones-------------------------
+		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
-		
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		

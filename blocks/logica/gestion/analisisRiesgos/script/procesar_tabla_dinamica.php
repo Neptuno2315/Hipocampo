@@ -8,10 +8,8 @@
 $url = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
 
-
 $urlDirectorio = $url;
 $urlDirectorio = $urlDirectorio . "/plugin/scripts/javascript/dataTable/Spanish.json";
-
 
 $url .= "/index.php?";
 
@@ -82,32 +80,100 @@ $url .= "/index.php?";
 
 
 $(function() {
-         	$('#tablaInfoZonas').ready(function() {
+         	$('#tabla_datos_riesgos').ready(function() {
 
-             $('#tablaInfoZonas').dataTable( {
-            	 language: {
-                     url: "<?php echo $urlDirectorio?>"
-                 			},
-				processing: true,
-		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
-                  searching: true,
-                  "scrollY":"280px",
-                 "scrollCollapse": false,
-                  info:true,
-	   		    "pagingType": "simple",
+         		 $("#tabla_datos_riesgos").jqGrid({
+                     url: 'data.json',
+     				// we set the changes to be made at client side using predefined word clientArray
+                     editurl: 'clientArray',
+                     datatype: "json",
+                     colModel: [
+                         {
+     						label: 'Tema',
+                             name: 'tem',
+                             width: 50,
+     						key: true,
+     						editable: true,
+     						editrules : { required: true}
+                         },
+                         {
+     						label: 'Variable',
+                             name: 'var',
+                             width: 140,
+                             editable: true // must set editable to true if you want to make the field editable
+                         },
+                         {
+     						label : 'Valor',
+                             name: 'val',
+                             width: 36,
+                             editable: true
+                         },
+                         {
+     						label: 'Nota',
+                             name: 'not',
+                             width: 120,
+                             editable: true
+                         },
+                         {
+     						label: 'Probabilidad',
+                             name: 'prb',
+                             width: 69,
+                             editable: true
+                         },
+                         {
+      						label: 'Impacto',
+                              name: 'prb',
+                              width: 65,
+                              editable: true
+                          },
+                          {
+        						label: 'Riesgo',
+                                name: 'risk',
+                                width: 65,
+                                editable: true
+                          },
+                          {
+      						label: 'Observación Controlar Riesgo',
+                              name: 'ob_risk',
+                              width: 145,
+                              editable: true
+                           }
+                     ],
+     				sortname: 'CustomerID',
+     				sortorder : 'asc',
+     				loadonce: true,
+     				viewrecords: true,
+                     width: 1042,
+                     height: 390,
+                     rowNum: 10,
+                     pager: "#barra_herramientas"
+                 });
 
-                  ajax:{
-                      url:"<?php echo $urlTabla?>",
-                      dataSrc:"data"                                                                  
-                  },
-                  columns: [
-                  { data :"region" },
-                  { data :"sector" },
-                  { data :"titulo" },
-                  { data :"fecha" },
-                  { data :"analizar" },
-                            ]
-             });
+         		$('#tabla_datos_riesgos').navGrid('#barra_herramientas',
+                        // the buttons to appear on the toolbar of the grid
+                        { edit: true, add: true, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
+                        // options for the Edit Dialog
+                        {
+                            editCaption: "The Edit Dialog",
+        					template: template,
+                            errorTextFormat: function (data) {
+                                return 'Error: ' + data.responseText
+                            }
+                        },
+                        // options for the Add Dialog
+                        {
+        					template: template,
+                            errorTextFormat: function (data) {
+                                return 'Error: ' + data.responseText
+                            }
+                        },
+                        // options for the Delete Dailog
+                        {
+                            errorTextFormat: function (data) {
+                                return 'Error: ' + data.responseText
+                            }
+                        });
+
                   
          		});
 
