@@ -59,8 +59,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&actionBloque=eliminarInformacionZona";
-				$cadenaACodificar .= "&opcion=eliminarInformacionZona";
+				$cadenaACodificar .= "&actionBloque=analizarRiesgo";
+				$cadenaACodificar .= "&opcion=analizarRiesgo";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
