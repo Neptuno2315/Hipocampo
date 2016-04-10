@@ -7,12 +7,13 @@ table.dataTable {
 	margin: 0 auto;
 	clear: both;
 	width: 100%;
-	/*border-collapse: collapse;*/
+	border-collapse: collapse;
 }
 
 table.dataTable thead th {
 	padding: 3px 0px 3px 10px;
 	cursor: pointer;
+	border-style: groove;
 	*cursor: hand;
 }
 
@@ -22,6 +23,7 @@ table.dataTable tfoot th {
 
 table.dataTable td {
 	padding: 3px 10px;
+	border-style:grovee;
 }
 
 table.dataTable td.center,
@@ -70,8 +72,7 @@ table.dataTable tr.even td.sorting_3 { background-color: #D6E3F5; }
 .dataTables_filter {
 	float: right;
 	text-align: right;
-        background-color: #D6E3F5;
-        padding: 5px;
+    padding: 5px;
 }
 
 

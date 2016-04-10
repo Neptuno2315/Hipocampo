@@ -25,71 +25,7 @@ $(function() {
 		return false;
 	});
 
-	// Plugin para Pestañas
-	$("#tabs").tabs();
-
-	$("#Libreria1").accordion(
-			{
-				heightStyle : "content",
-				collapsible : false,
-				disabled : false,
-				beforeActivate : function(evento, ui) {
-
-					$resultado = $(
-							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
-							.validationEngine("validate");
-
-					if ($resultado) {
-
-						return true;
-					}
-					return false;
-
-				}
-
-			});
-
-	$("#Libreria2").accordion(
-			{
-				heightStyle : "content",
-				collapsible : false,
-				disabled : false,
-				beforeActivate : function(evento, ui) {
-
-					$resultado = $(
-							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
-							.validationEngine("validate");
-
-					if ($resultado) {
-
-						return true;
-					}
-					return false;
-
-				}
-
-			});
-
-	$("#Libreria3").accordion(
-			{
-				heightStyle : "content",
-				collapsible : false,
-				disabled : false,
-				beforeActivate : function(event, ui) {
-
-					$resultado = $(
-							"#<?php echo $this->campoSeguro('zonaEstudio')?>")
-							.validationEngine("validate");
-
-					if ($resultado) {
-
-						return true;
-					}
-					return false;
-				}
-
-			});
-
+	
 	// Plugin de Select2 Campos de Selección
 	$("#<?php echo $this->campoSeguro('region')?>").width(200);
 	$("#<?php echo $this->campoSeguro('region')?>").select2();
