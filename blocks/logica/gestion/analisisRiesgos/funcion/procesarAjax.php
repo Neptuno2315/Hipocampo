@@ -97,7 +97,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
 						'modificar' => "<center><a href='" . $urlModificar . "'><u>&#9658; &blk34;</u></a></center>",
-						'eliminar' => "<center><a href='" . $urlEliminar . "'><u>X</u></a></center>" 
+						'eliminar' => "<center><a href='" . $urlEliminar . "'><B>↺</B></a></center>" 
 				);
 			}
 			
