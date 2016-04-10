@@ -105,8 +105,7 @@ $(function() {
                   { data :"sector" },
                   { data :"titulo" },
                   { data :"fecha" },
-                  { data :"modificar" },
-                  { data :"eliminar" },
+                  { data :"analizar" },
                             ]
              });
                   

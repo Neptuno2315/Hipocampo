@@ -316,7 +316,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE cast(titulo_proy as text) ILIKE '%" . $variable . "%' ";
 				$cadenaSql .= "AND estado_registro=TRUE ";
 				$cadenaSql .= "LIMIT 10; ";
-				
 				break;
 			
 			case 'consulta_zonas_estudio' :

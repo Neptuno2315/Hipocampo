@@ -2,22 +2,14 @@ $(function() {
 
 	// Plugin para Validar Formulario Validation Engine
 
-	$("#<?php echo $this->campoSeguro('zonaEstudio')?>").validationEngine({
+	$("#<?php echo $this->campoSeguro('analisisRiesgos')?>").validationEngine({
 		promptPosition : "topRight:-10",
 		scroll : false,
 		autoHidePrompt : true,
 		autoHideDelay : 9000
 	});
-
-	$("#<?php echo $this->campoSeguro('consultaZonaEstudio')?>").validationEngine({
-		promptPosition : "topRight:-10",
-		scroll : false,
-		autoHidePrompt : true,
-		autoHideDelay : 9000
-	});
-
-	$("#<?php echo $this->campoSeguro('consultaZonaEstudio')?>").submit(function() {
-		$resultado = $("#<?php echo $this->campoSeguro('consultaZonaEstudio')?>").validationEngine("validate");
+	$("#<?php echo $this->campoSeguro('analisisRiesgos')?>").submit(function() {
+		$resultado = $("#<?php echo $this->campoSeguro('analisisRiesgos')?>").validationEngine("validate");
 		if ($resultado) {
 
 			return true;
@@ -164,62 +156,17 @@ $(function() {
 								'Sa' ],
 						onSelect : function(dateText, inst) {
 							var lockDate = new Date(
-									$(
-											"#<?php echo $this->campoSeguro('fecha_final_consulta')?>")
-											.datepicker('getDate'));
-							$(
-									"input#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>")
-									.datepicker('option', 'maxDate', lockDate);
+									$("#<?php echo $this->campoSeguro('fecha_final_consulta')?>").datepicker('getDate'));
+							$("input#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>").datepicker('option', 'maxDate', lockDate);
 						},
 						onClose : function() {
-							if ($(
-									"input#<?php echo $this->campoSeguro('fecha_final_consulta')?>")
-									.val() != '') {
-								$(
-										"#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>")
-										.attr("class",
-												"cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required]");
+							if ($("input#<?php echo $this->campoSeguro('fecha_final_consulta')?>").val() != '') {
+								$("#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>").attr("class","cuadroTexto ui-widget ui-widget-content ui-corner-all   validate[required]");
 							} else {
-								$(
-										"#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>")
-										.attr("class",
-												"cuadroTexto ui-widget ui-widget-content ui-corner-all ");
+								$("#<?php echo $this->campoSeguro('fecha_inicio_consulta')?>").attr("class","cuadroTexto ui-widget ui-widget-content ui-corner-all ");
 							}
 						}
 
 					});
 
 });
-
-$("#ventanaA").steps(
-		{
-			headerTag : "h4",
-			bodyTag : "section",
-			enableAllSteps : true,
-			enablePagination : true,
-			transitionEffect : "slideLeft",
-			onStepChanging : function(event, currentIndex, newIndex) {
-				$resultado = $(
-						"#<?php echo $this->campoSeguro('zonaEstudio')?>")
-						.validationEngine("validate");
-
-				if ($resultado) {
-
-					return true;
-				}
-				return false;
-			},
-			onFinished : function(event, currentIndex) {
-				$("#<?php echo $this->campoSeguro('zonaEstudio')?>").submit();
-			},
-			labels : {
-				cancel : "Cancelar",
-				current : "Paso Siguiente :",
-				pagination : "Paginación",
-				finish : "Guardar Información",
-				next : "Siquiente",
-				previous : "Atras",
-				loading : "Cargando ..."
-			}
-
-		});

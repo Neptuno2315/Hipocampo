@@ -143,8 +143,7 @@ class registrarForm {
 											<th>Sector</th>
 											<th>Titulo y/o Nombre<br>Proyecto</th>
 											<th>Fecha Registro</th>
-											<th>Modificar</th> 
-											<th>Eliminar</th> 
+											<th>Registrar y/o Modificar<br>Analisis</th> 
 									    </tr>
 						            </thead>
 							</table>			

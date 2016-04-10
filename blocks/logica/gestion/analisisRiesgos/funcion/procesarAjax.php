@@ -59,23 +59,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&actionBloque=modifcarInformacionZona";
-				$cadenaACodificar .= "&opcion=modificarInformacionZona";
-				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
-				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
-				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
-				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
-				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
-				
-				// Codificar las variables
-				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
-				
-				// URL definitiva
-				$urlModificar = $url . $cadena;
-				
-				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 				$cadenaACodificar .= "&actionBloque=eliminarInformacionZona";
 				$cadenaACodificar .= "&opcion=eliminarInformacionZona";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
@@ -89,16 +72,16 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 				
 				// URL definitiva
-				$urlEliminar = $url . $cadena;
+				$urlAnalizar = $url . $cadena;
 				
 				$resultadoFinal [] = array (
 						'region' => "<center>" . $valor ['region'] . "</center>",
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'modificar' => "<center><a href='" . $urlModificar . "'><u>&#9658; &blk34;</u></a></center>",
-						'eliminar' => "<center><a href='" . $urlEliminar . "'><B>↺</B></a></center>" 
-				);
+						'analizar' => "<center><a href='" . $urlAnalizar . "'><B>↺</B></a></center>" 
+				)
+				;
 			}
 			
 			$total = count ( $resultadoFinal );
