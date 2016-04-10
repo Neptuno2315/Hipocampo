@@ -1,6 +1,6 @@
 <?php
 
-namespace logica\gestion\zonaEstudio\funcion;
+namespace logica\gestion\analisisRiesgos\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");

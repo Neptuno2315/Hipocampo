@@ -94,6 +94,21 @@ class pie {
 					$tab ++;
 					echo $this->miFormulario->campoTexto ( $atributos );
 					unset ( $atributos );
+					
+					echo "<br><br>";
+					
+					setlocale ( LC_ALL, "es_CO.UTF-8" );
+					$fecha = strftime ( "%A %d de %B del %Y" );
+						
+					$esteCampo = 'fecha';
+					$atributos ["id"] = $esteCampo;
+					$atributos ["estilo"] = $esteCampo;
+					$atributos ['columnas'] = 1;
+					$atributos ["estilo"] = $esteCampo;
+					$atributos ['texto'] = "<B>".utf8_encode ( ucwords ( $fecha ) )."</B>";
+					$tab ++;
+					echo $this->miFormulario->campoTexto ( $atributos );
+					unset ( $atributos );
 				}
 				
 				echo $this->miFormulario->division ( "fin" );
@@ -118,18 +133,7 @@ class pie {
 					echo $this->miFormulario->enlace ( $atributos );
 					unset ( $atributos );
 					
-					setlocale ( LC_ALL, "es_CO.UTF-8" );
-					$fecha = strftime ( "%A %d de %B del %Y" );
-					
-					$esteCampo = 'fecha';
-					$atributos ["id"] = $esteCampo;
-					$atributos ["estilo"] = $esteCampo;
-					$atributos ['columnas'] = 1;
-					$atributos ["estilo"] = $esteCampo;
-					$atributos ['texto'] = utf8_encode ( ucwords ( $fecha ) );
-					$tab ++;
-					echo $this->miFormulario->campoTexto ( $atributos );
-					unset ( $atributos );
+				
 				
 				}
 				

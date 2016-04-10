@@ -22,9 +22,12 @@ $enlaceZonaEstudio ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
 $enlaceZonaEstudio ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceZonaEstudio ['enlace'], $directorio );
 $enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
 
+// **********Gestión Analisis de Riesgos**************//
 
-
-
+$enlaceAnalisisRiesgo ['enlace'] = "pagina=analisisRiesgos";
+$enlaceAnalisisRiesgo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
+$enlaceAnalisisRiesgo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAnalisisRiesgo ['enlace'], $directorio );
+$enlaceAnalisisRiesgo ['nombre'] = "Analizar Variables";
 
 // **********Administrador Datos Geograficos**************//
 
@@ -33,9 +36,6 @@ $enlaceAdministradorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario']
 $enlaceAdministradorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAdministradorGeografico ['enlace'], $directorio );
 $enlaceAdministradorGeografico ['nombre'] = "Administrador";
 
-
-
-
 // **********Visualizador Datos Geograficos**************//
 
 $enlaceVisualizadorGeografico ['enlace'] = "pagina=visualizador";
@@ -43,21 +43,11 @@ $enlaceVisualizadorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
 $enlaceVisualizadorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
 $enlaceVisualizadorGeografico ['nombre'] = "Visualizador";
 
-
-
-
 // **********Visualizador Datos Geograficos**************//
 
 $enlaceAplicativo ['enlace'] = "index.php";
 $enlaceAplicativo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
 $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
-
-
-
-
-
-
-
 
 ?>
 <div class="container">
@@ -73,40 +63,46 @@ $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 						Riesgos</strong> <small>Gestión Riesgos a la Navegación</small>
 			</a>
 				<ul>
-					<li>
-						<a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
+					<li><a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
 					</li>
-					<li>
-						<a href="#"><i class="fa fa-group"><img SRC="<?php echo $rutaBloque ?>/css/images/analizar.png"></i>Analizar Variables</a>
-					<li>
-						<a href="#"><i class="fa fa-group"><img SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i>Resultado o Informe</a>
-					</li>
+					<li><a href="<?php echo $enlaceAnalisisRiesgo['urlCodificada']?>"><i
+							class="fa fa-group"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/analizar.png"></i><?php echo $enlaceAnalisisRiesgo['nombre']?></a>
+					
+					<li><a href="#"><i class="fa fa-group"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i>Resultado
+							o Informe</a></li>
 				</ul></li>
 			<li><a href=""> <i class="fa fa-gift"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos Geográficos</strong>
-					<small>Información Geográfica</small>
+						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos
+						Geográficos</strong> <small>Información Geográfica</small>
 			</a>
-			<ul>
-					<li>
-						<a href="<?php echo $enlaceAdministradorGeografico ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/administrador.png"></i><?php echo $enlaceAdministradorGeografico ['nombre'];?></a>
+				<ul>
+					<li><a
+						href="<?php echo $enlaceAdministradorGeografico ['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/administrador.png"></i><?php echo $enlaceAdministradorGeografico ['nombre'];?></a>
 					</li>
-					<li>
-						<a href="<?php echo $enlaceVisualizadorGeografico ['urlCodificada'];?>"><i class="fa fa-globe"><img SRC="<?php echo $rutaBloque ?>/css/images/geoposition	.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
+					<li><a
+						href="<?php echo $enlaceVisualizadorGeografico ['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/geoposition	.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
 					</li>
-				</ul>
-			
-			</li>
+				</ul></li>
 			<li><a href=""> <i class="fa fa-globe"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong>Usuarios</strong>
 					<small>Gestión Usuarios</small>
 			</a></li>
-			<li><a href="<?php echo $enlaceAplicativo['enlace']; ?>"> <i class="fa fa-globe"><img
+			<li><a href="<?php echo $enlaceAplicativo['enlace']; ?>"> <i
+					class="fa fa-globe"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/salir.png"></i> <strong><?php echo  $enlaceAplicativo['nombre']; ?></strong>
 					<small>Salir</small>
 			</a></li>
-			
-			
-			
+
+
+
 			<!--<li><a href=""> <i class="fa fa-comments-o"></i> <strong>Blog</strong>
 					<small>what they say</small>
 			</a>

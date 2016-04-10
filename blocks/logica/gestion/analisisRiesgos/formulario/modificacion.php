@@ -4032,6 +4032,7 @@ class registrarForm {
 		
 		echo $this->miFormulario->marcoAgrupacion ( 'fin' );
 		unset ( $atributos );
+		echo"<br>";
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		

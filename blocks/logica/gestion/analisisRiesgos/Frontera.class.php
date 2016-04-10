@@ -1,6 +1,7 @@
 <?
 
-namespace logica\gestion\zonaEstudio;
+namespace logica\gestion\analisisRiesgos;
+
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -70,12 +71,12 @@ class Frontera {
 				
 				default :
 					
-					include_once ($this->ruta . "/formulario/nuevo.php");
+					include_once ($this->ruta . "/formulario/consultaInfoZona.php");
 					
 					break;
 			}
 		} else {
-			include_once ($this->ruta . "/formulario/nuevo.php");
+			include_once ($this->ruta . "/formulario/consultaInfoZona.php");
 		}
 	}
 }

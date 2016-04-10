@@ -1,8 +1,9 @@
 <?php
 
-namespace logica\gestion\zonaEstudio;
+namespace logica\gestion\analisisRiesgos;
 
-use logica\gestion\zonaEstudio\funcion\Redireccionador;
+
+use logica\gestion\analisisRiesgos\funcion\Redireccionador;
 // Evitar un acceso directo a este archivo
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -33,7 +34,7 @@ include_once ('funcion/Redireccionador.php');
 
 // Esta clase actua como control del bloque en un patron FCE
 
-if (! class_exists ( 'logica\canales\zonaEstudio' )) {
+if (! class_exists ( 'logica\analisis\riesgos' )) {
 	class Bloque implements \Bloque {
 		var $nombreBloque;
 		var $miFuncion;
