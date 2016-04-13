@@ -26,8 +26,7 @@ class registrarForm {
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
 		 * que lo complementan.
 		 */
-		// Rescatar los datos de este bloque
-		$conexion = "logica";
+		$conexion = "parametros";
 		
 		$esteRecursoDBLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
@@ -38,137 +37,10 @@ class registrarForm {
 		 * Consultar Información Para Modificar Zona de Estudio
 		 */
 		{
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_por_zona", $_REQUEST ['id_zona'] );
-			$informacion = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			$informacion = $informacion [0];
+			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
+			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			var_dump ( $variables );
 			
-			$arreglo_zona = array (
-					"region" => $informacion ['region'],
-					"sector" => $informacion ['id_sector'],
-					"nombre_pry" => $informacion ['titulo_proy'],
-					"pr_co_ba" => $informacion ['profundidad_qll'],
-					"ancho_canal" => $informacion ['ancho_canl'],
-					"obtrucciones_visibilidad" => $informacion ['obtrucciones_vs'],
-					"complejidad_hidrovia" => $informacion ['complejidad_hdr'],
-					"tipo_fondo" => $informacion ['tipo_fn'],
-					"estabilidad_sedimentos" => $informacion ['estabilidad_sed'],
-					"ayudas_navegacion" => $informacion ['ayudas_nv'],
-					"calidad_datos" => $informacion ['calidad_dthd'],
-					"opera_nc_di" => $informacion ['operaciones_ddn'],
-					"estado_mar" => $informacion ['estado_mr'],
-					"obser_des__vi_mr" => $informacion ['observaciones_vncr'],
-					"visibilidad" => $informacion ['restricciones_vs'],
-					"con_hielo" => ($informacion ['condiciones_hl'] != 'f') ? 1 : 0,
-					"ilum_fondo" => $informacion ['iluminacion_fn'],
-					"obser_escom" => $informacion ['observaciones_scm'],
-					"mn_stm" => $informacion ['monitoreo_stm'],
-					"bo_mo_for_re" => $informacion ['boyas_ais'],
-					"bo_si_ais_no_super" => $informacion ['boyas_nais'],
-					"racon" => $informacion ['racon_num'],
-					"linterna" => $informacion ['linternas_num'],
-					"ort_aton" => $informacion ['otras_aton'],
-					"g_gps" => ($informacion ['proporciona_dgps'] != 'f') ? 1 : 0,
-					"ds_stm" => ($informacion ['disponibilidad_stm'] != 'f') ? 1 : 0,
-					"ds_srv_pl" => ($informacion ['disponible_servpl'] != 'f') ? 1 : 0,
-					"obser_des__sis_sn" => $informacion ['observaciones'], // ----
-					"cal_max_buques" => $informacion ['calado_mxbq'],
-					"hg_bj_quilla" => $informacion ['holgura_bjqll'],
-					"mx_oleaje_pre" => $informacion ['maxima_olpr'],
-					"sd_mx_anual" => $informacion ['sedimentacion_mxa'],
-					"pr_mn_seguridad" => $informacion ['profundidad_minsg'],
-					"ach_canal" => $informacion ['anchura_cnl'],
-					"ts_maxima" => $informacion ['tasa_mx'],
-					"ob_fluj_marea" => $informacion ['observaciones_flmr'],
-					"pr_maxima" => $informacion ['prediccion_mxvntr'],
-					"ob_temp_dirr" => $informacion ['observaciones_vttr'],
-					"pr_maxima_dgl" => $informacion ['prediccion_cbm'],
-					"ob_temp_dirr_com" => $informacion ['observaciones_efcb'],
-					"pnt_cr_tr" => $informacion ['distancia_pntcr'],
-					"ob_pt_ct_tr" => $informacion ['observaciones_pntcr'],
-					"prl_max_cr" => $informacion ['distancia_plgcr'],
-					"ob_prl_max_cr" => $informacion ['observaciones_plgcr'],
-					"pr_mn_vs" => $informacion ['distancia_prmnvs'],
-					"prc_mn_vs" => $informacion ['porcentaje_prmnvs'],
-					"prd_pr_vs" => $informacion ['distancia_prmvs'],
-					"pds_pr_vs" => $informacion ['porcentaje_prmvs'],
-					"tm_bj_sl" => $informacion ['distancia_tmbsl'],
-					"prc_tm_bj_sl" => $informacion ['porcentaje_tmbsl'],
-					"prd_respl" => $informacion ['distancia_rpl'],
-					"prc_prd_respl" => $informacion ['porcentaje_rpl'],
-					"pr_aton" => $informacion ['calidad_praton'],
-					"pl_tr_mr" => $informacion ['calidad_plserv'],
-					"gr_cmp_trp" => $informacion ['calidad_grcmtr'],
-					"pq_cmp_trp" => $informacion ['calidad_pqcmtr'] 
-			);
-			// ,
-			
-			$_REQUEST = array_merge ( $_REQUEST, $arreglo_zona );
-			// var_dump ( $arreglo_zona );
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_general_trafico_por_zona", $_REQUEST ['id_zona'] );
-			$trafico = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			if ($trafico != false) {
-				
-				$arregloPreTrafico = array (
-						'rango1BC',
-						'tiempo1BC',
-						'rango2BC',
-						'tiempo2BC',
-						'rango3BC',
-						'tiempo3BC',
-						'rango1BE',
-						'tiempo1BE',
-						'rango2BE',
-						'tiempo2BE',
-						'rango1BP',
-						'tiempo1BP',
-						'rango2BP',
-						'tiempo2BP',
-						'rango3BP',
-						'tiempo3BP',
-						'rango1BG',
-						'tiempo1BG',
-						'rango2BG',
-						'tiempo2BG',
-						'rango1BPQ',
-						'tiempo1BPQ',
-						'rango1SM',
-						'tiempo1SM',
-						'rango2SM',
-						'tiempo2SM',
-						'rango3SM',
-						'tiempo3SM',
-						'rango4SM',
-						'tiempo4SM',
-						'rango5SM',
-						'tiempo5SM',
-						'rango1AA',
-						'tiempo1AA',
-						'rango2AA',
-						'tiempo2AA',
-						'rango3AA',
-						'tiempo3AA',
-						'rango4AA',
-						'tiempo4AA',
-						'num_bq_gr',
-						'tiempo_bq_gr',
-						'num_bq_pq',
-						'tiempo_bq_pq' 
-				);
-				$conrador = 1;
-				
-				for($contador = 0; $contador <= (count ( $arregloPreTrafico ) - 1); $contador ++) {
-					
-					foreach ( $trafico as $valor ) {
-						if ($valor ['variable_trf'] == $arregloPreTrafico [$contador]) {
-							
-							$_REQUEST [$valor ['variable_trf']] = $valor ['numero_bq'];
-							$_REQUEST [$arregloPreTrafico [$contador + 1]] = $valor ['periodo_trf'];
-						}
-					}
-				}
-			}
 		}
 		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------

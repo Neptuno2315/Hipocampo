@@ -28,152 +28,9 @@ class Sql extends \Sql {
 		
 		switch ($tipo) {
 			
-			/**
-			 * Clausulas específicas
-			 */
-			case 'insertarRegistro' :
-				$cadenaSql = 'INSERT INTO ';
-				$cadenaSql .= $prefijo . 'pagina ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= 'nombre,';
-				$cadenaSql .= 'descripcion,';
-				$cadenaSql .= 'modulo,';
-				$cadenaSql .= 'nivel,';
-				$cadenaSql .= 'parametro';
-				$cadenaSql .= ') ';
-				$cadenaSql .= 'VALUES ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= '\'' . $_REQUEST ['nombrePagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['descripcionPagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['moduloPagina'] . '\', ';
-				$cadenaSql .= $_REQUEST ['nivelPagina'] . ', ';
-				$cadenaSql .= '\'' . $_REQUEST ['parametroPagina'] . '\'';
-				$cadenaSql .= ') ';
-				break;
-			
-			case 'actualizarRegistro' :
-				$cadenaSql = 'INSERT INTO ';
-				$cadenaSql .= $prefijo . 'pagina ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= 'nombre,';
-				$cadenaSql .= 'descripcion,';
-				$cadenaSql .= 'modulo,';
-				$cadenaSql .= 'nivel,';
-				$cadenaSql .= 'parametro';
-				$cadenaSql .= ') ';
-				$cadenaSql .= 'VALUES ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= '\'' . $_REQUEST ['nombrePagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['descripcionPagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['moduloPagina'] . '\', ';
-				$cadenaSql .= $_REQUEST ['nivelPagina'] . ', ';
-				$cadenaSql .= '\'' . $_REQUEST ['parametroPagina'] . '\'';
-				$cadenaSql .= ') ';
-				break;
-			
-			case 'buscarRegistro' :
-				
-				$cadenaSql = 'SELECT ';
-				$cadenaSql .= 'id_pagina as PAGINA, ';
-				$cadenaSql .= 'nombre as NOMBRE, ';
-				$cadenaSql .= 'descripcion as DESCRIPCION,';
-				$cadenaSql .= 'modulo as MODULO,';
-				$cadenaSql .= 'nivel as NIVEL,';
-				$cadenaSql .= 'parametro as PARAMETRO ';
-				$cadenaSql .= 'FROM ';
-				$cadenaSql .= $prefijo . 'pagina ';
-				$cadenaSql .= 'WHERE ';
-				$cadenaSql .= 'nombre=\'' . $_REQUEST ['nombrePagina'] . '\' ';
-				break;
-			
-			case 'borrarRegistro' :
-				$cadenaSql = 'INSERT INTO ';
-				$cadenaSql .= $prefijo . 'pagina ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= 'nombre,';
-				$cadenaSql .= 'descripcion,';
-				$cadenaSql .= 'modulo,';
-				$cadenaSql .= 'nivel,';
-				$cadenaSql .= 'parametro';
-				$cadenaSql .= ') ';
-				$cadenaSql .= 'VALUES ';
-				$cadenaSql .= '( ';
-				$cadenaSql .= '\'' . $_REQUEST ['nombrePagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['descripcionPagina'] . '\', ';
-				$cadenaSql .= '\'' . $_REQUEST ['moduloPagina'] . '\', ';
-				$cadenaSql .= $_REQUEST ['nivelPagina'] . ', ';
-				$cadenaSql .= '\'' . $_REQUEST ['parametroPagina'] . '\'';
-				$cadenaSql .= ') ';
-				break;
-			
 			/*
 			 * Consultas para creacion Formulario
 			 */
-			case 'consultar_escala_douglas' :
-				
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='EscalaDouglas' ; ";
-				
-				break;
-			
-			case 'consultar_escala_beaufort' :
-				
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='EscalaBeaufort' ; ";
-				
-				break;
-			
-			case 'consultar_calidad' :
-				
-				$cadenaSql = "SELECT pm.descripcion id, pm.descripcion_detallada valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='Calidad' ; ";
-				
-				break;
-			
-			case 'consultar_iluminacion_fondo' :
-				
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='IluminacionFondo' ; ";
-				
-				break;
-			
-			case 'consultar_tipo_fondo_marino' :
-				
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='FondosMarinos' ; ";
-				
-				break;
-			
-			case 'consultar_estabilidad_sedimentación' :
-				
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='TasaSedimentacion' ; ";
-				
-				break;
 			
 			case 'consultar_region' :
 				$cadenaSql = "SELECT id_region, descripcion ";
@@ -186,26 +43,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "FROM sector  ";
 				$cadenaSql .= "WHERE estado_registro='t'  ";
 				$cadenaSql .= "AND id_region ='" . $variable . "';";
-				break;
-			
-			case 'consultar_periodo' :
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='CaracterizacionPeriodoTiempo' ; ";
-				
-				break;
-			
-			case 'consultar_Operaciones_Noche_Dia' :
-				$cadenaSql = "SELECT pm.id_parametro id, pm.descripcion valor ";
-				$cadenaSql .= "FROM parametros.parametro pm  ";
-				$cadenaSql .= "JOIN  parametros.tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema ";
-				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
-				$cadenaSql .= "AND  tp.estado_registro='t' ";
-				$cadenaSql .= "AND  tp.descripcion='OperacionesNocheDia' ; ";
-				
 				break;
 			
 			/*
@@ -238,77 +75,20 @@ class Sql extends \Sql {
 				$cadenaSql .= ($variable ['monitoreo_stm'] != '') ? "'" . $variable ['monitoreo_stm'] . "');" : "NULL);";
 				break;
 			
-			case "registrar_trafico_maritimo" :
-				$cadenaSql = " INSERT INTO trafico(id_zona_estudio, variable_trf, numero_bq, periodo_trf) ";
-				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
-				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= "'" . $variable ['numero_buques'] . "',";
-				$cadenaSql .= "'" . $variable ['periodo'] . "');";
-				
-				break;
-			
-			case 'registrar_informacion_carta_nautica' :
-				$cadenaSql = " INSERT INTO informacion_carta_nautica(id_zona_estudio, boyas_ais, boyas_nais, ";
-				$cadenaSql .= " racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm,disponible_servpl, observaciones) ";
-				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
-				$cadenaSql .= "'" . $variable ['boyas_ais'] . "',";
-				$cadenaSql .= "'" . $variable ['boyas_nais'] . "',";
-				$cadenaSql .= "'" . $variable ['racon_num'] . "',";
-				$cadenaSql .= "'" . $variable ['linternas_num'] . "',";
-				$cadenaSql .= "'" . $variable ['otras_aton'] . "',";
-				$cadenaSql .= "'" . $variable ['proporciona_dgps'] . "',";
-				$cadenaSql .= "'" . $variable ['disponibilidad_stm'] . "',";
-				$cadenaSql .= "'" . $variable ['disponible_servpl'] . "',";
-				$cadenaSql .= ($variable ['observaciones'] != '') ? "'" . $variable ['observaciones'] . "');" : "NULL);";
-				
-				break;
-			
-			case 'registrar_peligros' :
-				$cadenaSql = "  INSERT INTO peligros(id_zona_estudio,calado_mxbq, holgura_bjqll, maxima_olpr, ";
-				$cadenaSql .= " sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr, ";
-				$cadenaSql .= " prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb, ";
-				$cadenaSql .= " distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr, ";
-				$cadenaSql .= "  distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs, ";
-				$cadenaSql .= " distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl, ";
-				$cadenaSql .= " calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr) ";
-				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "(SELECT MAX (id_zona_estudio) FROM zona_estudio),";
-				$cadenaSql .= "'" . $variable ['calado_mxbq'] . "',";
-				$cadenaSql .= "'" . $variable ['holgura_bjqll'] . "',";
-				$cadenaSql .= "'" . $variable ['maxima_olpr'] . "',";
-				$cadenaSql .= "'" . $variable ['sedimentacion_mxa'] . "',";
-				$cadenaSql .= "'" . $variable ['profundidad_minsg'] . "',";
-				$cadenaSql .= "'" . $variable ['anchura_cnl'] . "',";
-				$cadenaSql .= "'" . $variable ['tasa_mx'] . "',";
-				$cadenaSql .= ($variable ['observaciones_flmr'] != '') ? "'" . $variable ['observaciones_flmr'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['prediccion_mxvntr'] . "',";
-				$cadenaSql .= ($variable ['observaciones_vttr'] != '') ? "'" . $variable ['observaciones_vttr'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['prediccion_cbm'] . "',";
-				$cadenaSql .= ($variable ['observaciones_efcb'] != '') ? "'" . $variable ['observaciones_efcb'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['distancia_pntcr'] . "',";
-				$cadenaSql .= ($variable ['observaciones_pntcr'] != '') ? "'" . $variable ['observaciones_pntcr'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['distancia_plgcr'] . "',";
-				$cadenaSql .= ($variable ['observaciones_plgcr'] != '') ? "'" . $variable ['observaciones_plgcr'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['distancia_prmnvs'] . "',";
-				$cadenaSql .= "'" . $variable ['porcentaje_prmnvs'] . "',";
-				$cadenaSql .= "'" . $variable ['distancia_prmvs'] . "',";
-				$cadenaSql .= "'" . $variable ['porcentaje_prmvs'] . "',"; //
-				$cadenaSql .= "'" . $variable ['distancia_tmbsl'] . "',";
-				$cadenaSql .= "'" . $variable ['porcentaje_tmbsl'] . "',";
-				$cadenaSql .= "'" . $variable ['distancia_rpl'] . "',";
-				$cadenaSql .= "'" . $variable ['porcentaje_rpl'] . "',";
-				$cadenaSql .= "'" . $variable ['calidad_praton'] . "',";
-				$cadenaSql .= "'" . $variable ['calidad_plserv'] . "',";
-				$cadenaSql .= "'" . $variable ['calidad_grcmtr'] . "',";
-				$cadenaSql .= "'" . $variable ['calidad_pqcmtr'] . "');";
-				
-				break;
-			
 			/*
 			 * Sentencias Consulta Información
 			 */
+			
+			case 'consultar_parametros_utilizar' :
+				
+				$cadenaSql = "SELECT tp.abreviatura,pm.descripcion variable ";
+				$cadenaSql .= "FROM  parametro pm  ";
+				$cadenaSql .= "JOIN  tema_parametros tp ON tp.id_tema_parametro=pm.parametro_tema AND  tp.estado_registro='t' ";
+				$cadenaSql .= "WHERE pm.estado_registro='t'  ";
+				$cadenaSql .= "AND  tp.id_tema_parametro >= 9 ";
+				$cadenaSql .= "AND  tp.id_tema_parametro <= 12; ";
+				
+				break;
 			
 			case 'consultar_titulos_zonas' :
 				$cadenaSql = "SELECT id_zona_estudio AS data , titulo_proy AS  value  ";
