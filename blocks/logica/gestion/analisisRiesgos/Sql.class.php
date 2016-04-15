@@ -73,6 +73,13 @@ class Sql extends \Sql {
 			 * Sentencias Consulta Información
 			 */
 			
+			case 'consultar_variables_registradas_temporales' :
+				$cadenaSql = "SELECT * ";
+				$cadenaSql .= "FROM riesgo_temporal ";
+				$cadenaSql .= "WHERE token='" . $variable . "'; ";
+				
+				break;
+			
 			case 'consultar_parametros_utilizar' :
 				
 				$cadenaSql = "SELECT tp.abreviatura,pm.descripcion variable ";

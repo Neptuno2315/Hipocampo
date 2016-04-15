@@ -20,58 +20,16 @@ $url .= "/index.php?";
 	$cadenaACodificar .= "&action=index.php";
 	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
 	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-	$cadenaACodificar .= "&funcion=consultarZonasEstudio";
+	$cadenaACodificar .= "&funcion=consultaVariables";
 	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 	$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
-	
-	if (isset ( $_REQUEST ['region_consulta'] ) && $_REQUEST ['region_consulta'] != '') {
-		$region = $_REQUEST ['region_consulta'];
-	} else {
-		$region = '';
-	}
-	
-	if (isset ( $_REQUEST ['sector_consulta'] ) && $_REQUEST ['sector_consulta'] != '') {
-		$sector = $_REQUEST ['sector_consulta'];
-	} else {
-		$sector = '';
-	}
-	
-	if (isset ( $_REQUEST ['id_zona'] ) && $_REQUEST ['id_zona'] != '') {
-		$zona = $_REQUEST ['id_zona'];
-	} else {
-		$zona = '';
-	}
-	
-	if (isset ( $_REQUEST ['fecha_inicio_consulta'] ) && $_REQUEST ['fecha_inicio_consulta'] != '') {
-		$fecha_inicio = $_REQUEST ['fecha_inicio_consulta'];
-	} else {
-		$fecha_inicio = '';
-	}
-	
-	if (isset ( $_REQUEST ['fecha_final_consulta'] ) && $_REQUEST ['fecha_final_consulta'] != '') {
-		$fecha_final = $_REQUEST ['fecha_final_consulta'];
-	} else {
-		$fecha_final = '';
-	}
-	/* Arreglo de Variables */
-	$arreglo = array (
-			'region' => $region,
-			'sector' => $sector,
-			'zona_estudio' => $zona,
-			'fecha_inicial' => $fecha_inicio,
-			'fecha_final' => $fecha_final 
-	);
-	
-	$arreglo = base64_encode ( serialize ( $arreglo ) );
-	
-	$cadenaACodificar .= "&arreglo=" . $arreglo;
-	
 	// Codificar las variables
 	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 	
 	// URL definitiva
-	$urlTabla = $url . $cadena;
+	$urlTablaDinamica = $url . $cadena;
+	
 }
 ?>
 <script type='text/javascript' async='async'>
@@ -83,10 +41,9 @@ $(function() {
          	$('#tabla_datos_riesgos').ready(function() {
 
          		 $("#tabla_datos_riesgos").jqGrid({
-                     url: 'data.json',
-     				// we set the changes to be made at client side using predefined word clientArray
-                     editurl: 'clientArray',
+                     url:	"<?php echo $urlTablaDinamica?>",
                      datatype: "json",
+                     mtype: "GET",
                      colModel: [
                          {
      						label: 'Tema',
@@ -122,7 +79,7 @@ $(function() {
                          },
                          {
       						label: 'Impacto',
-                              name: 'prb',
+                              name: 'imp',
                               width: 65,
                               editable: true
                           },
@@ -139,7 +96,7 @@ $(function() {
                               editable: true
                            }
                      ],
-     				sortname: 'CustomerID',
+     				sortname: 'tem',
      				sortorder : 'asc',
      				loadonce: true,
      				viewrecords: true,
@@ -148,31 +105,6 @@ $(function() {
                      rowNum: 10,
                      pager: "#barra_herramientas"
                  });
-
-         		$('#tabla_datos_riesgos').navGrid('#barra_herramientas',
-                        // the buttons to appear on the toolbar of the grid
-                        { edit: true, add: true, del: true, search: false, refresh: false, view: false, position: "left", cloneToTop: false },
-                        // options for the Edit Dialog
-                        {
-                            editCaption: "The Edit Dialog",
-        					template: template,
-                            errorTextFormat: function (data) {
-                                return 'Error: ' + data.responseText
-                            }
-                        },
-                        // options for the Add Dialog
-                        {
-        					template: template,
-                            errorTextFormat: function (data) {
-                                return 'Error: ' + data.responseText
-                            }
-                        },
-                        // options for the Delete Dailog
-                        {
-                            errorTextFormat: function (data) {
-                                return 'Error: ' + data.responseText
-                            }
-                        });
 
                   
          		});

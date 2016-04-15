@@ -80,8 +80,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
 						'analizar' => "<center><a href='" . $urlAnalizar . "'><B>↺</B></a></center>" 
-				)
-				;
+				);
 			}
 			
 			$total = count ( $resultadoFinal );
@@ -94,6 +93,69 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				"data":' . $resultado . '}';
 			
 			echo $resultado;
+			
+			break;
+		
+		case 'consultaVariables' :
+			
+			$tabla = new stdClass ();
+			
+			$page = $_GET ['page'];
+			
+			$limit = $_GET ['rows'];
+			
+			$sidx = $_GET ['sidx'];
+			
+			$sord = $_GET ['sord'];
+			
+			if (! $sidx)
+				$sidx = 1;
+				
+				// ------------------
+			
+			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_variables_registradas_temporales', $_REQUEST ['tiempo'] );
+			
+			$resultadoItems = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			// ---------------------
+			$filas = count ( $resultadoItems );
+			
+			if ($filas > 0 && $limit > 0) {
+				$total_pages = ceil ( $filas / $limit );
+			} else {
+				$total_pages = 0;
+			}
+			
+			if ($page > $total_pages)
+				$page = $total_pages;
+			
+			$start = $limit * $page - $limit;
+			if ($resultadoItems != false) {
+				$tabla->page = $page;
+				$tabla->total = $total_pages;
+				$tabla->records = $filas;
+				
+				$i = 0;
+				
+				foreach ( $resultadoItems as $row ) {
+					$tabla->rows [$i] ['tem'] = $row ['tema'];
+					$tabla->rows [$i] ['cell'] = array (
+							$row ['tema'],
+							$row ['var'],
+							$row ['val'],
+							$row ['not'],
+							$row ['prb'],
+							$row ['imp'],
+							$row ['risk'],
+							$row ['ob_risk']
+					);
+					$i ++;
+				}
+				
+				$tabla = json_encode ( $tabla );
+				
+				echo $tabla;
+			}
 			
 			break;
 	}
