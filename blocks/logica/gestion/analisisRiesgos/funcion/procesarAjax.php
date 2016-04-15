@@ -138,16 +138,16 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$i = 0;
 				
 				foreach ( $resultadoItems as $row ) {
-					$tabla->rows [$i] ['tem'] = $row ['tema'];
+					$tabla->rows [$i] ['tem'] = $row ['id_riesgo_temp'];
 					$tabla->rows [$i] ['cell'] = array (
 							$row ['tema'],
-							$row ['var'],
-							$row ['val'],
-							$row ['not'],
-							$row ['prb'],
-							$row ['imp'],
-							$row ['risk'],
-							$row ['ob_risk']
+							$row ['variable'],
+							$row ['valor'],
+							$row ['nota'],
+							$row ['probabilidad'],
+							$row ['impacto'],
+							$row ['riesgo'],
+							$row ['control_ris']
 					);
 					$i ++;
 				}
