@@ -49,30 +49,24 @@ class Sql extends \Sql {
 			 * Sentenias de Registro de Informacion
 			 */
 			
-			case 'registrar_zona_estudio' :
-				$cadenaSql = " INSERT INTO zona_estudio(id_sector, titulo_proy, profundidad_qll, ancho_canl,  ";
-				$cadenaSql .= "obtrucciones_vs, complejidad_hdr, tipo_fn, estabilidad_sed, ayudas_nv, ";
-				$cadenaSql .= "calidad_dthd, operaciones_ddn, estado_mr, observaciones_vncr, ";
-				$cadenaSql .= "restricciones_vs, condiciones_hl, iluminacion_fn, observaciones_scm, monitoreo_stm) ";
+			case 'registrar_variables_temporales' :
+				$cadenaSql = " INSERT INTO riesgo_temporal(id_zona_estudio, tema, variable,token)  ";
 				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "'" . $variable ['id_sector'] . "',";
-				$cadenaSql .= "'" . $variable ['titulo_proy'] . "',";
-				$cadenaSql .= "'" . $variable ['profundidad_qll'] . "',";
-				$cadenaSql .= "'" . $variable ['ancho_canl'] . "',";
-				$cadenaSql .= "'" . $variable ['obtrucciones_vs'] . "',";
-				$cadenaSql .= "'" . $variable ['complejidad_hdr'] . "',";
-				$cadenaSql .= "'" . $variable ['tipo_fn'] . "',";
-				$cadenaSql .= "'" . $variable ['estabilidad_sed'] . "',";
-				$cadenaSql .= "'" . $variable ['ayudas_nv'] . "',";
-				$cadenaSql .= "'" . $variable ['calidad_dthd'] . "',";
-				$cadenaSql .= "'" . $variable ['operaciones_ddn'] . "',";
-				$cadenaSql .= "'" . $variable ['estado_mr'] . "',";
-				$cadenaSql .= ($variable ['observaciones_vncr'] != '') ? "'" . $variable ['observaciones_vncr'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['restricciones_vs'] . "',";
-				$cadenaSql .= "'" . $variable ['condiciones_hl'] . "',";
-				$cadenaSql .= "'" . $variable ['iluminacion_fn'] . "',";
-				$cadenaSql .= ($variable ['observaciones_scm'] != '') ? "'" . $variable ['observaciones_scm'] . "'," : "NULL,";
-				$cadenaSql .= ($variable ['monitoreo_stm'] != '') ? "'" . $variable ['monitoreo_stm'] . "');" : "NULL);";
+				$cadenaSql .= "'" . $variable ['zona'] . "',";
+				$cadenaSql .= "'" . $variable ['abreviatura'] . "',";
+				$cadenaSql .= "'" . $variable ['variable'] . "',";
+				$cadenaSql .= "'" . $variable ['token'] . "');";
+				
+				break;
+			
+			/*
+			 * Limpiar Tabla Temporal
+			 */
+			
+			case 'limpiar_variables_temporales' :
+				$cadenaSql = " DELETE FROM riesgo_temporal  ";
+				$cadenaSql .= "WHERE id_zona_estudio='" . $variable . "'; ";
+				
 				break;
 			
 			/*

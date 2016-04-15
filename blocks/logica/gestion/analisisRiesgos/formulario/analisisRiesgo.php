@@ -33,16 +33,6 @@ class registrarForm {
 		$esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
-		/*
-		 * Consultar Información Para Modificar Zona de Estudio
-		 */
-		{
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
-			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			var_dump ( $variables );
-			
-		}
-		
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
 		/**
 		 * Atributos que deben ser aplicados a todos los controles de este formulario.
@@ -54,6 +44,41 @@ class registrarForm {
 		 */
 		$atributosGlobales ['campoSeguro'] = 'true';
 		$_REQUEST ['tiempo'] = time ();
+		
+		{
+			/*
+			 * Limpiar Variables Existentes
+			 */
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
+			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
+			/*
+			 * Consultar Variables
+			 */
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
+			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			foreach ( $variables as $valor ) {
+				
+				$arreglovariables [] = array (
+						"abreviatura" => $valor ['abreviatura'],
+						"variable" => $valor ['variable'],
+						"token" => $_REQUEST ['tiempo'],
+						"zona" => $_REQUEST ['id_zona'] 
+				);
+			}
+			
+			foreach ( $arreglovariables as $valor ) {
+				/*
+				 * Registrar Variables
+				 */
+				$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales", $valor );
+			}
+			
+			$transaccion = $esteRecursoDBLG->transaccion ( $sql );
+			
+		}
 		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
