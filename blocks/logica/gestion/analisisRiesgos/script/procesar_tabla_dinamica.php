@@ -74,25 +74,44 @@ $(function() {
      						label: 'Probabilidad',
                              name: 'prb',
                              width: 69,
-                             editable: true
+                             editable: true,
+                             edittype: "select",
+                             editoptions: {
+                                 value: "1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
+                                 dataInit: function (element) {
+                                	 window.setTimeout(function () {
+                                         $(element).select2();
+                                         });
+                                     }
+                             }
                          },
                          {
       						label: 'Impacto',
                               name: 'imp',
                               width: 65,
-                              editable: true
+                              editable: true,
+                              edittype: "select",
+                              editoptions: {
+                                  value: "1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
+                                  dataInit: function (element) {
+                                 	 window.setTimeout(function () {
+                                          $(element).select2();
+                                          });
+                                      }
+                              
+                              }
                           },
                           {
         						label: 'Riesgo',
                                 name: 'risk',
                                 width: 65,
-                                editable: true
+                                editable: false
                           },
                           {
       						label: 'Observación Controlar Riesgo',
                               name: 'ob_risk',
                               width: 145,
-                              editable: true
+                              editable: false
                            }
                      ],
      				sortname: 'tem',
@@ -110,15 +129,15 @@ $(function() {
              	    add:false,
              	    addtext:'Añadir Item',
              		edit:true,
-             		edittext:'Editar Item',	    		
+             		edittext:'Editar Variable',	    		
              		del:true ,
-             		deltext:'Eliminar Item',
+             		deltext:'Limpiar Variable',
              		alertcap:"Alerta",
-                    alerttext:"Seleccione Item",
+                    alerttext:"Seleccione Variable",
              		search:false ,
              		refresh:true,
              		refreshstate: 'current',
-             		refreshtext:'Refrescar Items',
+             		refreshtext:'Refrescar Variables',
              		},
 
                  {      caption:"Editar Item",
@@ -127,7 +146,7 @@ $(function() {
                         height: 310,
                         mtype:'GET',
                         url:'<?php echo $urlTablaDinamica?>',
-                        bSubmit: "Agregar",
+                        bSubmit: "Guardar",
                         bCancel: "Cancelar",
                         bClose: "Close",
                         saveData: "Data has been changed! Save changes?",
