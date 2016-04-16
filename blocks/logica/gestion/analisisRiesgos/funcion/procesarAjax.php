@@ -159,8 +159,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			break;
 		case 'editarVariables' :
-			var_dump ( $_REQUEST );
-			var_dump ( $_GET );
 			
 			$riesgo = $_GET ['imp'] * $_GET ['prb'];
 			
@@ -180,15 +178,19 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$arrayDatos = array (
 					'id' => $_GET ['id'],
 					'token' => $_REQUEST ['tiempo'],
+					'nota' => $_GET ['not'],
+					'valor' => $_GET ['val'],
 					'probabilidad' => $_GET ['prb'],
 					'impacto' => $_GET ['imp'],
 					'riesgo' => $riesgo,
-					'observacion' => $riesgo 
+					'observacion' => $observacion 
 			);
 			
-			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_variable_temporal', $arregloDatos );
+			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_variable_temporal', $arrayDatos );
 			
-			$resultadoItems = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "acceso" );
+			
+			echo $resultado=true;
 			
 			break;
 	}

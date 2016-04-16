@@ -47,10 +47,6 @@ $url .= "/index.php?";
 	// URL definitiva
 	$urlEditaVariables = $url . $cadena;
 	
-	
-	
-	
-
 	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 	$cadenaACodificar .= "&procesarAjax=true";
 	$cadenaACodificar .= "&action=index.php";
@@ -119,7 +115,7 @@ $(function() {
                              editable: true,
                              edittype: "select",
                              editoptions: {
-                                 value: "0: 0 - SIN EVALUAR,1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
+                                 value: "0: 0 - SIN EVALUAR;1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
                                  dataInit: function (element) {
                                 	 window.setTimeout(function () {
                                          $(element).select2();
@@ -134,7 +130,7 @@ $(function() {
                               editable: true,
                               edittype: "select",
                               editoptions: {
-                                  value: "0: 0 - SIN EVALUAR,1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
+                                  value: "0: 0 - SIN EVALUAR;1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
                                   dataInit: function (element) {
                                  	 window.setTimeout(function () {
                                           $(element).select2();
@@ -147,19 +143,18 @@ $(function() {
         						label: 'Riesgo',
                                 name: 'risk',
                                 width: 65,
-                                editable: false
+                                editable: true
                           },
                           {
       						label: 'Observación Controlar Riesgo',
                               name: 'ob_risk',
                               width: 145,
-                              editable: false
+                              editable: true
                            }
                      ],
      				sortname: 'tem',
      				sortorder : 'asc',
-     				loadonce: true,
-     				viewrecords: false,
+     				viewrecords: true,
      				rownumbers: true,
      				 rowNum: 100, 
                      width: 1042,
@@ -185,8 +180,8 @@ $(function() {
              		refreshtext:'Refrescar Variables',
              		},
 
-                 {      caption:"Editar Item",
-                        addCaption: "Adicionar Item",
+                 {      caption:"Editar Variable",
+                        addCaption: "Editar Variable",
                         width: 425, 
                         height: 310,
                         mtype:'GET',
@@ -199,7 +194,9 @@ $(function() {
                         bNo : "No",
                         bExit : "Cancel",
                         closeOnEscape:true,
-                        closeAfterAdd:true,
+                        closeAfterEdit:true,
+                        refresh:false,
+                        reloadAfterSubmit:false,
                         onclickSubmit:function(params, postdata){
                             //save add
                             var p=params;

@@ -147,96 +147,19 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable . "' ;";
 				break;
 			
-			case 'consultar_general_trafico_por_zona' :
-				$cadenaSql = "SELECT id_trafico, id_zona_estudio, variable_trf, numero_bq, periodo_trf ";
-				$cadenaSql .= "FROM trafico ";
-				$cadenaSql .= "WHERE estado_registro='TRUE' ";
-				$cadenaSql .= "AND id_zona_estudio='" . $variable . "' ;";
-				
-				break;
+
 			
-			case 'actualizar_zona_estudio' :
-				$cadenaSql = " UPDATE zona_estudio";
+			case 'actualizar_variable_temporal' :
+				$cadenaSql = " UPDATE riesgo_temporal";
 				$cadenaSql .= " SET ";
-				$cadenaSql .= " id_sector='" . $variable ['id_sector'] . "',";
-				$cadenaSql .= " titulo_proy='" . $variable ['titulo_proy'] . "',";
-				$cadenaSql .= " profundidad_qll='" . $variable ['profundidad_qll'] . "', ";
-				$cadenaSql .= " ancho_canl='" . $variable ['ancho_canl'] . "',";
-				$cadenaSql .= " obtrucciones_vs='" . $variable ['obtrucciones_vs'] . "', ";
-				$cadenaSql .= " complejidad_hdr='" . $variable ['complejidad_hdr'] . "',";
-				$cadenaSql .= " tipo_fn='" . $variable ['tipo_fn'] . "', ";
-				$cadenaSql .= " estabilidad_sed='" . $variable ['estabilidad_sed'] . "', ";
-				$cadenaSql .= " ayudas_nv='" . $variable ['ayudas_nv'] . "',";
-				$cadenaSql .= " calidad_dthd='" . $variable ['calidad_dthd'] . "',";
-				$cadenaSql .= " operaciones_ddn='" . $variable ['operaciones_ddn'] . "', ";
-				$cadenaSql .= " estado_mr='" . $variable ['estado_mr'] . "', ";
-				$cadenaSql .= " observaciones_vncr='" . $variable ['observaciones_vncr'] . "',";
-				$cadenaSql .= " restricciones_vs='" . $variable ['restricciones_vs'] . "', ";
-				$cadenaSql .= " condiciones_hl='" . $variable ['condiciones_hl'] . "', ";
-				$cadenaSql .= " iluminacion_fn='" . $variable ['iluminacion_fn'] . "',";
-				$cadenaSql .= " observaciones_scm='" . $variable ['observaciones_scm'] . "',";
-				$cadenaSql .= " monitoreo_stm='" . $variable ['monitoreo_stm'] . "' ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable ['id_zona_estudio'] . "';";
-				
-				break;
-			
-			case 'anular_trafico_maritimo' :
-				
-				$cadenaSql = " UPDATE trafico";
-				$cadenaSql .= " SET estado_registro=FALSE ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
-				break;
-			
-			case 'actualizar_informacion_carta_nautica' :
-				
-				$cadenaSql = " UPDATE informacion_carta_nautica";
-				$cadenaSql .= " SET  ";
-				$cadenaSql .= " boyas_ais='" . $variable ['boyas_ais'] . "',";
-				$cadenaSql .= " boyas_nais='" . $variable ['boyas_nais'] . "', ";
-				$cadenaSql .= " racon_num='" . $variable ['racon_num'] . "',";
-				$cadenaSql .= " linternas_num='" . $variable ['linternas_num'] . "',";
-				$cadenaSql .= " otras_aton='" . $variable ['otras_aton'] . "',";
-				$cadenaSql .= " proporciona_dgps='" . $variable ['proporciona_dgps'] . "', ";
-				$cadenaSql .= " disponibilidad_stm='" . $variable ['disponibilidad_stm'] . "',";
-				$cadenaSql .= " disponible_servpl='" . $variable ['disponible_servpl'] . "',";
-				$cadenaSql .= " observaciones='" . $variable ['observaciones'] . "' ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable ['id_zona_estudio'] . "' ";
-				$cadenaSql .= " AND estado_registro=TRUE ;";
-				break;
-			
-			case 'actualizar_peligros' :
-				$cadenaSql = " UPDATE peligros";
-				$cadenaSql .= " SET ";
-				$cadenaSql .= " calado_mxbq='" . $variable ['calado_mxbq'] . "',";
-				$cadenaSql .= " holgura_bjqll='" . $variable ['holgura_bjqll'] . "', ";
-				$cadenaSql .= " maxima_olpr='" . $variable ['maxima_olpr'] . "',";
-				$cadenaSql .= " sedimentacion_mxa='" . $variable ['sedimentacion_mxa'] . "',";
-				$cadenaSql .= " profundidad_minsg='" . $variable ['profundidad_minsg'] . "',";
-				$cadenaSql .= " anchura_cnl='" . $variable ['anchura_cnl'] . "', ";
-				$cadenaSql .= " tasa_mx='" . $variable ['tasa_mx'] . "',";
-				$cadenaSql .= " observaciones_flmr='" . $variable ['observaciones_flmr'] . "',";
-				$cadenaSql .= " prediccion_mxvntr='" . $variable ['prediccion_mxvntr'] . "',";
-				$cadenaSql .= " observaciones_vttr='" . $variable ['observaciones_vttr'] . "', ";
-				$cadenaSql .= " prediccion_cbm='" . $variable ['prediccion_cbm'] . "',";
-				$cadenaSql .= " observaciones_efcb='" . $variable ['observaciones_efcb'] . "',";
-				$cadenaSql .= " distancia_pntcr='" . $variable ['distancia_pntcr'] . "',";
-				$cadenaSql .= " observaciones_pntcr='" . $variable ['observaciones_pntcr'] . "', ";
-				$cadenaSql .= " distancia_plgcr='" . $variable ['distancia_plgcr'] . "',";
-				$cadenaSql .= " observaciones_plgcr='" . $variable ['observaciones_plgcr'] . "',";
-				$cadenaSql .= " distancia_prmnvs='" . $variable ['distancia_prmnvs'] . "', ";
-				$cadenaSql .= " porcentaje_prmnvs='" . $variable ['porcentaje_prmnvs'] . "',";
-				$cadenaSql .= " distancia_prmvs='" . $variable ['distancia_prmvs'] . "',";
-				$cadenaSql .= " porcentaje_prmvs='" . $variable ['porcentaje_prmvs'] . "',";
-				$cadenaSql .= " distancia_tmbsl='" . $variable ['distancia_tmbsl'] . "', ";
-				$cadenaSql .= " porcentaje_tmbsl='" . $variable ['porcentaje_tmbsl'] . "', ";
-				$cadenaSql .= " distancia_rpl='" . $variable ['distancia_rpl'] . "',";
-				$cadenaSql .= " porcentaje_rpl='" . $variable ['porcentaje_rpl'] . "',";
-				$cadenaSql .= " calidad_praton='" . $variable ['calidad_praton'] . "', ";
-				$cadenaSql .= " calidad_plserv='" . $variable ['calidad_plserv'] . "', ";
-				$cadenaSql .= " calidad_grcmtr='" . $variable ['calidad_grcmtr'] . "', ";
-				$cadenaSql .= " calidad_pqcmtr='" . $variable ['calidad_pqcmtr'] . "' ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable ['id_zona_estudio'] . "' ";
-				$cadenaSql .= " AND estado_registro=TRUE ";
+				$cadenaSql .= " valor='" . $variable ['valor'] . "',";
+				$cadenaSql .= " nota='" . $variable ['nota'] . "',";
+				$cadenaSql .= " probabilidad='" . $variable ['probabilidad'] . "', ";
+				$cadenaSql .= " impacto='" . $variable ['impacto'] . "',";
+				$cadenaSql .= " riesgo='" . $variable ['riesgo'] . "', ";
+				$cadenaSql .= " control_ris='" . $variable ['observacion'] . "' ";
+				$cadenaSql .= " WHERE id_riesgo_temp= '" . $variable ['id'] . "' ";
+				$cadenaSql .= " AND token='" . $variable ['token'] . "' ;";
 				
 				break;
 			
