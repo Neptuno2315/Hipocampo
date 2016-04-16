@@ -58,7 +58,7 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
 			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			$i=1;
+			$i = 1;
 			foreach ( $variables as $valor ) {
 				
 				$arreglovariables [] = array (
@@ -66,9 +66,9 @@ class registrarForm {
 						"variable" => $valor ['variable'],
 						"token" => $_REQUEST ['tiempo'],
 						"zona" => $_REQUEST ['id_zona'],
-						"id" => $i,
+						"id" => $i 
 				);
-				$i++;
+				$i ++;
 			}
 			
 			foreach ( $arreglovariables as $valor ) {
@@ -79,7 +79,6 @@ class registrarForm {
 			}
 			
 			$transaccion = $esteRecursoDBLG->transaccion ( $sql );
-			
 		}
 		
 		// -------------------------------------------------------------------------------------------------
@@ -107,21 +106,7 @@ class registrarForm {
 		$atributos ['tipoEtiqueta'] = 'inicio';
 		$atributos = array_merge ( $atributos, $atributosGlobales );
 		echo $this->miFormulario->formulario ( $atributos );
-		
-		// $esteCampo = "marcoDatosBasicos";
-		// $atributos ['id'] = $esteCampo;
-		// $atributos ["estilo"] = "jqueryui";
-		// $atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Modificar Proyecto de la Zona de Estudio : " . $_REQUEST ['titulo_proyecto'];
-		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		// unset ( $atributos );
-		
-		// {
-		
-		// }
-		
-		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-		// unset ( $atributos );
+		unset ( $atributos );
 		
 		// ------------------Division para los botones-------------------------
 		$atributos ["id"] = "MarcoDatos";
@@ -136,6 +121,59 @@ class registrarForm {
 					            </div>
 							</center>";
 			echo $mostrarHtml;
+			
+			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
+		}
+		// ------------------Fin Division para los botones-------------------------
+		echo $this->miFormulario->division ( "fin" );
+		unset ( $atributos );
+		
+		// ------------------Division para los botones-------------------------
+		$atributos ["id"] = "botones";
+		$atributos ["estilo"] = "marcoBotones";
+		echo $this->miFormulario->division ( "inicio", $atributos );
+		{
+			// -----------------CONTROL: Botón ----------------------------------------------------------------
+			$esteCampo = 'botonGuardar';
+			$atributos ["id"] = $esteCampo;
+			$atributos ["tabIndex"] = $tab;
+			$atributos ["tipo"] = 'boton';
+			// submit: no se coloca si se desea un tipo button genérico
+			$atributos ['submit'] = true;
+			$atributos ["estiloMarco"] = '';
+			$atributos ["estiloBoton"] = 'jqueryui';
+			// verificar: true para verificar el formulario antes de pasarlo al servidor.
+			$atributos ["verificar"] = '';
+			$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+			$tab ++;
+			
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoBoton ( $atributos );
+			unset ( $atributos );
+			
+			// -----------------CONTROL: Botón ----------------------------------------------------------------
+			$esteCampo = 'botonCancelar';
+			$atributos ["id"] = $esteCampo;
+			$atributos ["tabIndex"] = $tab;
+			$atributos ["tipo"] = 'boton';
+			// submit: no se coloca si se desea un tipo button genérico
+			$atributos ['submit'] = true;
+			$atributos ["estiloMarco"] = '';
+			$atributos ["estiloBoton"] = 'jqueryui';
+			// verificar: true para verificar el formulario antes de pasarlo al servidor.
+			$atributos ["verificar"] = '';
+			$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+			$tab ++;
+			
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoBoton ( $atributos );
+			unset ( $atributos );
 			
 			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 		}
@@ -166,6 +204,7 @@ class registrarForm {
 		$valorCodificado .= "&opcion=ModificarInformacionZona";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
+		$valorCodificado .= "&token=" . $_REQUEST ['tiempo'];
 		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para

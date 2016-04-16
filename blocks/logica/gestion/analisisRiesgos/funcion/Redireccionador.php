@@ -76,7 +76,7 @@ class Redireccionador {
 				break;
 			
 			case 'paginaPrincipal' :
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 		}
