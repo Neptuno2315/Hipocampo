@@ -29,6 +29,45 @@ $url .= "/index.php?";
 	
 	// URL definitiva
 	$urlTablaDinamica = $url . $cadena;
+	
+	
+	
+	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+	$cadenaACodificar .= "&procesarAjax=true";
+	$cadenaACodificar .= "&action=index.php";
+	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+	$cadenaACodificar .= "&funcion=editarVariables";
+	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+	$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+	// Codificar las variables
+	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+	
+	// URL definitiva
+	$urlEditaVariables = $url . $cadena;
+	
+	
+	
+	
+
+	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+	$cadenaACodificar .= "&procesarAjax=true";
+	$cadenaACodificar .= "&action=index.php";
+	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+	$cadenaACodificar .= "&funcion=limpiarVariables";
+	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+	$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+	// Codificar las variables
+	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+	
+	// URL definitiva
+	$urlLimpiaVariables = $url . $cadena;
+	
+	
+	
 }
 ?>
 <script type='text/javascript' async='async'>
@@ -56,13 +95,16 @@ $(function() {
      						label: 'Variable',
                              name: 'var',
                              width: 150,
-                             editable: true // must set editable to true if you want to make the field editable
+                             editable: true, 
                          },
                          {
      						label : 'Valor',
                              name: 'val',
                              width: 36,
-                             editable: true
+                             editable: true,
+                             editrules:{number:true},
+                             sorttype:'number',
+                              
                          },
                          {
      						label: 'Nota',
@@ -77,7 +119,7 @@ $(function() {
                              editable: true,
                              edittype: "select",
                              editoptions: {
-                                 value: "1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
+                                 value: "0: 0 - SIN EVALUAR,1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
                                  dataInit: function (element) {
                                 	 window.setTimeout(function () {
                                          $(element).select2();
@@ -92,7 +134,7 @@ $(function() {
                               editable: true,
                               edittype: "select",
                               editoptions: {
-                                  value: "1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
+                                  value: "0: 0 - SIN EVALUAR,1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
                                   dataInit: function (element) {
                                  	 window.setTimeout(function () {
                                           $(element).select2();
@@ -119,13 +161,16 @@ $(function() {
      				loadonce: true,
      				viewrecords: false,
      				rownumbers: true,
-     				 rowNum: 100,
+     				 rowNum: 100, 
                      width: 1042,
                      height: 365,
                      pager: "#barra_herramientas",
                      caption: "Variables para Gestión Riesgo"
-                 }).navGrid('#barra_herramientas',
-                 	    {	
+                 });
+
+
+         		$("#tabla_datos_riesgos").navGrid('#barra_herramientas',
+                   {	
              	    add:false,
              	    addtext:'Añadir Item',
              		edit:true,
@@ -145,7 +190,7 @@ $(function() {
                         width: 425, 
                         height: 310,
                         mtype:'GET',
-                        url:'<?php echo $urlTablaDinamica?>',
+                        url:'<?php echo $urlEditaVariables?>',
                         bSubmit: "Guardar",
                         bCancel: "Cancelar",
                         bClose: "Close",
@@ -181,12 +226,11 @@ $(function() {
                             var r=response;
                             var p=postdata;
                             var f=formid;
-                        } },//edit
+                        }
+                         },//edit
                  { },//add
                   {
-             			
-                          
-                         url:'<?php echo $urlTablaDinamica?>',
+             			 url:'<?php echo $urlLimpiaVariables?>',
                          caption: "Eliminar Item",
                          width: 425, 
                          height: 150,
@@ -230,8 +274,7 @@ $(function() {
                              var p=postdata;
                              var f=formid;
                          } 
-
-                         },//del
+                         },//del 
                   {},
                   {}
                 	);

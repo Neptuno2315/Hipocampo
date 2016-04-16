@@ -147,7 +147,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 							$row ['probabilidad'],
 							$row ['impacto'],
 							$row ['riesgo'],
-							$row ['control_ris']
+							$row ['control_ris'] 
 					);
 					$i ++;
 				}
@@ -156,6 +156,39 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				
 				echo $tabla;
 			}
+			
+			break;
+		case 'editarVariables' :
+			var_dump ( $_REQUEST );
+			var_dump ( $_GET );
+			
+			$riesgo = $_GET ['imp'] * $_GET ['prb'];
+			
+			if ($riesgo == 0) {
+				
+				$observacion = 'Sin Evaluar';
+			} elseif ($riesgo > 0 && $riesgo < 2) {
+				
+				$observacion = 'Monitoreo';
+			} elseif ($riesgo < 4) {
+				
+				$observacion = 'Especificar la Acción';
+			} else {
+				$observacion = 'Medidas de Emergencia';
+			}
+			
+			$arrayDatos = array (
+					'id' => $_GET ['id'],
+					'token' => $_REQUEST ['tiempo'],
+					'probabilidad' => $_GET ['prb'],
+					'impacto' => $_GET ['imp'],
+					'riesgo' => $riesgo,
+					'observacion' => $riesgo 
+			);
+			
+			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_variable_temporal', $arregloDatos );
+			
+			$resultadoItems = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
 			break;
 	}
