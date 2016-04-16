@@ -2,7 +2,6 @@
 
 namespace logica\gestion\analisisRiesgos;
 
-
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
 	exit ();
@@ -32,15 +31,10 @@ class Funcion {
 		
 		return $resultado;
 	}
-	function registrar() {
-		include_once ($this->ruta . "funcion/registrarInformacionZona.php");
+	function procesar() {
+		include_once ($this->ruta . "funcion/procesarVariables.php");
 	}
-	function modificar() {
-		include_once ($this->ruta . "funcion/modificarInformacionZona.php");
-	}
-	function eliminar() {
-		include_once ($this->ruta . "funcion/eliminarInformacionZona.php");
-	}
+
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -60,19 +54,9 @@ class Funcion {
 			
 			switch ($_REQUEST ['opcion']) {
 				
-				case 'RegistrarInformacionZona' :
+				case 'ProcesarVariables' :
 					
-					$this->registrar ();
-					break;
-				
-				case 'ModificarInformacionZona' :
-					
-					$this->modificar ();
-					break;
-				
-				case 'EliminarInformacionZona' :
-					
-					$this->eliminar ();
+					$this->procesar ();
 					break;
 			}
 		}
