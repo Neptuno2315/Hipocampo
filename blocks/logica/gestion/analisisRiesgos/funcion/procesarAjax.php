@@ -136,7 +136,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$tabla->records = $filas;
 				
 				$i = 0;
-				$j= 1;
+				$j = 1;
 				foreach ( $resultadoItems as $row ) {
 					$tabla->rows [$i] ['id'] = $row ['id_riesgo_temp'];
 					$tabla->rows [$i] ['cell'] = array (
@@ -191,7 +191,20 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "acceso" );
 			
-			echo $resultado=true;
+			echo $resultado;
+			
+			break;
+		
+		case 'limpiarVariable' :
+			
+			$arrayDatos = array (
+					"id" => $_GET ['id'],
+					"token" => $_REQUEST ['tiempo'] 
+			);
+			
+			$cadenaSql = $this->sql->getCadenaSql ( 'limpiar_valores_variable', $arrayDatos );
+			
+			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "acceso" );
 			
 			break;
 	}

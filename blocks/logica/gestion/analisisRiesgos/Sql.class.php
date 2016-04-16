@@ -77,8 +77,8 @@ class Sql extends \Sql {
 			case 'consultar_variables_registradas_temporales' :
 				$cadenaSql = "SELECT * ";
 				$cadenaSql .= "FROM riesgo_temporal ";
-				$cadenaSql .= "WHERE token='" . $variable . "'; ";
-				
+				$cadenaSql .= "WHERE token='" . $variable . "' ";
+				$cadenaSql .= "ORDER BY id_riesgo_temp ASC ; ";
 				
 				break;
 			
@@ -149,8 +149,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable . "' ;";
 				break;
 			
-
-			
 			case 'actualizar_variable_temporal' :
 				$cadenaSql = " UPDATE riesgo_temporal";
 				$cadenaSql .= " SET ";
@@ -165,30 +163,17 @@ class Sql extends \Sql {
 				
 				break;
 			
-			/*
-			 * Sentencias para deshabilitar Información Zona de Estudio
-			 */
-			
-			case 'eliminar_zona_estudio' :
-				$cadenaSql = " UPDATE zona_estudio ";
-				$cadenaSql .= " SET estado_registro=FALSE ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
-				
-				break;
-			
-			case 'eliminar_peligros' :
-				
-				$cadenaSql = " UPDATE peligros ";
-				$cadenaSql .= " SET estado_registro=FALSE ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
-				
-				break;
-			
-			case 'eliminar_info_carta_nautica' :
-				
-				$cadenaSql = " UPDATE informacion_carta_nautica ";
-				$cadenaSql .= " SET estado_registro=FALSE ";
-				$cadenaSql .= " WHERE id_zona_estudio='" . $variable . "';";
+			case 'limpiar_valores_variable' :
+				$cadenaSql = " UPDATE riesgo_temporal";
+				$cadenaSql .= " SET ";
+				$cadenaSql .= " valor=NULL,";
+				$cadenaSql .= " nota=NULL,";
+				$cadenaSql .= " probabilidad=NULL, ";
+				$cadenaSql .= " impacto=NULL,";
+				$cadenaSql .= " riesgo=NULL, ";
+				$cadenaSql .= " control_ris=NULL  ";
+				$cadenaSql .= " WHERE id_riesgo_temp= '" . $variable ['id'] . "' ";
+				$cadenaSql .= " AND token='" . $variable ['token'] . "' ;";
 				
 				break;
 		}

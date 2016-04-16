@@ -52,7 +52,7 @@ $url .= "/index.php?";
 	$cadenaACodificar .= "&action=index.php";
 	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
 	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-	$cadenaACodificar .= "&funcion=limpiarVariables";
+	$cadenaACodificar .= "&funcion=limpiarVariable";
 	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 	$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 	// Codificar las variables
@@ -125,6 +125,7 @@ $(function() {
                              width: 69,
                              editable: true,
                              edittype: "select",
+                             align: "center",
                              editoptions: {
                                  value: "0: 0 - SIN EVALUAR;1: 1 - BAJO;2:2 - MEDIO;3:3 - ALTO",
                                  dataInit: function (element) {
@@ -140,6 +141,7 @@ $(function() {
                               width: 65,
                               editable: true,
                               edittype: "select",
+                              align: "center",
                               editoptions: {
                                   value: "0: 0 - SIN EVALUAR;1: 1 - MENOR;2:2 - MODERADO;3:3 - SEVERO",
                                   dataInit: function (element) {
@@ -154,13 +156,15 @@ $(function() {
         						label: 'Riesgo',
                                 name: 'risk',
                                 width: 65,
-                                editable: false
+                                editable: false,
+                                align: "center",
                           },
                           {
       						label: 'Observación Controlar Riesgo',
                               name: 'ob_risk',
                               width: 145,
-                              editable: false
+                              editable: false,
+                              align: "center",
                            }
                      ],
                    	sortname: 'id',

@@ -68,7 +68,7 @@ class registrarForm {
 						"zona" => $_REQUEST ['id_zona'],
 						"id" => $i,
 				);
-				$i
+				$i++;
 			}
 			
 			foreach ( $arreglovariables as $valor ) {
