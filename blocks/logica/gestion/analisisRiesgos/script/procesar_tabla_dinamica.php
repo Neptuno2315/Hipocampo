@@ -79,19 +79,30 @@ $(function() {
                      datatype: "json",
                      mtype: "GET",
                      colModel: [
+					{
+							label: 'ID',
+					        name: 'id',
+					         width: 40,
+							key: true,
+							editable: false,
+							sorttype:'number',
+							editrules : {required: true}
+					 },
                          {
      						label: 'Tema',
                              name: 'tem',
                              width: 40,
-     						key: true,
      						editable: true,
-     						editrules : { required: true}
+     						sorttype:'text',
+     						editoptions:{ readonly:'readonly'}
                          },
                          {
      						label: 'Variable',
                              name: 'var',
                              width: 150,
-                             editable: true, 
+                             editable: true,
+                             sorttype:'text', 
+                             editoptions:{ readonly:'readonly'}
                          },
                          {
      						label : 'Valor',
@@ -143,22 +154,22 @@ $(function() {
         						label: 'Riesgo',
                                 name: 'risk',
                                 width: 65,
-                                editable: true
+                                editable: false
                           },
                           {
       						label: 'Observación Controlar Riesgo',
                               name: 'ob_risk',
                               width: 145,
-                              editable: true
+                              editable: false
                            }
                      ],
-     				sortname: 'tem',
+                   	sortname: 'id',
      				sortorder : 'asc',
      				viewrecords: true,
-     				rownumbers: true,
+     				rownumbers: false,
      				 rowNum: 100, 
                      width: 1042,
-                     height: 365,
+                     height: 300,
                      pager: "#barra_herramientas",
                      caption: "Variables para Gestión Riesgo"
                  });
@@ -177,7 +188,7 @@ $(function() {
              		search:false ,
              		refresh:true,
              		refreshstate: 'current',
-             		refreshtext:'Refrescar Variables',
+             		refreshtext:'Analizar Variables',
              		},
 
                  {      caption:"Editar Variable",
@@ -194,7 +205,7 @@ $(function() {
                         bNo : "No",
                         bExit : "Cancel",
                         closeOnEscape:true,
-                        closeAfterEdit:true,
+                        closeAfterEdit:false,
                         refresh:false,
                         reloadAfterSubmit:false,
                         onclickSubmit:function(params, postdata){

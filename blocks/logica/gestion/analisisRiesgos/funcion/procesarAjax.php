@@ -136,10 +136,11 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$tabla->records = $filas;
 				
 				$i = 0;
-				
+				$j= 1;
 				foreach ( $resultadoItems as $row ) {
-					$tabla->rows [$i] ['tem'] = $row ['id_riesgo_temp'];
+					$tabla->rows [$i] ['id'] = $row ['id_riesgo_temp'];
 					$tabla->rows [$i] ['cell'] = array (
+							$row ['id_riesgo_temp'],
 							$row ['tema'],
 							$row ['variable'],
 							$row ['valor'],

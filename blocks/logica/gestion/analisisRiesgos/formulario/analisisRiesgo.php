@@ -58,15 +58,17 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
 			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
+			$i=1;
 			foreach ( $variables as $valor ) {
 				
 				$arreglovariables [] = array (
 						"abreviatura" => $valor ['abreviatura'],
 						"variable" => $valor ['variable'],
 						"token" => $_REQUEST ['tiempo'],
-						"zona" => $_REQUEST ['id_zona'] 
+						"zona" => $_REQUEST ['id_zona'],
+						"id" => $i,
 				);
+				$i
 			}
 			
 			foreach ( $arreglovariables as $valor ) {

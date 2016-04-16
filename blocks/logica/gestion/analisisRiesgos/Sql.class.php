@@ -50,8 +50,9 @@ class Sql extends \Sql {
 			 */
 			
 			case 'registrar_variables_temporales' :
-				$cadenaSql = " INSERT INTO riesgo_temporal(id_zona_estudio, tema, variable,token)  ";
+				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable,token)  ";
 				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "'" . $variable ['id'] . "',";
 				$cadenaSql .= "'" . $variable ['zona'] . "',";
 				$cadenaSql .= "'" . $variable ['abreviatura'] . "',";
 				$cadenaSql .= "'" . $variable ['variable'] . "',";
@@ -77,6 +78,7 @@ class Sql extends \Sql {
 				$cadenaSql = "SELECT * ";
 				$cadenaSql .= "FROM riesgo_temporal ";
 				$cadenaSql .= "WHERE token='" . $variable . "'; ";
+				
 				
 				break;
 			
