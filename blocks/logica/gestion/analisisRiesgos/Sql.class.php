@@ -60,14 +60,18 @@ class Sql extends \Sql {
 				
 				break;
 			
-			case 'registrar_variables_temporales' :
+			case 'registrar_variable_riesgo' :
 				$cadenaSql = " INSERT INTO riesgo(id_zona_estudio, tema, variable, valor, nota, probabilidad, impacto, riesgo, control_ris) ";
 				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "'" . $variable ['id'] . "',";
-				$cadenaSql .= "'" . $variable ['zona'] . "',";
-				$cadenaSql .= "'" . $variable ['abreviatura'] . "',";
+				$cadenaSql .= "'" . $variable ['id_zona_estudio'] . "',";
+				$cadenaSql .= "'" . $variable ['tema'] . "',";
 				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= "'" . $variable ['token'] . "');";
+				$cadenaSql .= ($variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,"   ;
+				$cadenaSql .= ($variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,"   ;
+				$cadenaSql .= "'" . $variable ['probabilidad'] . "',";
+				$cadenaSql .= "'" . $variable ['impacto'] . "',";
+				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
+				$cadenaSql .= "'" . $variable ['observacion_riesgo'] . "');";
 				
 				break;
 			

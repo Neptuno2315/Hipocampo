@@ -52,28 +52,21 @@ class FormProcessor {
 					"probabilidad" => (is_null ( $valor ['probabilidad'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['probabilidad'],
 					"impacto" => (is_null ( $valor ['impacto'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['impacto'],
 					"riesgo" => (is_null ( $valor ['riesgo'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['riesgo'],
-					"observacion" => (is_null ( $valor ['control_ris'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['control_ris'] 
+					"observacion_riesgo" => (is_null ( $valor ['control_ris'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['control_ris'] 
 			);
 		}
 		
-		var_dump ( $arregloDatos );
-		
-		exit ();
-		// Se guarda en un array para crear una trasaccion
-		
-		foreach ($arregloDatos as $valor){
+		/*
+		 * Registro de Variables
+		 */
+		foreach ( $arregloDatos as $valor ) {
+			// Se guarda en un array para crear una trasaccion
 			
-			
-			
-			
+			$cadenasGuardarVariables [] = $this->miSql->getCadenaSql ( 'registrar_variable_riesgo', $valor );
 		}
-		
-		
-		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_variables_riesgo', $arregloPeligros );
-		
 		// Ejecucción Transaccion
 		
-		$transaccion = $esteRecursoDB->transaccion ( $cadenaSql );
+		$transaccion = $esteRecursoDB->transaccion ( $cadenasGuardarVariables );
 		
 		if ($transaccion == true) {
 			Redireccionador::redireccionar ( 'Inserto' );
