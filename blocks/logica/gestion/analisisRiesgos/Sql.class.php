@@ -50,7 +50,6 @@ class Sql extends \Sql {
 			 */
 			
 			case 'registrar_variables_temporales_existentes' :
-				var_dump ( $variable );
 				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable, ";
 				$cadenaSql .= "  valor, nota,probabilidad, impacto, riesgo, control_ris,token)  ";
 				$cadenaSql .= "VALUES (";
@@ -95,8 +94,14 @@ class Sql extends \Sql {
 				break;
 			
 			/*
-			 * Limpiar Tabla Temporal
+			 * Limpiar Tablas
 			 */
+			
+			case 'limpiar_variables_riesgo' :
+				$cadenaSql = " DELETE FROM riesgo  ";
+				$cadenaSql .= "WHERE id_zona_estudio='" . $variable . "'; ";
+				
+				break;
 			
 			case 'limpiar_variables_temporales' :
 				$cadenaSql = " DELETE FROM riesgo_temporal  ";

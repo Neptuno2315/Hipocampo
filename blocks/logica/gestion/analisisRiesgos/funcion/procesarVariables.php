@@ -55,6 +55,13 @@ class FormProcessor {
 		}
 		
 		/*
+		 * Limpiar Variables Riesgo
+		 */
+		
+		$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_riesgo", $_REQUEST ['id_zona'] );
+		$variables = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
+		
+		/*
 		 * Registro de Variables
 		 */
 		foreach ( $arregloDatos as $valor ) {

@@ -60,7 +60,7 @@ class registrarForm {
 			/*
 			 * Consultar si existen Variables con la Zona de Estudio
 			 */
-			var_dump ( $_REQUEST );
+			
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_variables_riesgo_existentes", $_REQUEST ['id_zona'] );
 			$variables_existentes = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
@@ -119,7 +119,7 @@ class registrarForm {
 				}
 			}
 			
-			$transaccion = $esteRecursoDBLG->transaccion ( $sql );
+			$transaccion = $esteRecursoDB->transaccion ( $sql );
 		}
 		
 		// -------------------------------------------------------------------------------------------------
