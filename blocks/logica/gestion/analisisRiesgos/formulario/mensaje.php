@@ -60,6 +60,13 @@ class registrarForm {
 			
 			switch ($_REQUEST ['mensaje']) {
 				
+				case 'ErrorVariablesVacias' :
+					
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique que las Variables tengan Probabilidad y Impacto.';
+					
+					break;
+				
 				case 'RegistroExito' :
 					$atributos ['tipo'] = 'success';
 					$atributos ['mensaje'] = 'Se Registro con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";

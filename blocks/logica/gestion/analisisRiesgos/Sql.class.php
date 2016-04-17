@@ -60,6 +60,17 @@ class Sql extends \Sql {
 				
 				break;
 			
+			case 'registrar_variables_temporales' :
+				$cadenaSql = " INSERT INTO riesgo(id_zona_estudio, tema, variable, valor, nota, probabilidad, impacto, riesgo, control_ris) ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "'" . $variable ['id'] . "',";
+				$cadenaSql .= "'" . $variable ['zona'] . "',";
+				$cadenaSql .= "'" . $variable ['abreviatura'] . "',";
+				$cadenaSql .= "'" . $variable ['variable'] . "',";
+				$cadenaSql .= "'" . $variable ['token'] . "');";
+				
+				break;
+			
 			/*
 			 * Limpiar Tabla Temporal
 			 */
@@ -73,6 +84,15 @@ class Sql extends \Sql {
 			/*
 			 * Sentencias Consulta Información
 			 */
+			
+			case 'consultar_variables_temporales_procesadas' :
+				$cadenaSql = "SELECT * ";
+				$cadenaSql .= "FROM riesgo_temporal ";
+				$cadenaSql .= "WHERE token='" . $variable ['token'] . "' ";
+				$cadenaSql .= "AND id_zona_estudio='" . $variable ['id_zona'] . "' ";
+				$cadenaSql .= "ORDER BY id_riesgo_temp ASC ; ";
+				
+				break;
 			
 			case 'consultar_variables_registradas_temporales' :
 				$cadenaSql = "SELECT * ";

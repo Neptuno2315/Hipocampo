@@ -12,6 +12,15 @@ class Redireccionador {
 		
 		switch ($opcion) {
 			
+			case "ErrorVariablesVacias" :
+				
+				$variable = 'pagina=analisisRiesgos';
+				$variable .= "&opcion=mensaje";
+				$variable .= "&mensaje=ErrorVariablesVacias";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				
+				break;
+			
 			case "Inserto" :
 				
 				$variable = 'pagina=zonaEstudio';

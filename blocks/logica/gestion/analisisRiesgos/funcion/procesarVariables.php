@@ -17,185 +17,59 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-
-		
-		var_dump($_REQUEST);exit;
-		
-		/* Arreglo Informacion y Cadena Sql Registro Zona de Estudio */
-		{
-			$arregloZonaEstudio = array (
-					"id_sector" => $_REQUEST ['sector'],
-					"titulo_proy" => $_REQUEST ['nombre_pry'],
-					"profundidad_qll" => $_REQUEST ['pr_co_ba'],
-					"ancho_canl" => $_REQUEST ['ancho_canal'],
-					"obtrucciones_vs" => $_REQUEST ['obtrucciones_visibilidad'],
-					"complejidad_hdr" => $_REQUEST ['complejidad_hidrovia'],
-					"tipo_fn" => $_REQUEST ['tipo_fondo'],
-					"estabilidad_sed" => $_REQUEST ['estabilidad_sedimentos'],
-					"ayudas_nv" => $_REQUEST ['ayudas_navegacion'],
-					"calidad_dthd" => $_REQUEST ['calidad_datos'],
-					"operaciones_ddn" => $_REQUEST ['opera_nc_di'],
-					"estado_mr" => $_REQUEST ['estado_mar'],
-					"observaciones_vncr" => $_REQUEST ['obser_des__vi_mr'],
-					"restricciones_vs" => $_REQUEST ['visibilidad'],
-					"condiciones_hl" => $_REQUEST ['con_hielo'],
-					"iluminacion_fn" => $_REQUEST ['ilum_fondo'],
-					"observaciones_scm" => $_REQUEST ['obser_escom'],
-					"monitoreo_stm" => $_REQUEST ['mn_stm'] 
-			);
-			// Se guarda en un array para crear una trasaccion
-			$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_zona_estudio', $arregloZonaEstudio );
-		}
-		
-		/*
-		 * Algoritmo para rescatar variables de Trafico Maritimo
-		 * para Evitar Variables Innesesarias
-		 * que no tenga informacion Valida
-		 */
-		/* Inicio Algoritmo */
-		{
-			
-			$arregloPreTrafico = array (
-					'rango1BC',
-					'tiempo1BC',
-					'rango2BC',
-					'tiempo2BC',
-					'rango3BC',
-					'tiempo3BC',
-					'rango1BE',
-					'tiempo1BE',
-					'rango2BE',
-					'tiempo2BE',
-					'rango1BP',
-					'tiempo1BP',
-					'rango2BP',
-					'tiempo2BP',
-					'rango3BP',
-					'tiempo3BP',
-					'rango1BG',
-					'tiempo1BG',
-					'rango2BG',
-					'tiempo2BG',
-					'rango1BPQ',
-					'tiempo1BPQ',
-					'rango1SM',
-					'tiempo1SM',
-					'rango2SM',
-					'tiempo2SM',
-					'rango3SM',
-					'tiempo3SM',
-					'rango4SM',
-					'tiempo4SM',
-					'rango5SM',
-					'tiempo5SM',
-					'rango1AA',
-					'tiempo1AA',
-					'rango2AA',
-					'tiempo2AA',
-					'rango3AA',
-					'tiempo3AA',
-					'rango4AA',
-					'tiempo4AA',
-					'num_bq_gr',
-					'tiempo_bq_gr',
-					'num_bq_pq',
-					'tiempo_bq_pq' 
-			);
-			$conrador = 1;
-			foreach ( $arregloPreTrafico as $valor ) {
-				
-				if ($conrador == 1) {
-					
-					$arrayRango [] = array (
-							'variable' => $valor,
-							'valor_variable' => $_REQUEST [$valor] 
-					);
-					$conrador ++;
-				} else if ($conrador == 2) {
-					$arrayTiempo [] = $_REQUEST [$valor];
-					$conrador = 1;
-				}
-			}
-			
-			for($i = 0; $i <= 21; $i ++) {
-				
-				if ($arrayRango [$i] ['valor_variable'] != 0 && $arrayRango [$i] ['valor_variable'] != '') {
-					if ($arrayTiempo [$i] != '') {
-						
-						$arregloTrafico [] = array (
-								"variable" => $arrayRango [$i] ['variable'],
-								"numero_buques" => $arrayRango [$i] ['valor_variable'],
-								"periodo" => $arrayTiempo [$i] 
-						);
-					}
-				}
-			}
-			
-			if (isset ( $arregloTrafico ) != false) {
-				
-				/* Arreglo Informacion Trafico y Cadena Sql Registro Trafico Maritimo */
-				foreach ( $arregloTrafico as $valor ) {
-					// Se guarda en un array para crear una trasaccion
-					$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_trafico_maritimo', $valor );
-				}
-			}
-		}
-		/* Fin Algoritmo */
-		
-		/* Arreglo Informacion Informacion Carta Nautica y Cadena Sql Registro Informacion Carta Nautica */
-		$arregloCartaNautica = array (
-				"boyas_ais" => $_REQUEST ['bo_mo_for_re'],
-				"boyas_nais" => $_REQUEST ['bo_si_ais_no_super'],
-				"racon_num" => $_REQUEST ['racon'],
-				"linternas_num" => $_REQUEST ['linterna'],
-				"otras_aton" => $_REQUEST ['ort_aton'],
-				"proporciona_dgps" => $_REQUEST ['g_gps'],
-				"disponibilidad_stm" => $_REQUEST ['ds_stm'],
-				"disponible_servpl" => $_REQUEST ['ds_srv_pl'],
-				"observaciones" => $_REQUEST ['obser_des__sis_sn'] 
-		);
-		
-		// Se guarda en un array para crear una trasaccion
-		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_informacion_carta_nautica', $arregloCartaNautica );
-		
-		/* Arreglo Peligros y Cadena Sql Registro Peligros */
-		$arregloPeligros = array (
-				"calado_mxbq" => $_REQUEST ['cal_max_buques'],
-				"holgura_bjqll" => $_REQUEST ['hg_bj_quilla'],
-				"maxima_olpr" => $_REQUEST ['mx_oleaje_pre'],
-				"sedimentacion_mxa" => $_REQUEST ['sd_mx_anual'],
-				"profundidad_minsg" => $_REQUEST ['pr_mn_seguridad'],
-				"anchura_cnl" => $_REQUEST ['ach_canal'],
-				"tasa_mx" => $_REQUEST ['ts_maxima'],
-				"observaciones_flmr" => $_REQUEST ['ob_fluj_marea'],
-				"prediccion_mxvntr" => $_REQUEST ['pr_maxima'],
-				"observaciones_vttr" => $_REQUEST ['ob_temp_dirr'],
-				"prediccion_cbm" => $_REQUEST ['pr_maxima_dgl'],
-				"observaciones_efcb" => $_REQUEST ['ob_temp_dirr_com'],
-				"distancia_pntcr" => $_REQUEST ['pnt_cr_tr'],
-				"observaciones_pntcr" => $_REQUEST ['ob_pt_ct_tr'],
-				"distancia_plgcr" => $_REQUEST ['prl_max_cr'],
-				"observaciones_plgcr" => $_REQUEST ['ob_prl_max_cr'],
-				"distancia_prmnvs" => $_REQUEST ['pr_mn_vs'],
-				"porcentaje_prmnvs" => $_REQUEST ['prc_mn_vs'],
-				"distancia_prmvs" => $_REQUEST ['prd_pr_vs'],
-				"porcentaje_prmvs" => $_REQUEST ['pds_pr_vs'],
-				"distancia_tmbsl" => $_REQUEST ['tm_bj_sl'],
-				"porcentaje_tmbsl" => $_REQUEST ['prc_tm_bj_sl'],
-				"distancia_rpl" => $_REQUEST ['prd_respl'],
-				"porcentaje_rpl" => $_REQUEST ['prc_prd_respl'],
-				"calidad_praton" => $_REQUEST ['pr_aton'],
-				"calidad_plserv" => $_REQUEST ['pl_tr_mr'],
-				"calidad_grcmtr" => $_REQUEST ['gr_cmp_trp'],
-				"calidad_pqcmtr" => $_REQUEST ['pq_cmp_trp'] 
-		);
-		
-		// Se guarda en un array para crear una trasaccion
-		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_peligros', $arregloPeligros );
+		var_dump ( $_REQUEST );
 		
 		// Conexion de Base de Datos
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+		/*
+		 * Consulta de Variables Procesadas
+		 */
+		{
+			$arregloConsulta = array (
+					"token" => $_REQUEST ['token'],
+					"id_zona" => $_REQUEST ['id_zona'] 
+			);
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( 'consultar_variables_temporales_procesadas', $arregloConsulta );
+			
+			$variables_procesadas = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		} // Fin Consulta Variables
+		
+		/*
+		 * Configurar y Validar Arreglo a Registrar
+		 */
+		
+		foreach ( $variables_procesadas as $valor ) {
+			
+			$arregloDatos [] = array (
+					"id_zona_estudio" => $valor ['id_zona_estudio'],
+					"tema" => $valor ['tema'],
+					"variable" => $valor ['variable'],
+					"valor" => $valor ['valor'],
+					"nota" => $valor ['nota'],
+					"probabilidad" => (is_null ( $valor ['probabilidad'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['probabilidad'],
+					"impacto" => (is_null ( $valor ['impacto'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['impacto'],
+					"riesgo" => (is_null ( $valor ['riesgo'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['riesgo'],
+					"observacion" => (is_null ( $valor ['control_ris'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['control_ris'] 
+			);
+		}
+		
+		var_dump ( $arregloDatos );
+		
+		exit ();
+		// Se guarda en un array para crear una trasaccion
+		
+		foreach ($arregloDatos as $valor){
+			
+			
+			
+			
+		}
+		
+		
+		$cadenaSql [] = $this->miSql->getCadenaSql ( 'registrar_variables_riesgo', $arregloPeligros );
 		
 		// Ejecucción Transaccion
 		
@@ -207,13 +81,9 @@ class FormProcessor {
 			Redireccionador::redireccionar ( 'NoInserto' );
 		}
 	}
-	function resetForm() {
-		foreach ( $_REQUEST as $clave => $valor ) {
-			
-			if ($clave != 'pagina' && $clave != 'development' && $clave != 'jquery' && $clave != 'tiempo') {
-				unset ( $_REQUEST [$clave] );
-			}
-		}
+	function ErrorDatosVaciosObligatorios() {
+		Redireccionador::redireccionar ( "ErrorVariablesVacias" );
+		exit ();
 	}
 }
 
