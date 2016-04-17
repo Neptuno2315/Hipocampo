@@ -63,13 +63,13 @@ class registrarForm {
 				case 'ErrorVariablesVacias' :
 					
 					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique que las Variables tengan Probabilidad y Impacto.';
+					$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique las Variables porque son Obligatorias Probabilidad y Impacto.';
 					
 					break;
 				
 				case 'RegistroExito' :
 					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Registro con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					$atributos ['mensaje'] = 'Se Registro con Exito Análisis de Variables del Riesgo<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
 					break;
 				
 				case 'RegistroError' :
@@ -77,6 +77,8 @@ class registrarForm {
 					$atributos ['mensaje'] = 'Error en el Registro de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
 					break;
 				
+					//--- Sin usar
+					
 				case 'ActualizoExito' :
 					$atributos ['tipo'] = 'success';
 					$atributos ['mensaje'] = 'Se Actualizo con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";

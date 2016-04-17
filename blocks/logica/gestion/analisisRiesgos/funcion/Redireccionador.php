@@ -23,17 +23,17 @@ class Redireccionador {
 			
 			case "Inserto" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=RegistroExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				$variable .= "&TituloProyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
 			
 			case "NoInserto" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=RegistroError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -41,7 +41,7 @@ class Redireccionador {
 			
 			case "Actualizo" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=ActualizoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -51,7 +51,7 @@ class Redireccionador {
 			
 			case "NoActualizo" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=ActualizacionError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -60,7 +60,7 @@ class Redireccionador {
 			
 			case "Elimino" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=EliminoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -70,18 +70,10 @@ class Redireccionador {
 			
 			case "NoElimino" :
 				
-				$variable = 'pagina=zonaEstudio';
+				$variable = 'pagina=analisisRiesgos';
 				$variable .= "&opcion=mensaje";
 				$variable .= "&mensaje=EliminoError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				break;
-			
-			case 'ErrorModificacionFormulario' :
-				$variable = 'pagina=zonaEstudio';
-				$variable .= "&opcion=mensaje";
-				$variable .= "&mensaje=ErrorProcesamiento";
-				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				
 				break;
 			
 			case 'paginaPrincipal' :
@@ -92,7 +84,6 @@ class Redireccionador {
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );
 		}
-		
 		$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php?";
 		$enlace = $miConfigurador->configuracion ['enlace'];
 		$variable = $miConfigurador->fabricaConexiones->crypto->codificar ( $variable );

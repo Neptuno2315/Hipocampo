@@ -175,7 +175,7 @@ $(function() {
                      width: 1042,
                      height: 300,
                      pager: "#barra_herramientas",
-                     caption: "Variables para Gestión Riesgo"
+                     caption: "Variables Gestión Riesgo"
                  });
 
 

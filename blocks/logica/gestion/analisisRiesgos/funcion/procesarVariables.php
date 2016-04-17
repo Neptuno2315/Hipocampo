@@ -17,8 +17,6 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-		var_dump ( $_REQUEST );
-		
 		// Conexion de Base de Datos
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -69,14 +67,17 @@ class FormProcessor {
 		$transaccion = $esteRecursoDB->transaccion ( $cadenasGuardarVariables );
 		
 		if ($transaccion == true) {
-			Redireccionador::redireccionar ( 'Inserto' );
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
+			$variables = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
+			
+			Redireccionador::redireccionar ( "Inserto" );
 		} else if ($transaccion == false) {
 			Redireccionador::redireccionar ( 'NoInserto' );
 		}
 	}
 	function ErrorDatosVaciosObligatorios() {
 		Redireccionador::redireccionar ( "ErrorVariablesVacias" );
-		exit ();
 	}
 }
 
