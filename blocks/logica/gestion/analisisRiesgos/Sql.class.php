@@ -49,6 +49,25 @@ class Sql extends \Sql {
 			 * Sentenias de Registro de Informacion
 			 */
 			
+			case 'registrar_variables_temporales_existentes' :
+				var_dump ( $variable );
+				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable, ";
+				$cadenaSql .= "  valor, nota,probabilidad, impacto, riesgo, control_ris,token)  ";
+				$cadenaSql .= "VALUES (";
+				$cadenaSql .= "'" . $variable ['id'] . "',";
+				$cadenaSql .= "'" . $variable ['id_zona'] . "',";
+				$cadenaSql .= "'" . $variable ['tema'] . "',";
+				$cadenaSql .= "'" . $variable ['variable'] . "',";
+				$cadenaSql .= (is_null ( $variable ['valor'] ) == false || $variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,";
+				$cadenaSql .= (is_null ( $variable ['nota'] ) == false || $variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,";
+				$cadenaSql .= "'" . $variable ['probabilidad'] . "',";
+				$cadenaSql .= "'" . $variable ['impacto'] . "',";
+				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
+				$cadenaSql .= "'" . $variable ['control_ris'] . "',";
+				$cadenaSql .= "'" . $variable ['token'] . "');";
+				
+				break;
+			
 			case 'registrar_variables_temporales' :
 				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable,token)  ";
 				$cadenaSql .= "VALUES (";
@@ -66,8 +85,8 @@ class Sql extends \Sql {
 				$cadenaSql .= "'" . $variable ['id_zona_estudio'] . "',";
 				$cadenaSql .= "'" . $variable ['tema'] . "',";
 				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= ($variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,"   ;
-				$cadenaSql .= ($variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,"   ;
+				$cadenaSql .= ($variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,";
+				$cadenaSql .= ($variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,";
 				$cadenaSql .= "'" . $variable ['probabilidad'] . "',";
 				$cadenaSql .= "'" . $variable ['impacto'] . "',";
 				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
@@ -88,6 +107,15 @@ class Sql extends \Sql {
 			/*
 			 * Sentencias Consulta Información
 			 */
+			
+			case 'consultar_variables_riesgo_existentes' :
+				$cadenaSql = "SELECT * ";
+				$cadenaSql .= "FROM riesgo ";
+				$cadenaSql .= "WHERE estado_registro=TRUE  ";
+				$cadenaSql .= "AND id_zona_estudio='" . $variable . "' ";
+				$cadenaSql .= "ORDER BY id_riesgo ASC ; ";
+				
+				break;
 			
 			case 'consultar_variables_temporales_procesadas' :
 				$cadenaSql = "SELECT * ";

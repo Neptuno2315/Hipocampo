@@ -32,6 +32,10 @@ class registrarForm {
 		
 		$esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
+		$conexion = "logica";
+		
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
 		$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
 		// ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
 		/**
@@ -52,30 +56,67 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
 			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
+			
 			/*
-			 * Consultar Variables
+			 * Consultar si existen Variables con la Zona de Estudio
 			 */
+			var_dump ( $_REQUEST );
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
-			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			$i = 1;
-			foreach ( $variables as $valor ) {
+			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_variables_riesgo_existentes", $_REQUEST ['id_zona'] );
+			$variables_existentes = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			/*
+			 * Consultar Variables Temporales
+			 */
+			if ($variables_existentes) {
 				
-				$arreglovariables [] = array (
-						"abreviatura" => $valor ['abreviatura'],
-						"variable" => $valor ['variable'],
-						"token" => $_REQUEST ['tiempo'],
-						"zona" => $_REQUEST ['id_zona'],
-						"id" => $i 
-				);
-				$i ++;
-			}
-			
-			foreach ( $arreglovariables as $valor ) {
-				/*
-				 * Registrar Variables
-				 */
-				$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales", $valor );
+				$i = 1;
+				foreach ( $variables_existentes as $valor ) {
+					
+					$arreglovariables [] = array (
+							"id" => $i,
+							"id_zona" => $valor ['id_zona_estudio'],
+							"tema" => $valor ['tema'],
+							"variable" => $valor ['variable'],
+							"valor" => $valor ['valor'],
+							"nota" => $valor ['nota'],
+							"probabilidad" => $valor ['probabilidad'],
+							"impacto" => $valor ['impacto'],
+							"riesgo" => $valor ['riesgo'],
+							"control_ris" => $valor ['control_ris'],
+							"token" => $_REQUEST ['tiempo'] 
+					);
+					$i ++;
+				}
+				
+				foreach ( $arreglovariables as $valor ) {
+					/*
+					 * Registrar Variables Existentes
+					 */
+					$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales_existentes", $valor );
+				}
+			} else {
+				$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
+				$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+				$i = 1;
+				foreach ( $variables as $valor ) {
+					
+					$arreglovariables [] = array (
+							"abreviatura" => $valor ['abreviatura'],
+							"variable" => $valor ['variable'],
+							"token" => $_REQUEST ['tiempo'],
+							"zona" => $_REQUEST ['id_zona'],
+							"id" => $i 
+					);
+					$i ++;
+				}
+				
+				foreach ( $arreglovariables as $valor ) {
+					/*
+					 * Registrar Variables
+					 */
+					$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales", $valor );
+				}
 			}
 			
 			$transaccion = $esteRecursoDBLG->transaccion ( $sql );
@@ -180,7 +221,6 @@ class registrarForm {
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
-		
 		
 		// ------------------- SECCION: Paso de variables ------------------------------------------------
 		
