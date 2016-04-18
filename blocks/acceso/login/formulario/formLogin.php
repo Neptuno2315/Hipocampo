@@ -27,7 +27,7 @@ class Formulario {
 		$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 		$rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
 		$rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
-		var_dump($_REQUEST);
+		
 		?>
 
 
