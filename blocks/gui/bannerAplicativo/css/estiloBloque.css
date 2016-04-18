@@ -1,0 +1,41 @@
+body {
+	/*width: 100%;
+	top: -3px;
+	background-image: url("images/imagen2.JPG");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: gray;
+	/*background-position: center 0%;*/
+	/*position: fixed;*/
+	
+	
+	width: 100%;
+    top: -3px;
+    background-image: url("images/imagen2.JPG");
+    background-size: cover;
+    /*background-size: 200% 405%;*/
+    background-repeat: no-repeat;
+    background-color: gray;
+    background-position: 49% 20%;
+}
+
+#fondo_texto {
+	position: fixed;
+	z-index: 4;
+	/* opacity: 0.35; */
+	width: 97.5%;
+	background-color: rgb(168, 173, 175);
+	border-radius: 10px 10px 10px 10px;
+	border-style: groove;
+	border-color: #c5c5c5;
+}
+
+#texto {
+	width: 97%;
+	height: 80%;
+	margin: initial;
+	color: #ffffff;
+	text-align: right;
+	left: 2%;
+	font-size: inherit;
+}

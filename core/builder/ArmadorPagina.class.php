@@ -61,16 +61,17 @@ class ArmadorPagina {
         $htmlPagina = "<head>\n";
         $htmlPagina .= "<title>" . $this->miConfigurador->getVariableConfiguracion("nombreAplicativo") . "</title>\n";
         $htmlPagina .= "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' >\n";
-        $htmlPagina .= "<link rel='shortcut icon' href='" . $this->host . $this->sitio . "/" . "favicon.ico' >\n";
+        $htmlPagina .= "<link rel='shortcut icon' href='" . $this->host . $this->sitio . "/" . "iconfinder.ico' >\n";
         echo $htmlPagina;
-
+        
         // Incluir estilos
         include_once ("theme/basico/Estilo.php");
-
+        
         // Enlazar los estilos definidos en cada bloque
         foreach ($this->bloques as $unBloque) {
             $this->incluirEstilosBloque($unBloque);
         }
+        $this->piePagina();
         echo "</head>\n";
     }
 
@@ -84,12 +85,15 @@ class ArmadorPagina {
             0
         );
 
+        
+    
+        
         foreach ($this->bloques as $unBloque) {
 
             $posicion = ord($unBloque [self::SECCION]) - 65;
             $this->seccionesDeclaradas [$posicion] = $unBloque [self::SECCION];
         }
-
+        
         echo "<body>\n";
         echo "<div id='marcoGeneral'>\n";
 
@@ -110,10 +114,12 @@ class ArmadorPagina {
         if (in_array("E", $this->seccionesDeclaradas, true)) {
             $this->armarSeccionAmplia("E");
         }
-
+        
         echo "</div>\n";
-        $this->piePagina();
+        
         echo "</body>\n";
+
+    
     }
 
     private function piePagina() {
@@ -279,7 +285,7 @@ class ArmadorPagina {
          *
          * El archivo ready.php se utiliza cuando se tenga que crear de manera dinámica el js.
          */
-        echo "<script type='text/javascript'>\n";
+        echo "<script type='text/javascript' async='async'>\n";
         echo "$(document).ready(function(){\n";
 
         foreach ($this->bloques as $unBloque) {
