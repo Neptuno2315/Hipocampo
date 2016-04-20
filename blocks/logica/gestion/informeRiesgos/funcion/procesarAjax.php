@@ -79,8 +79,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'validar' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'documento' => "<center><a href='" . $urlAnalizar . "'><B>↺</B></a></center>" 
+						'validar' => "<center><a href='" . $urlAnalizar . "'><img src='".$rutaBloque."/css/iconos/busqueda.png 'width='20px'></a></center>",
+						'documento' => "<center><a href='" . $urlAnalizar . "'><img src='".$rutaBloque."/css/iconos/descargar.png 'width='20px'></a></center>" 
 				);
 			}
 			

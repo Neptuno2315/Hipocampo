@@ -143,8 +143,8 @@ class registrarForm {
 											<th>Sector</th>
 											<th>Titulo y/o Nombre<br>Proyecto</th>
 											<th>Fecha Registro</th>
-											<th>Validar Información</th>
-											<th>Documento Informe</th> 
+											<th>Incluir Recomendaciones<br>(Navegación)</th>
+											<th>Documento<br>Informe</th> 
 									    </tr>
 						            </thead>
 							</table>			
