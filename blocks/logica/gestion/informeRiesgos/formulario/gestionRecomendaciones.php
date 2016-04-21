@@ -20,7 +20,7 @@ class registrarForm {
 		$this->miSql = $sql;
 	}
 	function miForm() {
-		
+		var_dump ( $_REQUEST );
 		/**
 		 * IMPORTANTE: Este formulario está utilizando jquery.
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
@@ -60,7 +60,6 @@ class registrarForm {
 			/*
 			 * Consultar si existen Variables con la Zona de Estudio
 			 */
-			
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_variables_riesgo_existentes", $_REQUEST ['id_zona'] );
 			$variables_existentes = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
@@ -150,18 +149,64 @@ class registrarForm {
 		unset ( $atributos );
 		
 		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "MarcoDatos";
-		$atributos ["estilo"] = "marcoBotones";
+		$atributos ["id"] = "DivRegistro";
+		$atributos ["estilo"] = " ";
 		echo $this->miFormulario->division ( "inicio", $atributos );
+		unset ( $atributos );
 		{
 			
-			$mostrarHtml = "<center>
-								<table id='tabla_datos_riesgos'>
-								</table>
-						        <div id='barra_herramientas'>
-					            </div>
-							</center>";
-			echo $mostrarHtml;
+			// ------------------Division para los botones-------------------------
+			$atributos ["id"] = "MarcoBotones";
+			$atributos ["estilo"] = "marcoBotones";
+			echo $this->miFormulario->division ( "inicio", $atributos );
+			{
+				// -----------------CONTROL: Botón ----------------------------------------------------------------
+				$esteCampo = 'botonGuardar';
+				$atributos ["id"] = $esteCampo;
+				$atributos ["tabIndex"] = $tab;
+				$atributos ["tipo"] = 'boton';
+				// submit: no se coloca si se desea un tipo button genérico
+				$atributos ['submit'] = true;
+				$atributos ["estiloMarco"] = '';
+				$atributos ["estiloBoton"] = 'jqueryui';
+				// verificar: true para verificar el formulario antes de pasarlo al servidor.
+				$atributos ["verificar"] = '';
+				$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+				$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoBoton ( $atributos );
+				unset ( $atributos );
+				
+				// -----------------CONTROL: Botón ----------------------------------------------------------------
+				$esteCampo = 'botonCancelar';
+				$atributos ["id"] = $esteCampo;
+				$atributos ["tabIndex"] = $tab;
+				$atributos ["tipo"] = 'boton';
+				// submit: no se coloca si se desea un tipo button genérico
+				$atributos ['submit'] = true;
+				$atributos ["estiloMarco"] = '';
+				$atributos ["estiloBoton"] = 'jqueryui';
+				// verificar: true para verificar el formulario antes de pasarlo al servidor.
+				$atributos ["verificar"] = '';
+				$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+				$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+				$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoBoton ( $atributos );
+				unset ( $atributos );
+				
+				// -----------------FIN CONTROL: Botón -----------------------------------------------------------
+			}
+			// ------------------Fin Division para los botones-------------------------
+			echo $this->miFormulario->division ( "fin" );
+			unset ( $atributos );
 			
 			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 		}
@@ -170,53 +215,22 @@ class registrarForm {
 		unset ( $atributos );
 		
 		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "botones";
-		$atributos ["estilo"] = "marcoBotones";
+		$atributos ["id"] = "DivGrafico";
+		$atributos ["estilo"] = " ";
 		echo $this->miFormulario->division ( "inicio", $atributos );
+		unset ( $atributos );
 		{
-			// -----------------CONTROL: Botón ----------------------------------------------------------------
-			$esteCampo = 'botonGuardar';
-			$atributos ["id"] = $esteCampo;
-			$atributos ["tabIndex"] = $tab;
-			$atributos ["tipo"] = 'boton';
-			// submit: no se coloca si se desea un tipo button genérico
-			$atributos ['submit'] = true;
-			$atributos ["estiloMarco"] = '';
-			$atributos ["estiloBoton"] = 'jqueryui';
-			// verificar: true para verificar el formulario antes de pasarlo al servidor.
-			$atributos ["verificar"] = '';
-			$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
-			$tab ++;
-			
-			// Aplica atributos globales al control
-			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoBoton ( $atributos );
-			unset ( $atributos );
-			
-			// -----------------CONTROL: Botón ----------------------------------------------------------------
-			$esteCampo = 'botonCancelar';
-			$atributos ["id"] = $esteCampo;
-			$atributos ["tabIndex"] = $tab;
-			$atributos ["tipo"] = 'boton';
-			// submit: no se coloca si se desea un tipo button genérico
-			$atributos ['submit'] = true;
-			$atributos ["estiloMarco"] = '';
-			$atributos ["estiloBoton"] = 'jqueryui';
-			// verificar: true para verificar el formulario antes de pasarlo al servidor.
-			$atributos ["verificar"] = '';
-			$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-			$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
-			$tab ++;
-			
-			// Aplica atributos globales al control
-			$atributos = array_merge ( $atributos, $atributosGlobales );
-			echo $this->miFormulario->campoBoton ( $atributos );
-			unset ( $atributos );
-			
-			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
+		}
+		// ------------------Fin Division para los botones-------------------------
+		echo $this->miFormulario->division ( "fin" );
+		unset ( $atributos );
+		
+		// ------------------Division para los botones-------------------------
+		$atributos ["id"] = "DivGrafico";
+		$atributos ["estilo"] = " ";
+		echo $this->miFormulario->division ( "inicio", $atributos );
+		unset ( $atributos );
+		{
 		}
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );

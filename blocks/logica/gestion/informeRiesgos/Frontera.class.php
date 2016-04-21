@@ -59,10 +59,10 @@ class Frontera {
 					
 					break;
 				
-				case 'analizarRiesgo' :
+				case 'gestionRecomendaciones' :
 					
 					
-					include_once ($this->ruta . "/formulario/analisisRiesgo.php");
+					include_once ($this->ruta . "/formulario/gestionRecomendaciones.php");
 					break;
 				
 				default :

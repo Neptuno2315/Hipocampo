@@ -60,7 +60,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 				$cadenaACodificar .= "&actionBloque=analizarRiesgo";
-				$cadenaACodificar .= "&opcion=analizarRiesgo";
+				$cadenaACodificar .= "&opcion=gestionRecomendaciones";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
@@ -72,15 +72,31 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 				
 				// URL definitiva
-				$urlAnalizar = $url . $cadena;
+				$urlRecomendaciones = $url . $cadena;
+				
+				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&actionBloque=analizarRiesgo";
+				$cadenaACodificar .= "&opcion=documento";
+				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
+				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				// Codificar las variables
+				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+				
+				// URL definitiva
+				$urlDocumento = $url . $cadena;
 				
 				$resultadoFinal [] = array (
 						'region' => "<center>" . $valor ['region'] . "</center>",
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'validar' => "<center><a href='" . $urlAnalizar . "'><img src='".$rutaBloque."/css/iconos/busqueda.png 'width='20px'></a></center>",
-						'documento' => "<center><a href='" . $urlAnalizar . "'><img src='".$rutaBloque."/css/iconos/descargar.png 'width='20px'></a></center>" 
+						'validar' => "<center><a href='" . $urlRecomendaciones . "'><img src='" . $rutaBloque . "/css/iconos/busqueda.png 'width='20px'></a></center>",
+						'documento' => "<center><a href='" . $urlDocumento . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>" 
 				);
 			}
 			
