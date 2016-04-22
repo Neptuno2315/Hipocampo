@@ -155,6 +155,66 @@ class registrarForm {
 		unset ( $atributos );
 		{
 			
+			// ---------------- CONTROL: Cuadro Lista ----------------------
+			$esteCampo = 'region';
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['id'] = $esteCampo;
+			$atributos ['seleccion'] = - 1;
+			$atributos ['evento'] = '';
+			$atributos ['deshabilitado'] = false;
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['tab'] = $tab;
+			$atributos ['tamanno'] = 1;
+			$atributos ['columnas'] = 2;
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['validar'] = 'required';
+			$atributos ['limitar'] = false;
+			$atributos ['anchoCaja'] = 70;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['anchoEtiqueta'] = 120;
+				
+			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
+				
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			// $atributos ['matrizItems'] = $matrizItems;
+				
+			// Utilizar lo siguiente cuando no se pase un arreglo:
+			$atributos ['baseDatos'] = 'geografico';
+			// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+			$tab ++;
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoCuadroLista ( $atributos );
+			unset ( $atributos );
+			
+			
+			// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+			$esteCampo = 'obser_des__sis_sn'; // Observaciones Sistema de Señalización
+			$atributos ['id'] = $esteCampo;
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['columnas'] = 90;
+			$atributos ['filas'] = 5;
+			$atributos ['dobleLinea'] = 0;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = 'maxSize[5000]';
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 20;
+			$atributos ['maximoTamanno'] = '';
+			$atributos ['anchoEtiqueta'] = 220;
+			$tab ++;
+				
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoTextArea ( $atributos );
+			unset ( $atributos );
+			
+			
 			// ------------------Division para los botones-------------------------
 			$atributos ["id"] = "MarcoBotones";
 			$atributos ["estilo"] = "marcoBotones";
