@@ -20,7 +20,7 @@ class registrarForm {
 		$this->miSql = $sql;
 	}
 	function miForm() {
-		var_dump ( $_REQUEST );
+// 		var_dump ( $_REQUEST );
 		/**
 		 * IMPORTANTE: Este formulario está utilizando jquery.
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
@@ -172,12 +172,12 @@ class registrarForm {
 			$atributos ['anchoCaja'] = 70;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 			$atributos ['anchoEtiqueta'] = 120;
-				
+			
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
-				
+			
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			// $atributos ['matrizItems'] = $matrizItems;
-				
+			
 			// Utilizar lo siguiente cuando no se pase un arreglo:
 			$atributos ['baseDatos'] = 'geografico';
 			// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
@@ -186,9 +186,8 @@ class registrarForm {
 			echo $this->miFormulario->campoCuadroLista ( $atributos );
 			unset ( $atributos );
 			
-			
 			// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-			$esteCampo = 'obser_des__sis_sn'; // Observaciones Sistema de Señalización
+			$esteCampo = 'acciones'; // Acciones Preventivas
 			$atributos ['id'] = $esteCampo;
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['tipo'] = 'text';
@@ -196,7 +195,7 @@ class registrarForm {
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
 			$atributos ["etiquetaObligatorio"] = true;
-			$atributos ['columnas'] = 90;
+			$atributos ['columnas'] = 50;
 			$atributos ['filas'] = 5;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
@@ -208,12 +207,38 @@ class registrarForm {
 			$atributos ['maximoTamanno'] = '';
 			$atributos ['anchoEtiqueta'] = 220;
 			$tab ++;
-				
+			
 			// Aplica atributos globales al control
 			$atributos = array_merge ( $atributos, $atributosGlobales );
 			echo $this->miFormulario->campoTextArea ( $atributos );
 			unset ( $atributos );
 			
+			// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+			$esteCampo = 'senalizacion'; // Señalización
+			$atributos ['id'] = $esteCampo;
+			$atributos ['nombre'] = $esteCampo;
+			$atributos ['tipo'] = 'text';
+			$atributos ['estilo'] = 'jqueryui';
+			$atributos ['marco'] = true;
+			$atributos ['estiloMarco'] = '';
+			$atributos ["etiquetaObligatorio"] = true;
+			$atributos ['columnas'] = 50;
+			$atributos ['filas'] = 5;
+			$atributos ['dobleLinea'] = 0;
+			$atributos ['tabIndex'] = $tab;
+			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+			$atributos ['validar'] = 'maxSize[5000]';
+			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+			$atributos ['deshabilitado'] = false;
+			$atributos ['tamanno'] = 20;
+			$atributos ['maximoTamanno'] = '';
+			$atributos ['anchoEtiqueta'] = 220;
+			$tab ++;
+			
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos, $atributosGlobales );
+			echo $this->miFormulario->campoTextArea ( $atributos );
+			unset ( $atributos );
 			
 			// ------------------Division para los botones-------------------------
 			$atributos ["id"] = "MarcoBotones";
@@ -240,29 +265,6 @@ class registrarForm {
 				$atributos = array_merge ( $atributos, $atributosGlobales );
 				echo $this->miFormulario->campoBoton ( $atributos );
 				unset ( $atributos );
-				
-				// -----------------CONTROL: Botón ----------------------------------------------------------------
-				$esteCampo = 'botonCancelar';
-				$atributos ["id"] = $esteCampo;
-				$atributos ["tabIndex"] = $tab;
-				$atributos ["tipo"] = 'boton';
-				// submit: no se coloca si se desea un tipo button genérico
-				$atributos ['submit'] = true;
-				$atributos ["estiloMarco"] = '';
-				$atributos ["estiloBoton"] = 'jqueryui';
-				// verificar: true para verificar el formulario antes de pasarlo al servidor.
-				$atributos ["verificar"] = '';
-				$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-				$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
-				$tab ++;
-				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoBoton ( $atributos );
-				unset ( $atributos );
-				
-				// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 			}
 			// ------------------Fin Division para los botones-------------------------
 			echo $this->miFormulario->division ( "fin" );
@@ -286,7 +288,7 @@ class registrarForm {
 		unset ( $atributos );
 		
 		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "DivGrafico";
+		$atributos ["id"] = "DivTabla";
 		$atributos ["estilo"] = " ";
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
