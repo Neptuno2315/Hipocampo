@@ -4,4 +4,7 @@
 
 #DivRegistro {
 	width: 50%;
+	font-size: 8px;
+	border-style: groove;
+	background: whitesmoke;
 }

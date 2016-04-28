@@ -2,14 +2,14 @@ $(function() {
 
 	// Plugin para Validar Formulario Validation Engine
 
-	$("#<?php echo $this->campoSeguro('analisisRiesgos')?>").validationEngine({
+	$("#<?php echo $this->campoSeguro('informeRiesgos')?>").validationEngine({
 		promptPosition : "topRight:-10",
 		scroll : false,
 		autoHidePrompt : true,
 		autoHideDelay : 9000
 	});
-	$("#<?php echo $this->campoSeguro('analisisRiesgos')?>").submit(function() {
-		$resultado = $("#<?php echo $this->campoSeguro('analisisRiesgos')?>").validationEngine("validate");
+	$("#<?php echo $this->campoSeguro('informeRiesgos')?>").submit(function() {
+		$resultado = $("#<?php echo $this->campoSeguro('informeRiesgos')?>").validationEngine("validate");
 		if ($resultado) {
 
 			return true;
@@ -18,6 +18,7 @@ $(function() {
 	});
 
 
+	
 	/* Consulta */
 	$("#<?php echo $this->campoSeguro('region_consulta')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector_consulta')?>").select2();
@@ -100,5 +101,20 @@ $(function() {
 						}
 
 					});
+	
+	
+	
+	//Recomendaciones
+	
+	$("#<?php echo $this->campoSeguro('riesgo')?>").select2();
+	
+	
+	
 
 });
+
+
+
+
+
+

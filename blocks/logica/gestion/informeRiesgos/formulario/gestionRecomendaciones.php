@@ -156,7 +156,7 @@ class registrarForm {
 		{
 			
 			// ---------------- CONTROL: Cuadro Lista ----------------------
-			$esteCampo = 'region';
+			$esteCampo = 'riesgo';
 			$atributos ['nombre'] = $esteCampo;
 			$atributos ['id'] = $esteCampo;
 			$atributos ['seleccion'] = - 1;
@@ -171,10 +171,8 @@ class registrarForm {
 			$atributos ['limitar'] = false;
 			$atributos ['anchoCaja'] = 70;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['anchoEtiqueta'] = 120;
-			
+			$atributos ['anchoEtiqueta'] = 60;
 			$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
-			
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			// $atributos ['matrizItems'] = $matrizItems;
 			
@@ -195,12 +193,12 @@ class registrarForm {
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
 			$atributos ["etiquetaObligatorio"] = true;
-			$atributos ['columnas'] = 50;
+			$atributos ['columnas'] = 98;
 			$atributos ['filas'] = 5;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'maxSize[5000]';
+			$atributos ['validar'] = 'required,maxSize[10000]';
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 20;
@@ -222,12 +220,12 @@ class registrarForm {
 			$atributos ['marco'] = true;
 			$atributos ['estiloMarco'] = '';
 			$atributos ["etiquetaObligatorio"] = true;
-			$atributos ['columnas'] = 50;
+			$atributos ['columnas'] = 98;
 			$atributos ['filas'] = 5;
 			$atributos ['dobleLinea'] = 0;
 			$atributos ['tabIndex'] = $tab;
 			$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-			$atributos ['validar'] = 'maxSize[5000]';
+			$atributos ['validar'] = 'maxSize[10000]';
 			$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 			$atributos ['deshabilitado'] = false;
 			$atributos ['tamanno'] = 20;
