@@ -20,18 +20,12 @@ class registrarForm {
 		$this->miSql = $sql;
 	}
 	function miForm() {
-// 		var_dump ( $_REQUEST );
+		
 		/**
 		 * IMPORTANTE: Este formulario está utilizando jquery.
 		 * Por tanto en el archivo ready.php se delaran algunas funciones js
 		 * que lo complementan.
 		 */
-		$conexion = "parametros";
-		
-		$esteRecursoDBLG = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
-		$esteRecursoDBP = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-		
 		$conexion = "logica";
 		
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -49,76 +43,25 @@ class registrarForm {
 		$atributosGlobales ['campoSeguro'] = 'true';
 		$_REQUEST ['tiempo'] = time ();
 		
-		{
-			/*
-			 * Limpiar Variables Existentes
-			 */
+		{ /*
+		   * Consultar Riesgos
+		   */
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
-			$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
-			
-			/*
-			 * Consultar si existen Variables con la Zona de Estudio
-			 */
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_variables_riesgo_existentes", $_REQUEST ['id_zona'] );
-			$variables_existentes = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			/*
-			 * Consultar Variables Temporales
-			 */
-			if ($variables_existentes) {
+			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_riesgos", $_REQUEST ['id_zona'] );
+			$riesgo = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			var_dump ( $riesgo );
+			foreach ( $riesgo as $valor ) {
 				
-				$i = 1;
-				foreach ( $variables_existentes as $valor ) {
-					
-					$arreglovariables [] = array (
-							"id" => $i,
-							"id_zona" => $valor ['id_zona_estudio'],
-							"tema" => $valor ['tema'],
-							"variable" => $valor ['variable'],
-							"valor" => $valor ['valor'],
-							"nota" => $valor ['nota'],
-							"probabilidad" => $valor ['probabilidad'],
-							"impacto" => $valor ['impacto'],
-							"riesgo" => $valor ['riesgo'],
-							"control_ris" => $valor ['control_ris'],
-							"token" => $_REQUEST ['tiempo'] 
-					);
-					$i ++;
+				if ($valor ['riesgo'] >= 1 || $valor ['riesgo'] <= 2) {
+				} else {
 				}
-				
-				foreach ( $arreglovariables as $valor ) {
-					/*
-					 * Registrar Variables Existentes
-					 */
-					$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales_existentes", $valor );
+				if ($valor ['riesgo'] >= 3 || $valor ['riesgo'] <= 4) {
+				} else {
 				}
-			} else {
-				$cadenaSql = $this->miSql->getCadenaSql ( "consultar_parametros_utilizar" );
-				$variables = $esteRecursoDBLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-				$i = 1;
-				foreach ( $variables as $valor ) {
-					
-					$arreglovariables [] = array (
-							"abreviatura" => $valor ['abreviatura'],
-							"variable" => $valor ['variable'],
-							"token" => $_REQUEST ['tiempo'],
-							"zona" => $_REQUEST ['id_zona'],
-							"id" => $i 
-					);
-					$i ++;
-				}
-				
-				foreach ( $arreglovariables as $valor ) {
-					/*
-					 * Registrar Variables
-					 */
-					$sql [] = $this->miSql->getCadenaSql ( "registrar_variables_temporales", $valor );
+				if ($valor ['riesgo'] >= 6 || $valor ['riesgo'] <= 9) {
+				} else {
 				}
 			}
-			
-			$transaccion = $esteRecursoDB->transaccion ( $sql );
 		}
 		
 		// -------------------------------------------------------------------------------------------------

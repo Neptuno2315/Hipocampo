@@ -185,6 +185,14 @@ class Sql extends \Sql {
 				
 				break;
 			
+			case 'consultar_riesgos' :
+				$cadenaSql = "SELECT DISTINCT riesgo, control_ris  ";
+				$cadenaSql .= "FROM riesgo  ";
+				$cadenaSql .= "WHERE  id_zona_estudio= '" . $variable . "'";
+				$cadenaSql .= "AND estado_registro = TRUE ";
+				$cadenaSql .= "AND riesgo <> 0 ;";
+				
+				break;
 			/*
 			 * Sentencias Modificación Información
 			 */
