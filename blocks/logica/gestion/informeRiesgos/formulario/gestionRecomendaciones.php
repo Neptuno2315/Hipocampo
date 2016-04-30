@@ -252,6 +252,14 @@ class registrarForm {
 		unset ( $atributos );
 		{
 			
+			$esteCampo = "marcoDatosBasicos";
+			$atributos ['id'] = $esteCampo;
+			$atributos ["estilo"] = "jqueryui";
+			$atributos ['tipoEtiqueta'] = 'inicio';
+            //$atributos ["leyenda"] = "";
+			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+			unset ( $atributos );
+			
 			$atributos ['texto'] = "Recomendaciones a la Navegación";
 			$atributos ['estilo'] = "textoResaltado";
 			// $atributos['columnas'] ="";
@@ -264,8 +272,8 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
 			$recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			var_dump($_REQUEST);
-			if (1 == 0) {
+			
+			if ($recomendaciones) {
 				
 				$mostrarHtml = "<table id='tablaRecomedaciones'>
 									<thead>
@@ -297,6 +305,9 @@ class registrarForm {
 				unset ( $atributos );
 				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
 			}
+			
+			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+			unset ( $atributos );
 		}
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );

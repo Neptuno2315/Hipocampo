@@ -51,10 +51,12 @@ $(function() {
 				processing: true,
 		        "aLengthMenu": [[10,25, 50,100,300,500,1000,-1], [10,25, 50,100,300,500,1000,'Todos']],
                   searching: true,
-                  "scrollY":"280px",
+                  "scrollY":"200px",
                  "scrollCollapse": false,
                   info:true,
 	   		    "pagingType": "simple",
+	   		 "bLengthChange": false,
+	   		"bPaginate": false,
 
                   ajax:{
                       url:"<?php echo $urlTabla?>",

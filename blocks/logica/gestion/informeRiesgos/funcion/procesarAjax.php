@@ -113,11 +113,31 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			break;
 		
 		case 'consultarRecomendaciones' :
-			var_dump ( $_REQUEST );
 			
 			$cadenaSql = $this->sql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
 			$recomendaciones = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			var_dump ( $recomendaciones );
+			
+			foreach ( $recomendaciones as $valor ) {
+				
+				$especificar_riesgo = explode ( ",", $valor ['riesgo'] );
+				
+				$resultadoFinal [] = array (
+						'riesgo' => "<center>" . $especificar_riesgo [1] . "</center>",
+						'accion' => "<center>" . $valor ['acciones_prv'] . "</center>",
+						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>" 
+				);
+			}
+			
+			$total = count ( $resultadoFinal );
+			
+			$resultado = json_encode ( $resultadoFinal );
+			
+			$resultado = '{
+                "recordsTotal":' . $total . ',
+                "recordsFiltered":' . $total . ',
+				"data":' . $resultado . '}';
+			
+			echo $resultado;
 			
 			break;
 	}
