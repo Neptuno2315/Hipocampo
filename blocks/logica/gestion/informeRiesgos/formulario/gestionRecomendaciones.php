@@ -252,25 +252,35 @@ class registrarForm {
 		unset ( $atributos );
 		{
 			
+			$atributos ['texto'] = "Recomendaciones a la Navegación";
+			$atributos ['estilo'] = "textoResaltado";
+			// $atributos['columnas'] ="";
+			// $atributos['etiqueta'] ="";
+			$tab ++;
+			
+			// Aplica atributos globales al control
+			echo $this->miFormulario->campoTexto ( $atributos );
+			unset ( $atributos );
+			
+			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
+			$recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			var_dump($_REQUEST);
 			if (1 == 0) {
 				
-				$mostrarHtml = "<table id='tablaInfoZonas'>
+				$mostrarHtml = "<table id='tablaRecomedaciones'>
 									<thead>
 						                <tr>
-						              	    <th>Región</th>
-											<th>Sector</th>
-											<th>Titulo y/o Nombre<br>Proyecto</th>
-											<th>Fecha Registro</th>
-											<th>Incluir Recomendaciones<br>(Navegación)</th>
-											<th>Documento<br>Informe</th>
-									    </tr>
+						              	    <th>Riesgo</th>
+											<th>Acciones Preventivas</th>
+											<th>Señalización</th>
+										</tr>
 						            </thead>
 							</table>
             ";
 				echo $mostrarHtml;
 			} else {
 				
-				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : ".$_REQUEST['titulo_proyecto'].".";
+				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
 				
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 				$esteCampo = 'mensajeRegistro';

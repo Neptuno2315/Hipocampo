@@ -1,8 +1,8 @@
 <?php
 
-namespace logica\gestion\analisisRiesgos;
+namespace logica\gestion\informeRiesgos;
 
-use logica\gestion\analisisRiesgos\funcion\Redireccionador;
+use logica\gestion\informeRiesgos\funcion\Redireccionador;
 // Evitar un acceso directo a este archivo
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");

@@ -1,6 +1,6 @@
 <?php
 
-namespace logica\gestion\analisisRiesgos;
+namespace logica\gestion\informeRiesgos;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
@@ -63,48 +63,19 @@ class Sql extends \Sql {
 			/*
 			 * Limpiar Tablas
 			 */
-			
-			case 'limpiar_variables_riesgo' :
-				$cadenaSql = " DELETE FROM riesgo  ";
-				$cadenaSql .= "WHERE id_zona_estudio='" . $variable . "'; ";
-				
-				break;
-			
-			case 'limpiar_variables_temporales' :
-				$cadenaSql = " DELETE FROM riesgo_temporal  ";
-				$cadenaSql .= "WHERE id_zona_estudio='" . $variable . "'; ";
-				
-				break;
-			
+
 			/*
 			 * Sentencias Consulta Información
 			 */
-			
-			case 'consultar_variables_riesgo_existentes' :
-				$cadenaSql = "SELECT * ";
-				$cadenaSql .= "FROM riesgo ";
+				
+			case "consultar_recomedaciones":
+				$cadenaSql = "SELECT riesgo , acciones_prv, senalizacion_ext ";
+				$cadenaSql .= "FROM  recomendacion ";
 				$cadenaSql .= "WHERE estado_registro=TRUE  ";
-				$cadenaSql .= "AND id_zona_estudio='" . $variable . "' ";
-				$cadenaSql .= "ORDER BY id_riesgo ASC ; ";
+				$cadenaSql .= "AND  id_zona_estudio='".$variable."'; ";
 				
 				break;
 			
-			case 'consultar_variables_temporales_procesadas' :
-				$cadenaSql = "SELECT * ";
-				$cadenaSql .= "FROM riesgo_temporal ";
-				$cadenaSql .= "WHERE token='" . $variable ['token'] . "' ";
-				$cadenaSql .= "AND id_zona_estudio='" . $variable ['id_zona'] . "' ";
-				$cadenaSql .= "ORDER BY id_riesgo_temp ASC ; ";
-				
-				break;
-			
-			case 'consultar_variables_registradas_temporales' :
-				$cadenaSql = "SELECT * ";
-				$cadenaSql .= "FROM riesgo_temporal ";
-				$cadenaSql .= "WHERE token='" . $variable . "' ";
-				$cadenaSql .= "ORDER BY id_riesgo_temp ASC ; ";
-				
-				break;
 			
 			case 'consultar_parametros_utilizar' :
 				

@@ -1,4 +1,5 @@
 <?php
+
 // Conección a Base de Datos
 $conexion = "geografico";
 $esteRecursoGEO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -111,115 +112,12 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			break;
 		
-		case 'consultaVariables' :
+		case 'consultarRecomendaciones' :
+			var_dump ( $_REQUEST );
 			
-			$tabla = new stdClass ();
-			
-			$page = $_GET ['page'];
-			
-			$limit = $_GET ['rows'];
-			
-			$sidx = $_GET ['sidx'];
-			
-			$sord = $_GET ['sord'];
-			
-			if (! $sidx)
-				$sidx = 1;
-				
-				// ------------------
-			
-			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_variables_registradas_temporales', $_REQUEST ['tiempo'] );
-			
-			$resultadoItems = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			// ---------------------
-			$filas = count ( $resultadoItems );
-			
-			if ($filas > 0 && $limit > 0) {
-				$total_pages = ceil ( $filas / $limit );
-			} else {
-				$total_pages = 0;
-			}
-			
-			if ($page > $total_pages)
-				$page = $total_pages;
-			
-			$start = $limit * $page - $limit;
-			if ($resultadoItems != false) {
-				$tabla->page = $page;
-				$tabla->total = $total_pages;
-				$tabla->records = $filas;
-				
-				$i = 0;
-				$j = 1;
-				foreach ( $resultadoItems as $row ) {
-					$tabla->rows [$i] ['id'] = $row ['id_riesgo_temp'];
-					$tabla->rows [$i] ['cell'] = array (
-							$row ['id_riesgo_temp'],
-							$row ['tema'],
-							$row ['variable'],
-							$row ['valor'],
-							$row ['nota'],
-							$row ['probabilidad'],
-							$row ['impacto'],
-							$row ['riesgo'],
-							$row ['control_ris'] 
-					);
-					$i ++;
-				}
-				
-				$tabla = json_encode ( $tabla );
-				
-				echo $tabla;
-			}
-			
-			break;
-		case 'editarVariables' :
-			
-			$riesgo = $_GET ['imp'] * $_GET ['prb'];
-			
-			if ($riesgo == 0) {
-				
-				$observacion = 'Sin Evaluar';
-			} elseif ($riesgo > 0 && $riesgo < 2) {
-				
-				$observacion = 'Monitoreo';
-			} elseif ($riesgo < 4) {
-				
-				$observacion = 'Especificar la Acción';
-			} else {
-				$observacion = 'Medidas de Emergencia';
-			}
-			
-			$arrayDatos = array (
-					'id' => $_GET ['id'],
-					'token' => $_REQUEST ['tiempo'],
-					'nota' => $_GET ['not'],
-					'valor' => $_GET ['val'],
-					'probabilidad' => $_GET ['prb'],
-					'impacto' => $_GET ['imp'],
-					'riesgo' => $riesgo,
-					'observacion' => $observacion 
-			);
-			
-			$cadenaSql = $this->sql->getCadenaSql ( 'actualizar_variable_temporal', $arrayDatos );
-			
-			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "acceso" );
-			
-			echo $resultado;
-			
-			break;
-		
-		case 'limpiarVariable' :
-			
-			$arrayDatos = array (
-					"id" => $_GET ['id'],
-					"token" => $_REQUEST ['tiempo'] 
-			);
-			
-			$cadenaSql = $this->sql->getCadenaSql ( 'limpiar_valores_variable', $arrayDatos );
-			
-			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "acceso" );
+			$cadenaSql = $this->sql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
+			$recomendaciones = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			var_dump ( $recomendaciones );
 			
 			break;
 	}

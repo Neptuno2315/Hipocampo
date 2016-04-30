@@ -8,8 +8,6 @@ $funcion [$indice ++] = "jquery.dataTables.js";
 $funcion [$indice ++] = "jquery.dataTables.min.js";
 $funcion [$indice ++] = "jquery.autocomplete.js";
 $funcion [$indice ++] = "jquery.autocomplete.min.js";
-$funcion [$indice ++] = "grid.locale-es.js";// Idioma Plugin Jqgrid
-$funcion [$indice ++] = "jquery.jqGrid.min.js";
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" );
@@ -34,8 +32,8 @@ if (isset ( $funcion [0] )) {
 include ("ajax.php");
 
 include ("procesar_tabla.php");
-
-include ("procesar_tabla_dinamica.php");
-
+if (isset ( $_REQUEST ['opcion'] ) == true && $_REQUEST ['opcion'] == 'gestionRecomendaciones') {
+	include ("procesar_tabla_recomendacion.php");
+}
 
 ?>

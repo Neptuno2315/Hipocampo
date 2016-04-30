@@ -1,6 +1,6 @@
 <?php
 
-namespace logica\gestion\analisisRiesgos;
+namespace logica\gestion\informeRiesgos;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
