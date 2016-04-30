@@ -74,7 +74,7 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 				
 				Redireccionador::redireccionar ( "paginaPrincipal" );
 			} else {
-				
+// 				var_dump($_REQUEST);
 				/**
 				 * Injección de dependencias
 				 */

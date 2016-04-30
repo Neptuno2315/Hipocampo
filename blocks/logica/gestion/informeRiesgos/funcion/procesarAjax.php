@@ -59,7 +59,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&actionBloque=analizarRiesgo";
 				$cadenaACodificar .= "&opcion=gestionRecomendaciones";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
@@ -75,7 +74,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$urlRecomendaciones = $url . $cadena;
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&actionBloque=analizarRiesgo";
 				$cadenaACodificar .= "&opcion=documento";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];

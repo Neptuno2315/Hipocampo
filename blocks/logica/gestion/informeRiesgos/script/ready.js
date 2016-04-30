@@ -16,7 +16,9 @@ $(function() {
 		}
 		return false;
 	});
-
+	   setTimeout(function() {
+   		$('#mensaje').hide( "drop", { direction: "up" }, "slow" );
+			}, 1000); // <-- time in milliseconds
 
 	
 	/* Consulta */

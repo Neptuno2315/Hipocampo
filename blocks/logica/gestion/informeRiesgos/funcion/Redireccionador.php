@@ -1,6 +1,6 @@
 <?php
 
-namespace logica\gestion\analisisRiesgos\funcion;
+namespace logica\gestion\informeRiesgos\funcion;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("index.php");
@@ -12,12 +12,13 @@ class Redireccionador {
 		
 		switch ($opcion) {
 			
-			case "ErrorVariablesVacias" :
-				
-				$variable = 'pagina=analisisRiesgos';
-				$variable .= "&opcion=mensaje";
-				$variable .= "&mensaje=ErrorVariablesVacias";
+			case 'ErrorModificacionFormulario' :
+				$variable = 'pagina=informeRiesgos';
+				$variable .= "&opcion=gestionRecomendaciones";
+				$variable .= "&mensaje=ErrorProcesamiento";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
 			

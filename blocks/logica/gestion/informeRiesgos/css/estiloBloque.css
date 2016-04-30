@@ -8,3 +8,11 @@
 	border-style: groove;
 	background: whitesmoke;
 }
+
+#mensaje {
+	position: fixed;
+	z-index: 1;
+	left: 45%;
+	top: 20%;
+	width: 350px;
+}

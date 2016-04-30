@@ -31,8 +31,8 @@ class Funcion {
 		
 		return $resultado;
 	}
-	function procesar() {
-		include_once ($this->ruta . "funcion/procesarVariables.php");
+	function registrar() {
+		include_once ($this->ruta . "funcion/registrarRecomendaciones.php");
 	}
 
 	function procesarAjax() {
@@ -54,9 +54,9 @@ class Funcion {
 			
 			switch ($_REQUEST ['opcion']) {
 				
-				case 'ProcesarVariables' :
+				case 'RegistrarRecomendaciones' :
 					
-					$this->procesar ();
+					$this->registrar ();
 					break;
 			}
 		}

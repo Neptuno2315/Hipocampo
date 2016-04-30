@@ -1,5 +1,5 @@
 <?php
-use logica\gestion\analisisRiesgos\funcion\Redireccionador;
+use logica\gestion\informeRiesgos\funcion\Redireccionador;
 include_once ('Redireccionador.php');
 include_once ("core/builder/InspectorHTML.class.php");
 class FormProcessor {
@@ -17,6 +17,26 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
+		
+		
+		/*
+		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
+		 */
+		{
+			if (isset ( $_REQUEST ['validadorCampos'] )) {
+				$validadorCampos = $this->miInspectorHTML->decodificarCampos ( $_REQUEST ['validadorCampos'] );
+				$respuesta = $this->miInspectorHTML->validacionCampos ( $_REQUEST, $validadorCampos, false );
+				
+				if ($respuesta != false) {
+					
+					$_REQUEST = $respuesta;
+				} else {
+					Redireccionador::redireccionar ( "ErrorModificacionFormulario" );
+				}
+			}
+		}
+		
+		var_dump($_REQUEST);exit;
 		// Conexion de Base de Datos
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );

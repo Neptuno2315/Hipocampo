@@ -49,8 +49,6 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_riesgos", $_REQUEST ['id_zona'] );
 			$riesgo = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-// // 			var_dump ( $riesgo );
-// 			exit ();
 			
 			foreach ( $riesgo as $valor ) {
 				
@@ -81,9 +79,6 @@ class registrarForm {
 					);
 				}
 			}
-			
-			var_dump($arreglo_riesgo);
-			
 		}
 		
 		// -------------------------------------------------------------------------------------------------
@@ -233,6 +228,8 @@ class registrarForm {
 			echo $this->miFormulario->division ( "fin" );
 			unset ( $atributos );
 			
+			var_dump ( $_REQUEST );
+			
 			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 		}
 		// ------------------Fin Division para los botones-------------------------
@@ -281,12 +278,10 @@ class registrarForm {
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
-		$valorCodificado .= "&opcion=ProcesarVariables";
+		$valorCodificado .= "&opcion=RegistrarRecomendaciones";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
-		$valorCodificado .= "&token=" . $_REQUEST ['tiempo'];
 		$valorCodificado .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
-		
 		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para
@@ -324,7 +319,73 @@ class registrarForm {
 		
 		return true;
 	}
+	function mensaje() {
+		if (isset ( $_REQUEST ['mensaje'] )) {
+			
+			$tab = 1;
+			switch ($_REQUEST ['mensaje']) {
+				
+				case 'ErrorVariablesVacias' :
+					
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique las Variables porque son Obligatorias Probabilidad y Impacto.';
+					
+					break;
+				
+				case 'RegistroExito' :
+					$atributos ['tipo'] = 'success';
+					$atributos ['mensaje'] = 'Se Registro con Exito Análisis de Variables del Riesgo<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					break;
+				
+				case 'RegistroError' :
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error en el Registro de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					break;
+				
+				// --- Sin usar
+				
+				case 'ActualizoExito' :
+					$atributos ['tipo'] = 'success';
+					$atributos ['mensaje'] = 'Se Actualizo con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					break;
+				
+				case 'ActualizacionError' :
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error en la Actualización de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					break;
+				
+				case 'EliminoExito' :
+					$atributos ['tipo'] = 'success';
+					$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					break;
+				
+				case 'EliminoError' :
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Error en la Eliminación de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					break;
+				
+				case 'ErrorProcesamiento' :
+					
+					$atributos ['tipo'] = 'error';
+					$atributos ['mensaje'] = 'Datos No Validos o Error al Procesar la Información.<br>Verifique los Datos.';
+					
+					break;
+			}
+			
+			$esteCampo = 'mensajeGeneral';
+			$atributos ['id'] = $esteCampo;
+			$atributos ['estilo'] = 'textoCentrar';
+			
+			$tab ++;
+			
+			// Aplica atributos globales al control
+			$atributos = array_merge ( $atributos );
+			echo $this->miFormulario->cuadroMensaje ( $atributos );
+			unset ( $atributos );
+		}
+	}
 }
 $miSeleccionador = new registrarForm ( $this->lenguaje, $this->miFormulario, $this->sql );
+$miSeleccionador->mensaje ();
 $miSeleccionador->miForm ();
 ?>		
