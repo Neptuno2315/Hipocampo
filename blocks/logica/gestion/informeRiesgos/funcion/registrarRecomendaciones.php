@@ -18,7 +18,6 @@ class FormProcessor {
 	}
 	function procesarFormulario() {
 		
-		
 		/*
 		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
 		 */
@@ -36,75 +35,34 @@ class FormProcessor {
 			}
 		}
 		
-		var_dump($_REQUEST);exit;
-		// Conexion de Base de Datos
+		/*
+		 * Configurar Arreglo a Registrar
+		 */
+		
+		$arregloDatos = array (
+				"id_zona_estudio" => $_REQUEST ['id_zona'],
+				"riesgo" => $_REQUEST ['riesgo'],
+				"acciones_prv" => $_REQUEST ['acciones'],
+				"senalizacion_ext" => $_REQUEST ['senalizacion'] 
+		);
+		
+		/*
+		 * Registro de Recomendación
+		 */
+		
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		/*
-		 * Consulta de Variables Procesadas
-		 */
-		{
-			$arregloConsulta = array (
-					"token" => $_REQUEST ['token'],
-					"id_zona" => $_REQUEST ['id_zona'] 
-			);
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( 'consultar_variables_temporales_procesadas', $arregloConsulta );
-			
-			$variables_procesadas = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		} // Fin Consulta Variables
+		$cadenaSql = $this->miSql->getCadenaSql ( "registrar_recomendacion", $arregloDatos );
 		
-		/*
-		 * Configurar y Validar Arreglo a Registrar
-		 */
+		$registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
 		
-		foreach ( $variables_procesadas as $valor ) {
-			
-			$arregloDatos [] = array (
-					"id_zona_estudio" => $valor ['id_zona_estudio'],
-					"tema" => $valor ['tema'],
-					"variable" => $valor ['variable'],
-					"valor" => $valor ['valor'],
-					"nota" => $valor ['nota'],
-					"probabilidad" => (is_null ( $valor ['probabilidad'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['probabilidad'],
-					"impacto" => (is_null ( $valor ['impacto'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['impacto'],
-					"riesgo" => (is_null ( $valor ['riesgo'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['riesgo'],
-					"observacion_riesgo" => (is_null ( $valor ['control_ris'] ) == true) ? $this->ErrorDatosVaciosObligatorios () : $valor ['control_ris'] 
-			);
-		}
 		
-		/*
-		 * Limpiar Variables Riesgo
-		 */
-		
-		$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_riesgo", $_REQUEST ['id_zona'] );
-		$variables = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
-		
-		/*
-		 * Registro de Variables
-		 */
-		foreach ( $arregloDatos as $valor ) {
-			// Se guarda en un array para crear una trasaccion
-			
-			$cadenasGuardarVariables [] = $this->miSql->getCadenaSql ( 'registrar_variable_riesgo', $valor );
-		}
-		// Ejecucción Transaccion
-		
-		$transaccion = $esteRecursoDB->transaccion ( $cadenasGuardarVariables );
-		
-		if ($transaccion == true) {
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
-			$variables = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
-			
+		if ($registro == true) {
 			Redireccionador::redireccionar ( "Inserto" );
-		} else if ($transaccion == false) {
-			Redireccionador::redireccionar ( 'NoInserto' );
+		} else if ($registro == false) {
+			Redireccionador::redireccionar ( "NoInserto" );
 		}
-	}
-	function ErrorDatosVaciosObligatorios() {
-		Redireccionador::redireccionar ( "ErrorVariablesVacias" );
 	}
 }
 

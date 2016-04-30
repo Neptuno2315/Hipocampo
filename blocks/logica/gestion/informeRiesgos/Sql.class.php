@@ -49,47 +49,14 @@ class Sql extends \Sql {
 			 * Sentenias de Registro de Informacion
 			 */
 			
-			case 'registrar_variables_temporales_existentes' :
-				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable, ";
-				$cadenaSql .= "  valor, nota,probabilidad, impacto, riesgo, control_ris,token)  ";
-				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "'" . $variable ['id'] . "',";
-				$cadenaSql .= "'" . $variable ['id_zona'] . "',";
-				$cadenaSql .= "'" . $variable ['tema'] . "',";
-				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= (is_null ( $variable ['valor'] ) == false || $variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,";
-				$cadenaSql .= (is_null ( $variable ['nota'] ) == false || $variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['probabilidad'] . "',";
-				$cadenaSql .= "'" . $variable ['impacto'] . "',";
-				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
-				$cadenaSql .= "'" . $variable ['control_ris'] . "',";
-				$cadenaSql .= "'" . $variable ['token'] . "');";
+			case 'registrar_recomendacion' :
 				
-				break;
-			
-			case 'registrar_variables_temporales' :
-				$cadenaSql = " INSERT INTO riesgo_temporal(id_riesgo_temp,id_zona_estudio, tema, variable,token)  ";
-				$cadenaSql .= "VALUES (";
-				$cadenaSql .= "'" . $variable ['id'] . "',";
-				$cadenaSql .= "'" . $variable ['zona'] . "',";
-				$cadenaSql .= "'" . $variable ['abreviatura'] . "',";
-				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= "'" . $variable ['token'] . "');";
-				
-				break;
-			
-			case 'registrar_variable_riesgo' :
-				$cadenaSql = " INSERT INTO riesgo(id_zona_estudio, tema, variable, valor, nota, probabilidad, impacto, riesgo, control_ris) ";
+				$cadenaSql = " INSERT INTO recomendqwacion(id_zona_estudio, riesgo, acciones_prv, senalizacion_ext)  ";
 				$cadenaSql .= "VALUES (";
 				$cadenaSql .= "'" . $variable ['id_zona_estudio'] . "',";
-				$cadenaSql .= "'" . $variable ['tema'] . "',";
-				$cadenaSql .= "'" . $variable ['variable'] . "',";
-				$cadenaSql .= ($variable ['valor'] != '') ? "'" . $variable ['valor'] . "'," : "NULL,";
-				$cadenaSql .= ($variable ['nota'] != '') ? "'" . $variable ['nota'] . "'," : "NULL,";
-				$cadenaSql .= "'" . $variable ['probabilidad'] . "',";
-				$cadenaSql .= "'" . $variable ['impacto'] . "',";
 				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
-				$cadenaSql .= "'" . $variable ['observacion_riesgo'] . "');";
+				$cadenaSql .= "'" . $variable ['acciones_prv'] . "',";
+				$cadenaSql .= ($variable ['senalizacion_ext'] != '') ? "'" . $variable ['senalizacion_ext'] . "');" : "NULL);";
 				
 				break;
 			

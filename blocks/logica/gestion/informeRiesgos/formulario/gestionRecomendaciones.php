@@ -334,12 +334,12 @@ class registrarForm {
 				
 				case 'RegistroExito' :
 					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Registro con Exito Análisis de Variables del Riesgo<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+					$atributos ['mensaje'] = 'Se Registro con Exito.<br>Recomendación a la Navegación.';
 					break;
 				
 				case 'RegistroError' :
 					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error en el Registro de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+					$atributos ['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
 					break;
 				
 				// --- Sin usar
