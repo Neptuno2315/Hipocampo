@@ -108,7 +108,7 @@ $(function() {
 	$("#<?php echo $this->campoSeguro('riesgo')?>").select2();
 	
 	   setTimeout(function() {
-	   		$('#mensaje').hide( "drop", { direction: "up" }, "slow" );
+	   		$('#MensajeRespuesta').hide( "drop", { direction: "up" }, "slow" );
 				}, 2000);
 	
 

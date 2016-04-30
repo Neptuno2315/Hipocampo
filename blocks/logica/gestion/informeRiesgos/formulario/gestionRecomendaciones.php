@@ -270,7 +270,7 @@ class registrarForm {
 				echo $mostrarHtml;
 			} else {
 				
-				$mensaje = "No Se Encontraron Proyectos y/o Zonas Estudio <br>Verifique los Parametros de Busqueda";
+				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : ".$_REQUEST['titulo_proyecto'].".";
 				
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
 				$esteCampo = 'mensajeRegistro';
