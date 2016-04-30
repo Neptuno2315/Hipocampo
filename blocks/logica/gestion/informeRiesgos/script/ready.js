@@ -16,12 +16,9 @@ $(function() {
 		}
 		return false;
 	});
-	   setTimeout(function() {
-   		$('#mensaje').hide( "drop", { direction: "up" }, "slow" );
-			}, 1000); // <-- time in milliseconds
 
-	
-	/* Consulta */
+
+		/* Consulta */
 	$("#<?php echo $this->campoSeguro('region_consulta')?>").select2();
 	$("#<?php echo $this->campoSeguro('sector_consulta')?>").select2();
 
@@ -110,7 +107,9 @@ $(function() {
 	
 	$("#<?php echo $this->campoSeguro('riesgo')?>").select2();
 	
-	
+	   setTimeout(function() {
+	   		$('#mensaje').hide( "drop", { direction: "up" }, "slow" );
+				}, 2000);
 	
 
 });

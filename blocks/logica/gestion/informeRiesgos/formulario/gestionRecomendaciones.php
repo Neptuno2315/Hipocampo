@@ -228,8 +228,6 @@ class registrarForm {
 			echo $this->miFormulario->division ( "fin" );
 			unset ( $atributos );
 			
-			var_dump ( $_REQUEST );
-			
 			// -----------------FIN CONTROL: Botón -----------------------------------------------------------
 		}
 		// ------------------Fin Division para los botones-------------------------
@@ -253,6 +251,42 @@ class registrarForm {
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
 		{
+			
+			if (1 == 0) {
+				
+				$mostrarHtml = "<table id='tablaInfoZonas'>
+									<thead>
+						                <tr>
+						              	    <th>Región</th>
+											<th>Sector</th>
+											<th>Titulo y/o Nombre<br>Proyecto</th>
+											<th>Fecha Registro</th>
+											<th>Incluir Recomendaciones<br>(Navegación)</th>
+											<th>Documento<br>Informe</th>
+									    </tr>
+						            </thead>
+							</table>
+            ";
+				echo $mostrarHtml;
+			} else {
+				
+				$mensaje = "No Se Encontraron Proyectos y/o Zonas Estudio <br>Verifique los Parametros de Busqueda";
+				
+				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+				$esteCampo = 'mensajeRegistro';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['tipo'] = 'error';
+				$atributos ['estilo'] = 'textoCentrar';
+				$atributos ['mensaje'] = $mensaje;
+				
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->cuadroMensaje ( $atributos );
+				unset ( $atributos );
+				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+			}
 		}
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
@@ -273,7 +307,7 @@ class registrarForm {
 		// En este formulario se utiliza el mecanismo (b) para pasar las siguientes variables:
 		// Paso 1: crear el listado de variables
 		
-		$valorCodificado = "action=" . $esteBloque ["nombre"];
+		$valorCodificado = "actionBloque=" . $esteBloque ["nombre"];
 		$valorCodificado .= "&pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
@@ -323,64 +357,76 @@ class registrarForm {
 		if (isset ( $_REQUEST ['mensaje'] )) {
 			
 			$tab = 1;
-			switch ($_REQUEST ['mensaje']) {
+			
+			// ------------------Division para los botones-------------------------
+			$atributos ["id"] = "MensajeRespuesta";
+			$atributos ["estilo"] = " ";
+			echo $this->miFormulario->division ( "inicio", $atributos );
+			unset ( $atributos );
+			{
 				
-				case 'ErrorVariablesVacias' :
+				switch ($_REQUEST ['mensaje']) {
 					
-					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique las Variables porque son Obligatorias Probabilidad y Impacto.';
+					case 'ErrorVariablesVacias' :
+						
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique las Variables porque son Obligatorias Probabilidad y Impacto.';
+						
+						break;
 					
-					break;
-				
-				case 'RegistroExito' :
-					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Registro con Exito.<br>Recomendación a la Navegación.';
-					break;
-				
-				case 'RegistroError' :
-					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
-					break;
-				
-				// --- Sin usar
-				
-				case 'ActualizoExito' :
-					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Actualizo con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
-					break;
-				
-				case 'ActualizacionError' :
-					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error en la Actualización de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
-					break;
-				
-				case 'EliminoExito' :
-					$atributos ['tipo'] = 'success';
-					$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
-					break;
-				
-				case 'EliminoError' :
-					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Error en la Eliminación de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
-					break;
-				
-				case 'ErrorProcesamiento' :
+					case 'RegistroExito' :
+						$atributos ['tipo'] = 'success';
+						$atributos ['mensaje'] = 'Se Registro con Exito.<br>Recomendación a la Navegación.';
+						break;
 					
-					$atributos ['tipo'] = 'error';
-					$atributos ['mensaje'] = 'Datos No Validos o Error al Procesar la Información.<br>Verifique los Datos.';
+					case 'RegistroError' :
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
+						break;
 					
-					break;
+					// --- Sin usar
+					
+					case 'ActualizoExito' :
+						$atributos ['tipo'] = 'success';
+						$atributos ['mensaje'] = 'Se Actualizo con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+						break;
+					
+					case 'ActualizacionError' :
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Error en la Actualización de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+						break;
+					
+					case 'EliminoExito' :
+						$atributos ['tipo'] = 'success';
+						$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+						break;
+					
+					case 'EliminoError' :
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Error en la Eliminación de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+						break;
+					
+					case 'ErrorProcesamiento' :
+						
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Datos No Validos o Error al Procesar la Información.<br>Verifique los Datos.';
+						
+						break;
+				}
+				
+				$esteCampo = 'mensajeGeneral';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['estilo'] = 'textoCentrar';
+				
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos );
+				echo $this->miFormulario->cuadroMensaje ( $atributos );
+				unset ( $atributos );
 			}
-			
-			$esteCampo = 'mensajeGeneral';
-			$atributos ['id'] = $esteCampo;
-			$atributos ['estilo'] = 'textoCentrar';
-			
-			$tab ++;
-			
-			// Aplica atributos globales al control
-			$atributos = array_merge ( $atributos );
-			echo $this->miFormulario->cuadroMensaje ( $atributos );
+			// ------------------Fin Division para los botones-------------------------
+			echo $this->miFormulario->division ( "fin" );
 			unset ( $atributos );
 		}
 	}

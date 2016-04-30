@@ -51,7 +51,7 @@ class Sql extends \Sql {
 			
 			case 'registrar_recomendacion' :
 				
-				$cadenaSql = " INSERT INTO recomendqwacion(id_zona_estudio, riesgo, acciones_prv, senalizacion_ext)  ";
+				$cadenaSql = " INSERT INTO recomendacion(id_zona_estudio, riesgo, acciones_prv, senalizacion_ext)  ";
 				$cadenaSql .= "VALUES (";
 				$cadenaSql .= "'" . $variable ['id_zona_estudio'] . "',";
 				$cadenaSql .= "'" . $variable ['riesgo'] . "',";
