@@ -49,61 +49,41 @@ class registrarForm {
 			
 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_riesgos", $_REQUEST ['id_zona'] );
 			$riesgo = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			$matrizItems = array (
-					array (
-							0,
-							"No Existe" 
-					),
-					array (
-							1,
-							"Existe" 
-					) 
-			);
-			var_dump ( $matrizItems );
-			
-			$nivelador_arreglo = 0;
+// // 			var_dump ( $riesgo );
+// 			exit ();
 			
 			foreach ( $riesgo as $valor ) {
 				
-				if ($valor ['riesgo'] >= 1 && $valor ['riesgo'] <= 2) {
-					if (isset ( $arreglo_riesgo ['monitoreo'] ) == false) {
-						
-						$arreglo_riesgo [$nivelador_arreglo] = array (
-								
-								'Monitoreo',
-								"(1 - 2)Nivel de Riesgo Aceptable" 
-						);
-						$nivelador_arreglo ++;
-					}
-				}
-				if ($valor ['riesgo'] >= 3 && $valor ['riesgo'] <= 4) {
-					if (isset ( $arreglo_riesgo ['Especificar_Accion'] ) == false) {
-						
-						$arreglo_riesgo [$nivelador_arreglo] = array (
-								
-								'Especificar la Acción',
-								"(3 - 4)Nivel de Riesgo Aceptable con Precaución" 
-						);
-						$nivelador_arreglo ++;
-					}
-				}
-				if ($valor ['riesgo'] >= 6 && $valor ['riesgo'] <= 9) {
+				if ($valor ['control_ris'] == "Monitoreo") {
 					
-					if (isset ( $arreglo_riesgo ['Medidas_Emergencia'] ) == false) {
-						
-						$arreglo_riesgo [$nivelador_arreglo] = array (
-								
-								'Medidas de Emergencia',
-								"(6 - 9)Nivel de Riesgo Inaceptable" 
-						);
-						
-						$nivelador_arreglo ++;
-					}
+					$arreglo_riesgo [] = array (
+							
+							'Monitoreo,(1 - 2)Nivel de Riesgo Aceptable',
+							"(1 - 2)Nivel de Riesgo Aceptable" 
+					);
+				}
+				
+				if ($valor ['control_ris'] == "Especificar la Acción") {
+					
+					$arreglo_riesgo [] = array (
+							
+							'Especificar la Acción,(3 - 4)Nivel de Riesgo Aceptable con Precaución',
+							"(3 - 4)Nivel de Riesgo Aceptable con Precaución" 
+					);
+				}
+				
+				if ($valor ['control_ris'] == "Medidas de Emergencia") {
+					
+					$arreglo_riesgo [] = array (
+							
+							'Medidas de Emergencia,(1 - 2)Nivel de Riesgo Aceptable',
+							"(6 - 9)Nivel de Riesgo Inaceptable" 
+					);
 				}
 			}
 			
-			var_dump ( $arreglo_riesgo );
+			var_dump($arreglo_riesgo);
+			
 		}
 		
 		// -------------------------------------------------------------------------------------------------
@@ -150,7 +130,7 @@ class registrarForm {
 			$atributos ["etiquetaObligatorio"] = true;
 			$atributos ['tab'] = $tab;
 			$atributos ['tamanno'] = 1;
-			$atributos ['columnas'] = 2;
+			$atributos ['columnas'] = 1;
 			$atributos ['estilo'] = 'jqueryui';
 			$atributos ['validar'] = 'required';
 			$atributos ['limitar'] = false;
