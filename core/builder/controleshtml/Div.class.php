@@ -75,7 +75,7 @@ class Div extends HtmlBase {
         $this->campoSeguro();
         $this->cadenaHTML = "<div id='mensaje' class='" . $atributos ["tipo"] . " shadow " . $atributos [self::ESTILO] . "' >";
         $this->cadenaHTML .= "<span>" . $atributos ["mensaje"] . "</span>";
-        $this->cadenaHTML .= "</div><br>";
+        $this->cadenaHTML .= "</div>";
         return $this->cadenaHTML;
     
     }
