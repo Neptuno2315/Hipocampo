@@ -8,6 +8,7 @@
 	border-style: groove;
 	background: whitesmoke;
 	float: left;
+	height: 300px;
 }
 
 #DivEstadistico {
@@ -15,7 +16,7 @@
     font-size: 8px;
     border-style: groove;
     background: whitesmoke;
-    height: 260px;
+    height: 300px;
     float: right;
 }
 
@@ -30,4 +31,8 @@
 	left: 45%;
 	top: 20%;
 	width: 350px;
+}
+
+#DivEstadistico svg {
+  height: 261px;
 }
