@@ -235,7 +235,7 @@ class registrarForm {
 		unset ( $atributos );
 		
 		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "DivGrafico";
+		$atributos ["id"] = "DivEstadistico";
 		$atributos ["estilo"] = " ";
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );

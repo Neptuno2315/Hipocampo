@@ -7,14 +7,22 @@
 	font-size: 8px;
 	border-style: groove;
 	background: whitesmoke;
+	float: left;
 }
 
+#DivEstadistico {
+	width: 48.85%;
+    font-size: 8px;
+    border-style: groove;
+    background: whitesmoke;
+    height: 260px;
+    float: right;
+}
 
 #DivTabla {
 	border-style: groove;
 	background: whitesmoke;
 }
-
 
 #MensajeRespuesta {
 	position: fixed;
