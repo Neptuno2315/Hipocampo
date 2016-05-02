@@ -1,5 +1,5 @@
 <?php
-
+var_dump ( $_REQUEST );
 // Conección a Base de Datos
 $conexion = "geografico";
 $esteRecursoGEO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -20,6 +20,39 @@ $miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 if (isset ( $_REQUEST ['funcion'] )) {
 	
 	switch ($_REQUEST ['funcion']) {
+		
+		case 'consultaAtoN' :
+			
+			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_aton_zona', $_REQUEST ['id_zona'] );
+			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			$resultado = $resultado [0];
+			
+			$array_aton = array (
+					
+					array (
+							"label" => "Boyas AIS",
+							"value" => $resultado ['boyas_ais'] 
+					),
+					array (
+							"label" => "Boyas sin AIS",
+							"value" => $resultado ['boyas_nais'] 
+					),
+					array (
+							"label" => "Racon",
+							"value" => $resultado ['racon_num'] 
+					),
+					array (
+							"label" => "Linternas",
+							"value" => $resultado ['linternas_num'] 
+					),
+					array (
+							"label" => "Otras AtoN",
+							"value" => $resultado ['otras_aton'] 
+					) 
+			);
+			
+			echo json_encode ( $array_aton );
+			break;
 		
 		case 'SeleccionSector' :
 			

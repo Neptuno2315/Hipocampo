@@ -45,6 +45,13 @@ class Sql extends \Sql {
 				$cadenaSql .= "AND id_region ='" . $variable . "';";
 				break;
 			
+			case 'consultar_aton_zona' :
+				$cadenaSql = "	SELECT  boyas_ais, boyas_nais,racon_num, linternas_num, otras_aton ";
+				$cadenaSql .= "FROM informacion_carta_nautica  ";
+				$cadenaSql .= "WHERE estado_registro=TRUE  ";
+				$cadenaSql .= "AND id_zona_estudio ='" . $variable . "';";
+				break;
+			
 			/*
 			 * Sentenias de Registro de Informacion
 			 */
@@ -61,21 +68,16 @@ class Sql extends \Sql {
 				break;
 			
 			/*
-			 * Limpiar Tablas
-			 */
-
-			/*
 			 * Sentencias Consulta Información
 			 */
-				
-			case "consultar_recomedaciones":
+			
+			case "consultar_recomedaciones" :
 				$cadenaSql = "SELECT riesgo , acciones_prv, senalizacion_ext ";
 				$cadenaSql .= "FROM  recomendacion ";
 				$cadenaSql .= "WHERE estado_registro=TRUE  ";
-				$cadenaSql .= "AND  id_zona_estudio='".$variable."'; ";
+				$cadenaSql .= "AND  id_zona_estudio='" . $variable . "'; ";
 				
 				break;
-			
 			
 			case 'consultar_parametros_utilizar' :
 				

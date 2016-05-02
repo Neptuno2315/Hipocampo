@@ -240,6 +240,7 @@ class registrarForm {
 		echo $this->miFormulario->division ( "inicio", $atributos );
 		unset ( $atributos );
 		{
+			echo "<svg></svg>";
 		}
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
@@ -256,7 +257,7 @@ class registrarForm {
 			$atributos ['id'] = $esteCampo;
 			$atributos ["estilo"] = "jqueryui";
 			$atributos ['tipoEtiqueta'] = 'inicio';
-            //$atributos ["leyenda"] = "";
+			// $atributos ["leyenda"] = "";
 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 			unset ( $atributos );
 			

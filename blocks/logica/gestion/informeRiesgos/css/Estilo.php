@@ -8,12 +8,9 @@ $estilo [$indice ++] = "select2.css";
 
 $estilo [$indice ++] = "estiloBloque.css";
 
-// Formulario Paso a Paso
+$estilo [$indice ++] = "nv.d3.css";
 
-$estilo [$indice ++] = "jquery.steps.css";
-
-// JqGrid
-$estilo [$indice ++] = "ui.jqgrid.css";
+$estilo [$indice ++] = "nv.d3.min.css";
 
 $estilo [$indice ++] = "jquery.dataTables_themeroller.css";
 

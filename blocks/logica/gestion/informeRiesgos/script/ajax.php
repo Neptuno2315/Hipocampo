@@ -41,6 +41,25 @@ $url .= "/index.php?";
 	$urlTituloZona = $url . $cadena;
 }
 
+{ // Url para Estadistica Racon.
+  // Variables
+  
+	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+	$cadenaACodificar .= "&procesarAjax=true";
+	$cadenaACodificar .= "&action=index.php";
+	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
+	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+	$cadenaACodificar .= "&funcion=consultaAtoN";
+	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+	$cadenaACodificar .= "&id_zona=" . $_REQUEST ['id_zona'];
+	// Codificar las variables
+	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+	// URL definitiva
+	$urlAton = $url . $cadena;
+	
+}
+
 ?>
 <script type='text/javascript' async='async'>
 
