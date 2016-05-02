@@ -1,5 +1,5 @@
 <?php
-var_dump ( $_REQUEST );
+
 // Conección a Base de Datos
 $conexion = "geografico";
 $esteRecursoGEO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -52,6 +52,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			);
 			
 			echo json_encode ( $array_aton );
+			
 			break;
 		
 		case 'SeleccionSector' :
