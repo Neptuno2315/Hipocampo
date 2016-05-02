@@ -75,7 +75,7 @@ function consulta_estadistico(elem, request, response){
 
 	    	nv.addGraph(function() {
 	    		  var chart = nv.models.pieChart()
-	    		      .x(function(d) { return d.label })
+	    		      .x(function(d) { return d.value })
 	    		      .y(function(d) { return d.value })
 	    		      .showLabels(true);
 
