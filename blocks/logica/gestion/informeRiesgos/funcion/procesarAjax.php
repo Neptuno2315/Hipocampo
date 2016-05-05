@@ -151,15 +151,15 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			foreach ( $recomendaciones as $valor ) {
 				
-				var_dump($valor);exit;
+				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 				$cadenaACodificar .= "&opcion=modificarRecomendaciones";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
-				$cadenaACodificar .= "&id_zona=" . $valor ['id_recomendacion'];
-				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				$cadenaACodificar .= "&id_recomendacion=" . $valor ['id_recomendacion'];
+				
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
@@ -173,8 +173,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
-				$cadenaACodificar .= "&id_zona=" . $valor ['id_recomendacion'];
-				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				$cadenaACodificar .= "&id_recomendacion=" . $valor ['id_recomendacion'];
+				
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
@@ -189,8 +189,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'riesgo' => "<center>" . $especificar_riesgo [1] . "</center>",
 						'accion' => "<center>" . $valor ['acciones_prv'] . "</center>",
 						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>",
-						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $rutaBloque . "/css/iconos/busqueda.png 'width='20px'></a></center>",
-						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>" 
+						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $rutaBloque . "/css/iconos/edit.png 'width='20px'></a></center>",
+						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/eliminate.png 'width='20px'></a></center>" 
 				);
 			}
 			
