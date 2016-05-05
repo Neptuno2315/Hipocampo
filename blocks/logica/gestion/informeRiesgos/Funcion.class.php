@@ -34,7 +34,12 @@ class Funcion {
 	function registrar() {
 		include_once ($this->ruta . "funcion/registrarRecomendaciones.php");
 	}
-
+	function modificar() {
+		include_once ($this->ruta . "funcion/modificarRecomendaciones.php");
+	}
+	function eliminar() {
+		include_once ($this->ruta . "funcion/eliminarRecomendaciones.php");
+	}
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -55,7 +60,14 @@ class Funcion {
 			switch ($_REQUEST ['opcion']) {
 				
 				case 'RegistrarRecomendaciones' :
-					
+					$this->registrar ();
+					break;
+				
+				case 'ModificarRecomendacion' :
+					$this->modificar();
+					break;
+				
+				case 'EliminarRecomendacion' :
 					$this->registrar ();
 					break;
 			}

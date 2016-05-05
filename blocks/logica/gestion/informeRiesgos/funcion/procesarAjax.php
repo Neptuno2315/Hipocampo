@@ -159,6 +159,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_recomendacion=" . $valor ['id_recomendacion'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
 				
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
@@ -174,6 +176,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
 				$cadenaACodificar .= "&id_recomendacion=" . $valor ['id_recomendacion'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
 				
 				// Codificar las variables
 				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
@@ -190,7 +194,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'accion' => "<center>" . $valor ['acciones_prv'] . "</center>",
 						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>",
 						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $rutaBloque . "/css/iconos/edit.png 'width='20px'></a></center>",
-						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/eliminate.png 'width='20px'></a></center>" 
+						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/eliminate .png 'width='20px'></a></center>" 
 				);
 			}
 			

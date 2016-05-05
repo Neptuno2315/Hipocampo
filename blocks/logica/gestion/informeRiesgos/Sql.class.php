@@ -71,11 +71,21 @@ class Sql extends \Sql {
 			 * Sentencias Consulta Información
 			 */
 			
+			case "consultar_recomendacion_particular" :
+				$cadenaSql = "SELECT id_recomendacion,riesgo , acciones_prv, senalizacion_ext, rm.id_zona_estudio, zn.titulo_proy ";
+				$cadenaSql .= "FROM  recomendacion rm ";
+				$cadenaSql .= "JOIN  zona_estudio zn ON zn.id_zona_estudio= rm.id_zona_estudio ";
+				$cadenaSql .= "WHERE rm.estado_registro=TRUE  ";
+				$cadenaSql .= "AND  rm.id_recomendacion='" . $variable . "'; ";
+				
+				break;
+			
 			case "consultar_recomedaciones" :
-				$cadenaSql = "SELECT id_recomendacion,riesgo , acciones_prv, senalizacion_ext ";
-				$cadenaSql .= "FROM  recomendacion ";
-				$cadenaSql .= "WHERE estado_registro=TRUE  ";
-				$cadenaSql .= "AND  id_zona_estudio='" . $variable . "'; ";
+				$cadenaSql = "SELECT id_recomendacion,riesgo , acciones_prv, senalizacion_ext, rm.id_zona_estudio, zn.titulo_proy ";
+				$cadenaSql .= "FROM  recomendacion rm ";
+				$cadenaSql .= "JOIN  zona_estudio zn ON zn.id_zona_estudio= rm.id_zona_estudio ";
+				$cadenaSql .= "WHERE rm.estado_registro=TRUE  ";
+				$cadenaSql .= "AND  rm.id_zona_estudio='" . $variable . "'; ";
 				
 				break;
 			

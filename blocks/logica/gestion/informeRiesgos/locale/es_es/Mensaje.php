@@ -46,6 +46,7 @@ $this->idioma ["usuarioTitulo"] = "Número de documento";
 $this->idioma ["claveTitulo"] = "Clave de Acceso";
 $this->idioma ["botonAceptar"] = "Aceptar";
 $this->idioma ["botonGuardar"] = "Guardar Recomendación";
+$this->idioma ["botonActualizar"] = "Actualizar Recomendación";
 $this->idioma ["botonCancelar"] = "Cancelar";
 $this->idioma ["noDefinido"] = "No definido";
 $this->idioma ["botonIngresar"] = "Ingresar";
