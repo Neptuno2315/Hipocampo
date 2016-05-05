@@ -72,7 +72,7 @@ class Sql extends \Sql {
 			 */
 			
 			case "consultar_recomedaciones" :
-				$cadenaSql = "SELECT riesgo , acciones_prv, senalizacion_ext ";
+				$cadenaSql = "SELECT id_recomendacion,riesgo , acciones_prv, senalizacion_ext ";
 				$cadenaSql .= "FROM  recomendacion ";
 				$cadenaSql .= "WHERE estado_registro=TRUE  ";
 				$cadenaSql .= "AND  id_zona_estudio='" . $variable . "'; ";

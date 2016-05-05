@@ -308,8 +308,6 @@ class registrarForm {
 						              	    <th>Riesgo</th>
 											<th>Acciones Preventivas</th>
 											<th>Señalización</th>
-											<th>Modificar<br>Recomendación</th>
-											<th>Eliminar<br>Recomendación</th>
 										</tr>
 						            </thead>
 							</table>

@@ -17,6 +17,10 @@ $rutaBloque .= $esteBloque ['grupo'] . '/' . $esteBloque ['nombre'];
 
 $miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 
+$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
+$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
+$url .= "/index.php?";
+
 if (isset ( $_REQUEST ['funcion'] )) {
 	
 	switch ($_REQUEST ['funcion']) {
@@ -83,13 +87,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
-			// var_dump ( $resultado );
-			// exit ();
-			
 			// URL base
-			$url = $this->miConfigurador->getVariableConfiguracion ( "host" );
-			$url .= $this->miConfigurador->getVariableConfiguracion ( "site" );
-			$url .= "/index.php?";
 			
 			foreach ( $resultado as $valor ) {
 				
@@ -153,12 +151,46 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			foreach ( $recomendaciones as $valor ) {
 				
+				var_dump($valor);exit;
+				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&opcion=modificarRecomendaciones";
+				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
+				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_recomendacion'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				// Codificar las variables
+				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+				
+				// URL definitiva
+				$urlModificar = $url . $cadena;
+				
+				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&opcion=eliminarRecomendaciones";
+				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
+				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
+				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
+				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&id_zona=" . $valor ['id_recomendacion'];
+				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
+				// Codificar las variables
+				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
+				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
+				
+				// URL definitiva
+				$urlELiminar = $url . $cadena;
+				
+				
 				$especificar_riesgo = explode ( ",", $valor ['riesgo'] );
 				
 				$resultadoFinal [] = array (
 						'riesgo' => "<center>" . $especificar_riesgo [1] . "</center>",
 						'accion' => "<center>" . $valor ['acciones_prv'] . "</center>",
-						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>" 
+						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>",
+						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $rutaBloque . "/css/iconos/busqueda.png 'width='20px'></a></center>",
+						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>" 
 				);
 			}
 			

@@ -66,6 +66,8 @@ $(function() {
                   { data :"riesgo" },
                   { data :"accion" },
                   { data :"senalizacion" },
+                  { data :"modificar" },
+                  { data :"eliminar" },
                             ]
              });
                   

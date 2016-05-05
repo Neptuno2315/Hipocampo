@@ -60,8 +60,14 @@ class Frontera {
 					break;
 				
 				case 'gestionRecomendaciones' :
-					
-					
+					include_once ($this->ruta . "/formulario/gestionRecomendaciones.php");
+					break;
+				
+				case 'modificarRecomendaciones' :
+					include_once ($this->ruta . "/formulario/gestionRecomendaciones.php");
+					break;
+				
+				case 'eliminarRecomendaciones' :
 					include_once ($this->ruta . "/formulario/gestionRecomendaciones.php");
 					break;
 				
