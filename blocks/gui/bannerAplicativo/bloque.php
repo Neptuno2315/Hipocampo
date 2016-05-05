@@ -66,9 +66,7 @@ if (! class_exists ( '\\blocks\\gui\\bannerAplicativo\\Bloque' )) {
         }
         public function bloque() {
             
-            if (isset ( $_REQUEST ['botonCancelar'] ) && $_REQUEST ['botonCancelar'] == "true") {
-                $this->miFuncion->redireccionar ( "paginaPrincipal" );
-            } else {
+        	{
                 
                 /**
                  * Injección de dependencias
