@@ -67,14 +67,9 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 		}
 		public function bloque() {
 			if (isset ( $_REQUEST ['botonCancelar'] ) && $_REQUEST ['botonCancelar'] == "true") {
-				$conexion = "logica";
-				$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-				$cadenaSql = $this->miSql->getCadenaSql ( "limpiar_variables_temporales", $_REQUEST ['id_zona'] );
-				$variables = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "acceso", $_REQUEST ['id_zona'], "limpiar_variables_temporales" );
-				
-				Redireccionador::redireccionar ( "paginaPrincipal" );
+				Redireccionador::redireccionar("paginaPrincipal");
 			} else {
-// 				var_dump($_REQUEST);
+				
 				/**
 				 * Injección de dependencias
 				 */

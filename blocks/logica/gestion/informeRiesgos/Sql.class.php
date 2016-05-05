@@ -110,11 +110,12 @@ class Sql extends \Sql {
 			
 			case 'consulta_zonas_estudio' :
 				
-				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
+				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro,rm.id_zona_estudio recomendaciones ";
 				$cadenaSql .= "FROM zona_estudio zn ";
 				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "JOIN riesgo ris ON ris.id_zona_estudio= zn.id_zona_estudio AND ris.estado_registro=TRUE ";
+				$cadenaSql .= "LEFT JOIN recomendacion rm  ON rm.id_zona_estudio= zn.id_zona_estudio AND rm.estado_registro=TRUE ";
 				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
 				if ($variable ['region'] != '') {
 					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";
@@ -155,6 +156,13 @@ class Sql extends \Sql {
 				$cadenaSql .= " senalizacion_ext='" . $variable ['senalizacion_ext'] . "'  ";
 				$cadenaSql .= " WHERE id_recomendacion= '" . $variable ['id_recomendacion'] . "'; ";
 				
+				break;
+			
+			case 'eliminar_recomendacion' :
+				$cadenaSql = " UPDATE recomendacion ";
+				$cadenaSql .= " SET ";
+				$cadenaSql .= " estado_registro = FALSE ";
+				$cadenaSql .= " WHERE id_recomendacion= '" . $variable . "'; ";
 				break;
 		}
 		

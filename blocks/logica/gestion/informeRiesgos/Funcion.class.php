@@ -68,7 +68,7 @@ class Funcion {
 					break;
 				
 				case 'EliminarRecomendacion' :
-					$this->registrar ();
+					$this->eliminar();
 					break;
 			}
 		}

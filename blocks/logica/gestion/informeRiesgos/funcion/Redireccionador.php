@@ -65,33 +65,37 @@ class Redireccionador {
 				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
-		//-- sin utulizar;	
+			
 			case "Elimino" :
-				
-				$variable = 'pagina=analisisRiesgos';
-				$variable .= "&opcion=mensaje";
+				$variable = 'pagina=informeRiesgos';
+				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=EliminoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
 			
 			case "NoElimino" :
-				
-				$variable = 'pagina=analisisRiesgos';
-				$variable .= "&opcion=mensaje";
+				$variable = 'pagina=informeRiesgos';
+				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=EliminoError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				break;
 			
 			case 'paginaPrincipal' :
-				$variable = 'pagina=analisisRiesgos';
+				$variable = 'pagina=informeRiesgos';
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 		}
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );
 		}
+		
+		
+		
 		$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php?";
 		$enlace = $miConfigurador->configuracion ['enlace'];
 		$variable = $miConfigurador->fabricaConexiones->crypto->codificar ( $variable );

@@ -86,7 +86,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$cadenaSql = $this->sql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
+// 			var_dump($resultado);
 			// URL base
 			
 			foreach ( $resultado as $valor ) {
@@ -121,13 +121,16 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				// URL definitiva
 				$urlDocumento = $url . $cadena;
 				
+				
+				$documento =(is_null($valor['recomendaciones'])==true)?"":"<center><a href='" . $urlDocumento . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>";
+				
 				$resultadoFinal [] = array (
 						'region' => "<center>" . $valor ['region'] . "</center>",
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
 						'validar' => "<center><a href='" . $urlRecomendaciones . "'><img src='" . $rutaBloque . "/css/iconos/busqueda.png 'width='20px'></a></center>",
-						'documento' => "<center><a href='" . $urlDocumento . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>" 
+						'documento' =>  $documento,
 				);
 			}
 			

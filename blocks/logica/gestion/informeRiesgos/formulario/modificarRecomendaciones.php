@@ -306,7 +306,7 @@ class registrarForm {
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
-		$valorCodificado .= "&opcion=ModificarRecomendacion";
+		$valorCodificado .= "&opcion=EliminarRecomendacion";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
 		$valorCodificado .= "&id_recomendacion=" . $_REQUEST ['id_recomendacion'];

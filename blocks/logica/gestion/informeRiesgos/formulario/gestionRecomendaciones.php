@@ -417,12 +417,6 @@ class registrarForm {
 				
 				switch ($_REQUEST ['mensaje']) {
 					
-					case 'ErrorVariablesVacias' :
-						
-						$atributos ['tipo'] = 'error';
-						$atributos ['mensaje'] = 'Error al Procesar los Datos de las Variables .<br>Verifique las Variables porque son Obligatorias Probabilidad y Impacto.';
-						
-						break;
 					
 					case 'RegistroExito' :
 						$atributos ['tipo'] = 'success';
@@ -446,15 +440,15 @@ class registrarForm {
 						$atributos ['mensaje'] = 'Error en la Actualización de la Recomendación  a la Navegación.<br>Verifique los Datos.';
 						break;
 					
-						// --- Sin usar
+
 					case 'EliminoExito' :
 						$atributos ['tipo'] = 'success';
-						$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+						$atributos ['mensaje'] = 'Se Elimino con Exito Recomendación a la Navegación de la Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['titulo_proyecto'] . ".";
 						break;
 					
 					case 'EliminoError' :
 						$atributos ['tipo'] = 'error';
-						$atributos ['mensaje'] = 'Error en la Eliminación de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+						$atributos ['mensaje'] = 'Error en la Eliminación de Recomendación a la Navegación de la Zona de Estudio.<br>Verifique los Datos.';
 						break;
 					
 					case 'ErrorProcesamiento' :
