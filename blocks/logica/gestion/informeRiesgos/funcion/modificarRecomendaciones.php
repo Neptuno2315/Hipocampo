@@ -36,11 +36,11 @@ class FormProcessor {
 		}
 		
 		/*
-		 * Configurar Arreglo a Registrar
+		 * Configurar Arreglo a Actualizar
 		 */
 		
 		$arregloDatos = array (
-				"id_zona_estudio" => $_REQUEST ['id_zona'],
+				"id_recomendacion" => $_REQUEST ['id_recomendacion'],
 				"riesgo" => $_REQUEST ['riesgo'],
 				"acciones_prv" => $_REQUEST ['acciones'],
 				"senalizacion_ext" => $_REQUEST ['senalizacion'] 
@@ -53,15 +53,16 @@ class FormProcessor {
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-		$cadenaSql = $this->miSql->getCadenaSql ( "registrar_recomendacion", $arregloDatos );
-		
-		$registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
+		$cadenaSql = $this->miSql->getCadenaSql ( "actualizar_recomendacion", $arregloDatos );
 		
 		
-		if ($registro == true) {
-			Redireccionador::redireccionar ( "Inserto" );
-		} else if ($registro == false) {
-			Redireccionador::redireccionar ( "NoInserto" );
+		$actualizacion = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $arregloDatos, "actualizar_recomendacion" );
+		
+		
+		if ($actualizacion == true) {
+			Redireccionador::redireccionar ( "Actualizo" );
+		} else if ($actualizacion == false) {
+			Redireccionador::redireccionar ( "NoActualizo" );
 		}
 	}
 }

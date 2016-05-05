@@ -434,18 +434,19 @@ class registrarForm {
 						$atributos ['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
 						break;
 					
-					// --- Sin usar
+
 					
 					case 'ActualizoExito' :
 						$atributos ['tipo'] = 'success';
-						$atributos ['mensaje'] = 'Se Actualizo con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";
+						$atributos ['mensaje'] = 'Se Actualizado la Recomendación a la Navegación con Exito.';
 						break;
 					
 					case 'ActualizacionError' :
 						$atributos ['tipo'] = 'error';
-						$atributos ['mensaje'] = 'Error en la Actualización de la Informacion de la Zona de Estudio.<br>Verifique los Datos.';
+						$atributos ['mensaje'] = 'Error en la Actualización de la Recomendación  a la Navegación.<br>Verifique los Datos.';
 						break;
 					
+						// --- Sin usar
 					case 'EliminoExito' :
 						$atributos ['tipo'] = 'success';
 						$atributos ['mensaje'] = 'Se Elimino con Exito Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['TituloProyecto'] . ".";

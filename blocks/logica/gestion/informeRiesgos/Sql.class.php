@@ -147,49 +147,13 @@ class Sql extends \Sql {
 			 * Sentencias Modificación Información
 			 */
 			
-			case 'consultar_general_por_zona' :
-				
-				$cadenaSql = "SELECT zn.*,id_peligros,  calado_mxbq, holgura_bjqll, maxima_olpr, 
-						       sedimentacion_mxa, profundidad_minsg, anchura_cnl, tasa_mx, observaciones_flmr, 
-						       prediccion_mxvntr, observaciones_vttr, prediccion_cbm, observaciones_efcb, 
-						       distancia_pntcr, observaciones_pntcr, distancia_plgcr, observaciones_plgcr, 
-						       distancia_prmnvs, porcentaje_prmnvs, distancia_prmvs, porcentaje_prmvs, 
-						       distancia_tmbsl, porcentaje_tmbsl, distancia_rpl, porcentaje_rpl, 
-						       calidad_praton, calidad_plserv, calidad_grcmtr, calidad_pqcmtr,id_inf_carta_nautica, boyas_ais, boyas_nais, 
-						       racon_num, linternas_num, otras_aton, proporciona_dgps, disponibilidad_stm, 
-						       disponible_servpl, observaciones,sec.id_sector sector, sec.id_region region ";
-				$cadenaSql .= "FROM zona_estudio zn ";
-				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector ";
-				$cadenaSql .= "JOIN peligros pl ON pl.id_zona_estudio=zn.id_zona_estudio ";
-				$cadenaSql .= "JOIN informacion_carta_nautica ic ON ic.id_zona_estudio=zn.id_zona_estudio ";
-				$cadenaSql .= "WHERE zn.id_zona_estudio='" . $variable . "' ;";
-				break;
-			
-			case 'actualizar_variable_temporal' :
-				$cadenaSql = " UPDATE riesgo_temporal";
+			case 'actualizar_recomendacion' :
+				$cadenaSql = " UPDATE recomendacion ";
 				$cadenaSql .= " SET ";
-				$cadenaSql .= " valor='" . $variable ['valor'] . "',";
-				$cadenaSql .= " nota='" . $variable ['nota'] . "',";
-				$cadenaSql .= " probabilidad='" . $variable ['probabilidad'] . "', ";
-				$cadenaSql .= " impacto='" . $variable ['impacto'] . "',";
-				$cadenaSql .= " riesgo='" . $variable ['riesgo'] . "', ";
-				$cadenaSql .= " control_ris='" . $variable ['observacion'] . "' ";
-				$cadenaSql .= " WHERE id_riesgo_temp= '" . $variable ['id'] . "' ";
-				$cadenaSql .= " AND token='" . $variable ['token'] . "' ;";
-				
-				break;
-			
-			case 'limpiar_valores_variable' :
-				$cadenaSql = " UPDATE riesgo_temporal";
-				$cadenaSql .= " SET ";
-				$cadenaSql .= " valor=NULL,";
-				$cadenaSql .= " nota=NULL,";
-				$cadenaSql .= " probabilidad=NULL, ";
-				$cadenaSql .= " impacto=NULL,";
-				$cadenaSql .= " riesgo=NULL, ";
-				$cadenaSql .= " control_ris=NULL  ";
-				$cadenaSql .= " WHERE id_riesgo_temp= '" . $variable ['id'] . "' ";
-				$cadenaSql .= " AND token='" . $variable ['token'] . "' ;";
+				$cadenaSql .= " riesgo='" . $variable ['riesgo'] . "',";
+				$cadenaSql .= " acciones_prv='" . $variable ['acciones_prv'] . "',";
+				$cadenaSql .= " senalizacion_ext='" . $variable ['senalizacion_ext'] . "'  ";
+				$cadenaSql .= " WHERE id_recomendacion= '" . $variable ['id_recomendacion'] . "'; ";
 				
 				break;
 		}

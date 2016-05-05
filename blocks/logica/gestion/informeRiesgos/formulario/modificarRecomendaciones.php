@@ -309,6 +309,7 @@ class registrarForm {
 		$valorCodificado .= "&opcion=ModificarRecomendacion";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
+		$valorCodificado .= "&id_recomendacion=" . $_REQUEST ['id_recomendacion'];
 		$valorCodificado .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.

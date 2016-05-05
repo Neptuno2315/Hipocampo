@@ -46,23 +46,26 @@ class Redireccionador {
 			
 			case "Actualizo" :
 				
-				$variable = 'pagina=analisisRiesgos';
-				$variable .= "&opcion=mensaje";
+				$variable = 'pagina=informeRiesgos';
+				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=ActualizoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
-				$variable .= "&TituloProyecto=" . $_REQUEST ['nombre_pry'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
 			
 			case "NoActualizo" :
 				
-				$variable = 'pagina=analisisRiesgos';
-				$variable .= "&opcion=mensaje";
+				$variable = 'pagina=informeRiesgos';
+				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=ActualizacionError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
 				
 				break;
-			
+		//-- sin utulizar;	
 			case "Elimino" :
 				
 				$variable = 'pagina=analisisRiesgos';
