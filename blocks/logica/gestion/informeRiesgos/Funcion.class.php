@@ -40,6 +40,11 @@ class Funcion {
 	function eliminar() {
 		include_once ($this->ruta . "funcion/eliminarRecomendaciones.php");
 	}
+	
+	function documentoPDF() {
+		include_once ($this->ruta . "funcion/informeDocumentoPDF.php");
+	}
+	
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -64,11 +69,15 @@ class Funcion {
 					break;
 				
 				case 'ModificarRecomendacion' :
-					$this->modificar();
+					$this->modificar ();
 					break;
 				
 				case 'EliminarRecomendacion' :
-					$this->eliminar();
+					$this->eliminar ();
+					break;
+				
+				case 'DocumentoInforme' :
+					$this->documentoPDF();
 					break;
 			}
 		}

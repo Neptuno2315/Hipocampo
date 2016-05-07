@@ -107,7 +107,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$urlRecomendaciones = $url . $cadena;
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&opcion=documento";
+				$cadenaACodificar .= "&action=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
+				$cadenaACodificar .= "&opcion=DocumentoInforme";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
