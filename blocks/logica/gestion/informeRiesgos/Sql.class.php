@@ -86,7 +86,6 @@ class Sql extends \Sql {
 				$cadenaSql .= "JOIN  zona_estudio zn ON zn.id_zona_estudio= rm.id_zona_estudio ";
 				$cadenaSql .= "WHERE rm.estado_registro=TRUE  ";
 				$cadenaSql .= "AND  rm.id_zona_estudio='" . $variable . "'; ";
-				
 				break;
 			
 			case 'consultar_parametros_utilizar' :
