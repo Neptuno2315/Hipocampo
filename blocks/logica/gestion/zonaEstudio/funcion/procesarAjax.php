@@ -16,6 +16,10 @@ $rutaBloque .= $esteBloque ['grupo'] . '/' . $esteBloque ['nombre'];
 
 $miPaginaActual = $this->miConfigurador->getVariableConfiguracion ( 'pagina' );
 
+$UrlDirectorioIconos = $this->miConfigurador->getVariableConfiguracion ( "rutaUrlBloque" );
+$UrlDirectorioIconos .= "css/iconos/";
+
+
 if (isset ( $_REQUEST ['funcion'] )) {
 	
 	switch ($_REQUEST ['funcion']) {
@@ -96,8 +100,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'modificar' => "<center><a href='" . $urlModificar . "'><B>&#9658; &blk34;</B></a></center>",
-						'eliminar' => "<center><a href='" . $urlEliminar . "'><B>✗</B></a></center>" 
+						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $UrlDirectorioIconos . "edit.png 'width='20px'></a></center>",
+						'eliminar' => "<center><a href='" . $urlEliminar . "'><img src='" . $UrlDirectorioIconos . "eliminate .png 'width='20px'></a></center>" 
 				);
 			}
 			

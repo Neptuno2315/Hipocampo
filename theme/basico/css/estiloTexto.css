@@ -93,3 +93,10 @@
 .interlineadoPequenno {
 	line-height: 1em;
 }
+
+.textoResaltado  {
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+	
+}
