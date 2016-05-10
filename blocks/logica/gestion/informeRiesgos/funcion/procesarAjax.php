@@ -11,6 +11,9 @@ $directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
 $directorio .= $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 
+$UrlDirectorioIconos = $this->miConfigurador->getVariableConfiguracion ( "rutaUrlBloque" );
+$UrlDirectorioIconos .= "css/iconos/";
+
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
 $rutaBloque .= $esteBloque ['grupo'] . '/' . $esteBloque ['nombre'];
@@ -86,9 +89,7 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$cadenaSql = $this->sql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-// 			var_dump($resultado);
-			// URL base
-			
+		
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
@@ -122,16 +123,15 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				// URL definitiva
 				$urlDocumento = $url . $cadena;
 				
-				
-				$documento =(is_null($valor['recomendaciones'])==true)?"":"<center><a href='" . $urlDocumento . "'><img src='" . $rutaBloque . "/css/iconos/descargar.png 'width='20px'></a></center>";
+				$documento = (is_null ( $valor ['recomendaciones'] ) == true) ? "" : "<center><a href='" . $urlDocumento . "'><img src='" . $UrlDirectorioIconos . "descargar.png 'width='20px'></a></center>";
 				
 				$resultadoFinal [] = array (
 						'region' => "<center>" . $valor ['region'] . "</center>",
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'validar' => "<center><a href='" . $urlRecomendaciones . "'><img src='" . $rutaBloque . "/css/iconos/busqueda.png 'width='20px'></a></center>",
-						'documento' =>  $documento,
+						'validar' => "<center><a href='" . $urlRecomendaciones . "'><img src='" . $UrlDirectorioIconos . "busqueda.png 'width='20px'></a></center>",
+						'documento' => $documento 
 				);
 			}
 			
@@ -154,7 +154,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$recomendaciones = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
 			foreach ( $recomendaciones as $valor ) {
-				
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
 				$cadenaACodificar .= "&opcion=modificarRecomendaciones";
@@ -190,15 +189,14 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				// URL definitiva
 				$urlELiminar = $url . $cadena;
 				
-				
 				$especificar_riesgo = explode ( ",", $valor ['riesgo'] );
 				
 				$resultadoFinal [] = array (
 						'riesgo' => "<center>" . $especificar_riesgo [1] . "</center>",
 						'accion' => "<center>" . $valor ['acciones_prv'] . "</center>",
 						'senalizacion' => "<center>" . $valor ['senalizacion_ext'] . "</center>",
-						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $rutaBloque . "/css/iconos/edit.png 'width='20px'></a></center>",
-						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $rutaBloque . "/css/iconos/eliminate .png 'width='20px'></a></center>" 
+						'modificar' => "<center><a href='" . $urlModificar . "'><img src='" . $UrlDirectorioIconos . "edit.png 'width='20px'></a></center>",
+						'eliminar' => "<center><a href='" . $urlELiminar . "'><img src='" . $UrlDirectorioIconos . "eliminate .png 'width='20px'></a></center>" 
 				);
 			}
 			
