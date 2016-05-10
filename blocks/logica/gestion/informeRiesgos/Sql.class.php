@@ -71,6 +71,16 @@ class Sql extends \Sql {
 			 * Sentencias Consulta Información
 			 */
 			
+			case "consultar_informacion_zona_estudio" :
+				$cadenaSql = "SELECT rn.descripcion region, sc.descripcion sector, boyas_ais+boyas_ais+racon_num+linternas_num+otras_aton total_aton ";
+				$cadenaSql .= "FROM zona_estudio zn ";
+				$cadenaSql .= "JOIN informacion_carta_nautica cn ON cn.id_zona_estudio=zn.id_zona_estudio AND cn.estado_registro=TRUE  ";
+				$cadenaSql .= "JOIN sector sc ON sc.id_sector=zn.id_sector AND sc.estado_registro=TRUE  ";
+				$cadenaSql .= "JOIN region rn ON rn.id_region=sc.id_region AND rn.estado_registro=TRUE  ";
+				$cadenaSql .= " WHERE zn.id_zona_estudio='" . $variable . "'; ";
+				
+				break;
+			
 			case "consultar_recomendacion_particular" :
 				$cadenaSql = "SELECT id_recomendacion,riesgo , acciones_prv, senalizacion_ext, rm.id_zona_estudio, zn.titulo_proy ";
 				$cadenaSql .= "FROM  recomendacion rm ";
