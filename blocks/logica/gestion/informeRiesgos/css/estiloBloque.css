@@ -1,0 +1,38 @@
+#tablaInfoZonas {
+	font-size: 11px;
+}
+
+#DivRegistro {
+	width: 50%;
+	font-size: 8px;
+	border-style: groove;
+	background: whitesmoke;
+	float: left;
+	height: 300px;
+}
+
+#DivEstadistico {
+	width: 48.85%;
+    font-size: 8px;
+    border-style: groove;
+    background: whitesmoke;
+    height: 300px;
+    float: right;
+}
+
+#DivTabla {
+	border-style: groove;
+	background: whitesmoke;
+}
+
+#MensajeRespuesta {
+	position: fixed;
+	z-index: 1;
+	left: 45%;
+	top: 20%;
+	width: 350px;
+}
+
+#DivEstadistico svg {
+  height: 261px;
+}

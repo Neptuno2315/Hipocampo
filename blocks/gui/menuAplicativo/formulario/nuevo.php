@@ -29,6 +29,13 @@ $enlaceAnalisisRiesgo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
 $enlaceAnalisisRiesgo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAnalisisRiesgo ['enlace'], $directorio );
 $enlaceAnalisisRiesgo ['nombre'] = "Analizar Variables";
 
+// **********Gestión Informe de Riesgos**************//
+
+$enlaceInformeRiesgo ['enlace'] = "pagina=informeRiesgos";
+$enlaceInformeRiesgo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
+$enlaceInformeRiesgo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceInformeRiesgo ['enlace'], $directorio );
+$enlaceInformeRiesgo ['nombre'] = "Informe de Resultados";
+
 // **********Administrador Datos Geograficos**************//
 
 $enlaceAdministradorGeografico ['enlace'] = "pagina=administrador";
@@ -70,11 +77,15 @@ $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 					<li><a href="<?php echo $enlaceAnalisisRiesgo['urlCodificada']?>"><i
 							class="fa fa-group"><img
 								SRC="<?php echo $rutaBloque ?>/css/images/analizar.png"></i><?php echo $enlaceAnalisisRiesgo['nombre']?></a>
-					
-					<li><a href="#"><i class="fa fa-group"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i>Resultado
-							o Informe</a></li>
-				</ul></li>
+					</li>
+					<li><a href="<?php echo $enlaceInformeRiesgo['urlCodificada'];?>"><i
+							class="fa fa-group"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i><?php echo $enlaceInformeRiesgo['nombre']?></a>
+			        </li>
+				</ul>
+				
+				
+			</li>
 			<li><a href=""> <i class="fa fa-gift"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos
 						Geográficos</strong> <small>Información Geográfica</small>
