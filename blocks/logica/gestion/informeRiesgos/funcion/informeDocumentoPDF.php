@@ -16,6 +16,18 @@ class ProcesarInforme {
 		$this->miSql = $sql;
 	}
 	function contenidoInforme() {
+		
+		/* Conexión FrameWork */
+		$conexion = "estructura";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		/*
+		 * Consultar Usuario
+		 */
+		$cadenaSql = $this->miSql->getCadenaSql ( "consultar_datos_usuario", $_REQUEST ['usuario'] );
+		$usuario = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		$usuario=$usuario[0];
+		
+		
 		/* Conexión */
 		$conexion = "logica";
 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -32,11 +44,10 @@ class ProcesarInforme {
 		$info_zona = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 		$info_zona = $info_zona [0];
 		
-		// var_dump ( $recomendaciones );exit;
+
 		
 		$directorio = $this->miConfigurador->getVariableConfiguracion ( 'rutaUrlBloque' );
-		// echo $directorio;
-		// exit ();
+
 		
 		$contenidoPagina = "
 				<style type=\"text/css\">
@@ -70,7 +81,7 @@ class ProcesarInforme {
 				</style>
 		
 		
-<page backtop='5mm' backbottom='5mm' backleft='5mm' backright= '5mm'>
+<page backtop='5mm' backbottom='5mm' backleft='5mm' backright= '5mm' footer='page'>
 		
         <table align='left' style='width:100%;' >
             <tr>
@@ -149,23 +160,45 @@ class ProcesarInforme {
 			<td style='width:40%;text-align=center;'><b>Señalización</b></td>
 			</tr>";
 		
-		foreach ( $elementos_consumo_controlado as $valor ) {
+		foreach ( $recomendaciones as $valor ) {
+			
+			$contenido_riesgo = explode ( ",", $valor ['riesgo'] );
 			
 			$contenidoPagina .= "<tr>
-                    			<td style='width:10%;text-align=center;'>" . $valor ['placa'] . "</td>
-                    			<td style='width:10%;text-align=center;'><font size='0.5px'>" . $valor ['dependencia'] . "</font></td>
-                    			<td style='width:10%;text-align=center;'><font size='0.5px'>" . $valor ['sede'] . "</font></td>
-                    			<td style='width:10%;text-align=center;'><font size='0.5px'>" . $valor ['espacio_fisico'] . "</font></td>
-                    			<td style='width:20%;text-align=center;'>" . $valor ['descripcion_elemento'] . "</td>
-                    			<td style='width:10%;text-align=center;'>" . $valor ['marca'] . " - " . $valor ['serie'] . "</td>
-                    			<td style='width:5%;text-align=center;'>" . $valor ['estado_bien'] . "</td>
-                    			<td style='width:15%;text-align=center;'>" . $valor ['contratista'] . "</td>
-                    			<td style='width:10%;text-align=center;'>" . $valor ['marca_existencia'] . "</td>
-                    			</tr>";
+                    			<td style='width:20%;text-align=center;'>" . $contenido_riesgo [1] . "</td>
+                    			<td style='width:40%;text-align=justify;'><font size='0.5px'>" . $valor ['acciones_prv'] . "</font></td>
+                    			<td style='width:40%;text-align=justify;'><font size='0.5px'>" . $valor ['senalizacion_ext'] . "</font></td>
+                    		    </tr>";
 		}
 		
-		$contenidoPagina .= "</page> ";
-		
+		$contenidoPagina .= "</table>
+						</page> 		
+						<page_footer>
+							<table style='width:100%;'>
+								<tr>
+								<td style='width:15%;text-align:left;'>Elaborado por: </td>
+								<td style='width:35%;text-align:center;'>".$usuario['nombre_usuario']."</td>
+								<td style='width:15%;text-align:left;'>Cargo:</td>
+								<td style='width:35%;text-align:center;'>PROFESIONAL SEÑALIZACIÓN MARÍTIMA</td>
+								</tr>
+							</table>
+						    <br>
+							<table style='width:100%;'>
+								<tr>
+								<td style='width:15%;text-align:left;'>Revisó: </td>
+								<td style='width:35%;text-align:center;'> </td>
+								<td style='width:15%;text-align:left;'>Aprobó: </td>
+								<td style='width:35%;text-align:center;'> </td>
+								</tr>
+								<tr>
+								<td style='width:15%;text-align:left;'>Fecha Revisión: </td>
+								<td style='width:35%;text-align:centes;'> </td>
+								<td style='width:15%;text-align:left;'>Fecha Aprobación: </td>
+								<td style='width:35%;text-align:center;'> </td>
+								</tr>
+							</table>
+						</page_footer>";
+	
 		return $contenidoPagina;
 		
 		// echo $contenidoPagina;
@@ -182,6 +215,6 @@ $objetoPDF = new HTML2PDF ( 'P', 'LETTER', 'es', true, 'UTF-8' );
 // HTML2PDF('P', 'LETTER', 'es', true, 'UTF-8');
 $objetoPDF->pdf->SetDisplayMode ( 'fullpage' );
 $objetoPDF->writeHTML ( $contenido );
-$objetoPDF->Output ( "Informe_Resultados:" . $_REQUEST ['titulo_proyecto'] . "_" . date ( 'Y-m-d' ) . ".pdf", "D" );
+$objetoPDF->Output ( "Resultados_" . utf8_encode($_REQUEST['titulo_proyecto']) . "_" . date ( 'Y-m-d' ) . ".pdf", "D" );
 
 ?>

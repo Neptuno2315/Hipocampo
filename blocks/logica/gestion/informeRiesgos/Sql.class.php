@@ -71,6 +71,13 @@ class Sql extends \Sql {
 			 * Sentencias Consulta Información
 			 */
 			
+			case "consultar_datos_usuario" :
+				$cadenaSql = "SELECT nombre || ' ' || apellido nombre_usuario ";
+				$cadenaSql .= "FROM hipocampo_usuario ";
+				$cadenaSql .= "WHERE id_usuario='" . $variable . "'; ";
+				
+				break;
+			
 			case "consultar_informacion_zona_estudio" :
 				$cadenaSql = "SELECT rn.descripcion region, sc.descripcion sector, boyas_ais+boyas_ais+racon_num+linternas_num+otras_aton total_aton ";
 				$cadenaSql .= "FROM zona_estudio zn ";
