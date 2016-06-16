@@ -50,6 +50,13 @@ $enlaceVisualizadorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
 $enlaceVisualizadorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
 $enlaceVisualizadorGeografico ['nombre'] = "Visualizador";
 
+// **********Gestión Información Batimetrica**************//
+
+$enlaceGestionBatimetria ['enlace'] = "pagina=gestionInformacionBatimetrica";
+$enlaceGestionBatimetria ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
+$enlaceGestionBatimetria ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceGestionBatimetria ['enlace'], $directorio );
+$enlaceGestionBatimetria ['nombre'] = "Gestión Información Batimétrica";
+
 // **********Visualizador Datos Geograficos**************//
 
 $enlaceAplicativo ['enlace'] = "index.php";
@@ -72,7 +79,7 @@ $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 				<ul>
 					<li><a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i
 							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
+								SRC="<?php echo $rutaBloque ?>/css/images/zonaEstudio.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
 					</li>
 					<li><a href="<?php echo $enlaceAnalisisRiesgo['urlCodificada']?>"><i
 							class="fa fa-group"><img
@@ -81,11 +88,8 @@ $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 					<li><a href="<?php echo $enlaceInformeRiesgo['urlCodificada'];?>"><i
 							class="fa fa-group"><img
 								SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i><?php echo $enlaceInformeRiesgo['nombre']?></a>
-			        </li>
-				</ul>
-				
-				
-			</li>
+					</li>
+				</ul></li>
 			<li><a href=""> <i class="fa fa-gift"><img
 						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos
 						Geográficos</strong> <small>Información Geográfica</small>
@@ -99,7 +103,12 @@ $enlaceAplicativo ['nombre'] = "Cerrar Sesion";
 					<li><a
 						href="<?php echo $enlaceVisualizadorGeografico ['urlCodificada'];?>"><i
 							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/geoposition	.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
+								SRC="<?php echo $rutaBloque ?>/css/images/geoposition.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
+					</li>
+					 <li><a
+						href="<?php echo $enlaceGestionBatimetria ['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceGestionBatimetria ['nombre'];?></a>
 					</li>
 				</ul></li>
 			<li><a href=""> <i class="fa fa-globe"><img
