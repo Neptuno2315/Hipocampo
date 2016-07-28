@@ -79,7 +79,7 @@ class Input extends HtmlBase {
 		}
 		if (isset ( $this->atributos [self::TIPO] ) && $this->atributos [self::TIPO] == 'file') {
 			
-			$cadena = (($this->atributos [self::COLUMNAS] > 1) ? "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" : "") . $this->atributos [self::ETIQUETA] . '&nbsp&nbsp&nbsp&nbsp<input ';
+			$cadena = (($this->atributos [self::COLUMNAS] > 1) ? "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" : "") . $this->atributos [self::ETIQUETA] . ((isset ( $this->atributos ["etiquetaObligatorio"] ) && $this->atributos ["etiquetaObligatorio"] == true) ? "*" : "") . '&nbsp&nbsp&nbsp&nbsp<input ';
 		} else {
 			
 			$cadena = '<input ';
