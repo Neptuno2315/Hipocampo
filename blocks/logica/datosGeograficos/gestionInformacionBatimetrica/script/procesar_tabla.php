@@ -107,8 +107,7 @@ $(function() {
                   { data :"sector" },
                   { data :"titulo" },
                   { data :"fecha" },
-                  { data :"opcionBatimetria" },
-                  ,
+                  { data :"opcionBatimetria" }
                             ]
              });
                   

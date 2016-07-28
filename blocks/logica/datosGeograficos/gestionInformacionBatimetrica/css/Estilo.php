@@ -8,10 +8,6 @@ $estilo [$indice ++] = "select2.css";
 
 $estilo [$indice ++] = "estiloBloque.css";
 
-$estilo [$indice ++] = "nv.d3.css";
-
-$estilo [$indice ++] = "nv.d3.min.css";
-
 $estilo [$indice ++] = "jquery.dataTables_themeroller.css";
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
