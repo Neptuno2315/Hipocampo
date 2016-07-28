@@ -31,6 +31,22 @@ $this->idioma ["nombre_sector"] = "Sector: ";
 
 
 
+$this->idioma ["fichero_dbf"] = "Fichero .dbf:";
+$this->idioma ["fichero_dbfTitulo"] = "Seleccione Fichero Fichero .dbf ";
+
+
+$this->idioma ["fichero_prj"] = "Fichero .prj:";
+$this->idioma ["fichero_prjTitulo"] = "Seleccione Fichero Fichero .prj ";
+
+
+$this->idioma ["fichero_shx"] = "Fichero .shx:";
+$this->idioma ["fichero_shxTitulo"] = "Seleccione Fichero Fichero .shx ";
+
+
+$this->idioma ["fichero_shp"] = "Fichero .shp:";
+$this->idioma ["fichero_shpTitulo"] = "Seleccione Fichero Fichero .shp ";
+
+
 
 
 

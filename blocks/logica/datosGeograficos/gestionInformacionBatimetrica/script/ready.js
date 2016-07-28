@@ -2,14 +2,14 @@ $(function() {
 
 	// Plugin para Validar Formulario Validation Engine
 
-	$("#<?php echo $this->campoSeguro('informeRiesgos')?>").validationEngine({
+	$("#<?php echo $this->campoSeguro('gestionInformacionBatimetrica')?>").validationEngine({
 		promptPosition : "topRight:-10",
 		scroll : false,
 		autoHidePrompt : true,
 		autoHideDelay : 9000
 	});
-	$("#<?php echo $this->campoSeguro('informeRiesgos')?>").submit(function() {
-		$resultado = $("#<?php echo $this->campoSeguro('informeRiesgos')?>").validationEngine("validate");
+	$("#<?php echo $this->campoSeguro('gestionInformacionBatimetrica')?>").submit(function() {
+		$resultado = $("#<?php echo $this->campoSeguro('gestionInformacionBatimetrica')?>").validationEngine("validate");
 		if ($resultado) {
 
 			return true;

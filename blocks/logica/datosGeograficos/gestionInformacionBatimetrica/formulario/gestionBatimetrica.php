@@ -128,7 +128,6 @@ class registrarForm {
 				$atributos ['columnas'] = 1;
 				$atributos ['dobleLinea'] = false;
 				$atributos ['tabIndex'] = $tab;
-				
 				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['sector'] . "</B>";
 				$tab ++;
 				
@@ -137,89 +136,150 @@ class registrarForm {
 				echo $this->miFormulario->campoTexto ( $atributos );
 				unset ( $atributos );
 				
-				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'acciones'; // Acciones Preventivas
+				
+				$esteCampo='ficheros';
 				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'text';
-				$atributos ['estilo'] = 'jqueryui';
-				$atributos ['marco'] = true;
-				$atributos ['estiloMarco'] = '';
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['columnas'] = 92;
-				$atributos ['filas'] = 5;
-				$atributos ['dobleLinea'] = 0;
-				$atributos ['tabIndex'] = $tab;
-				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'required,maxSize[10000]';
-				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-				$atributos ['deshabilitado'] = false;
-				$atributos ['tamanno'] = 20;
-				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 220;
-				$tab ++;
-				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoTextArea ( $atributos );
+				$atributos ['leyenda'] = "Ficheros Componetes del Shapefile";
+				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 				unset ( $atributos );
-				
-				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'senalizacion'; // Señalización
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'text';
-				$atributos ['estilo'] = 'jqueryui';
-				$atributos ['marco'] = true;
-				$atributos ['estiloMarco'] = '';
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['columnas'] = 92;
-				$atributos ['filas'] = 5;
-				$atributos ['dobleLinea'] = 0;
-				$atributos ['tabIndex'] = $tab;
-				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['validar'] = 'maxSize[10000]';
-				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-				$atributos ['deshabilitado'] = false;
-				$atributos ['tamanno'] = 20;
-				$atributos ['maximoTamanno'] = '';
-				$atributos ['anchoEtiqueta'] = 220;
-				$tab ++;
-				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoTextArea ( $atributos );
-				unset ( $atributos );
-				
-				// ------------------Division para los botones-------------------------
-				$atributos ["id"] = "MarcoBotones";
-				$atributos ["estilo"] = "marcoBotones";
-				echo $this->miFormulario->division ( "inicio", $atributos );
 				{
-					// -----------------CONTROL: Botón ----------------------------------------------------------------
-					$esteCampo = 'botonGuardar';
-					$atributos ["id"] = $esteCampo;
-					$atributos ["tabIndex"] = $tab;
-					$atributos ["tipo"] = 'boton';
-					// submit: no se coloca si se desea un tipo button genérico
-					$atributos ['submit'] = true;
-					$atributos ["estiloMarco"] = '';
-					$atributos ["estiloBoton"] = 'jqueryui';
-					// verificar: true para verificar el formulario antes de pasarlo al servidor.
-					$atributos ["verificar"] = '';
-					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
-					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
-					$tab ++;
 					
-					// Aplica atributos globales al control
-					$atributos = array_merge ( $atributos, $atributosGlobales );
-					echo $this->miFormulario->campoBoton ( $atributos );
+					$atributos ["id"] = "ficheros_parte_1";
+					$atributos ["estilo"] = " ";
+					$atributos ["estiloEnLinea"] = "display:block";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					unset ( $atributos );
+					
+					{
+						
+						$esteCampo = "fichero_dbf";
+						$atributos ["id"] = $esteCampo; // No cambiar este nombre
+						$atributos ["nombre"] = $esteCampo;
+						$atributos ["tipo"] = "file";
+						$atributos ["obligatorio"] = true;
+						$atributos ["etiquetaObligatorio"] = true;
+						$atributos ["tabIndex"] = $tab ++;
+						$atributos ["columnas"] = 2;
+						$atributos ["estilo"] = "textoIzquierda";
+						$atributos ["anchoEtiqueta"] = 190;
+						$atributos ["tamanno"] = 500000;
+						$atributos ["validar"] = "required";
+						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+						// $atributos ["valor"] = $valorCodificado;
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoCuadroTexto ( $atributos );
+						unset ( $atributos );
+						
+						$esteCampo = "fichero_prj";
+						$atributos ["id"] = $esteCampo; // No cambiar este nombre
+						$atributos ["nombre"] = $esteCampo;
+						$atributos ["tipo"] = "file";
+						$atributos ["obligatorio"] = true;
+						$atributos ["etiquetaObligatorio"] = true;
+						$atributos ["tabIndex"] = $tab ++;
+						$atributos ["columnas"] = 2;
+						$atributos ["estilo"] = "textoderecha";
+						$atributos ["anchoEtiqueta"] = 190;
+						$atributos ["tamanno"] = 500000;
+						$atributos ["validar"] = "required";
+						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+						// $atributos ["valor"] = $valorCodificado;
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoCuadroTexto ( $atributos );
+						unset ( $atributos );
+					}
+					
+					echo $this->miFormulario->division ( 'fin' );
+					unset ( $atributos );
+					echo "<br>";
+					
+					$atributos ["id"] = "ficheros_parte_2";
+					$atributos ["estilo"] = " ";
+					$atributos ["estiloEnLinea"] = "display:block";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					unset ( $atributos );
+					
+					{
+						
+						$esteCampo = "fichero_shx";
+						$atributos ["id"] = $esteCampo; // No cambiar este nombre
+						$atributos ["nombre"] = $esteCampo;
+						$atributos ["tipo"] = "file";
+						$atributos ["obligatorio"] = true;
+						$atributos ["etiquetaObligatorio"] = true;
+						$atributos ["tabIndex"] = $tab ++;
+						$atributos ["columnas"] = 2;
+						$atributos ["estilo"] = "textoIzquierda";
+						$atributos ["anchoEtiqueta"] = 190;
+						$atributos ["tamanno"] = 500000;
+						$atributos ["validar"] = "required";
+						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+						// $atributos ["valor"] = $valorCodificado;
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoCuadroTexto ( $atributos );
+						unset ( $atributos );
+						
+						$esteCampo = "fichero_shp";
+						$atributos ["id"] = $esteCampo; // No cambiar este nombre
+						$atributos ["nombre"] = $esteCampo;
+						$atributos ["tipo"] = "file";
+						$atributos ["obligatorio"] = true;
+						$atributos ["etiquetaObligatorio"] = true;
+						$atributos ["tabIndex"] = $tab ++;
+						$atributos ["columnas"] = 2;
+						$atributos ["estilo"] = "textoderecha";
+						$atributos ["anchoEtiqueta"] = 190;
+						$atributos ["tamanno"] = 500000;
+						$atributos ["validar"] = "required";
+						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+						// $atributos ["valor"] = $valorCodificado;
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoCuadroTexto ( $atributos );
+						unset ( $atributos );
+					}
+					echo $this->miFormulario->division ( 'fin' );
 					unset ( $atributos );
 				}
-				// ------------------Fin Division para los botones-------------------------
-				echo $this->miFormulario->division ( "fin" );
+				
+				echo $this->miFormulario->agrupacion ( 'fin' );
 				unset ( $atributos );
+				/*
+				 * $esteCampo = "fichero_shx";
+				 * $atributos ["id"] = $esteCampo; // No cambiar este nombre
+				 * $atributos ["nombre"] = $esteCampo;
+				 * $atributos ["tipo"] = "file";
+				 * $atributos ["obligatorio"] = true;
+				 * $atributos ["etiquetaObligatorio"] = true;
+				 * $atributos ["tabIndex"] = $tab ++;
+				 * $atributos ["columnas"] = 2;
+				 * $atributos ["estilo"] = "textoIzquierda";
+				 * $atributos ["anchoEtiqueta"] = 190;
+				 * $atributos ["tamanno"] = 500000;
+				 * $atributos ["validar"] = "required";
+				 * $atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+				 * // $atributos ["valor"] = $valorCodificado;
+				 * $atributos = array_merge ( $atributos, $atributosGlobales );
+				 * echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				 * unset ( $atributos );
+				 *
+				 * $esteCampo = "fichero_shp";
+				 * $atributos ["id"] = $esteCampo; // No cambiar este nombre
+				 * $atributos ["nombre"] = $esteCampo;
+				 * $atributos ["tipo"] = "file";
+				 * $atributos ["obligatorio"] = true;
+				 * $atributos ["etiquetaObligatorio"] = true;
+				 * $atributos ["tabIndex"] = $tab ++;
+				 * $atributos ["columnas"] = 2;
+				 * $atributos ["estilo"] = "textoIzquierda";
+				 * $atributos ["anchoEtiqueta"] = 190;
+				 * $atributos ["tamanno"] = 500000;
+				 * $atributos ["validar"] = "required";
+				 * $atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
+				 * // $atributos ["valor"] = $valorCodificado;
+				 * $atributos = array_merge ( $atributos, $atributosGlobales );
+				 * echo $this->miFormulario->campoCuadroTexto ( $atributos );
+				 * unset ( $atributos );
+				 */
 			}
 			
 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
