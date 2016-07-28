@@ -64,6 +64,8 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
 				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
+				$cadenaACodificar .= "&sector=" . $valor ['sector'];
+				$cadenaACodificar .= "&region=" . $valor ['region'];
 				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
 				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
 				// Codificar las variables

@@ -116,7 +116,7 @@ class Sql extends \Sql {
 				
 				break;
 			
-			case 'consultar_titulos_zonas' :
+			case 'consultar_titulos_zonas' : //---
 				$cadenaSql = "SELECT id_zona_estudio AS data , titulo_proy AS  value  ";
 				$cadenaSql .= " FROM zona_estudio ";
 				$cadenaSql .= "WHERE cast(titulo_proy as text) ILIKE '%" . $variable . "%' ";
@@ -124,13 +124,13 @@ class Sql extends \Sql {
 				$cadenaSql .= "LIMIT 10; ";
 				break;
 			
-			case 'consulta_zonas_estudio' :
+			case 'consulta_zonas_estudio' : //---
 				
 				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
 				$cadenaSql .= "FROM zona_estudio zn ";
 				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
-
+				
 				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
 				if ($variable ['region'] != '') {
 					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";

@@ -2,22 +2,25 @@
 	font-size: 11px;
 }
 
+
 #DivRegistro {
-	width: 50%;
+/**	width: 50%;
 	font-size: 8px;
 	border-style: groove;
 	background: whitesmoke;
 	float: left;
 	height: 300px;
+	*/
 }
 
+
 #DivEstadistico {
-	width: 48.85%;
+/**	width: 48.85%;
     font-size: 8px;
     border-style: groove;
     background: whitesmoke;
     height: 300px;
-    float: right;
+    float: right;*/
 }
 
 #DivTabla {

@@ -60,8 +60,10 @@ class Frontera {
 					break;
 		
 					
-				case 'gestionRecomendaciones' :
-					include_once ($this->ruta . "/formulario/gestionRecomendaciones.php");
+				case 'gestionBatimetriaZona' :
+					
+					include_once ($this->ruta . "/formulario/gestionBatimetrica.php");
+					
 					break;
 				
 				

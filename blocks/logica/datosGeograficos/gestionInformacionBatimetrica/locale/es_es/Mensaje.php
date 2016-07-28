@@ -1,12 +1,7 @@
 <?php
 // Caso de Uso
 
-// Pestañas
-$this->idioma ["tabDescripcion"] = "Registro Descripción General Zona de Estudio";
-$this->idioma ["tabConsultaModificacion"] = "Consulta Y Modificacion Descripción General Zona de Estudio";
-$this->idioma ["tabResultado"] = "Resultado o Informe ";
-
-// Nombre Formulario
+// Nombre Formulario Consulta
 
 $this->idioma ["informeRiesgos"] = "Informe de Resultados";
 
@@ -24,6 +19,23 @@ $this->idioma ["fecha_inicio_consultaTitulo"] = "Seleccione Fecha Inicio para Ra
 
 $this->idioma ["fecha_final_consulta"] = "Fecha Final:<br>Rango&nbsp&nbsp&nbsp&nbsp&nbsp";
 $this->idioma ["fecha_final_consultaTitulo"] = "Seleccione Fecha Final para Rango de Buqueda de Registro";
+
+
+
+
+// Formulario Gestión Batimetría
+
+$this->idioma ["nombre_projecto"] = "Nombre o Título de la Zona Estudio: ";
+$this->idioma ["nombre_region"] = "Región: ";
+$this->idioma ["nombre_sector"] = "Sector: ";
+
+
+
+
+
+
+
+
 
 // Registro Recomendaciones
 

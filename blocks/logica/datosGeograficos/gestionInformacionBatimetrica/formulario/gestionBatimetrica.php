@@ -43,44 +43,6 @@ class registrarForm {
 		$atributosGlobales ['campoSeguro'] = 'true';
 		$_REQUEST ['tiempo'] = time ();
 		
-		{ /*
-		   * Consultar Riesgos
-		   */
-			
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_riesgos", $_REQUEST ['id_zona'] );
-			$riesgo = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-			foreach ( $riesgo as $valor ) {
-				
-				if ($valor ['control_ris'] == "Monitoreo") {
-					
-					$arreglo_riesgo [] = array (
-							
-							'Monitoreo,(1 - 2)Nivel de Riesgo Aceptable',
-							"(1 - 2)Nivel de Riesgo Aceptable" 
-					);
-				}
-				
-				if ($valor ['control_ris'] == "Especificar la Acción") {
-					
-					$arreglo_riesgo [] = array (
-							
-							'Especificar la Acción,(3 - 4)Nivel de Riesgo Aceptable con Precaución',
-							"(3 - 4)Nivel de Riesgo Aceptable con Precaución" 
-					);
-				}
-				
-				if ($valor ['control_ris'] == "Medidas de Emergencia") {
-					
-					$arreglo_riesgo [] = array (
-							
-							'Medidas de Emergencia,(1 - 2)Nivel de Riesgo Aceptable',
-							"(6 - 9)Nivel de Riesgo Inaceptable" 
-					);
-				}
-			}
-		}
-		
 		// -------------------------------------------------------------------------------------------------
 		// ---------------- SECCION: Parámetros Generales del Formulario ----------------------------------
 		$esteCampo = $esteBloque ['nombre'];
@@ -123,34 +85,56 @@ class registrarForm {
 			unset ( $atributos );
 			
 			{
+				var_dump ( $_REQUEST );
 				
-				// ---------------- CONTROL: Cuadro Lista ----------------------
-				$esteCampo = 'riesgo';
-				$atributos ['nombre'] = $esteCampo;
+				$esteCampo = 'nombre_projecto'; // Nombre o Titulo Proyecto
 				$atributos ['id'] = $esteCampo;
-				$atributos ['seleccion'] = - 1;
-				$atributos ['evento'] = '';
-				$atributos ['deshabilitado'] = false;
-				$atributos ["etiquetaObligatorio"] = true;
-				$atributos ['tab'] = $tab;
-				$atributos ['tamanno'] = 1;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'text';
+				$atributos ['estilo'] = 'textoElegante';
 				$atributos ['columnas'] = 1;
-				$atributos ['estilo'] = 'jqueryui';
-				$atributos ['validar'] = 'required';
-				$atributos ['limitar'] = false;
-				$atributos ['anchoCaja'] = 70;
-				$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-				$atributos ['anchoEtiqueta'] = 60;
-				$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_region" );
-				$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-				$atributos ['matrizItems'] = $arreglo_riesgo;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
 				
-				// Utilizar lo siguiente cuando no se pase un arreglo:
-				// $atributos ['baseDatos'] = 'geografico';
-				// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "<B>" . $_REQUEST ['titulo_proyecto'] . "</B>";
 				$tab ++;
+				
+				// Aplica atributos globales al control
 				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoCuadroLista ( $atributos );
+				echo $this->miFormulario->campoTexto ( $atributos );
+				unset ( $atributos );
+				
+				$esteCampo = 'nombre_region'; // Nombre o Titulo Proyecto
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'text';
+				$atributos ['estilo'] = 'textoElegante';
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
+				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['region'] . "</B>";
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoTexto ( $atributos );
+				unset ( $atributos );
+				
+				$esteCampo = 'nombre_sector'; // Nombre o Titulo Proyecto
+				$atributos ['id'] = $esteCampo;
+				$atributos ['nombre'] = $esteCampo;
+				$atributos ['tipo'] = 'text';
+				$atributos ['estilo'] = 'textoElegante';
+				$atributos ['columnas'] = 1;
+				$atributos ['dobleLinea'] = false;
+				$atributos ['tabIndex'] = $tab;
+				
+				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['sector'] . "</B>";
+				$tab ++;
+				
+				// Aplica atributos globales al control
+				$atributos = array_merge ( $atributos, $atributosGlobales );
+				echo $this->miFormulario->campoTexto ( $atributos );
 				unset ( $atributos );
 				
 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
@@ -417,7 +401,6 @@ class registrarForm {
 				
 				switch ($_REQUEST ['mensaje']) {
 					
-					
 					case 'RegistroExito' :
 						$atributos ['tipo'] = 'success';
 						$atributos ['mensaje'] = 'Se Registro con Exito.<br>Recomendación a la Navegación.';
@@ -427,8 +410,6 @@ class registrarForm {
 						$atributos ['tipo'] = 'error';
 						$atributos ['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
 						break;
-					
-
 					
 					case 'ActualizoExito' :
 						$atributos ['tipo'] = 'success';
@@ -440,7 +421,6 @@ class registrarForm {
 						$atributos ['mensaje'] = 'Error en la Actualización de la Recomendación  a la Navegación.<br>Verifique los Datos.';
 						break;
 					
-
 					case 'EliminoExito' :
 						$atributos ['tipo'] = 'success';
 						$atributos ['mensaje'] = 'Se Elimino con Exito Recomendación a la Navegación de la Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['titulo_proyecto'] . ".";
