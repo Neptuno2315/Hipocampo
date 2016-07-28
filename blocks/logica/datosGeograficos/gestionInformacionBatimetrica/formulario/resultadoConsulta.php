@@ -134,6 +134,7 @@ class registrarForm {
 		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio:Informe de Resultados";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
+		var_dump($_REQUEST);
 		if ($informacion_zona) {
 			
 			$mostrarHtml = "<table id='tablaInfoZonas'>
@@ -143,9 +144,8 @@ class registrarForm {
 											<th>Sector</th>
 											<th>Titulo y/o Nombre<br>Proyecto</th>
 											<th>Fecha Registro</th>
-											<th>Incluir Recomendaciones<br>(Navegación)</th>
-											<th>Documento<br>Informe</th> 
-									    </tr>
+											<th>Incluir Batimetría Zona</th>
+									   </tr>
 						            </thead>
 							</table>			
             ";

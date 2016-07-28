@@ -126,12 +126,11 @@ class Sql extends \Sql {
 			
 			case 'consulta_zonas_estudio' :
 				
-				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro,rm.id_zona_estudio recomendaciones ";
+				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
 				$cadenaSql .= "FROM zona_estudio zn ";
 				$cadenaSql .= "JOIN sector sec ON sec.id_sector=zn.id_sector AND sec.estado_registro=TRUE ";
 				$cadenaSql .= "JOIN region rgn ON rgn.id_region= sec.id_region AND sec.estado_registro=TRUE ";
-				$cadenaSql .= "JOIN riesgo ris ON ris.id_zona_estudio= zn.id_zona_estudio AND ris.estado_registro=TRUE ";
-				$cadenaSql .= "LEFT JOIN recomendacion rm  ON rm.id_zona_estudio= zn.id_zona_estudio AND rm.estado_registro=TRUE ";
+
 				$cadenaSql .= "WHERE zn.estado_registro=TRUE  ";
 				if ($variable ['region'] != '') {
 					$cadenaSql .= " AND rgn.id_region = '" . $variable ['region'] . "' ";

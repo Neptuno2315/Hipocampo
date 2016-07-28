@@ -1,5 +1,5 @@
 <?php
-
+var_dump($_REQUEST);exit;
 // Conección a Base de Datos
 $conexion = "geografico";
 $esteRecursoGEO = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
@@ -28,40 +28,6 @@ if (isset ( $_REQUEST ['funcion'] )) {
 	
 	switch ($_REQUEST ['funcion']) {
 		
-		case 'consultaAtoN' :
-			
-			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_aton_zona', $_REQUEST ['id_zona'] );
-			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			$resultado = $resultado [0];
-			
-			$array_aton = array (
-					
-					array (
-							"label" => "Boyas AIS",
-							"value" => $resultado ['boyas_ais'] 
-					),
-					array (
-							"label" => "Boyas sin AIS",
-							"value" => $resultado ['boyas_nais'] 
-					),
-					array (
-							"label" => "Racon",
-							"value" => $resultado ['racon_num'] 
-					),
-					array (
-							"label" => "Linternas",
-							"value" => $resultado ['linternas_num'] 
-					),
-					array (
-							"label" => "Otras AtoN",
-							"value" => $resultado ['otras_aton'] 
-					) 
-			);
-			
-			echo json_encode ( $array_aton );
-			
-			break;
-		
 		case 'SeleccionSector' :
 			
 			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_sector', $_REQUEST ['valor'] );
@@ -89,11 +55,11 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$cadenaSql = $this->sql->getCadenaSql ( 'consulta_zonas_estudio', $arreglo );
 			
 			$resultado = $esteRecursoLG->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		
+			
 			foreach ( $resultado as $valor ) {
 				
 				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&opcion=gestionRecomendaciones";
+				$cadenaACodificar .= "&opcion=gestionBatimetriaZona";
 				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
 				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
@@ -105,33 +71,15 @@ if (isset ( $_REQUEST ['funcion'] )) {
 				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 				
 				// URL definitiva
-				$urlRecomendaciones = $url . $cadena;
+				$urlRegistroBatimetrico = $url . $cadena;
 				
-				$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&action=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
-				$cadenaACodificar .= "&opcion=DocumentoInforme";
-				$cadenaACodificar .= "&bloque=" . $esteBloque ['nombre'];
-				$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-				$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
-				$cadenaACodificar .= "&usuario=" . $_REQUEST ['usuario'];
-				$cadenaACodificar .= "&id_zona=" . $valor ['id_zona_estudio'];
-				$cadenaACodificar .= "&titulo_proyecto=" . $valor ['titulo_proy'];
-				// Codificar las variables
-				$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-				$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
-				
-				// URL definitiva
-				$urlDocumento = $url . $cadena;
-				
-				$documento = (is_null ( $valor ['recomendaciones'] ) == true) ? "" : "<center><a href='" . $urlDocumento . "'><img src='" . $UrlDirectorioIconos . "descargar.png 'width='20px'></a></center>";
 				
 				$resultadoFinal [] = array (
 						'region' => "<center>" . $valor ['region'] . "</center>",
 						'sector' => "<center>" . $valor ['sector'] . "</center>",
 						'titulo' => "<center>" . $valor ['titulo_proy'] . "</center>",
 						'fecha' => "<center>" . $valor ['fecha_registro'] . "</center>",
-						'validar' => "<center><a href='" . $urlRecomendaciones . "'><img src='" . $UrlDirectorioIconos . "busqueda.png 'width='20px'></a></center>",
-						'documento' => $documento 
+						'opcionBatimetria' => $urlRegistroBatimetrico 
 				);
 			}
 			

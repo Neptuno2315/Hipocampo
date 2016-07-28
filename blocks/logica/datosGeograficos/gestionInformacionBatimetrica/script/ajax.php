@@ -67,33 +67,7 @@ $url .= "/index.php?";
 
 
 
-function consulta_estadistico(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlAton?>",
-	    dataType: "json",
-	    success: function(data){ 
 
-	    	nv.addGraph(function() {
-	    		  var chart = nv.models.pieChart()
-	    		      .x(function(d) { return d.label })
-	    		      .y(function(d) { return d.value })
-	    		      .showLabels(false);
-
-	    		    d3.select("#DivEstadistico svg")
-	    		        .datum(data)
-	    		        .transition().duration(350)
-	    		        .call(chart);
-
-	    		  return chart;
-
-	        	});
-
-
-	    }
-	  });
-
-
-}
 function consultas_sector(elem, request, response){
 	  $.ajax({
 	    url: "<?php echo $urlSector?>",
@@ -122,10 +96,7 @@ function consultas_sector(elem, request, response){
 
 
 
-	    $("#DivEstadistico").ready(function() {
-	    	consulta_estadistico();
-	 	 });
-
+	
 	    $("#<?php echo $this->campoSeguro('region_consulta')?>").change(function() {
 	    	
 		if($("#<?php echo $this->campoSeguro('region_consulta')?>").val()!=''){

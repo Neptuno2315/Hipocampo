@@ -66,6 +66,7 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 			$this->miFormulario = new \FormularioHtml ();
 		}
 		public function bloque() {
+			
 			if (isset ( $_REQUEST ['botonCancelar'] ) && $_REQUEST ['botonCancelar'] == "true") {
 				Redireccionador::redireccionar("paginaPrincipal");
 			} else {

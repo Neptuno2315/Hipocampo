@@ -75,7 +75,7 @@ class consultarForm {
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Consulta Proyecto de la Zona de Estudio : Informe de Resultados";
+		$atributos ["leyenda"] = "Consulta Proyecto de la Zona de Estudio : Asociar Batimetría";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
 		
