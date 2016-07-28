@@ -2,25 +2,53 @@
 	font-size: 11px;
 }
 
+#ficheros_parte_1 {
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	display: block;
+	float: left;
+	padding: 3px 5px;
+	margin: 0 0 5px 0;
+	text-align: right;
+	border-width: 0px;
+	border-style: solid;
+	color: black;
+}
+
+#ficheros_parte_2 {
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	display: block;
+	float: left;
+	padding: 3px 5px;
+	margin: 0 0 5px 0;
+	text-align: right;
+	border-width: 0px;
+	border-style: solid;
+	color: black;
+}
 
 #DivRegistro {
-/**	width: 50%;
+	/**	width: 50%;
 	font-size: 8px;
 	border-style: groove;
 	background: whitesmoke;
 	float: left;
 	height: 300px;
 	*/
+	
 }
 
-
 #DivEstadistico {
-/**	width: 48.85%;
+	/**	width: 48.85%;
     font-size: 8px;
     border-style: groove;
     background: whitesmoke;
     height: 300px;
     float: right;*/
+	
 }
 
 #DivTabla {
@@ -37,5 +65,5 @@
 }
 
 #DivEstadistico svg {
-  height: 261px;
+	height: 261px;
 }

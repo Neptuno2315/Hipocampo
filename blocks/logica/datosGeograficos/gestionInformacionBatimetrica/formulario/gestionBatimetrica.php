@@ -85,8 +85,7 @@ class registrarForm {
 			unset ( $atributos );
 			
 			{
-				var_dump ( $_REQUEST );
-				
+						
 				$esteCampo = 'nombre_projecto'; // Nombre o Titulo Proyecto
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -139,7 +138,7 @@ class registrarForm {
 				
 				$esteCampo='ficheros';
 				$atributos ['id'] = $esteCampo;
-				$atributos ['leyenda'] = "Ficheros Componetes del Shapefile";
+				$atributos ['leyenda'] = "Ficheros Componentes del Shapefile";
 				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 				unset ( $atributos );
 				{
@@ -191,7 +190,7 @@ class registrarForm {
 					
 					echo $this->miFormulario->division ( 'fin' );
 					unset ( $atributos );
-					echo "<br>";
+// 					echo "<br>";
 					
 					$atributos ["id"] = "ficheros_parte_2";
 					$atributos ["estilo"] = " ";
