@@ -52,6 +52,20 @@ class Sql extends \Sql {
 				$cadenaSql .= "AND id_zona_estudio ='" . $variable . "';";
 				break;
 			
+			case 'consultar_srid' :
+				$cadenaSql = "SELECT srid, auth_name || ': '||srid  valor ";
+				$cadenaSql .= "FROM spatial_ref_sys ";
+				$cadenaSql .= "ORDER BY  srid ASC ;";
+				
+				break;
+			
+			case 'consultar_info_srid' :
+				$cadenaSql = "SELECT srtext ,proj4text ";
+				$cadenaSql .= "FROM spatial_ref_sys ";
+				$cadenaSql .= "WHERE srid ='" . $variable . "';";
+				
+				break;
+			
 			/*
 			 * Sentenias de Registro de Informacion
 			 */
@@ -116,7 +130,7 @@ class Sql extends \Sql {
 				
 				break;
 			
-			case 'consultar_titulos_zonas' : //---
+			case 'consultar_titulos_zonas' : // ---
 				$cadenaSql = "SELECT id_zona_estudio AS data , titulo_proy AS  value  ";
 				$cadenaSql .= " FROM zona_estudio ";
 				$cadenaSql .= "WHERE cast(titulo_proy as text) ILIKE '%" . $variable . "%' ";
@@ -124,7 +138,7 @@ class Sql extends \Sql {
 				$cadenaSql .= "LIMIT 10; ";
 				break;
 			
-			case 'consulta_zonas_estudio' : //---
+			case 'consulta_zonas_estudio' : // ---
 				
 				$cadenaSql = "SELECT DISTINCT zn.id_zona_estudio, sec.descripcion sector ,rgn.descripcion region, zn.titulo_proy,zn.fecha_registro ";
 				$cadenaSql .= "FROM zona_estudio zn ";
@@ -151,14 +165,6 @@ class Sql extends \Sql {
 				
 				break;
 			
-			case 'consultar_riesgos' :
-				$cadenaSql = "SELECT DISTINCT  control_ris  ";
-				$cadenaSql .= "FROM riesgo  ";
-				$cadenaSql .= "WHERE  id_zona_estudio= '" . $variable . "'";
-				$cadenaSql .= "AND estado_registro = TRUE ";
-				$cadenaSql .= "AND riesgo <> 0 ;";
-				
-				break;
 			/*
 			 * Sentencias Modificación Información
 			 */

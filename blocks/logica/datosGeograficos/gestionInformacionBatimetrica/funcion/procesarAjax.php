@@ -96,6 +96,26 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			echo $resultado;
 			
 			break;
+		
+		case 'consultaInSrid' :
+			
+			$cadenaSql = $this->sql->getCadenaSql ( 'consultar_info_srid', $_REQUEST ['valor'] );
+			$resultado = $esteRecursoGEO->ejecutarAcceso ( $cadenaSql, "busqueda" );
+			
+			$resultado = $resultado [0];
+			
+			$cadena = (str_replace ( '+', '
+					                     ', $resultado [1] ));
+			
+			
+			
+			$cadena= explode ("+",$resultado [1]);
+			
+			
+			
+			return   ( ($cadena) );
+			
+			break;
 	}
 	exit ();
 }

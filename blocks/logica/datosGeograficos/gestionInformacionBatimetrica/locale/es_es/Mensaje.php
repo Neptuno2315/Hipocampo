@@ -3,7 +3,7 @@
 
 // Nombre Formulario Consulta
 
-$this->idioma ["informeRiesgos"] = "Informe de Resultados";
+$this->idioma ["gestionInformacionBatimetrica"] = "Gestión de Información Batimetríca";
 
 $this->idioma ["region_consulta"] = "Región : ";
 $this->idioma ["region_consultaTitulo"] = "Seleccione Región";
@@ -48,8 +48,14 @@ $this->idioma ["fichero_shpTitulo"] = "Seleccione Fichero Fichero .shp ";
 
 
 
+$this->idioma ["srid"] = "SRID :";
+$this->idioma ["sridTitulo"] = "Seleccione Identificador del Sistema Espacial de Referencia ";
 
 
+
+
+$this->idioma ["informacion_srid"] = "Información Referente al SRID :";
+$this->idioma ["informacion_sridTitulo"] = "Identificador del Sistema Espacial de Referencia ";
 
 
 

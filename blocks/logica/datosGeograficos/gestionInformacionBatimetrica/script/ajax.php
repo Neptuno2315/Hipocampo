@@ -41,7 +41,7 @@ $url .= "/index.php?";
 	$urlTituloZona = $url . $cadena;
 }
 
-{ // Url para Estadistica Racon.
+{ // Url para Consultar Información de SRID.
   // Variables
 	
 	$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( "pagina" );
@@ -49,16 +49,13 @@ $url .= "/index.php?";
 	$cadenaACodificar .= "&action=index.php";
 	$cadenaACodificar .= "&bloqueNombre=" . $esteBloque ["nombre"];
 	$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque ["grupo"];
-	$cadenaACodificar .= "&funcion=consultaAtoN";
+	$cadenaACodificar .= "&funcion=consultaInSrid";
 	$cadenaACodificar .= "&tiempo=" . $_REQUEST ['tiempo'];
-	if (isset ( $_REQUEST ['id_zona'] )) {
-		$cadenaACodificar .= "&id_zona=" . $_REQUEST ['id_zona'];
-	}
 	// Codificar las variables
 	$enlace = $this->miConfigurador->getVariableConfiguracion ( "enlace" );
 	$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $cadenaACodificar, $enlace );
 	// URL definitiva
-	$urlAton = $url . $cadena;
+	$urlSRID = $url . $cadena;
 }
 
 ?>
@@ -91,10 +88,35 @@ function consultas_sector(elem, request, response){
 }
 
 
+function consultas_srid(elem, request, response){
+	  $.ajax({
+	    url: "<?php echo $urlSRID?>",
+	    dataType: "json",
+	    data: { valor:$("#<?php echo $this->campoSeguro('srid')?>").val()},
+	    success: function(data){ 
+	 
+	        if(data!=" "){
+	
+	        	$("#<?php echo $this->campoSeguro('informacion_srid')?>").html(data);
+	            
+	            }          
+	   		}
+	});
+
+}
+
+
+
 	$(function() {
 
 
+	    $("#<?php echo $this->campoSeguro('srid')?>").change(function() {
+	    	
+			if($("#<?php echo $this->campoSeguro('srid')?>").val()!=''){
+				consultas_srid();
 
+				}
+		 	 });
 
 	
 	    $("#<?php echo $this->campoSeguro('region_consulta')?>").change(function() {

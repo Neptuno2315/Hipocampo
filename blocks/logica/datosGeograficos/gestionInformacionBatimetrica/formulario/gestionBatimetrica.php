@@ -190,7 +190,6 @@ class registrarForm {
 					
 					echo $this->miFormulario->division ( 'fin' );
 					unset ( $atributos );
-// 					echo "<br>";
 					
 					$atributos ["id"] = "ficheros_parte_2";
 					$atributos ["estilo"] = " ";
@@ -242,43 +241,80 @@ class registrarForm {
 				
 				echo $this->miFormulario->agrupacion ( 'fin' );
 				unset ( $atributos );
-				/*
-				 * $esteCampo = "fichero_shx";
-				 * $atributos ["id"] = $esteCampo; // No cambiar este nombre
-				 * $atributos ["nombre"] = $esteCampo;
-				 * $atributos ["tipo"] = "file";
-				 * $atributos ["obligatorio"] = true;
-				 * $atributos ["etiquetaObligatorio"] = true;
-				 * $atributos ["tabIndex"] = $tab ++;
-				 * $atributos ["columnas"] = 2;
-				 * $atributos ["estilo"] = "textoIzquierda";
-				 * $atributos ["anchoEtiqueta"] = 190;
-				 * $atributos ["tamanno"] = 500000;
-				 * $atributos ["validar"] = "required";
-				 * $atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
-				 * // $atributos ["valor"] = $valorCodificado;
-				 * $atributos = array_merge ( $atributos, $atributosGlobales );
-				 * echo $this->miFormulario->campoCuadroTexto ( $atributos );
-				 * unset ( $atributos );
-				 *
-				 * $esteCampo = "fichero_shp";
-				 * $atributos ["id"] = $esteCampo; // No cambiar este nombre
-				 * $atributos ["nombre"] = $esteCampo;
-				 * $atributos ["tipo"] = "file";
-				 * $atributos ["obligatorio"] = true;
-				 * $atributos ["etiquetaObligatorio"] = true;
-				 * $atributos ["tabIndex"] = $tab ++;
-				 * $atributos ["columnas"] = 2;
-				 * $atributos ["estilo"] = "textoIzquierda";
-				 * $atributos ["anchoEtiqueta"] = 190;
-				 * $atributos ["tamanno"] = 500000;
-				 * $atributos ["validar"] = "required";
-				 * $atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
-				 * // $atributos ["valor"] = $valorCodificado;
-				 * $atributos = array_merge ( $atributos, $atributosGlobales );
-				 * echo $this->miFormulario->campoCuadroTexto ( $atributos );
-				 * unset ( $atributos );
-				 */
+				
+				$esteCampo='ficheros';
+				$atributos ['id'] = $esteCampo;
+				$atributos ['leyenda'] = "Identificador del Sistema Espacial de Referencia";
+				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+				unset ( $atributos );
+				{
+					
+					// ---------------- CONTROL: Cuadro Lista ----------------------
+					$esteCampo = "srid";
+					$atributos ['nombre'] = $esteCampo;
+					$atributos ['id'] = $esteCampo;
+					$atributos ['seleccion'] = - 1;
+					$atributos ['evento'] = '';
+					$atributos ['deshabilitado'] = false;
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ['tab'] = $tab;
+					$atributos ['tamanno'] = 1;
+					$atributos ['columnas'] = 1;
+					$atributos ['estilo'] = 'jqueryui';
+					$atributos ['validar'] = 'required';
+					$atributos ['limitar'] = false;
+					$atributos ['anchoCaja'] = 90;
+					$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+					$atributos ['anchoEtiqueta'] = 50;
+						
+					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_srid" );
+						
+					$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+					// $atributos ['matrizItems'] = $matrizItems;
+						
+					// Utilizar lo siguiente cuando no se pase un arreglo:
+					$atributos ['baseDatos'] = 'geografico';
+					// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
+					$tab ++;
+					$atributos = array_merge ( $atributos, $atributosGlobales );
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
+					unset ( $atributos );
+					
+					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+					$esteCampo = 'informacion_srid'; // Acciones Preventivas
+					$atributos ['id'] = $esteCampo;
+					$atributos ['nombre'] = $esteCampo;
+					$atributos ['tipo'] = 'text';
+					$atributos ['estilo'] = 'jqueryui';
+					$atributos ['marco'] = true;
+					$atributos ['estiloMarco'] = '';
+					$atributos ["etiquetaObligatorio"] = true;
+					$atributos ['columnas'] = 95;
+					$atributos ['filas'] = 5;
+					$atributos ['dobleLinea'] = 0;
+					$atributos ['tabIndex'] = $tab;
+					$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+					$atributos ['validar'] = '';
+					$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+					$atributos ['deshabilitado'] = true;
+					$atributos ['tamanno'] = 20;
+					$atributos ['maximoTamanno'] = '';
+					$atributos ['anchoEtiqueta'] = 220;
+					$tab ++;
+					
+					// Aplica atributos globales al control
+					$atributos = array_merge ( $atributos, $atributosGlobales );
+					echo $this->miFormulario->campoTextArea ( $atributos );
+					unset ( $atributos );
+					
+					
+					
+				}
+				
+				echo $this->miFormulario->agrupacion ( 'fin' );
+				unset ( $atributos );
+				
+			
 			}
 			
 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
