@@ -489,6 +489,13 @@ class registrarForm {
 						$atributos ['mensaje'] = 'Se Elimino con Exito Recomendación a la Navegación de la Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['titulo_proyecto'] . ".";
 						break;
 					
+					case 'ErrorCargarDirectorioProcesar' :
+						
+						$atributos ['tipo'] = 'error';
+						$atributos ['mensaje'] = 'Error al Intentar Cargar Fichero al Directorio de Procesamiento.<br>Verifique los Datos.';
+						
+						break;
+					
 					case 'ErrorExtensionArchivos' :
 						
 						$atributos ['tipo'] = 'error';

@@ -38,12 +38,19 @@ class FormProcessor {
 				}
 			}
 		}
-		var_dump ( $_REQUEST );
+		
 		/*
 		 * Verificar Extensión Ficheros
 		 */
 		
 		$this->verificarExtencionFicheros ();
+		
+		/*
+		 * Cargar Ficheros en el Directorio
+		 */
+		
+		$this->cargarFicherosDirectorio ();
+		
 		exit ();
 		
 		$arregloDatos = array (
@@ -68,6 +75,32 @@ class FormProcessor {
 			Redireccionador::redireccionar ( "Inserto" );
 		} else if ($registro == false) {
 			Redireccionador::redireccionar ( "NoInserto" );
+		}
+	}
+	function cargarFicherosDirectorio() {
+		
+		/*
+		 * fichero dbf
+		 */
+
+		{
+			/*
+			 * obtenemos los datos del Fichero
+			 */
+			$tamano = $this->var_dbf ['size'];
+			$tipo = $this->var_dbf ['type'];
+			$archivo = $this->var_dbf ['name'];
+			$prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
+			/*
+			 * guardamos el fichero en el Directorio
+			 */
+			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $prefijo . "_" . $archivo;
+			
+			if (! copy ( $this->var_dbf ['tmp_name'], $ruta_absoluta )) {
+				
+				echo "adasd";exit;
+				Redireccionador::redireccionar ( "ErrorCargarFicheroDirectorio" );
+			}
 		}
 	}
 	function verificarExtencionFicheros() {

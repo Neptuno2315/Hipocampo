@@ -52,8 +52,8 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 				$ruta .= "/blocks/" . $esteBloque ["nombre"] . "/";
 				$rutaURL .= "/blocks/" . $esteBloque ["nombre"] . "/";
 			} else {
-				$ruta .= "/blocks/" . $esteBloque ["grupo"] . $esteBloque ["nombre"] . "/";
-				$rutaURL .= "/blocks/" . $esteBloque ["grupo"] . $esteBloque ["nombre"] . "/";
+				$ruta .= "/blocks/" . $esteBloque ["grupo"] . "/" . $esteBloque ["nombre"] . "/";
+				$rutaURL .= "/blocks/" . $esteBloque ["grupo"] . "/" . $esteBloque ["nombre"] . "/";
 			}
 			
 			$this->miConfigurador->setVariableConfiguracion ( "rutaBloque", $ruta );
