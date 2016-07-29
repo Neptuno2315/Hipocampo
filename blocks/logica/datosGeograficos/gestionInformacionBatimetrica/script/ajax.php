@@ -96,8 +96,11 @@ function consultas_srid(elem, request, response){
 	    success: function(data){ 
 	 
 	        if(data!=" "){
-	
-	        	$("#<?php echo $this->campoSeguro('informacion_srid')?>").html(data);
+
+
+
+	        	document.getElementById("informacion_srid").innerHTML = data;
+	        	
 	            
 	            }          
 	   		}

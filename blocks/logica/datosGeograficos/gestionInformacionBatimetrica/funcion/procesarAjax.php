@@ -104,19 +104,40 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			
 			$resultado = $resultado [0];
 			
-			$cadena = (str_replace ( '+', '
-					                     ', $resultado [1] ));
+			// $cadena = (str_replace ( '",', '<br>', $resultado [0] ));
 			
+			$arreglo_extraer = array (
+					"[",
+					"]",
+					"]," 
+			);
 			
+			$ready = str_replace ( $arreglo_extraer, $arreglo_extraer [0], $resultado [0] );
+			$cadena = explode ( $arreglo_extraer [0], $ready );
 			
-			$cadena= explode ("+",$resultado [1]);
+			foreach ( $cadena as $valor )
+				($valor!='')?$descrp_sistema[]=$valor: "";
+				
+				
+				$descrp_sistema[7]= str_replace (",","@", $descrp_sistema[7]);
+				
+				
+				
+				$descrp_sistema = implode ( "<br>", $descrp_sistema );
+				
+				$descrp_sistema = (str_replace ( '",', '"<br>', $descrp_sistema ));
+// 			var_dump ( $descrp_sistema );
+// 			exit ();
+		
 			
-			
-			
-			return   ( ($cadena) );
+			// $cadena = (str_replace ( '",', '"<br>', $cadena ));
+			// var_dump ( $launch );
+			// exit ();
+			echo json_encode ( $descrp_sistema );
 			
 			break;
 	}
+	
 	exit ();
 }
 

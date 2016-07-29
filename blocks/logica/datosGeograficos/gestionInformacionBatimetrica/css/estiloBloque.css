@@ -30,6 +30,26 @@
 	color: black;
 }
 
+#informacion_proj4text {
+	font-size: 8px;
+	padding: 3px 5px;
+	border-width: 1px;
+	border-style: dotted;
+	color: black;
+	width: 47.85%;
+	float: right;
+}
+
+#informacion_srid {
+	font-size: 8px;
+	padding: 3px 5px;
+	border-width: 1px;
+	border-style: dotted;
+	color: black;
+	width: 50%;
+	float: left;
+}
+
 #DivRegistro {
 	/**	width: 50%;
 	font-size: 8px;

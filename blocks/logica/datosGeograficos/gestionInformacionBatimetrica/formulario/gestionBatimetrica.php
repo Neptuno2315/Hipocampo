@@ -85,7 +85,7 @@ class registrarForm {
 			unset ( $atributos );
 			
 			{
-						
+				
 				$esteCampo = 'nombre_projecto'; // Nombre o Titulo Proyecto
 				$atributos ['id'] = $esteCampo;
 				$atributos ['nombre'] = $esteCampo;
@@ -135,8 +135,7 @@ class registrarForm {
 				echo $this->miFormulario->campoTexto ( $atributos );
 				unset ( $atributos );
 				
-				
-				$esteCampo='ficheros';
+				$esteCampo = 'ficheros';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['leyenda'] = "Ficheros Componentes del Shapefile";
 				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
@@ -242,7 +241,7 @@ class registrarForm {
 				echo $this->miFormulario->agrupacion ( 'fin' );
 				unset ( $atributos );
 				
-				$esteCampo='ficheros';
+				$esteCampo = 'ficheros';
 				$atributos ['id'] = $esteCampo;
 				$atributos ['leyenda'] = "Identificador del Sistema Espacial de Referencia";
 				echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
@@ -266,12 +265,12 @@ class registrarForm {
 					$atributos ['anchoCaja'] = 90;
 					$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
 					$atributos ['anchoEtiqueta'] = 50;
-						
+					
 					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql ( "consultar_srid" );
-						
+					
 					$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
 					// $atributos ['matrizItems'] = $matrizItems;
-						
+					
 					// Utilizar lo siguiente cuando no se pase un arreglo:
 					$atributos ['baseDatos'] = 'geografico';
 					// $atributos ['cadena_sql']='ponerLaCadenaSqlAEjecutar';
@@ -280,41 +279,70 @@ class registrarForm {
 					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
 					
-					// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-					$esteCampo = 'informacion_srid'; // Acciones Preventivas
+					// // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+					// $esteCampo = 'informacion_srid'; // Acciones Preventivas
+					// $atributos ['id'] = $esteCampo;
+					// $atributos ['nombre'] = $esteCampo;
+					// $atributos ['tipo'] = 'text';
+					// $atributos ['estilo'] = 'jqueryui';
+					// $atributos ['marco'] = true;
+					// $atributos ['estiloMarco'] = '';
+					// $atributos ["etiquetaObligatorio"] = true;
+					// $atributos ['columnas'] = 95;
+					// $atributos ['filas'] = 5;
+					// $atributos ['dobleLinea'] = 0;
+					// $atributos ['tabIndex'] = $tab;
+					// $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+					// $atributos ['validar'] = '';
+					// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+					// $atributos ['deshabilitado'] = true;
+					// $atributos ['tamanno'] = 20;
+					// $atributos ['maximoTamanno'] = '';
+					// $atributos ['anchoEtiqueta'] = 220;
+					// $tab ++;
+					
+					// // Aplica atributos globales al control
+					// $atributos = array_merge ( $atributos, $atributosGlobales );
+					// // echo $this->miFormulario->campoTextArea ( $atributos );
+					// unset ( $atributos );
+					
+					$esteCampo = 'SRID_info';
 					$atributos ['id'] = $esteCampo;
-					$atributos ['nombre'] = $esteCampo;
-					$atributos ['tipo'] = 'text';
-					$atributos ['estilo'] = 'jqueryui';
-					$atributos ['marco'] = true;
-					$atributos ['estiloMarco'] = '';
-					$atributos ["etiquetaObligatorio"] = true;
-					$atributos ['columnas'] = 95;
-					$atributos ['filas'] = 5;
-					$atributos ['dobleLinea'] = 0;
-					$atributos ['tabIndex'] = $tab;
-					$atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-					$atributos ['validar'] = '';
-					$atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-					$atributos ['deshabilitado'] = true;
-					$atributos ['tamanno'] = 20;
-					$atributos ['maximoTamanno'] = '';
-					$atributos ['anchoEtiqueta'] = 220;
-					$tab ++;
-					
-					// Aplica atributos globales al control
-					$atributos = array_merge ( $atributos, $atributosGlobales );
-					echo $this->miFormulario->campoTextArea ( $atributos );
+					$atributos ['leyenda'] = "Información SRID";
+					echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
 					unset ( $atributos );
-					
-					
-					
+					{
+						
+						$atributos ["id"] = "informacion_srid";
+						$atributos ["estilo"] = " ";
+						$atributos ["estiloEnLinea"] = "display:block";
+						echo $this->miFormulario->division ( "inicio", $atributos );
+						unset ( $atributos );
+						
+						{
+						}
+						
+						echo $this->miFormulario->division ( 'fin' );
+						unset ( $atributos);
+						
+						$atributos ["id"] = "informacion_proj4text";
+						$atributos ["estilo"] = " ";
+						$atributos ["estiloEnLinea"] = "display:block";
+						echo $this->miFormulario->division ( "inicio", $atributos );
+						unset ( $atributos );
+						
+						{
+						}
+						
+						echo $this->miFormulario->division ( 'fin' );
+						unset ( $atributos);
+					}
+					echo $this->miFormulario->agrupacion ( 'fin' );
+					unset ( $atributos );
 				}
 				
 				echo $this->miFormulario->agrupacion ( 'fin' );
 				unset ( $atributos );
-				
-			
 			}
 			
 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
@@ -326,97 +354,97 @@ class registrarForm {
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
 		
-		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "DivEstadistico";
-		$atributos ["estilo"] = " ";
-		echo $this->miFormulario->division ( "inicio", $atributos );
-		unset ( $atributos );
-		{
+// 		// ------------------Division para los botones-------------------------
+// 		$atributos ["id"] = "DivEstadistico";
+// 		$atributos ["estilo"] = " ";
+// 		echo $this->miFormulario->division ( "inicio", $atributos );
+// 		unset ( $atributos );
+// 		{
 			
-			$esteCampo = "marcoDatosBasicos";
-			$atributos ['id'] = $esteCampo;
-			$atributos ["estilo"] = "jqueryui";
-			$atributos ['tipoEtiqueta'] = 'inicio';
-			$atributos ["leyenda"] = "Estadístico Ayudas a la Navegación en Relación a la Cantidad de las Mismas.";
-			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-			unset ( $atributos );
+// 			$esteCampo = "marcoDatosBasicos";
+// 			$atributos ['id'] = $esteCampo;
+// 			$atributos ["estilo"] = "jqueryui";
+// 			$atributos ['tipoEtiqueta'] = 'inicio';
+// 			$atributos ["leyenda"] = "Estadístico Ayudas a la Navegación en Relación a la Cantidad de las Mismas.";
+// 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+// 			unset ( $atributos );
 			
-			{
+// 			{
 				
-				echo "<svg></svg>";
-			}
+// 				echo "<svg></svg>";
+// 			}
 			
-			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-			unset ( $atributos );
-		}
-		// ------------------Fin Division para los botones-------------------------
-		echo $this->miFormulario->division ( "fin" );
-		unset ( $atributos );
+// 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+// 			unset ( $atributos );
+// 		}
+// 		// ------------------Fin Division para los botones-------------------------
+// 		echo $this->miFormulario->division ( "fin" );
+// 		unset ( $atributos );
 		
-		// ------------------Division para los botones-------------------------
-		$atributos ["id"] = "DivTabla";
-		$atributos ["estilo"] = " ";
-		echo $this->miFormulario->division ( "inicio", $atributos );
-		unset ( $atributos );
-		{
+// 		// ------------------Division para los botones-------------------------
+// 		$atributos ["id"] = "DivTabla";
+// 		$atributos ["estilo"] = " ";
+// 		echo $this->miFormulario->division ( "inicio", $atributos );
+// 		unset ( $atributos );
+// 		{
 			
-			$esteCampo = "marcoDatosBasicos";
-			$atributos ['id'] = $esteCampo;
-			$atributos ["estilo"] = "jqueryui";
-			$atributos ['tipoEtiqueta'] = 'inicio';
-			// $atributos ["leyenda"] = "";
-			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-			unset ( $atributos );
+// 			$esteCampo = "marcoDatosBasicos";
+// 			$atributos ['id'] = $esteCampo;
+// 			$atributos ["estilo"] = "jqueryui";
+// 			$atributos ['tipoEtiqueta'] = 'inicio';
+// 			// $atributos ["leyenda"] = "";
+// 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+// 			unset ( $atributos );
 			
-			$atributos ['texto'] = "Recomendaciones a la Navegación";
-			$atributos ['estilo'] = "textoResaltado";
-			$tab ++;
+// 			$atributos ['texto'] = "Recomendaciones a la Navegación";
+// 			$atributos ['estilo'] = "textoResaltado";
+// 			$tab ++;
 			
-			// Aplica atributos globales al control
-			echo $this->miFormulario->campoTexto ( $atributos );
-			unset ( $atributos );
+// 			// Aplica atributos globales al control
+// 			echo $this->miFormulario->campoTexto ( $atributos );
+// 			unset ( $atributos );
 			
-			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
-			$recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+// 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
+// 			$recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
 			
-			if ($recomendaciones) {
+// 			if ($recomendaciones) {
 				
-				$mostrarHtml = "<table id='tablaRecomedaciones'>
-									<thead>
-						                <tr>
-						              	    <th>Riesgo</th>
-											<th>Acciones Preventivas</th>
-											<th>Señalización</th>
-											<th>Modificar<br>Recomendación</th>
-											<th>Eliminar<br>Recomendación</th>
-										</tr>
-						            </thead>
-							</table>
-            ";
-				echo $mostrarHtml;
-			} else {
+// 				$mostrarHtml = "<table id='tablaRecomedaciones'>
+// 									<thead>
+// 						                <tr>
+// 						              	    <th>Riesgo</th>
+// 											<th>Acciones Preventivas</th>
+// 											<th>Señalización</th>
+// 											<th>Modificar<br>Recomendación</th>
+// 											<th>Eliminar<br>Recomendación</th>
+// 										</tr>
+// 						            </thead>
+// 							</table>
+//             ";
+// 				echo $mostrarHtml;
+// 			} else {
 				
-				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
+// 				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
 				
-				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-				$esteCampo = 'mensajeRegistro';
-				$atributos ['id'] = $esteCampo;
-				$atributos ['tipo'] = 'error';
-				$atributos ['estilo'] = 'textoCentrar';
-				$atributos ['mensaje'] = $mensaje;
+// 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+// 				$esteCampo = 'mensajeRegistro';
+// 				$atributos ['id'] = $esteCampo;
+// 				$atributos ['tipo'] = 'error';
+// 				$atributos ['estilo'] = 'textoCentrar';
+// 				$atributos ['mensaje'] = $mensaje;
 				
-				$tab ++;
+// 				$tab ++;
 				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->cuadroMensaje ( $atributos );
-				unset ( $atributos );
-				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-			}
+// 				// Aplica atributos globales al control
+// 				$atributos = array_merge ( $atributos, $atributosGlobales );
+// 				echo $this->miFormulario->cuadroMensaje ( $atributos );
+// 				unset ( $atributos );
+// 				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+// 			}
 			
-			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-			unset ( $atributos );
-		}
+// 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+// 			unset ( $atributos );
+// 		}
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
