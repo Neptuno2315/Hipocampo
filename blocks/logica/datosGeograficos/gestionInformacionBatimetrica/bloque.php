@@ -52,8 +52,8 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 				$ruta .= "/blocks/" . $esteBloque ["nombre"] . "/";
 				$rutaURL .= "/blocks/" . $esteBloque ["nombre"] . "/";
 			} else {
-				$ruta .= "/blocks/" . $esteBloque ["grupo"] . "/" . $esteBloque ["nombre"] . "/";
-				$rutaURL .= "/blocks/" . $esteBloque ["grupo"] . "/" . $esteBloque ["nombre"] . "/";
+				$ruta .= "/blocks/" . $esteBloque ["grupo"] . $esteBloque ["nombre"] . "/";
+				$rutaURL .= "/blocks/" . $esteBloque ["grupo"] . $esteBloque ["nombre"] . "/";
 			}
 			
 			$this->miConfigurador->setVariableConfiguracion ( "rutaBloque", $ruta );
@@ -66,9 +66,8 @@ if (! class_exists ( 'logica\analisis\riesgos' )) {
 			$this->miFormulario = new \FormularioHtml ();
 		}
 		public function bloque() {
-			
 			if (isset ( $_REQUEST ['botonCancelar'] ) && $_REQUEST ['botonCancelar'] == "true") {
-				Redireccionador::redireccionar("paginaPrincipal");
+				Redireccionador::redireccionar ( "paginaPrincipal" );
 			} else {
 				
 				/**
