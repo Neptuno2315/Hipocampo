@@ -75,19 +75,32 @@ class FormProcessor {
 			
 			$archivo = $_FILES ['fichero_dbf'];
 			$trozos = explode ( ".", $archivo ['name'] );
-			$extension= end($trozos);
-			var_dump($extension);
-			($extension!='dbf')?Redireccionador::redireccionar("ErrorExtension"):$this->var_dbf=$archivo;
-			
+			$extension = end ( $trozos );
+			($extension != 'dbf') ? Redireccionador::redireccionar ( "ErrorExtension" ) : $this->var_dbf = $archivo;
 		}
 		
 		if (isset ( $_FILES ['fichero_prj'] )) {
+			
+			$archivo = $_FILES ['fichero_prj'];
+			$trozos = explode ( ".", $archivo ['name'] );
+			$extension = end ( $trozos );
+			($extension != 'prj') ? Redireccionador::redireccionar ( "ErrorExtension" ) : $this->var_prj = $archivo;
 		}
 		
 		if (isset ( $_FILES ['fichero_shx'] )) {
+			
+			$archivo = $_FILES ['fichero_shx'];
+			$trozos = explode ( ".", $archivo ['name'] );
+			$extension = end ( $trozos );
+			($extension != 'shx') ? Redireccionador::redireccionar ( "ErrorExtension" ) : $this->var_shx = $archivo;
 		}
 		
 		if (isset ( $_FILES ['fichero_shp'] )) {
+			
+			$archivo = $_FILES ['fichero_shp'];
+			$trozos = explode ( ".", $archivo ['name'] );
+			$extension = end ( $trozos );
+			($extension != 'shp') ? Redireccionador::redireccionar ( "ErrorExtension" ) : $this->var_shp = $archivo;
 		}
 	}
 }
