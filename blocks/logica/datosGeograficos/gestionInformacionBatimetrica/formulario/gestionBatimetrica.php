@@ -85,54 +85,110 @@ class registrarForm {
 			unset ( $atributos );
 			
 			{
-				
-				$esteCampo = 'nombre_projecto'; // Nombre o Titulo Proyecto
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'text';
-				$atributos ['estilo'] = 'textoElegante';
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = false;
-				$atributos ['tabIndex'] = $tab;
-				
-				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "<B>" . $_REQUEST ['titulo_proyecto'] . "</B>";
-				$tab ++;
-				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoTexto ( $atributos );
+				$atributos ["id"] = "divisionProjecto";
+				$atributos ["estilo"] = " ";
+				$atributos ["estiloEnLinea"] = "display:block";
+				echo $this->miFormulario->division ( "inicio", $atributos );
 				unset ( $atributos );
 				
-				$esteCampo = 'nombre_region'; // Nombre o Titulo Proyecto
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'text';
-				$atributos ['estilo'] = 'textoElegante';
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = false;
-				$atributos ['tabIndex'] = $tab;
-				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['region'] . "</B>";
-				$tab ++;
+				{
+					
+					$esteCampo = 'ficheros';
+					$atributos ['id'] = $esteCampo;
+					$atributos ['leyenda'] = "Información Zona Estudio";
+					echo $this->miFormulario->agrupacion ( 'inicio', $atributos );
+					unset ( $atributos );
+					{
+						$esteCampo = 'nombre_projecto'; // Nombre o Titulo Proyecto
+						$atributos ['id'] = $esteCampo;
+						$atributos ['nombre'] = $esteCampo;
+						$atributos ['tipo'] = 'text';
+						$atributos ['estilo'] = 'textoElegante';
+						$atributos ['columnas'] = 1;
+						$atributos ['dobleLinea'] = false;
+						$atributos ['tabIndex'] = $tab;
+						
+						$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "<B>" . $_REQUEST ['titulo_proyecto'] . "</B>";
+						$tab ++;
+						
+						// Aplica atributos globales al control
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoTexto ( $atributos );
+						unset ( $atributos );
+						
+						$esteCampo = 'nombre_region'; // Nombre o Titulo Proyecto
+						$atributos ['id'] = $esteCampo;
+						$atributos ['nombre'] = $esteCampo;
+						$atributos ['tipo'] = 'text';
+						$atributos ['estilo'] = 'textoElegante';
+						$atributos ['columnas'] = 1;
+						$atributos ['dobleLinea'] = false;
+						$atributos ['tabIndex'] = $tab;
+						$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['region'] . "</B>";
+						$tab ++;
+						
+						// Aplica atributos globales al control
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoTexto ( $atributos );
+						unset ( $atributos );
+						
+						$esteCampo = 'nombre_sector'; // Nombre o Titulo Proyecto
+						$atributos ['id'] = $esteCampo;
+						$atributos ['nombre'] = $esteCampo;
+						$atributos ['tipo'] = 'text';
+						$atributos ['estilo'] = 'textoElegante';
+						$atributos ['columnas'] = 1;
+						$atributos ['dobleLinea'] = false;
+						$atributos ['tabIndex'] = $tab;
+						$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['sector'] . "</B>";
+						$tab ++;
+						
+						// Aplica atributos globales al control
+						$atributos = array_merge ( $atributos, $atributosGlobales );
+						echo $this->miFormulario->campoTexto ( $atributos );
+						unset ( $atributos );
+					}
+					
+					echo $this->miFormulario->agrupacion ( 'fin' );
+					unset ( $atributos );
+				}
 				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoTexto ( $atributos );
+				echo $this->miFormulario->division ( 'fin' );
 				unset ( $atributos );
 				
-				$esteCampo = 'nombre_sector'; // Nombre o Titulo Proyecto
-				$atributos ['id'] = $esteCampo;
-				$atributos ['nombre'] = $esteCampo;
-				$atributos ['tipo'] = 'text';
-				$atributos ['estilo'] = 'textoElegante';
-				$atributos ['columnas'] = 1;
-				$atributos ['dobleLinea'] = false;
-				$atributos ['tabIndex'] = $tab;
-				$atributos ['texto'] = "&nbsp&nbsp" . $this->lenguaje->getCadena ( $esteCampo ) . "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<B>" . $_REQUEST ['sector'] . "</B>";
-				$tab ++;
+				$atributos ["id"] = "divisionCarga";
+				$atributos ["estilo"] = " ";
+				$atributos ["estiloEnLinea"] = "display:block";
+				echo $this->miFormulario->division ( "inicio", $atributos );
+				unset ( $atributos );
 				
-				// Aplica atributos globales al control
-				$atributos = array_merge ( $atributos, $atributosGlobales );
-				echo $this->miFormulario->campoTexto ( $atributos );
+				{
+					
+					// -----------------CONTROL: Botón ----------------------------------------------------------------
+					$esteCampo = 'botonCargar';
+					$atributos ["id"] = $esteCampo;
+					$atributos ["tabIndex"] = $tab;
+					$atributos ["tipo"] = 'boton';
+					// submit: no se coloca si se desea un tipo button genérico
+					$atributos ['submit'] = true;
+					$atributos ["estiloMarco"] = '';
+					$atributos ["estiloBoton"] = 'jqueryui';
+					// verificar: true para verificar el formulario antes de pasarlo al servidor.
+					$atributos ["verificar"] = '';
+					$atributos ["tipoSubmit"] = 'jquery'; // Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
+					$atributos ["valor"] = $this->lenguaje->getCadena ( $esteCampo );
+					$atributos ['nombreFormulario'] = $esteBloque ['nombre'];
+					$tab ++;
+					
+					// Aplica atributos globales al control
+					$atributos = array_merge ( $atributos, $atributosGlobales );
+					echo $this->miFormulario->campoBoton ( $atributos );
+					unset ( $atributos );
+					
+					// -----------------FIN CONTROL: Botón -----------------------------------------------------------
+				}
+				
+				echo $this->miFormulario->division ( 'fin' );
 				unset ( $atributos );
 				
 				$esteCampo = 'ficheros';
@@ -279,7 +335,6 @@ class registrarForm {
 					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
 					
-					
 					$esteCampo = 'SRID_info';
 					$atributos ['id'] = $esteCampo;
 					$atributos ['leyenda'] = "Información SRID";
@@ -297,7 +352,7 @@ class registrarForm {
 						}
 						
 						echo $this->miFormulario->division ( 'fin' );
-						unset ( $atributos);
+						unset ( $atributos );
 						
 						$atributos ["id"] = "informacion_proj4text";
 						$atributos ["estilo"] = " ";
@@ -309,7 +364,7 @@ class registrarForm {
 						}
 						
 						echo $this->miFormulario->division ( 'fin' );
-						unset ( $atributos);
+						unset ( $atributos );
 					}
 					echo $this->miFormulario->agrupacion ( 'fin' );
 					unset ( $atributos );
@@ -328,97 +383,97 @@ class registrarForm {
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
 		
-// 		// ------------------Division para los botones-------------------------
-// 		$atributos ["id"] = "DivEstadistico";
-// 		$atributos ["estilo"] = " ";
-// 		echo $this->miFormulario->division ( "inicio", $atributos );
-// 		unset ( $atributos );
-// 		{
-			
-// 			$esteCampo = "marcoDatosBasicos";
-// 			$atributos ['id'] = $esteCampo;
-// 			$atributos ["estilo"] = "jqueryui";
-// 			$atributos ['tipoEtiqueta'] = 'inicio';
-// 			$atributos ["leyenda"] = "Estadístico Ayudas a la Navegación en Relación a la Cantidad de las Mismas.";
-// 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-// 			unset ( $atributos );
-			
-// 			{
-				
-// 				echo "<svg></svg>";
-// 			}
-			
-// 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-// 			unset ( $atributos );
-// 		}
-// 		// ------------------Fin Division para los botones-------------------------
-// 		echo $this->miFormulario->division ( "fin" );
-// 		unset ( $atributos );
+		// // ------------------Division para los botones-------------------------
+		// $atributos ["id"] = "DivEstadistico";
+		// $atributos ["estilo"] = " ";
+		// echo $this->miFormulario->division ( "inicio", $atributos );
+		// unset ( $atributos );
+		// {
 		
-// 		// ------------------Division para los botones-------------------------
-// 		$atributos ["id"] = "DivTabla";
-// 		$atributos ["estilo"] = " ";
-// 		echo $this->miFormulario->division ( "inicio", $atributos );
-// 		unset ( $atributos );
-// 		{
-			
-// 			$esteCampo = "marcoDatosBasicos";
-// 			$atributos ['id'] = $esteCampo;
-// 			$atributos ["estilo"] = "jqueryui";
-// 			$atributos ['tipoEtiqueta'] = 'inicio';
-// 			// $atributos ["leyenda"] = "";
-// 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-// 			unset ( $atributos );
-			
-// 			$atributos ['texto'] = "Recomendaciones a la Navegación";
-// 			$atributos ['estilo'] = "textoResaltado";
-// 			$tab ++;
-			
-// 			// Aplica atributos globales al control
-// 			echo $this->miFormulario->campoTexto ( $atributos );
-// 			unset ( $atributos );
-			
-// 			$cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
-// 			$recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-			
-// 			if ($recomendaciones) {
-				
-// 				$mostrarHtml = "<table id='tablaRecomedaciones'>
-// 									<thead>
-// 						                <tr>
-// 						              	    <th>Riesgo</th>
-// 											<th>Acciones Preventivas</th>
-// 											<th>Señalización</th>
-// 											<th>Modificar<br>Recomendación</th>
-// 											<th>Eliminar<br>Recomendación</th>
-// 										</tr>
-// 						            </thead>
-// 							</table>
-//             ";
-// 				echo $mostrarHtml;
-// 			} else {
-				
-// 				$mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
-				
-// 				// ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-// 				$esteCampo = 'mensajeRegistro';
-// 				$atributos ['id'] = $esteCampo;
-// 				$atributos ['tipo'] = 'error';
-// 				$atributos ['estilo'] = 'textoCentrar';
-// 				$atributos ['mensaje'] = $mensaje;
-				
-// 				$tab ++;
-				
-// 				// Aplica atributos globales al control
-// 				$atributos = array_merge ( $atributos, $atributosGlobales );
-// 				echo $this->miFormulario->cuadroMensaje ( $atributos );
-// 				unset ( $atributos );
-// 				// --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-// 			}
-			
-// 			echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-// 			unset ( $atributos );
-// 		}
+		// $esteCampo = "marcoDatosBasicos";
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ["estilo"] = "jqueryui";
+		// $atributos ['tipoEtiqueta'] = 'inicio';
+		// $atributos ["leyenda"] = "Estadístico Ayudas a la Navegación en Relación a la Cantidad de las Mismas.";
+		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		// unset ( $atributos );
+		
+		// {
+		
+		// echo "<svg></svg>";
+		// }
+		
+		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+		// unset ( $atributos );
+		// }
+		// // ------------------Fin Division para los botones-------------------------
+		// echo $this->miFormulario->division ( "fin" );
+		// unset ( $atributos );
+		
+		// // ------------------Division para los botones-------------------------
+		// $atributos ["id"] = "DivTabla";
+		// $atributos ["estilo"] = " ";
+		// echo $this->miFormulario->division ( "inicio", $atributos );
+		// unset ( $atributos );
+		// {
+		
+		// $esteCampo = "marcoDatosBasicos";
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ["estilo"] = "jqueryui";
+		// $atributos ['tipoEtiqueta'] = 'inicio';
+		// // $atributos ["leyenda"] = "";
+		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+		// unset ( $atributos );
+		
+		// $atributos ['texto'] = "Recomendaciones a la Navegación";
+		// $atributos ['estilo'] = "textoResaltado";
+		// $tab ++;
+		
+		// // Aplica atributos globales al control
+		// echo $this->miFormulario->campoTexto ( $atributos );
+		// unset ( $atributos );
+		
+		// $cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
+		// $recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
+		
+		// if ($recomendaciones) {
+		
+		// $mostrarHtml = "<table id='tablaRecomedaciones'>
+		// <thead>
+		// <tr>
+		// <th>Riesgo</th>
+		// <th>Acciones Preventivas</th>
+		// <th>Señalización</th>
+		// <th>Modificar<br>Recomendación</th>
+		// <th>Eliminar<br>Recomendación</th>
+		// </tr>
+		// </thead>
+		// </table>
+		// ";
+		// echo $mostrarHtml;
+		// } else {
+		
+		// $mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
+		
+		// // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
+		// $esteCampo = 'mensajeRegistro';
+		// $atributos ['id'] = $esteCampo;
+		// $atributos ['tipo'] = 'error';
+		// $atributos ['estilo'] = 'textoCentrar';
+		// $atributos ['mensaje'] = $mensaje;
+		
+		// $tab ++;
+		
+		// // Aplica atributos globales al control
+		// $atributos = array_merge ( $atributos, $atributosGlobales );
+		// echo $this->miFormulario->cuadroMensaje ( $atributos );
+		// unset ( $atributos );
+		// // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
+		// }
+		
+		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
+		// unset ( $atributos );
+		// }
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );

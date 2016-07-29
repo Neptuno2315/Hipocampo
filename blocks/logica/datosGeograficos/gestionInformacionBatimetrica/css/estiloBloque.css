@@ -54,6 +54,22 @@
 	float: left;
 }
 
+#divisionCarga {
+	width: 50.4%;
+	float: right;
+	padding: 15px 15px 15px 15px;
+	border-width: 1px;
+	text-align: center;
+	border-style: dotted;
+	margin: 22px 5px 15px 5px;
+}
+
+#divisionProjecto {
+	width: 44%;
+	float: left;
+	
+}
+
 #DivRegistro {
 	/**	width: 50%;
 	font-size: 8px;
