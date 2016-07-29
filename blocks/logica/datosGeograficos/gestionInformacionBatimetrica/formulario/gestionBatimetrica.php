@@ -217,7 +217,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoIzquierda";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = " ";
+						$atributos ["validar"] = "required";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -235,7 +235,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoderecha";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = " ";
+						$atributos ["validar"] = "required";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -265,7 +265,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoIzquierda";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = " ";
+						$atributos ["validar"] = "required";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -283,7 +283,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoderecha";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = " ";
+						$atributos ["validar"] = "required";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -489,9 +489,11 @@ class registrarForm {
 						$atributos ['mensaje'] = 'Se Elimino con Exito Recomendación a la Navegación de la Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST ['titulo_proyecto'] . ".";
 						break;
 					
-					case 'EliminoError' :
+					case 'ErrorExtensionArchivos' :
+						
 						$atributos ['tipo'] = 'error';
-						$atributos ['mensaje'] = 'Error en la Eliminación de Recomendación a la Navegación de la Zona de Estudio.<br>Verifique los Datos.';
+						$atributos ['mensaje'] = 'Error en la Extensión de los Ficheros.<br>Verifique los Datos.';
+						
 						break;
 					
 					case 'ErrorProcesamiento' :

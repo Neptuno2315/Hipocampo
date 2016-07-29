@@ -9,6 +9,10 @@ class FormProcessor {
 	var $miFormulario;
 	var $miSql;
 	var $conexion;
+	var $var_dbf;
+	var $var_prj;
+	var $var_shx;
+	var $var_shp;
 	function __construct($lenguaje, $sql) {
 		$this->miInspectorHTML = \InspectorHTML::singleton ();
 		$this->miConfigurador = \Configurador::singleton ();
@@ -17,7 +21,7 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-	
+		
 		/*
 		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
 		 */
@@ -34,13 +38,13 @@ class FormProcessor {
 				}
 			}
 		}
-		var_dump($_REQUEST);
+		var_dump ( $_REQUEST );
 		/*
 		 * Verificar Extensión Ficheros
 		 */
 		
-		$this->verificarExtencionFicheros();
-		exit();
+		$this->verificarExtencionFicheros ();
+		exit ();
 		
 		$arregloDatos = array (
 				"id_zona_estudio" => $_REQUEST ['id_zona'],
@@ -66,18 +70,26 @@ class FormProcessor {
 			Redireccionador::redireccionar ( "NoInserto" );
 		}
 	}
-	
-	function verificarExtencionFicheros(){
-		var_dump($_FILES);
+	function verificarExtencionFicheros() {
+		if (isset ( $_FILES ['fichero_dbf'] )) {
+			
+			$archivo = $_FILES ['fichero_dbf'];
+			$trozos = explode ( ".", $archivo ['name'] );
+			$extension= end($trozos);
+			var_dump($extension);
+			($extension!='dbf')?Redireccionador::redireccionar("ErrorExtension"):$this->var_dbf=$archivo;
+			
+		}
 		
+		if (isset ( $_FILES ['fichero_prj'] )) {
+		}
 		
+		if (isset ( $_FILES ['fichero_shx'] )) {
+		}
 		
-		
+		if (isset ( $_FILES ['fichero_shp'] )) {
+		}
 	}
-	
-	
-	
-	
 }
 
 $miProcesador = new FormProcessor ( $this->lenguaje, $this->sql );

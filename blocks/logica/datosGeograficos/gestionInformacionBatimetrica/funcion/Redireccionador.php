@@ -24,6 +24,18 @@ class Redireccionador {
 				
 				break;
 			
+			case 'ErrorExtension' :
+				$variable = 'pagina=gestionInformacionBatimetrica';
+				$variable .= "&opcion=gestionBatimetriaZona";
+				$variable .= "&mensaje=ErrorExtensionArchivos";
+				$variable .= "&usuario=" . $_REQUEST ['usuario'];
+				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
+				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
+				$variable .= "&region=" . $_REQUEST ['region'];
+				$variable .= "&sector=" . $_REQUEST ['sector'];
+				
+				break;
+			
 			case "Inserto" :
 				
 				$variable = 'pagina=gestionInformacionBatimetrica';
@@ -95,8 +107,6 @@ class Redireccionador {
 		foreach ( $_REQUEST as $clave => $valor ) {
 			unset ( $_REQUEST [$clave] );
 		}
-		
-		
 		
 		$url = $miConfigurador->configuracion ["host"] . $miConfigurador->configuracion ["site"] . "/index.php?";
 		$enlace = $miConfigurador->configuracion ['enlace'];
