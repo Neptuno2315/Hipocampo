@@ -121,4 +121,12 @@ $(function() {
 
 	$("#<?php echo $this->campoSeguro('srid')?>").select2();
 
+	$("#<?php echo $this->campoSeguro('riesgo')?>").select2();
+
+	setTimeout(function() {
+		$('#MensajeRespuesta').hide("drop", {
+			direction : "up"
+		}, "slow");
+	}, 2000);
+
 });

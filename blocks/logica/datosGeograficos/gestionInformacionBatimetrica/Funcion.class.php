@@ -31,8 +31,8 @@ class Funcion {
 		
 		return $resultado;
 	}
-	function registrar() {
-		include_once ($this->ruta . "funcion/registrarRecomendaciones.php");
+	function cargar() {
+		include_once ($this->ruta . "funcion/cargarInformacion.php");
 	}
 	function modificar() {
 		include_once ($this->ruta . "funcion/modificarRecomendaciones.php");
@@ -40,11 +40,9 @@ class Funcion {
 	function eliminar() {
 		include_once ($this->ruta . "funcion/eliminarRecomendaciones.php");
 	}
-	
 	function documentoPDF() {
 		include_once ($this->ruta . "funcion/informeDocumentoPDF.php");
 	}
-	
 	function procesarAjax() {
 		include_once ($this->ruta . "funcion/procesarAjax.php");
 	}
@@ -64,8 +62,8 @@ class Funcion {
 			
 			switch ($_REQUEST ['opcion']) {
 				
-				case 'RegistrarRecomendaciones' :
-					$this->registrar ();
+				case 'CargarInformacionBatimetríca' :
+					$this->cargar ();
 					break;
 				
 				case 'ModificarRecomendacion' :
@@ -77,7 +75,7 @@ class Funcion {
 					break;
 				
 				case 'DocumentoInforme' :
-					$this->documentoPDF();
+					$this->documentoPDF ();
 					break;
 			}
 		}

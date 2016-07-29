@@ -217,7 +217,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoIzquierda";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = "required";
+						$atributos ["validar"] = " ";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -235,7 +235,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoderecha";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = "required";
+						$atributos ["validar"] = " ";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -265,7 +265,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoIzquierda";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = "required";
+						$atributos ["validar"] = " ";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -283,7 +283,7 @@ class registrarForm {
 						$atributos ["estilo"] = "textoderecha";
 						$atributos ["anchoEtiqueta"] = 190;
 						$atributos ["tamanno"] = 500000;
-						$atributos ["validar"] = "required";
+						$atributos ["validar"] = " ";
 						$atributos ["etiqueta"] = $this->lenguaje->getCadena ( $esteCampo );
 						// $atributos ["valor"] = $valorCodificado;
 						$atributos = array_merge ( $atributos, $atributosGlobales );
@@ -383,97 +383,6 @@ class registrarForm {
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
 		
-		// // ------------------Division para los botones-------------------------
-		// $atributos ["id"] = "DivEstadistico";
-		// $atributos ["estilo"] = " ";
-		// echo $this->miFormulario->division ( "inicio", $atributos );
-		// unset ( $atributos );
-		// {
-		
-		// $esteCampo = "marcoDatosBasicos";
-		// $atributos ['id'] = $esteCampo;
-		// $atributos ["estilo"] = "jqueryui";
-		// $atributos ['tipoEtiqueta'] = 'inicio';
-		// $atributos ["leyenda"] = "Estadístico Ayudas a la Navegación en Relación a la Cantidad de las Mismas.";
-		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		// unset ( $atributos );
-		
-		// {
-		
-		// echo "<svg></svg>";
-		// }
-		
-		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-		// unset ( $atributos );
-		// }
-		// // ------------------Fin Division para los botones-------------------------
-		// echo $this->miFormulario->division ( "fin" );
-		// unset ( $atributos );
-		
-		// // ------------------Division para los botones-------------------------
-		// $atributos ["id"] = "DivTabla";
-		// $atributos ["estilo"] = " ";
-		// echo $this->miFormulario->division ( "inicio", $atributos );
-		// unset ( $atributos );
-		// {
-		
-		// $esteCampo = "marcoDatosBasicos";
-		// $atributos ['id'] = $esteCampo;
-		// $atributos ["estilo"] = "jqueryui";
-		// $atributos ['tipoEtiqueta'] = 'inicio';
-		// // $atributos ["leyenda"] = "";
-		// echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
-		// unset ( $atributos );
-		
-		// $atributos ['texto'] = "Recomendaciones a la Navegación";
-		// $atributos ['estilo'] = "textoResaltado";
-		// $tab ++;
-		
-		// // Aplica atributos globales al control
-		// echo $this->miFormulario->campoTexto ( $atributos );
-		// unset ( $atributos );
-		
-		// $cadenaSql = $this->miSql->getCadenaSql ( "consultar_recomedaciones", $_REQUEST ['id_zona'] );
-		// $recomendaciones = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "busqueda" );
-		
-		// if ($recomendaciones) {
-		
-		// $mostrarHtml = "<table id='tablaRecomedaciones'>
-		// <thead>
-		// <tr>
-		// <th>Riesgo</th>
-		// <th>Acciones Preventivas</th>
-		// <th>Señalización</th>
-		// <th>Modificar<br>Recomendación</th>
-		// <th>Eliminar<br>Recomendación</th>
-		// </tr>
-		// </thead>
-		// </table>
-		// ";
-		// echo $mostrarHtml;
-		// } else {
-		
-		// $mensaje = "No Se Encontraron Recomendaciones a la Navegación<br> Para el Proyecto : " . $_REQUEST ['titulo_proyecto'] . ".";
-		
-		// // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-		// $esteCampo = 'mensajeRegistro';
-		// $atributos ['id'] = $esteCampo;
-		// $atributos ['tipo'] = 'error';
-		// $atributos ['estilo'] = 'textoCentrar';
-		// $atributos ['mensaje'] = $mensaje;
-		
-		// $tab ++;
-		
-		// // Aplica atributos globales al control
-		// $atributos = array_merge ( $atributos, $atributosGlobales );
-		// echo $this->miFormulario->cuadroMensaje ( $atributos );
-		// unset ( $atributos );
-		// // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
-		// }
-		
-		// echo $this->miFormulario->marcoAgrupacion ( 'fin' );
-		// unset ( $atributos );
-		// }
 		// ------------------Fin Division para los botones-------------------------
 		echo $this->miFormulario->division ( "fin" );
 		unset ( $atributos );
@@ -498,10 +407,12 @@ class registrarForm {
 		$valorCodificado .= "&bloque=" . $esteBloque ['nombre'];
 		$valorCodificado .= "&bloqueGrupo=" . $esteBloque ["grupo"];
 		$valorCodificado .= "&usuario=" . $_REQUEST ["usuario"];
-		$valorCodificado .= "&opcion=RegistrarRecomendaciones";
+		$valorCodificado .= "&opcion=CargarInformacionBatimetríca";
 		$valorCodificado .= "&usuario=" . $_REQUEST ['usuario'];
 		$valorCodificado .= "&id_zona=" . $_REQUEST ['id_zona'];
 		$valorCodificado .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
+		$valorCodificado .= "&region=" . $_REQUEST ['region'];
+		$valorCodificado .= "&sector=" . $_REQUEST ['sector'];
 		/*
 		 * SARA permite que los nombres de los campos sean dinámicos.
 		 * Para ello utiliza la hora en que es creado el formulario para

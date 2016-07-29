@@ -1,5 +1,5 @@
 <?php
-use logica\gestion\informeRiesgos\funcion\Redireccionador;
+use logica\datosGeograficos\gestionInformacionBatimetrica\funcion\Redireccionador;
 include_once ('Redireccionador.php');
 include_once ("core/builder/InspectorHTML.class.php");
 class FormProcessor {
@@ -17,7 +17,7 @@ class FormProcessor {
 		$this->miSql = $sql;
 	}
 	function procesarFormulario() {
-		
+	
 		/*
 		 * Validar que los Campos no fuesen manipulados para saltarse la validaciones del plugin Validation Engine
 		 */
@@ -34,10 +34,13 @@ class FormProcessor {
 				}
 			}
 		}
-		
+		var_dump($_REQUEST);
 		/*
-		 * Configurar Arreglo a Registrar
+		 * Verificar Extensión Ficheros
 		 */
+		
+		$this->verificarExtencionFicheros();
+		exit();
 		
 		$arregloDatos = array (
 				"id_zona_estudio" => $_REQUEST ['id_zona'],
@@ -57,13 +60,24 @@ class FormProcessor {
 		
 		$registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
 		
-		
 		if ($registro == true) {
 			Redireccionador::redireccionar ( "Inserto" );
 		} else if ($registro == false) {
 			Redireccionador::redireccionar ( "NoInserto" );
 		}
 	}
+	
+	function verificarExtencionFicheros(){
+		var_dump($_FILES);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 }
 
 $miProcesador = new FormProcessor ( $this->lenguaje, $this->sql );

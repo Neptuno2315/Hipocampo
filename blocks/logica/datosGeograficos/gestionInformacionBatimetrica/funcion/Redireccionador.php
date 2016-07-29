@@ -13,18 +13,20 @@ class Redireccionador {
 		switch ($opcion) {
 			
 			case 'ErrorModificacionFormulario' :
-				$variable = 'pagina=informeRiesgos';
-				$variable .= "&opcion=gestionRecomendaciones";
+				$variable = 'pagina=gestionInformacionBatimetrica';
+				$variable .= "&opcion=gestionBatimetriaZona";
 				$variable .= "&mensaje=ErrorProcesamiento";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				$variable .= "&id_zona=" . $_REQUEST ['id_zona'];
 				$variable .= "&titulo_proyecto=" . $_REQUEST ['titulo_proyecto'];
+				$variable .= "&region=" . $_REQUEST ['region'];
+				$variable .= "&sector=" . $_REQUEST ['sector'];
 				
 				break;
 			
 			case "Inserto" :
 				
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=RegistroExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -35,7 +37,7 @@ class Redireccionador {
 			
 			case "NoInserto" :
 				
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=RegistroError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -46,7 +48,7 @@ class Redireccionador {
 			
 			case "Actualizo" :
 				
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=ActualizoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -57,7 +59,7 @@ class Redireccionador {
 			
 			case "NoActualizo" :
 				
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=ActualizacionError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -67,7 +69,7 @@ class Redireccionador {
 				break;
 			
 			case "Elimino" :
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=EliminoExito";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -77,7 +79,7 @@ class Redireccionador {
 				break;
 			
 			case "NoElimino" :
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&opcion=gestionRecomendaciones";
 				$variable .= "&mensaje=EliminoError";
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
@@ -86,7 +88,7 @@ class Redireccionador {
 				break;
 			
 			case 'paginaPrincipal' :
-				$variable = 'pagina=informeRiesgos';
+				$variable = 'pagina=gestionInformacionBatimetrica';
 				$variable .= "&usuario=" . $_REQUEST ['usuario'];
 				break;
 		}
