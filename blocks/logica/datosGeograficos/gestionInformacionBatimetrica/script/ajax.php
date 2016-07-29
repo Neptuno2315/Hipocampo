@@ -99,8 +99,9 @@ function consultas_srid(elem, request, response){
 
 
 
-	        	document.getElementById("informacion_srid").innerHTML = data;
-	        	
+	        	document.getElementById("informacion_srid").innerHTML = data[0];
+
+	        	document.getElementById("informacion_proj4text").innerHTML = data[1];
 	            
 	            }          
 	   		}

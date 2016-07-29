@@ -131,7 +131,7 @@ class registrarForm {
 		$atributos ['id'] = $esteCampo;
 		$atributos ["estilo"] = "jqueryui";
 		$atributos ['tipoEtiqueta'] = 'inicio';
-		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio:Informe de Resultados";
+		$atributos ["leyenda"] = "Consultar Proyectos y/o Zonas Estudio: Gestión Batimetríca";
 		echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 		unset ( $atributos );
 		

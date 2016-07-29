@@ -80,7 +80,7 @@ class registrarForm {
 			$atributos ['id'] = $esteCampo;
 			$atributos ["estilo"] = "jqueryui";
 			$atributos ['tipoEtiqueta'] = 'inicio';
-			$atributos ["leyenda"] = "Registro Recomendaciones a la Navegación";
+			$atributos ["leyenda"] = "Gestión Información Batimetríca";
 			echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
 			unset ( $atributos );
 			
@@ -279,32 +279,6 @@ class registrarForm {
 					echo $this->miFormulario->campoCuadroLista ( $atributos );
 					unset ( $atributos );
 					
-					// // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
-					// $esteCampo = 'informacion_srid'; // Acciones Preventivas
-					// $atributos ['id'] = $esteCampo;
-					// $atributos ['nombre'] = $esteCampo;
-					// $atributos ['tipo'] = 'text';
-					// $atributos ['estilo'] = 'jqueryui';
-					// $atributos ['marco'] = true;
-					// $atributos ['estiloMarco'] = '';
-					// $atributos ["etiquetaObligatorio"] = true;
-					// $atributos ['columnas'] = 95;
-					// $atributos ['filas'] = 5;
-					// $atributos ['dobleLinea'] = 0;
-					// $atributos ['tabIndex'] = $tab;
-					// $atributos ['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
-					// $atributos ['validar'] = '';
-					// $atributos ['titulo'] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
-					// $atributos ['deshabilitado'] = true;
-					// $atributos ['tamanno'] = 20;
-					// $atributos ['maximoTamanno'] = '';
-					// $atributos ['anchoEtiqueta'] = 220;
-					// $tab ++;
-					
-					// // Aplica atributos globales al control
-					// $atributos = array_merge ( $atributos, $atributosGlobales );
-					// // echo $this->miFormulario->campoTextArea ( $atributos );
-					// unset ( $atributos );
 					
 					$esteCampo = 'SRID_info';
 					$atributos ['id'] = $esteCampo;

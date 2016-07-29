@@ -116,24 +116,25 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			$cadena = explode ( $arreglo_extraer [0], $ready );
 			
 			foreach ( $cadena as $valor )
-				($valor!='')?$descrp_sistema[]=$valor: "";
-				
-				
-				$descrp_sistema[7]= str_replace (",","@", $descrp_sistema[7]);
-				
-				
-				
-				$descrp_sistema = implode ( "<br>", $descrp_sistema );
-				
-				$descrp_sistema = (str_replace ( '",', '"<br>', $descrp_sistema ));
-// 			var_dump ( $descrp_sistema );
-// 			exit ();
-		
+				($valor != '') ? $descrp_sistema [] = $valor : "";
 			
-			// $cadena = (str_replace ( '",', '"<br>', $cadena ));
-			// var_dump ( $launch );
-			// exit ();
-			echo json_encode ( $descrp_sistema );
+			$descrp_sistema [7] = str_replace ( ",", "@", $descrp_sistema [7] );
+			
+			$descrp_sistema = implode ( "<br>", $descrp_sistema );
+			
+			$descrp_sistema = (str_replace ( '",', '"<br>', $descrp_sistema ));
+			
+			$array_parametros = explode ( "+", $resultado [1] );
+			
+			foreach ( $array_parametros as $valor )
+				($valor != '') ? $descrp_prj [] = $valor : "";
+			
+			$descrp_prj = implode ( "<br>", $descrp_prj );
+			
+			$resultadoFinal [0] = $descrp_sistema;
+			$resultadoFinal [1] = $descrp_prj;
+			
+			echo json_encode ( $resultadoFinal );
 			
 			break;
 	}

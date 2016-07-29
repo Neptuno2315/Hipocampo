@@ -31,17 +31,21 @@
 }
 
 #informacion_proj4text {
-	font-size: 8px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	font-size: 9px;
 	padding: 3px 5px;
 	border-width: 1px;
 	border-style: dotted;
 	color: black;
-	width: 47.85%;
-	float: right;
+	width: 46.85%;
+	float: left;
 }
 
 #informacion_srid {
-	font-size: 8px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	font-size: 9px;
 	padding: 3px 5px;
 	border-width: 1px;
 	border-style: dotted;
