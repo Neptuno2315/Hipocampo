@@ -94,7 +94,12 @@ class FormProcessor {
 		
 		echo "shp2pgsql -W LATIN1 -I -s " . $_REQUEST ['srid'] . " " . $this->var_shp ['rutaDirectorio'] . " >  " . $rutaStatica . $this->archivoSql . ".slq";
 		
-		$queries = exec ( "shp2pgsql -W LATIN1 -I -s " . $_REQUEST ['srid'] . " " . $this->var_shp ['rutaDirectorio'] . " >  " . $rutaStatica . $this->archivoSql . ".slq" );
+		$conexion = "geografico";
+		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		
+		$queries = exec ( "shp2pgsql -W LATIN1 -I -s " . $_REQUEST ['srid'] . " " . $this->var_shp ['rutaDirectorio'] . "  geografico.batimetria >  " . $rutaStatica . $this->archivoSql . ".slq ; " );
+		
+		$queries = exec ( "psql -u " . $esteRecursoDB->usuario . " -d " . $this->miConfigurador->configuracion ['dbnombre'] );
 		
 		var_dump ( $this->var_shp );
 	}
