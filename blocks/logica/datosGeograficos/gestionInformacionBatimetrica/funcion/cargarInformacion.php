@@ -13,6 +13,8 @@ class FormProcessor {
 	var $var_prj;
 	var $var_shx;
 	var $var_shp;
+	var $prefijo;
+	var $archivoSql;
 	function __construct($lenguaje, $sql) {
 		$this->miInspectorHTML = \InspectorHTML::singleton ();
 		$this->miConfigurador = \Configurador::singleton ();
@@ -51,33 +53,31 @@ class FormProcessor {
 		
 		$this->cargarFicherosDirectorio ();
 		
-		
 		/*
 		 * Cargar Estructura a la Tabla Espacial
 		 */
 		
 		$this->cargarEstruturaEspacial ();
 		
-		
 		exit ();
 		
-// 		$arregloDatos = array (
-// 				"id_zona_estudio" => $_REQUEST ['id_zona'],
-// 				"riesgo" => $_REQUEST ['riesgo'],
-// 				"acciones_prv" => $_REQUEST ['acciones'],
-// 				"senalizacion_ext" => $_REQUEST ['senalizacion'] 
-// 		);
+		// $arregloDatos = array (
+		// "id_zona_estudio" => $_REQUEST ['id_zona'],
+		// "riesgo" => $_REQUEST ['riesgo'],
+		// "acciones_prv" => $_REQUEST ['acciones'],
+		// "senalizacion_ext" => $_REQUEST ['senalizacion']
+		// );
 		
-// 		/*
-// 		 * Registro de Recomendación
-// 		 */
+		// /*
+		// * Registro de Recomendación
+		// */
 		
-// 		$conexion = "logica";
-// 		$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
+		// $conexion = "logica";
+		// $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
 		
-// 		$cadenaSql = $this->miSql->getCadenaSql ( "registrar_recomendacion", $arregloDatos );
+		// $cadenaSql = $this->miSql->getCadenaSql ( "registrar_recomendacion", $arregloDatos );
 		
-// 		$registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
+		// $registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
 		
 		if ($registro == true) {
 			Redireccionador::redireccionar ( "Inserto" );
@@ -85,15 +85,26 @@ class FormProcessor {
 			Redireccionador::redireccionar ( "NoInserto" );
 		}
 	}
-	function cargarEstruturaEspacial(){
+	function cargarEstruturaEspacial() {
+		$this->archivoSql = $this->prefijo . reset ( explode ( ".", $this->var_shp ['nombreActualArchivo'] ) );
 		
+		$rutaStatica = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/";
 		
+		$this->var_shp ['ruta_sql'] = $rutaStatica . $this->archivoSql . ".slq";
 		
+		echo "shp2pgsql -W LATIN1 -I -s " . $_REQUEST ['srid'] . " " . $this->var_shp ['rutaDirectorio'] . " >  " . $rutaStatica . $this->archivoSql . ".slq";
 		
+		$queries = exec ( "shp2pgsql -W LATIN1 -I -s " . $_REQUEST ['srid'] . " " . $this->var_shp ['rutaDirectorio'] . " >  " . $rutaStatica . $this->archivoSql . ".slq" );
 		
+		var_dump ( $this->var_shp );
 	}
-	
 	function cargarFicherosDirectorio() {
+		
+		/**
+		 *
+		 * @var unknown $this->prefijo Cadena Aleatoria para evitar que los shapes se dupliquen al subir.
+		 */
+		$this->prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
 		
 		/*
 		 * fichero dbf
@@ -105,11 +116,11 @@ class FormProcessor {
 			$tamano = $this->var_dbf ['size'];
 			$tipo = $this->var_dbf ['type'];
 			$archivo = $this->var_dbf ['name'];
-			$prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
+			
 			/*
 			 * guardamos el fichero en el Directorio
 			 */
-			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $prefijo . "_" . $archivo;
+			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
 			
 			if (! copy ( $this->var_dbf ['tmp_name'], $ruta_absoluta )) {
 				
@@ -127,11 +138,11 @@ class FormProcessor {
 			$tamano = $this->var_prj ['size'];
 			$tipo = $this->var_prj ['type'];
 			$archivo = $this->var_prj ['name'];
-			$prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
+			
 			/*
 			 * guardamos el fichero en el Directorio
 			 */
-			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $prefijo . "_" . $archivo;
+			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
 			
 			if (! copy ( $this->var_prj ['tmp_name'], $ruta_absoluta )) {
 				
@@ -150,11 +161,12 @@ class FormProcessor {
 			$tamano = $this->var_shx ['size'];
 			$tipo = $this->var_shx ['type'];
 			$archivo = $this->var_shx ['name'];
-			$prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
+			
 			/*
 			 * guardamos el fichero en el Directorio
 			 */
-			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $prefijo . "_" . $archivo;
+			
+			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
 			
 			if (! copy ( $this->var_shx ['tmp_name'], $ruta_absoluta )) {
 				
@@ -173,11 +185,14 @@ class FormProcessor {
 			$tamano = $this->var_shp ['size'];
 			$tipo = $this->var_shp ['type'];
 			$archivo = $this->var_shp ['name'];
-			$prefijo = substr ( md5 ( uniqid ( time () ) ), 0, 6 );
+			
 			/*
 			 * guardamos el fichero en el Directorio
 			 */
-			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $prefijo . "_" . $archivo;
+			
+			$this->var_shp ['nombreActualArchivo'] = $this->prefijo . "_" . $archivo;
+			
+			$ruta_absoluta = $this->miConfigurador->configuracion ['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
 			$this->var_shp ['rutaDirectorio'] = $ruta_absoluta;
 			
 			if (! copy ( $this->var_shp ['tmp_name'], $ruta_absoluta )) {
@@ -185,8 +200,6 @@ class FormProcessor {
 				Redireccionador::redireccionar ( "ErrorCargarFicheroDirectorio" );
 			}
 		}
-		
-		
 	}
 	function verificarExtencionFicheros() {
 		if (isset ( $_FILES ['fichero_dbf'] )) {
