@@ -60,6 +60,12 @@ class FormProcessor {
 
         $this->cargarEstruturaEspacial();
 
+        /*
+         * Eliminar Archivos Procesados
+         */
+
+        $this->eliminarArchivosInnecesarios();
+
         exit();
 
         // $arregloDatos = array (
@@ -86,6 +92,27 @@ class FormProcessor {
             Redireccionador::redireccionar("NoInserto");
         }
     }
+    public function eliminarArchivosInnecesarios() {
+
+        /*
+         * fichero dbf
+         */
+        unlink($this->var_dbf['rutaDirectorio']);
+        /*
+         * fichero prj
+         */
+        unlink($this->var_prj['rutaDirectorio']);
+        /*
+         * fichero shx
+         */
+        unlink($this->var_shx['rutaDirectorio']);
+        /*
+         * fichero shp y acrhivo sql
+         */
+        unlink($this->var_shp['rutaDirectorio']);
+        unlink($this->var_shp['ruta_sql']);
+
+    }
     public function cargarEstruturaEspacial() {
 
         $this->archivoSql = reset(explode(".", $this->var_shp['nombreActualArchivo']));
@@ -105,7 +132,9 @@ class FormProcessor {
 
         $queries = exec($SentenciaShape);
 
-        //Agregar Identificador Zona de Estudio para asociar la Batimetria
+        /**
+         *Agregar Identificador Zona de Estudio para asociar la Batimetria
+         **/
         $this->editarArchivoSQL();
 
         $SentenciaLinux = "PGUSER=" . $esteRecursoDB->usuario;
@@ -113,14 +142,8 @@ class FormProcessor {
         $SentenciaLinux .= " psql -d " . $this->miConfigurador->configuracion['dbnombre'];
         $SentenciaLinux .= " -a -f " . $this->var_shp['ruta_sql'];
 
-        echo $SentenciaLinux;
-
         $queries = exec($SentenciaLinux);
-        var_dump($_REQUEST);
-        var_dump($queries);
-        var_dump($this->var_shp);
 
-        exit;
     }
 
     public function editarArchivoSQL() {
@@ -184,7 +207,7 @@ class FormProcessor {
              * guardamos el fichero en el Directorio
              */
             $ruta_absoluta = $this->miConfigurador->configuracion['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
-
+            $this->var_dbf['rutaDirectorio'] = $ruta_absoluta;
             if (!copy($this->var_dbf['tmp_name'], $ruta_absoluta)) {
 
                 Redireccionador::redireccionar("ErrorCargarFicheroDirectorio");
@@ -206,6 +229,7 @@ class FormProcessor {
              * guardamos el fichero en el Directorio
              */
             $ruta_absoluta = $this->miConfigurador->configuracion['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
+            $this->var_prj['rutaDirectorio'] = $ruta_absoluta;
 
             if (!copy($this->var_prj['tmp_name'], $ruta_absoluta)) {
 
@@ -230,7 +254,7 @@ class FormProcessor {
              */
 
             $ruta_absoluta = $this->miConfigurador->configuracion['rutaBloque'] . "/funcion/procesarShapes/" . $this->prefijo . "_" . $archivo;
-
+            $this->var_shx['rutaDirectorio'] = $ruta_absoluta;
             if (!copy($this->var_shx['tmp_name'], $ruta_absoluta)) {
 
                 Redireccionador::redireccionar("ErrorCargarFicheroDirectorio");
