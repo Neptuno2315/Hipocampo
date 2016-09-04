@@ -88,7 +88,7 @@ class FormProcessor {
     }
     public function cargarEstruturaEspacial() {
 
-        $this->archivoSql = $this->prefijo . reset(explode(".", $this->var_shp['nombreActualArchivo']));
+        $this->archivoSql = reset(explode(".", $this->var_shp['nombreActualArchivo']));
 
         $this->archivoSql = str_replace(" ", "", $this->archivoSql);
 
@@ -99,23 +99,68 @@ class FormProcessor {
         $conexion = "geografico";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-        $SentenciaShape = "shp2pgsql -W LATIN1 -I -s " . $_REQUEST['srid'] . "  ";
+        $SentenciaShape = "shp2pgsql  -D -W LATIN1 -I -s " . $_REQUEST['srid'] . " -a ";
         $SentenciaShape .= $this->var_shp['rutaDirectorio'] . "  geografico.batimetria >  ";
         $SentenciaShape .= $rutaStatica . $this->archivoSql . ".slq ; ";
 
         $queries = exec($SentenciaShape);
+
+        //Agregar Identificador Zona de Estudio para asociar la Batimetria
+        $this->editarArchivoSQL();
 
         $SentenciaLinux = "PGUSER=" . $esteRecursoDB->usuario;
         $SentenciaLinux .= " PGPASSWORD=" . $esteRecursoDB->clave;
         $SentenciaLinux .= " psql -d " . $this->miConfigurador->configuracion['dbnombre'];
         $SentenciaLinux .= " -a -f " . $this->var_shp['ruta_sql'];
 
-        $queries = exec($SentenciaLinux);
+        echo $SentenciaLinux;
 
+        $queries = exec($SentenciaLinux);
+        var_dump($_REQUEST);
+        var_dump($queries);
         var_dump($this->var_shp);
 
         exit;
     }
+
+    public function editarArchivoSQL() {
+
+        $contenidoArchivo = file_get_contents($this->var_shp['ruta_sql']);
+
+        $contenidoArchivo = explode("\n", $contenidoArchivo);
+
+        $max = max(array_keys($contenidoArchivo));
+
+        foreach ($contenidoArchivo as $key => $value) {
+
+            if ($key == 3) {
+
+                $contenidoArchivo[$key] = 'COPY "geografico"."batimetria" ("id_zona_estudio","x","y","z",geom) FROM stdin;';
+
+            }
+
+            if ($key >= 4 && $key <= ($max - 4)) {
+
+                $contenidoArchivo[$key] = $_REQUEST['id_zona'] . "\t" . $value;
+
+            }
+            if ($key == $max - 2) {
+
+                $contenidoArchivo[$key] = "REINDEX INDEX batimetria_geom_idx ;";
+
+            }
+        }
+
+        $archivoReescribir = fopen($this->var_shp['ruta_sql'], "w+b");
+
+        foreach ($contenidoArchivo as $linea) {
+            fwrite($archivoReescribir, $linea . "\n");
+        }
+
+        fclose($archivoReescribir);
+
+    }
+
     public function cargarFicherosDirectorio() {
 
         /**
