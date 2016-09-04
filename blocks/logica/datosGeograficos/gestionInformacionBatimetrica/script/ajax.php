@@ -69,91 +69,94 @@ $url .= "/index.php?";
 
 
 function consultas_sector(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlSector;?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('region_consulta');?>").val()},
-	    success: function(data){
-	        if(data[0]!=" "){
+      $.ajax({
+        url: "<?php echo $urlSector;?>",
+        dataType: "json",
+        data: { valor:$("#<?php echo $this->campoSeguro('region_consulta');?>").val()},
+        success: function(data){
+            if(data[0]!=" "){
 
-	            $("#<?php echo $this->campoSeguro('sector_consulta');?>").html('');
-	            $("<option value=''>Seleccione ....</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta');?>");
-	            $.each(data , function(indice,valor){
-				            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].valor+"</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta');?>");
-	        			    });
-	            $("#<?php echo $this->campoSeguro('sector_consulta');?>").removeAttr('disabled');
-	            $('#<?php echo $this->campoSeguro('sector_consulta');?>').width(200);
-	            $("#<?php echo $this->campoSeguro('sector_consulta');?>").select2();
-	            }
-	   		}
-	});
+                $("#<?php echo $this->campoSeguro('sector_consulta');?>").html('');
+                $("<option value=''>Seleccione ....</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta');?>");
+                $.each(data , function(indice,valor){
+                                $("<option value='"+data[ indice ].id+"'>"+data[ indice ].valor+"</option>").appendTo("#<?php echo $this->campoSeguro('sector_consulta');?>");
+                            });
+                $("#<?php echo $this->campoSeguro('sector_consulta');?>").removeAttr('disabled');
+                $('#<?php echo $this->campoSeguro('sector_consulta');?>').width(200);
+                $("#<?php echo $this->campoSeguro('sector_consulta');?>").select2();
+                }
+            }
+    });
 
 }
 
 
 function consultas_srid(elem, request, response){
-	  $.ajax({
-	    url: "<?php echo $urlSRID;?>",
-	    dataType: "json",
-	    data: { valor:$("#<?php echo $this->campoSeguro('srid');?>").val()},
-	    success: function(data){
+      $.ajax({
+        url: "<?php echo $urlSRID;?>",
+        dataType: "json",
+        data: { valor:$("#<?php echo $this->campoSeguro('srid');?>").val()},
+        success: function(data){
 
-	        if(data!=" "){
+            if(data!=" "){
 
 
 
-	        	document.getElementById("informacion_srid").innerHTML = data[0];
+                document.getElementById("informacion_srid").innerHTML = data[0];
 
-	        	document.getElementById("informacion_proj4text").innerHTML = data[1];
+                document.getElementById("informacion_proj4text").innerHTML = data[1];
 
-	            }
-	   		}
-	});
+                }
+            }
+    });
 
 }
 
 
 
-	$(function() {
+    $(function() {
 
 
-	    $("#<?php echo $this->campoSeguro('srid');?>").ready(function() {
 
-			if($("#<?php echo $this->campoSeguro('srid');?>").val()!=''){
-				consultas_srid();
+        $("#<?php echo $this->campoSeguro('srid');?>").width(150);
 
-				}
-		 	 });
+        $("#<?php echo $this->campoSeguro('srid');?>").ready(function() {
+
+            if($("#<?php echo $this->campoSeguro('srid');?>").val()!=''){
+                consultas_srid();
+
+                }
+             });
 
 
-	    $("#<?php echo $this->campoSeguro('region_consulta');?>").change(function() {
+        $("#<?php echo $this->campoSeguro('region_consulta');?>").change(function() {
 
-		if($("#<?php echo $this->campoSeguro('region_consulta');?>").val()!=''){
-			consultas_sector();
+        if($("#<?php echo $this->campoSeguro('region_consulta');?>").val()!=''){
+            consultas_sector();
 
-			}
-	 	 });
+            }
+         });
 
 
 
         $("#<?php echo $this->campoSeguro('nombre_pry_consulta');?>").autocomplete({
-        	minChars: 3,
-        	serviceUrl: '<?php echo $urlTituloZona;?>',
-        	onSelect: function (suggestion) {
-            	    $("#<?php echo $this->campoSeguro('id_zona');?>").val(suggestion.data);
-        	    }
+            minChars: 3,
+            serviceUrl: '<?php echo $urlTituloZona;?>',
+            onSelect: function (suggestion) {
+                    $("#<?php echo $this->campoSeguro('id_zona');?>").val(suggestion.data);
+                }
 
         });
 
 
-	    $("#<?php echo $this->campoSeguro('nombre_pry_consulta');?>").blur(function() {
+        $("#<?php echo $this->campoSeguro('nombre_pry_consulta');?>").blur(function() {
 
-	    	if($("#<?php echo $this->campoSeguro('id_zona');?>")!=''){
+            if($("#<?php echo $this->campoSeguro('id_zona');?>")!=''){
 
-	    		$("#<?php echo $this->campoSeguro('nombre_pry_consulta');?>").val('');
+                $("#<?php echo $this->campoSeguro('nombre_pry_consulta');?>").val('');
 
-		    	}
-	 	 });
+                }
+         });
 
-		});
-	</script>
+        });
+    </script>
