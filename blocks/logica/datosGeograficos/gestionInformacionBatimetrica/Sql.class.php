@@ -46,7 +46,7 @@ class Sql extends \Sql {
                 break;
 
             case 'consultar_aton_zona':
-                $cadenaSql = "	SELECT  boyas_ais, boyas_nais,racon_num, linternas_num, otras_aton ";
+                $cadenaSql = "  SELECT  boyas_ais, boyas_nais,racon_num, linternas_num, otras_aton ";
                 $cadenaSql .= "FROM informacion_carta_nautica  ";
                 $cadenaSql .= "WHERE estado_registro=TRUE  ";
                 $cadenaSql .= "AND id_zona_estudio ='" . $variable . "';";
@@ -64,6 +64,18 @@ class Sql extends \Sql {
                 $cadenaSql = "SELECT srtext ,proj4text ";
                 $cadenaSql .= "FROM spatial_ref_sys ";
                 $cadenaSql .= "WHERE srid ='" . $variable . "';";
+
+                break;
+
+            /*
+             * Sentenias de Actualización de Informacion
+             */
+
+            case 'actualiza_batimetria_zona':
+
+                $cadenaSql = " UPDATE batimetria";
+                $cadenaSql .= " SET estado_registro= FALSE ";
+                $cadenaSql .= " WHERE id_zona_estudio='" . $_REQUEST['id_zona'] . "';";
 
                 break;
 

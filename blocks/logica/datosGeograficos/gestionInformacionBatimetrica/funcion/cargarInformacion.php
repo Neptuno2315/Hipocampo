@@ -16,6 +16,7 @@ class FormProcessor {
     public $var_shp;
     public $prefijo;
     public $archivoSql;
+    public $resultado_insercion;
     public function __construct($lenguaje, $sql) {
         $this->miInspectorHTML = \InspectorHTML::singleton();
         $this->miConfigurador = \Configurador::singleton();
@@ -46,6 +47,12 @@ class FormProcessor {
          * Verificar Extensión Ficheros
          */
 
+        $this->actualizarBatimetriaZona();
+
+        /*
+         * Verificar Extensión Ficheros
+         */
+
         $this->verificarExtencionFicheros();
 
         /*
@@ -66,29 +73,9 @@ class FormProcessor {
 
         $this->eliminarArchivosInnecesarios();
 
-        exit();
-
-        // $arregloDatos = array (
-        // "id_zona_estudio" => $_REQUEST ['id_zona'],
-        // "riesgo" => $_REQUEST ['riesgo'],
-        // "acciones_prv" => $_REQUEST ['acciones'],
-        // "senalizacion_ext" => $_REQUEST ['senalizacion']
-        // );
-
-        // /*
-        // * Registro de Recomendación
-        // */
-
-        // $conexion = "logica";
-        // $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ( $conexion );
-
-        // $cadenaSql = $this->miSql->getCadenaSql ( "registrar_recomendacion", $arregloDatos );
-
-        // $registro = $esteRecursoDB->ejecutarAcceso ( $cadenaSql, "accion", $_REQUEST ['id_zona'], "registrar_recomendacion" );
-
-        if ($registro == true) {
+        if ($this->resultado_insercion == 'COMMIT') {
             Redireccionador::redireccionar("Inserto");
-        } else if ($registro == false) {
+        } else {
             Redireccionador::redireccionar("NoInserto");
         }
     }
@@ -142,7 +129,7 @@ class FormProcessor {
         $SentenciaLinux .= " psql -d " . $this->miConfigurador->configuracion['dbnombre'];
         $SentenciaLinux .= " -a -f " . $this->var_shp['ruta_sql'];
 
-        $queries = exec($SentenciaLinux);
+        $this->resultado_insercion = exec($SentenciaLinux);
 
     }
 
@@ -321,6 +308,17 @@ class FormProcessor {
             ($extension != 'shp') ? Redireccionador::redireccionar("ErrorExtension") : $this->var_shp = $archivo;
         }
     }
+
+    public function actualizarBatimetriaZona() {
+
+        $conexion = "geografico";
+        $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
+
+        $cadenaSql = $this->miSql->getCadenaSql("actualiza_batimetria_zona");
+        $actualizacion = $esteRecursoDB->ejecutarAcceso($cadenaSql, "accion", $_REQUEST['id_zona'], "actualiza_batimetria_zona");
+
+    }
+
 }
 
 $miProcesador = new FormProcessor($this->lenguaje, $this->sql);

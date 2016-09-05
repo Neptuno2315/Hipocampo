@@ -464,31 +464,6 @@ class registrarForm {
 
                 switch ($_REQUEST['mensaje']) {
 
-                    case 'RegistroExito':
-                        $atributos['tipo'] = 'success';
-                        $atributos['mensaje'] = 'Se Registro con Exito.<br>Recomendación a la Navegación.';
-                        break;
-
-                    case 'RegistroError':
-                        $atributos['tipo'] = 'error';
-                        $atributos['mensaje'] = 'Error en el Registro.<br>Recomendación a la Navegación.<br>Verifique los Datos.';
-                        break;
-
-                    case 'ActualizoExito':
-                        $atributos['tipo'] = 'success';
-                        $atributos['mensaje'] = 'Se Actualizado la Recomendación a la Navegación con Exito.';
-                        break;
-
-                    case 'ActualizacionError':
-                        $atributos['tipo'] = 'error';
-                        $atributos['mensaje'] = 'Error en la Actualización de la Recomendación  a la Navegación.<br>Verifique los Datos.';
-                        break;
-
-                    case 'EliminoExito':
-                        $atributos['tipo'] = 'success';
-                        $atributos['mensaje'] = 'Se Elimino con Exito Recomendación a la Navegación de la Zona de Estudio<br>Nombre Proyecto : <br>' . $_REQUEST['titulo_proyecto'] . ".";
-                        break;
-
                     case 'ErrorCargarDirectorioProcesar':
 
                         $atributos['tipo'] = 'error';
@@ -507,6 +482,13 @@ class registrarForm {
 
                         $atributos['tipo'] = 'error';
                         $atributos['mensaje'] = 'Datos No Validos o Error al Procesar la Información.<br>Verifique los Datos.';
+
+                        break;
+
+                    case 'ErrorCargarBatimetria':
+
+                        $atributos['tipo'] = 'error';
+                        $atributos['mensaje'] = 'Error al Cargar la Batimetría<br>Verifique la Estrutura del Shape Cargado';
 
                         break;
                 }
