@@ -34,6 +34,46 @@
     height: 100%;
 }
 
+
+
+/* CSS pantalla 768px o superior */
+@media (min-width: 1366px) {
+
+  .fluidMedia {
+    top: 137px;
+    position: relative;
+    padding-bottom: 31%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  } 
+
+}
+
+
+
+
+
+
+/* CSS pantalla 768px o superior */
+@media (min-width: 1920px) {
+
+  .fluidMedia {
+    top: 137px;
+    position: relative;
+    padding-bottom: 33%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  } 
+
+}
+
+
+
+
+
+
 #Inicio{
 
     font-size: x-small;
