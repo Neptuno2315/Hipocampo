@@ -41,7 +41,7 @@ var_dump($sesion);*/
 
     <input type="hidden" name="username" value="admin"/>
     <input type="hidden" name="password" value="geoserver"/>
-    <input type="hidden" name="testcookies" value="1"/>
+
 </form>
 
 
