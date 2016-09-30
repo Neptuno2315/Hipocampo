@@ -108,14 +108,14 @@ class FormProcessor {
 
         $rutaStatica = $this->miConfigurador->configuracion['rutaBloque'] . "/funcion/procesarShapes/";
 
-        $this->var_shp['ruta_sql'] = $rutaStatica . $this->archivoSql . ".slq";
+        $this->var_shp['ruta_sql'] = $rutaStatica . $this->archivoSql . ".sql";
 
         $conexion = "geografico";
         $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-        $SentenciaShape = "shp2pgsql  -D -W LATIN1 -I -s " . $_REQUEST['srid'] . " -a ";
+        $SentenciaShape = 'shp2pgsql  -D -W "LATIN1" -I -s ' . $_REQUEST['srid'] . " -a ";
         $SentenciaShape .= $this->var_shp['rutaDirectorio'] . "  geografico.batimetria >  ";
-        $SentenciaShape .= $rutaStatica . $this->archivoSql . ".slq ; ";
+        $SentenciaShape .= $rutaStatica . $this->archivoSql . ".sql ; ";
 
         $queries = exec($SentenciaShape);
 
