@@ -40,15 +40,24 @@ class Frontera {
         include_once "core/builder/FormularioHtml.class.php";
 
         $this->ruta = $this->miConfigurador->getVariableConfiguracion("rutaBloque");
-        var_dump($_REQUEST);exit;
+
         $this->miFormulario = new \FormularioHtml();
 
         if (isset($_REQUEST['opcion'])) {
 
             switch ($_REQUEST['opcion']) {
 
+                case 'cuentaUsuario':
+                    include_once $this->ruta . "formulario/perfilUsuario.php";
+                    break;
+
+                case 'admnistracionUsuarios':
+                    include_once $this->ruta . "formulario/administrarUsuarios.php";
+                    break;
+
+//----------------------------------------------------------
                 case "mensaje":
-                    include_once $this->ruta . "/formulario/mensaje.php";
+
                     break;
 
                 case "verificarDatos":

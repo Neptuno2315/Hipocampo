@@ -8,11 +8,8 @@ if (!isset($GLOBALS["autorizado"])) {
  *
  * La ruta absoluta del bloque está definida en $this->ruta
  */
-
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
-
 $nombreFormulario = $esteBloque["nombre"];
-
 include_once "core/crypto/Encriptador.class.php";
 $cripto = Encriptador::singleton();
 $valorCodificado = "action=" . $esteBloque["nombre"];
@@ -25,53 +22,51 @@ $directorio = $this->miConfigurador->getVariableConfiguracion("rutaUrlBloque") .
 $atributos["id"] = "tabs";
 $atributos["estilo"] = "";
 echo $this->miFormulario->division("inicio", $atributos);
-// unset ( $atributos );
+unset($atributos);
 {
     // -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
 
     $items = array(
-        "tabUsuario" => $this->lenguaje->getCadena("tabUsuario"),
-        //"tabRegistrarMasivo" => $this->lenguaje->getCadena ( "tabRegistrarMasivo" )
+        "tabGestionGeneral" => $this->lenguaje->getCadena("tabGestionGeneral"),
+        "tabAsociacion" => $this->lenguaje->getCadena("tabAsociacion"),
     );
     $atributos["items"] = $items;
     $atributos["estilo"] = "jqueryui";
     $atributos["pestañas"] = "true";
     echo $this->miFormulario->listaNoOrdenada($atributos);
-    // unset ( $atributos );
 
-    $atributos["id"] = "tabUsuario";
-    $atributos["estilo"] = "";
-    echo $this->miFormulario->division("inicio", $atributos);
     {
-        switch ($_REQUEST['opcion']) {
-            case "nuevo":
-                include $this->ruta . "formulario/tabs/registro.php";
-                break;
+        // Pestañas de Gestionar Usuarios
+        $esteCampo = "tabGestionGeneral";
+        $atributos['id'] = $esteCampo;
+        $atributos["estilo"] = "jqueryui";
+        $atributos['tipoEtiqueta'] = 'inicio';
+        echo $this->miFormulario->agrupacion('inicio', $atributos);
+        unset($atributos);
+        {
 
-            case "editar":
-                include $this->ruta . "formulario/tabs/edita.php";
-                break;
+            include $this->ruta . "formulario/tabs/tabGestionGeneral.php";
+            // -----------------Fin Division para la pestaña 2-------------------------
         }
-
-        // -----------------Fin Division para la pestaña 1-------------------------
+        echo $this->miFormulario->agrupacion('fin');
+        unset($atributos);
     }
-    echo $this->miFormulario->division("fin");
-
-    // ------------------Division para la pestaña 2-------------------------
-
-    /*
-    $atributos ["id"] = "tabRegistrarMasivo";
-    $atributos ["estilo"] = "";
-    echo $this->miFormulario->division ( "inicio", $atributos );
     {
-    include ($this->ruta . "formulario/tabs/registro_masivo.php");
-    }*/
+        // Pestañas de Asosiar Funcionalidades
+        $esteCampo = "tabAsociacion";
+        $atributos['id'] = $esteCampo;
+        $atributos["estilo"] = "jqueryui";
+        $atributos['tipoEtiqueta'] = 'inicio';
+        echo $this->miFormulario->agrupacion('inicio', $atributos);
+        unset($atributos);
+        {
 
-    // -----------------Fin Division para la pestaña 2-------------------------
-    echo $this->miFormulario->division("fin");
-
+            include $this->ruta . "formulario/tabs/tabAsociacion.php";
+            // -----------------Fin Division para la pestaña 2-------------------------
+        }
+        echo $this->miFormulario->agrupacion('fin');
+    }
 }
-
 echo $this->miFormulario->division("fin");
-
+unset($atributos);
 ?>

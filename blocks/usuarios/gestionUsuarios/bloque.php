@@ -77,8 +77,6 @@ class Bloque implements \Bloque {
             redireccion::redireccionar("paginaPrincipal");
         } else {
 
-            var_dump($_REQUEST);exit;
-
             $this->miFrontera->setSql($this->miSql);
             $this->miFrontera->setFuncion($this->miFuncion);
             $this->miFrontera->setLenguaje($this->miLenguaje);
@@ -88,7 +86,6 @@ class Bloque implements \Bloque {
             $this->miFuncion->setLenguaje($this->miLenguaje);
 
             if (!isset($_REQUEST['action'])) {
-                echo "bloque";exit;
                 $this->miFrontera->frontera();
             } else {
 
