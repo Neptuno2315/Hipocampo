@@ -57,6 +57,22 @@ $enlaceGestionBatimetria['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
 $enlaceGestionBatimetria['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceGestionBatimetria['enlace'], $directorio);
 $enlaceGestionBatimetria['nombre'] = "Gestión Información Batimétrica";
 
+// **********Gestión Información Batimetrica**************//
+
+$enlaceCuentaUsuario['enlace'] = "pagina=gestionUsuarios";
+$enlaceCuentaUsuario['enlace'] .= "&opcion=cuentaUsuario";
+$enlaceCuentaUsuario['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+$enlaceCuentaUsuario['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceCuentaUsuario['enlace'], $directorio);
+$enlaceCuentaUsuario['nombre'] = "Mi Cuenta";
+
+// **********Gestión Información Batimetrica**************//
+
+$enlaceAdmnistracionUsuarios['enlace'] = "pagina=gestionUsuarios";
+$enlaceAdmnistracionUsuarios['enlace'] .= "&opcion=admnistracionUsuarios";
+$enlaceAdmnistracionUsuarios['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+$enlaceAdmnistracionUsuarios['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceAdmnistracionUsuarios['enlace'], $directorio);
+$enlaceAdmnistracionUsuarios['nombre'] = "Administrar Usuarios";
+
 // **********Visualizador Datos Geograficos**************//
 
 $enlaceAplicativo['enlace'] = "index.php";
@@ -72,7 +88,7 @@ $enlaceAplicativo['nombre'] = "Cerrar Sesion";
 						SRC="<?php echo $rutaBloque;?>/css/images/home.png"></i> <strong>Inicio</strong>
 					<small>Página Principal</small>
 			</a></li>
-			<li><a href="" class=""> <i class="fa fa-edit"><img
+			<li><a> <i class="fa fa-edit"><img
 						SRC="<?php echo $rutaBloque;?>/css/images/risk.png"></i> <strong>Análisis
 						Riesgos</strong> <small>Gestión Riesgos a la Navegación</small>
 			</a>
@@ -90,7 +106,7 @@ $enlaceAplicativo['nombre'] = "Cerrar Sesion";
 								SRC="<?php echo $rutaBloque;?>/css/images/report.png"></i><?php echo $enlaceInformeRiesgo['nombre'];?></a>
 					</li>
 				</ul></li>
-			<li><a href=""> <i class="fa fa-gift"><img
+			<li><a> <i class="fa fa-gift"><img
 						SRC="<?php echo $rutaBloque;?>/css/images/world.png"></i> <strong>Datos
 						Geográficos</strong> <small>Información Geográfica</small>
 			</a>
@@ -111,10 +127,23 @@ $enlaceAplicativo['nombre'] = "Cerrar Sesion";
 								SRC="<?php echo $rutaBloque;?>/css/images/administrador.png"></i><?php echo $enlaceAdministradorGeografico['nombre'];?></a>
 					</li>
 				</ul></li>
-			<li><a href=""> <i class="fa fa-globe"><img
+			<li><a> <i class="fa fa-globe"><img
 						SRC="<?php echo $rutaBloque;?>/css/images/users.png"></i> <strong>Usuarios</strong>
 					<small>Gestión Usuarios</small>
-			</a></li>
+			</a>
+				<ul>
+				 <li><a
+						href="<?php echo $enlaceCuentaUsuario['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque;?>/css/images/usuario.png"></i><?php echo $enlaceCuentaUsuario['nombre'];?></a>
+					</li>
+					<li><a
+						href="<?php echo $enlaceAdmnistracionUsuarios['urlCodificada'];?>"><i
+							class="fa fa-globe"><img
+								SRC="<?php echo $rutaBloque;?>/css/images/administrar.png"></i><?php echo $enlaceAdmnistracionUsuarios['nombre'];?></a>
+					</li>
+				</ul>
+			</li>
 			<li><a href="<?php echo $enlaceAplicativo['enlace'];?>"> <i
 					class="fa fa-globe"><img
 						SRC="<?php echo $rutaBloque;?>/css/images/salir.png"></i> <strong><?php echo $enlaceAplicativo['nombre'];?></strong>
