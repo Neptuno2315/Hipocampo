@@ -72,7 +72,14 @@ class registrarForm {
 
         {
 
-            var_dump($_REQUEST);
+            $tabla = "<center>
+                        <table id='tabla_general'>
+                        </table>
+                        <div id='barra_herramientas_general'>
+                        </div>
+                    </center>";
+
+            echo $tabla;
         }
 
         // ------------------- SECCION: Paso de variables ------------------------------------------------

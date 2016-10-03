@@ -23,7 +23,7 @@ body {
 	position: fixed;
 	z-index: 4;
 	/* opacity: 0.35; */
-	width: 97.5%;
+	width: 98%;
 	background-color: rgb(168, 173, 175);
 	border-radius: 10px 10px 10px 10px;
 	border-style: groove;

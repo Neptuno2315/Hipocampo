@@ -2,9 +2,11 @@
 $indice = 0;
 $estilo[$indice++] = "validationEngine.jquery.css";
 
-$estilo[$indice++] = "jquery.auto-complete.css";
+$estilo[$indice++] = "ui.jqgrid.css";
 
 $estilo[$indice++] = "select2.css";
+
+$estilo[$indice++] = "jquery.dataTables_themeroller.css";
 
 // Formulario Paso a Paso
 

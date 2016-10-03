@@ -71,6 +71,7 @@ class consultarForm {
         echo $this->miFormulario->formulario($atributos);
 
         {
+            echo "adasd";
             var_dump($_REQUEST);
         }
 
