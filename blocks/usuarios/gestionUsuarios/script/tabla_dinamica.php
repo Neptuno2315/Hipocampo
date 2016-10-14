@@ -1,8 +1,8 @@
 <?php
 
-if (! isset ( $GLOBALS ["autorizado"] )) {
-    include ("../index.php");
-    exit ();
+if (!isset($GLOBALS["autorizado"])) {
+    include "../index.php";
+    exit();
 }
 
 /**
@@ -20,7 +20,7 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=consultarBloques";
+$cadenaACodificar .= "&funcion=consultarRol";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
@@ -35,14 +35,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=crearBloque";
+$cadenaACodificar .= "&funcion=crearRol";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlCrearBloque = $url . $cadena;
+$urlCrearRol = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -50,14 +50,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=editarBloque";
+$cadenaACodificar .= "&funcion=editarRol";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlEditarBloque = $url . $cadena;
+$urlEditarRol = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -65,14 +65,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=eliminarBloque";
+$cadenaACodificar .= "&funcion=eliminarRol";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlEliminarBloque = $url . $cadena;
+$urlEliminarRol = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -80,14 +80,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=consultarPlugins";
+$cadenaACodificar .= "&funcion=consultarRelaciones";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlConsultarPlugins = $url . $cadena;
+$urlConsultarRelaciones = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -95,14 +95,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=adicionPlugin";
+$cadenaACodificar .= "&funcion=consultarPaginas";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlAdicionPlugin = $url . $cadena;
+$urlConsultarPaginas = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -110,14 +110,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=adicionPlugin";
+$cadenaACodificar .= "&funcion=adicionFuncionalidad";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlCargarArchivo = $url . $cadena;
+$urlAdicionFuncionalidad = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -125,15 +125,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=eliminarPlugin";
+$cadenaACodificar .= "&funcion=eliminarFuncionalidad";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlEliminarPlugin = $url . $cadena;
-
+$urlEliminarFuncionalidad = $url . $cadena;
 
 ?>
 <script type='text/javascript'>
@@ -150,12 +149,13 @@ $(document).ready(function() {
 	                     mtype: "GET",
 	                     colModel: [
 						{
-								label: 'ID',
+								label: 'Identificador',
 						        name: 'id',
 						        width: 40,
 								key: true,
 								editable: false,
 								sorttype:'number',
+								align:'center',
 								editrules : {required: true}
 						 },
 	                         {
@@ -164,6 +164,9 @@ $(document).ready(function() {
 	                             width: 40,
 	     						editable: true,
 	     						sorttype:'text',
+	     						align:'center',
+	     						editrules : {required: true},
+	     						 editoptions: {size:25, maxlength: 20},
 
 	                         },
 	                         {
@@ -171,15 +174,9 @@ $(document).ready(function() {
 	                             name: 'descripcion',
 	                             width: 150,
 	                             editable: true,
-	                             sorttype:'text',
-	                             editrules : {required: true}
-	                         },
-	                         {
-	     						label : 'Grupo : ',
-	                             name: 'grupo',
-	                             width: 40,
-	                             editable: true,
-	                             sorttype:'text',
+	                             edittype:'textarea',
+	                             editrules : {required: true},
+	                             editoptions: {rows:"5",cols:"25"},
 	                         }
 	                         ],
 	                   	sortname: 'id',
@@ -191,7 +188,7 @@ $(document).ready(function() {
                         width: $("#seccionCentralAmpliada").width()-65,
 	                    height: 300,
 	                    pager: "#barra_herramientas_general",
-	                    caption: "Gestión Bloques",
+	                    caption: "Gestión Roles",
 	                 	subGrid: true,
 	                     subGridOptions: {
 	                         "plusicon"  : "ui-icon-triangle-1-e",
@@ -211,53 +208,51 @@ $(document).ready(function() {
 	                		pager_id = "p_"+subgrid_table_id;
 	                		$("#"+subgrid_id).html("<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
 	                		jQuery("#"+subgrid_table_id).jqGrid({
-	                			url:'<?php echo $urlConsultarPlugins;?>&id='+row_id,
+	                			url:'<?php echo $urlConsultarRelaciones;?>&id_gestion='+row_id,
 	                			datatype: "json",
 	    	                     mtype: "GET",
-	                			colNames: ['Tipo:','Nombre:','Archivo:'],
 	                			colModel: [
+	                				{
+										label: 'Identificador',
+								        name: 'id',
+								        width: 40,
+										key: true,
+										editable: false,
+										sorttype:'number',
+										align:'center',
+										editrules : {required: true}
+						 			},
 	       	                		{
-		                				name:"tipo",
-		                				index:"tipo",
-		                				width:130,
+	       	                			label: 'Funcionalidad :',
+		                				name:"funcionalidad",
+		                				width:100,
 		                				editable: true,
 		                				edittype: 'select',
+		                				editrules: {required: true},
 		                				editoptions: {
-		                                     value: "css: Css;javascript: JavaScript",
-		                				}
-		                			},
-	                				{
-		                				name:"nombre",
-		                				index:"nombre",
-		                				width:70,
-		                				key:true,
-		                				align:"left",
-		                				sorttype:'text',
-			                		},
-	                				{
-		                				name: 'archivo',
-	                				    index: 'archivo',
-	                				    hidden: true,
-	                				    enctype: "multipart/form-data",
-	                				    editable: true,
-	                				    edittype: 'file',
-	                				    editrules: {
-	                				        edithidden: true,
-	                				        required: true
-	                				    },
-	                				    formoptions: {
-	                				        elmsuffix: '*'
-	                				    }
-	                				 }
+		                					dataInit: function (element) {
+	                                     			window.setTimeout(function () {
+													$(element).width(350);
+	                                         		$(element).select2({
+                           								 placeholder: "Seleccione Funcionalidad",
+                            							 allowClear: true,
+                        								});
+	                                         });
+                                     		},
+                                     		 dataUrl:'<?php echo $urlConsultarPaginas;?>',
+                                     		 defaultValue: ''
+                                     	}
+		                			}
 	                			],
+	                			sortname: 'id',
 	                		   	rowNum:20,
 	                		   	pager: pager_id,
 	                		   	viewrecords: false,
 	                		   	sortname: 'num',
 	                		    sortorder: "asc",
 	                		    height: '100%',
-	                		    width: 965,
-	                		    caption: "Plugins",
+	                		    width: $("#seccionCentralAmpliada").width()-120,
+	                		    caption: "Gestión Funcionalidades",
 
 	                		}).navGrid("#"+pager_id,
 	    	                		{
@@ -266,17 +261,17 @@ $(document).ready(function() {
     	                		       del:true,
     	                		       search:false,
     	                		       alertcap:"Alerta",
-    	       	                       alerttext:"Seleccione Plugin",
+    	       	                       alerttext:"Seleccione Relacion Funcionalidad",
     	                		    },
 
     	                		    {  },//edit
     	   	                        {
-    	   	                        	 caption:"Adición Plugin",
-    	   	 	                         addCaption: "Adición Plugin",
-    	   	 	                         width: 320,
-    	   	 	                         height: 150,
+    	   	                        	 caption:"Relacionar Funcionalidad",
+    	   	 	                         addCaption: "Relacionar Funcionalidad",
+    	   	 	                         width: 500,
+    	   	 	                         height: 125,
     	   	 	                         mtype:'GET',
-    	   	 	                         url:'<?php echo $urlAdicionPlugin;?>&id_bloque='+ident,
+    	   	 	                         url:'<?php echo $urlAdicionFuncionalidad;?>&identificador='+ident,
     	   	 	                         bSubmit: "Guardar",
     	   	 	                         bCancel: "Cancelar",
     	   	 	                         bClose: "Close",
@@ -294,33 +289,14 @@ $(document).ready(function() {
     	   	 	                             var p=params;
     	   	 	                             var pt=postdata;
     	   	 	                         },
-
-    	   	 	                         afterSubmit : function(response, postdata)
-    	   	 	                         {
-
-    	   	 	                         var file_data = $("#archivo").prop("files")[0];
-	    	   	 	                     var form_data = new FormData();
-	    	   	 	                     form_data.append("archivo", file_data)
-
-	    	   	 	                     $.ajax({
-	   	 	                                 url: '<?php echo $urlCargarArchivo;?>&id_bloque='+ident+'&tipo='+$("#tipo").val(),//
-	   	 	                                 dataType: 'json',
-	   	 	                                 cache: false,
-	   	 	                                 contentType: false,
-	   	 	                                 processData: false,
-	   	 	                                 data: form_data,
-	   	 	                                 type: 'post'
-		   	 	                                 });
-
-   	   	                              var r=response;
-	   	                              var p=postdata;
-	   	                              var responseText=jQuery.jgrid.parse(response.responseText);
-	   	                              var success=true;
-	   	                              var message="continue";
-	   	                              return [success,message] ;
-
-
-    	   	 	                         },
+     										afterSubmit : function(response, postdata){
+					                             var r=response;
+					                             var p=postdata;
+					                             var responseText=jQuery.jgrid.parse(response.responseText);
+					                             var success=true;
+					                             var message="continue";
+					                             return [success,message]
+					                         },
     	   	 	                         afterComplete : function (response, postdata, formid) {
     	   	 	                             var responseText=jQuery.jgrid.parse(response.responseText);
     	   	 	                             var r=response;
@@ -331,15 +307,15 @@ $(document).ready(function() {
 
     	   	        	                  },//add
     	   	                   {
-    	   	              			  url:'<?php echo $urlEliminarPlugin;?>&id_bloque='+row_id,
-    	   	                          caption: "Eliminar Plugin",
+    	   	              			  url:'<?php echo $urlEliminarFuncionalidad;?>',
+    	   	                          caption: "Eliminar Funcionalidad",
     	   	                          width: 350,
     	   	                          height:125,
     	   	                          mtype:'GET',
     	   	                          bSubmit: "Eliminar",
     	   	                          bCancel: "Cancelar",
     	   	                          bClose: "Close",
-    	   	                          msg:" <b>¿Desea Eliminar Plugin?</b><br>¡ Recordar <b>NO</b> se podran reversar los Cambios!",
+    	   	                          msg:" <b>¿Desea Eliminar Funcionalidad?</b><br>¡ Recordar <b>NO</b> se podran reversar los Cambios!",
     	   	                          bYes : "Yes",
     	   	                          bNo : "No",
     	   	                          bExit : "Cancel",
@@ -393,24 +369,24 @@ $(document).ready(function() {
 	          		$("#tabla_general").navGrid('#barra_herramientas_general',
 	                    {
 	              	    add:true,
-	              	    addtext:'Crear Bloque',
+	              	    addtext:'Crear Rol',
 	              		edit:true,
-	              		edittext:'Actualizar Bloque',
+	              		edittext:'Actualizar Rol',
 	              		del:true ,
-	              		deltext:'Eliminar Bloque',
+	              		deltext:'Eliminar Rol',
 	              		alertcap:"Alerta",
-	                    alerttext:"Seleccione Bloque",
+	                    alerttext:"Seleccione Rol",
 	              		search:false ,
 	              		refresh:true,
 	              		refreshstate: 'current',
-	              		refreshtext:'Recargar Bloques',
+	              		refreshtext:'Recargar Roles',
 	              		},
-	                  {      caption:"Actualizar Bloque",
-	                         addCaption: "Actualizar Bloque",
+	                  {      caption:"Actualizar Rol",
+	                         addCaption: "Actualizar Rol",
 	                         width: 350,
 	                         height: 193,
 	                         mtype:'GET',
-	                         url:'<?php echo $urlEditarBloque;?>',
+	                         url:'<?php echo $urlEditarRol;?>',
 	                         bSubmit: "Actualizar",
 	                         bCancel: "Cancelar",
 	                         bClose: "Close",
@@ -452,12 +428,12 @@ $(document).ready(function() {
 	                         }
 	                          },//edit
 	                  {
-	                        	 caption:"Crear Bloque",
-	 	                         addCaption: "Crear Bloque",
+	                        	 caption:"Crear Rol",
+	 	                         addCaption: "Crear Rol",
 	 	                         width: 350,
 	 	                         height: 190,
 	 	                         mtype:'GET',
-	 	                         url:'<?php echo $urlCrearBloque;?>',
+	 	                         url:'<?php echo $urlCrearRol;?>',
 	 	                         bSubmit: "Crear",
 	 	                         bCancel: "Cancelar",
 	 	                         bClose: "Close",
@@ -501,15 +477,15 @@ $(document).ready(function() {
 
 	        	                  },//add
 	                   {
-	              			  url:'<?php echo $urlEliminarBloque;?>',
-	                          caption: "Eliminar Bloque",
+	              			  url:'<?php echo $urlEliminarRol;?>',
+	                          caption: "Eliminar Rol",
 	                          width: 350,
 	                          height:125,
 	                          mtype:'GET',
 	                          bSubmit: "Eliminar",
 	                          bCancel: "Cancelar",
 	                          bClose: "Close",
-	                          msg:" <b>¿Desea Eliminar Bloque?</b><br>¡ Recordar <b>NO</b> se Podran Reversar los Cambios !",
+	                          msg:" <b>¿Desea Eliminar Rol?</b><br>¡ Recordar <b>NO</b> se Podran Reversar los Cambios !",
 	                          bYes : "Yes",
 	                          bNo : "No",
 	                          bExit : "Cancel",

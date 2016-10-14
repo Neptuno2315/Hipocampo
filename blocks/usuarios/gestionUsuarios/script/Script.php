@@ -2,6 +2,10 @@
 $indice = 0;
 $funcion[$indice++] = "grid.locale-es.js"; // Idioma Plugin Jqgrid
 $funcion[$indice++] = "jquery.jqGrid.min.js";
+$funcion[$indice++] = "jquery.validationEngine.js";
+$funcion[$indice++] = "jquery.validationEngine-es.js";
+$funcion[$indice++] = "select2.js";
+$funcion[$indice++] = "select2_locale_es.js";
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site");

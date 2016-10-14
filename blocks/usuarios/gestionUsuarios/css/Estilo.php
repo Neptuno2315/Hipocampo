@@ -6,8 +6,6 @@ $estilo[$indice++] = "ui.jqgrid.css";
 
 $estilo[$indice++] = "select2.css";
 
-$estilo[$indice++] = "jquery.dataTables_themeroller.css";
-
 // Formulario Paso a Paso
 
 $estilo[$indice++] = "jquery.steps.css";
