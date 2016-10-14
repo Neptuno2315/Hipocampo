@@ -79,7 +79,17 @@ class procesarAjax {
                     $tabla = json_encode($tabla);
                 } else {
 
-                    $tabla = "Sin Funcionalidades Relacionadas";
+                    $tabla->page = 1;
+                    $tabla->total = 1;
+                    $tabla->records = 1;
+
+                    $tabla->rows[0]['id'] = 1;
+                    $tabla->rows[0]['cell'] = array(
+                        "1",
+                        "Sin Funcionalidades Registradas",
+
+                    );
+                    $tabla = json_encode($tabla);
 
                 }
 
@@ -207,7 +217,18 @@ class procesarAjax {
                     $tabla = json_encode($tabla);
                 } else {
 
-                    $tabla = "Sin Roles Exitentes";
+                    $tabla->page = 1;
+                    $tabla->total = 1;
+                    $tabla->records = 1;
+
+                    $tabla->rows[0]['id'] = 1;
+                    $tabla->rows[0]['cell'] = array(
+                        "1",
+                        "Sin Roles Registrados",
+                        "Sin Roles Registrados",
+
+                    );
+                    $tabla = json_encode($tabla);
 
                 }
 
