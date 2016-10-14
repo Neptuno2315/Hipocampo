@@ -71,8 +71,15 @@ class consultarForm {
         echo $this->miFormulario->formulario($atributos);
 
         {
-            echo "adasd";
-            var_dump($_REQUEST);
+
+            $tabla = "<center>
+                        <table id='tabla_gestion_usuario'>
+                        </table>
+                        <div id='barra_herramientas_usuarios'>
+                        </div>
+                    </center>";
+
+            echo $tabla;
         }
 
         // ------------------- SECCION: Paso de variables ------------------------------------------------

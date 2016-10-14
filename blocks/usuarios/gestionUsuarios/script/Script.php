@@ -32,5 +32,6 @@ if (isset($funcion[0])) {
 
 include "ajax.php";
 include "tabla_dinamica.php";
+include "tabla_usuarios.js";
 
 ?>
