@@ -6,6 +6,8 @@ $estilo[$indice++] = "ui.jqgrid.css";
 
 $estilo[$indice++] = "select2.css";
 
+$estilo[$indice++] = "estiloBloque.css";
+
 // Formulario Paso a Paso
 
 $estilo[$indice++] = "jquery.steps.css";

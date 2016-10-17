@@ -27,12 +27,6 @@ include_once "Sql.class.php";
 // Mensajes
 include_once "Lenguaje.class.php";
 
-// ------Tratar de Corregir
-
-include_once 'funcion/redireccionar.php';
-
-use usuarios\gestionUsuarios\funcion\redireccion;
-
 // ------------------
 
 // Esta clase actua como control del bloque en un patron FCE
