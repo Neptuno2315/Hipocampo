@@ -27,8 +27,9 @@ unset($atributos);
     // -------------------- Listado de Pestañas (Como lista No Ordenada) -------------------------------
 
     $items = array(
-        "tabGestionGeneral" => $this->lenguaje->getCadena("tabGestionGeneral"),
+
         "tabAsociacion" => $this->lenguaje->getCadena("tabAsociacion"),
+        "tabGestionGeneral" => $this->lenguaje->getCadena("tabGestionGeneral"),
     );
     $atributos["items"] = $items;
     $atributos["estilo"] = "jqueryui";

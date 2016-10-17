@@ -15,6 +15,161 @@ class procesarAjax {
 
         switch ($_REQUEST['funcion']) {
 
+            case 'eliminarUsuario':
+
+                $cadenaSql = $this->miSql->getCadenaSql('eliminar_usuario');
+
+                $eliminacionUsuario = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+                if ($eliminacionUsuario) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+                break;
+
+            case 'editarUsuario':
+
+                if ($_REQUEST['upd_pass'] == 1 && $_REQUEST['contrasena'] != '*****************') {
+
+                    $_REQUEST['contrasena'] = $this->miConfigurador->fabricaConexiones->crypto->codificarClave($_REQUEST["contrasena"]);
+
+                } else if ($_REQUEST['upd_pass'] == 0) {
+                    $cadenaSql = $this->miSql->getCadenaSql('consultar_usuario_particular');
+                    $usuario = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+                    $_REQUEST['contrasena'] = $usuario[0]['clave'];
+                }
+
+                $cadenaSql = $this->miSql->getCadenaSql('actualizar_usuario');
+
+                $Actualizacion = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+                if ($Actualizacion) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+                break;
+
+            case 'crearUsuario':
+
+                $_REQUEST['contrasena'] = $this->miConfigurador->fabricaConexiones->crypto->codificarClave($_REQUEST["contrasena"]);
+
+                $cadenaSql = $this->miSql->getCadenaSql('registrar_usuario');
+                $usuario = $esteRecursoDB->ejecutarAcceso($cadenaSql, "acceso");
+
+                if ($usuario) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+                break;
+
+            case 'consultarUsuarios':
+
+                $cadenaSql = $this->miSql->getCadenaSql('consultar_usuarios');
+                $usuarios = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+                $tabla = new \stdClass();
+
+                $page = $_REQUEST['page'];
+
+                $limit = $_REQUEST['rows'];
+
+                $sidx = $_REQUEST['sidx'];
+
+                $sord = $_REQUEST['sord'];
+
+                if (!$sidx) {
+                    $sidx = 1;
+                }
+
+                $filas = count($usuarios);
+
+                if ($filas > 0 && $limit > 0) {
+                    $total_pages = ceil($filas / $limit);
+                } else {
+                    $total_pages = 0;
+                }
+
+                if ($page > $total_pages) {
+                    $page = $total_pages;
+                }
+                $start = $limit * $page - $limit;
+                if ($usuarios != false) {
+                    $tabla->page = $page;
+                    $tabla->total = $total_pages;
+                    $tabla->records = $filas;
+
+                    $i = 0;
+                    $j = 1;
+                    foreach ($usuarios as $row) {
+                        $tabla->rows[$i]['id'] = $row['id_usuario'];
+                        $tabla->rows[$i]['cell'] = array(
+                            $row['id_usuario'],
+                            $row['id_usuario'],
+                            $row['tipo_identificacion'],
+                            $row['nombre'],
+                            $row['apellido'],
+                            $row['correo'],
+                            $row['nombre_rol'],
+                            "NO",
+                            "*****************",
+
+                        );
+
+                        $i++;
+                    }
+
+                    $tabla = json_encode($tabla);
+                } else {
+
+                    $tabla->page = 1;
+                    $tabla->total = 1;
+                    $tabla->records = 1;
+
+                    $tabla->rows[0]['id'] = 1;
+                    $tabla->rows[0]['cell'] = array(
+                        "1",
+                        " ",
+                        " ",
+                        "Sin Usuarios Registrados",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+
+                    );
+                    $tabla = json_encode($tabla);
+
+                }
+
+                echo $tabla;
+
+                break;
+            case 'consultarRoles':
+
+                $cadenaSql = $this->miSql->getCadenaSql('consultar_roles_seleccion');
+                $roles = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+                $select = "<select>";
+
+                $select .= "<option value=''> </option> ";
+                foreach ($roles as $key => $value) {
+
+                    $select .= "<option value='" . $value['id_rol'] . "'>" . trim($value['nombre']) . "</option>";
+
+                }
+                $select .= "</select>";
+
+                echo $select;
+
+                break;
+
             case 'eliminarFuncionalidad':
 
                 $cadenaSql = $this->miSql->getCadenaSql('eliminar_funcionalidad');

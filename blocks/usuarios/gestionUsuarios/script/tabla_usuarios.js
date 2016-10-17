@@ -20,14 +20,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=consultarRol";
+$cadenaACodificar .= "&funcion=consultarRoles";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlTablaDinamica = $url . $cadena;
+$urlConsultarRoles = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -35,14 +35,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=crearRol";
+$cadenaACodificar .= "&funcion=consultarUsuarios";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlCrearRol = $url . $cadena;
+$urlConsultarUsuarios = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -50,14 +50,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=editarRol";
+$cadenaACodificar .= "&funcion=crearUsuario";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlEditarRol = $url . $cadena;
+$urlCrearUsuario = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -65,14 +65,14 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=eliminarRol";
+$cadenaACodificar .= "&funcion=editarUsuario";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlEliminarRol = $url . $cadena;
+$urlEditarUsuario = $url . $cadena;
 
 // Variables
 $cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
@@ -80,59 +80,18 @@ $cadenaACodificar .= "&procesarAjax=true";
 $cadenaACodificar .= "&action=index.php";
 $cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
 $cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=consultarRelaciones";
+$cadenaACodificar .= "&funcion=eliminarUsuario";
 
 // Codificar las variables
 $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
 $cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
 
 // URL definitiva
-$urlConsultarRelaciones = $url . $cadena;
+$urlEliminarUsuario = $url . $cadena;
 
-// Variables
-$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
-$cadenaACodificar .= "&procesarAjax=true";
-$cadenaACodificar .= "&action=index.php";
-$cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
-$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=consultarPaginas";
-
-// Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
-
-// URL definitiva
-$urlConsultarPaginas = $url . $cadena;
-
-// Variables
-$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
-$cadenaACodificar .= "&procesarAjax=true";
-$cadenaACodificar .= "&action=index.php";
-$cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
-$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=adicionFuncionalidad";
-
-// Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
-
-// URL definitiva
-$urlAdicionFuncionalidad = $url . $cadena;
-
-// Variables
-$cadenaACodificar = "pagina=" . $this->miConfigurador->getVariableConfiguracion("pagina");
-$cadenaACodificar .= "&procesarAjax=true";
-$cadenaACodificar .= "&action=index.php";
-$cadenaACodificar .= "&bloqueNombre=" . $esteBloque["nombre"];
-$cadenaACodificar .= "&bloqueGrupo=" . $esteBloque["grupo"];
-$cadenaACodificar .= "&funcion=eliminarFuncionalidad";
-
-// Codificar las variables
-$enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
-$cadena = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($cadenaACodificar, $enlace);
-
-// URL definitiva
-$urlEliminarFuncionalidad = $url . $cadena;
+/**
+ * Fin
+ **/
 
 ?>
 <script type='text/javascript'>
@@ -144,7 +103,7 @@ $(document).ready(function() {
 	$(function() {
 	         	$('#tabla_gestion_usuario').ready(function() {
 	         		 $("#tabla_gestion_usuario").jqGrid({
-	                     url:	"<?php echo $urlTablaDinamica;?>",
+	                     url:	"<?php echo $urlConsultarUsuarios;?>",
 	                     datatype: "json",
 	                     mtype: "GET",
 	                     colModel: [
@@ -156,28 +115,116 @@ $(document).ready(function() {
 								editable: false,
 								sorttype:'number',
 								align:'center',
+								editoptions: {size:25, maxlength: 20},
+						 },
+						 {
+								label: 'Número Identificación :',
+						        name: 'num_ident',
+						        width: 40,
+								editable: true,
+								sorttype:'number',
+								align:'center',
+								formatter: 'integer',
+								editrules : {required: true,integer: true},
+								editoptions: {size:25, maxlength: 20},
+						 },
+						 {
+								label: 'Tipo Identificación :',
+						        name: 'tipo_id',
+						        width: 40,
+								align:'center',
+								editable: true,
+		                	    edittype: 'select',
+		                		editoptions: {
+		                                     value: "CC: Cedula Ciudadanía;CE: Cedula Extranjería",
+		                					},
 								editrules : {required: true}
 						 },
+
 	                         {
-	     						label: 'Nombre : ',
-	                             name: 'nombre',
-	                             width: 40,
+	     						label: 'Nombres :',
+	                            name: 'nombres',
+	                            width: 40,
 	     						editable: true,
 	     						sorttype:'text',
 	     						align:'center',
 	     						editrules : {required: true},
-	     						 editoptions: {size:25, maxlength: 20},
+	     						itoptions: {size:25, maxlength: 30},
 
 	                         },
+
+
 	                         {
-	     						label: 'Descripción : ',
-	                             name: 'descripcion',
-	                             width: 150,
-	                             editable: true,
-	                             edittype:'textarea',
-	                             editrules : {required: true},
-	                             editoptions: {rows:"5",cols:"25"},
-	                         }
+	     						label: 'Apellidos :',
+	                            name: 'apellidos',
+	                            width: 40,
+	     						editable: true,
+	     						sorttype:'text',
+	     						align:'center',
+	     						editrules : {required: true},
+	     						 editoptions: {size:25, maxlength: 30},
+
+	                         },
+
+	                         {
+	     						label: 'Correo Electrónico :',
+	                            name: 'email',
+	                            width: 40,
+	     						editable: true,
+	     						sorttype:'text',
+	     						align:'center',
+	     						formatter: 'email',
+	     						editrules : {required: true,email: true},
+	     						editoptions: {size:25, maxlength: 40},
+
+	                         },
+	                          {
+   	                			label: 'Rol :',
+                				name:"rol",
+                				width:30,
+                				editable: true,
+                				align:'center',
+                				edittype: 'select',
+                				editrules: {required: true},
+                				editoptions: {
+                					dataInit: function (element) {
+                                 			window.setTimeout(function () {
+											$(element).width(160);
+                                     		$(element).select2({
+                   								 placeholder: "Seleccione Roles",
+                    							 allowClear: true,
+                								});
+                                     });
+                             		},
+                             		 dataUrl:'<?php echo $urlConsultarRoles;?>',
+                             		 defaultValue: ''
+                             	}
+		                	 },
+    						{
+   	                			label: 'Actualizar Contraseña :',
+                				name:"upd_pass",
+                				width: 40,
+								align:'center',
+								editable: true,
+		                	    edittype: 'select',
+		                		editoptions: {
+		                                     value: "0: NO;1: SI",
+		                					},
+								editrules : {required: true}
+		                	 },
+
+                            {
+	     						label: 'Contraseña :',
+	                            name: 'contrasena',
+	                            width: 70,
+	     						editable: true,
+	     						align:'center',
+	     						edittype: 'password',
+	     						formatter:"password",
+	     						editrules : {required: true},
+								editoptions: {size:25, maxlength: 20, minlength: 10},
+				                }
+
 	                         ],
 	                   	sortname: 'id',
 	     				sortorder : 'asc',
@@ -198,24 +245,24 @@ $(document).ready(function() {
 	          		$("#tabla_gestion_usuario").navGrid('#barra_herramientas_usuarios',
 	                    {
 	              	    add:true,
-	              	    addtext:'Crear Rol',
+	              	    addtext:'Crear Usuario',
 	              		edit:true,
-	              		edittext:'Actualizar Rol',
+	              		edittext:'Actualizar Usuario',
 	              		del:true ,
-	              		deltext:'Eliminar Rol',
+	              		deltext:'Eliminar Usuario',
 	              		alertcap:"Alerta",
-	                    alerttext:"Seleccione Rol",
+	                    alerttext:"Seleccione Usuario",
 	              		search:false ,
 	              		refresh:true,
 	              		refreshstate: 'current',
-	              		refreshtext:'Recargar Roles',
+	              		refreshtext:'Recargar Usuarios',
 	              		},
-	                  {      caption:"Actualizar Rol",
-	                         addCaption: "Actualizar Rol",
+	                  {      caption:"Actualizar Usuario",
+	                         addCaption: "Actualizar Usuario",
 	                         width: 350,
-	                         height: 193,
+	                         height: 365,
 	                         mtype:'GET',
-	                         url:'<?php echo $urlEditarRol;?>',
+	                         url:'<?php echo $urlEditarUsuario;?>',
 	                         bSubmit: "Actualizar",
 	                         bCancel: "Cancelar",
 	                         bClose: "Close",
@@ -257,12 +304,12 @@ $(document).ready(function() {
 	                         }
 	                          },//edit
 	                  {
-	                        	 caption:"Crear Rol",
-	 	                         addCaption: "Crear Rol",
+	                        	 caption:"Crear Usuario",
+	 	                         addCaption: "Crear Usuario",
 	 	                         width: 350,
-	 	                         height: 190,
+	 	                         height: 365,
 	 	                         mtype:'GET',
-	 	                         url:'<?php echo $urlCrearRol;?>',
+	 	                         url:'<?php echo $urlCrearUsuario;?>',
 	 	                         bSubmit: "Crear",
 	 	                         bCancel: "Cancelar",
 	 	                         bClose: "Close",
@@ -306,15 +353,15 @@ $(document).ready(function() {
 
 	        	                  },//add
 	                   {
-	              			  url:'<?php echo $urlEliminarRol;?>',
-	                          caption: "Eliminar Rol",
+	              			  url:'<?php echo $urlEliminarUsuario;?>',
+	                          caption: "Eliminar Usuario",
 	                          width: 350,
 	                          height:125,
 	                          mtype:'GET',
 	                          bSubmit: "Eliminar",
 	                          bCancel: "Cancelar",
 	                          bClose: "Close",
-	                          msg:" <b>¿Desea Eliminar Rol?</b><br>¡ Recordar <b>NO</b> se Podran Reversar los Cambios !",
+	                          msg:" <b>¿Desea Eliminar Usuario?</b><br>¡ Recordar <b>NO</b> se Podran Reversar los Cambios !",
 	                          bYes : "Yes",
 	                          bNo : "No",
 	                          bExit : "Cancel",
