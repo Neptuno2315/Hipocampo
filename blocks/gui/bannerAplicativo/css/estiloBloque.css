@@ -22,7 +22,7 @@ body {
 #fondo_texto {
 	position: fixed;
 	z-index: 4;
-	/* opacity: 0.35; */
+	opacity: 0.6; 
 	width: 98%;
 	background-color: rgb(168, 173, 175);
 	border-radius: 10px 10px 10px 10px;

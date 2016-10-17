@@ -320,7 +320,7 @@ class consultarForm {
             $atributos['dobleLinea'] = false;
             $atributos['tabIndex'] = $tab;
             $atributos['etiqueta'] = $this->lenguaje->getCadena($esteCampo);
-            $atributos['validar'] = 'required,maxSize[100],minSize[10]';
+            $atributos['validar'] = 'required,maxSize[20],minSize[10]';
 
             if (isset($_REQUEST[$esteCampo])) {
                 $atributos['valor'] = $_REQUEST[$esteCampo];
@@ -330,7 +330,7 @@ class consultarForm {
             $atributos['titulo'] = $this->lenguaje->getCadena($esteCampo . 'Titulo');
             $atributos['deshabilitado'] = false;
             $atributos['tamanno'] = 35;
-            $atributos['maximoTamanno'] = '100';
+            $atributos['maximoTamanno'] = '20';
             $atributos['anchoEtiqueta'] = 200;
 
             $tab++;
