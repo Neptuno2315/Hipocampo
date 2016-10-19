@@ -1,0 +1,8 @@
+
+#MensajeRespuesta {
+	position: fixed;
+	z-index: 1;
+	left: 45%;
+	top: 20%;
+	width: 500px;
+}

@@ -1,151 +1,131 @@
 <?php
-$esteBloque = $this->miConfigurador->getVariableConfiguracion ( "esteBloque" );
-$rutaBloque = $this->miConfigurador->getVariableConfiguracion ( "host" );
-$rutaBloque .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/blocks/";
-$rutaBloque .= $esteBloque ['grupo'] . "/" . $esteBloque ['nombre'];
 
-$directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
-$directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
-$directorio .= $this->miConfigurador->getVariableConfiguracion ( "enlace" );
-$miSesion = Sesion::singleton ();
+$esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
+$rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
+$rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
+$rutaBloque .= $esteBloque['grupo'] . "/" . $esteBloque['nombre'];
+
+$directorio = $this->miConfigurador->getVariableConfiguracion("host");
+$directorio .= $this->miConfigurador->getVariableConfiguracion("site") . "/index.php?";
+$directorio .= $this->miConfigurador->getVariableConfiguracion("enlace");
+$miSesion = Sesion::singleton();
+
+// Conexion de Base de Datos
+$conexion = "estructura";
+$esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
+
+$cadenaSql = $this->sql->getCadenaSql('consultar_acceso_paginas');
+$paginas = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
+
+$cadenaSql = $this->sql->getCadenaSql('consultar_Menu_General');
+$MenuGeneral = $esteRecursoDB->ejecutarAcceso($cadenaSql, "busqueda");
 
 // **********Index Inicio**************//
 
-$enlaceIndexAplicativo ['enlace'] = "pagina=indexAplicativo";
-$enlaceIndexAplicativo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceIndexAplicativo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceIndexAplicativo ['enlace'], $directorio );
+$enlaceIndexAplicativo['enlace'] = "pagina=indexAplicativo";
+$enlaceIndexAplicativo['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+$enlaceIndexAplicativo['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceIndexAplicativo['enlace'], $directorio);
 
-// **********Gestión Zona Estudio**************//
+//**********************Cerrar Sesión Aplicativo**************//
+$enlaceAplicativo['enlace'] = "pagina=index";
+$enlaceAplicativo['enlace'] = "&variable=Finalizar";
+$enlaceAplicativo['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceAplicativo['enlace'], $directorio);
+$enlaceAplicativo['nombre'] = "Cerrar Sesion";
 
-$enlaceZonaEstudio ['enlace'] = "pagina=zonaEstudio";
-$enlaceZonaEstudio ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceZonaEstudio ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceZonaEstudio ['enlace'], $directorio );
-$enlaceZonaEstudio ['nombre'] = "Descripción Zona Estudio";
+//**********************Mi Cuenta*************************//
+$variablePerfil['enlace'] = "pagina=gestionUsuarios";
+$variablePerfil['enlace'] .= "&opcion=cuentaUsuario";
+$variablePerfil['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+$variablePerfil['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variablePerfil['enlace'], $directorio);
+$variablePerfil['nombre'] = "Mi Cuenta";
 
-// **********Gestión Analisis de Riesgos**************//
+if ($MenuGeneral) {
+    foreach ($MenuGeneral as $key => $value) {
 
-$enlaceAnalisisRiesgo ['enlace'] = "pagina=analisisRiesgos";
-$enlaceAnalisisRiesgo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceAnalisisRiesgo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAnalisisRiesgo ['enlace'], $directorio );
-$enlaceAnalisisRiesgo ['nombre'] = "Analizar Variables";
+        foreach ($paginas as $llave => $valor) {
 
-// **********Gestión Informe de Riesgos**************//
+            if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
 
-$enlaceInformeRiesgo ['enlace'] = "pagina=informeRiesgos";
-$enlaceInformeRiesgo ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceInformeRiesgo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceInformeRiesgo ['enlace'], $directorio );
-$enlaceInformeRiesgo ['nombre'] = "Informe de Resultados";
+                $variable['enlace'] = "pagina=" . trim($valor['nombre_url_pagina']);
+                $variable['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+                $variable['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variable['enlace'], $directorio);
+                $variable['nombre'] = $valor['nombre_menu'];
 
-// **********Administrador Datos Geograficos**************//
+                $paginas[$llave]['url'] = $variable;
 
-$enlaceAdministradorGeografico ['enlace'] = "pagina=administrador";
-$enlaceAdministradorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceAdministradorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceAdministradorGeografico ['enlace'], $directorio );
-$enlaceAdministradorGeografico ['nombre'] = "Administrador";
+            }
 
-// **********Visualizador Datos Geograficos**************//
+        }
 
-$enlaceVisualizadorGeografico ['enlace'] = "pagina=visualizador";
-$enlaceVisualizadorGeografico ['enlace'] .= "&usuario=" . $_REQUEST ['usuario'];
-$enlaceVisualizadorGeografico ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
-$enlaceVisualizadorGeografico ['nombre'] = "Visualizador";
+    }
+}
 
-// **********Visualizador Datos Geograficos**************//
-
-$enlaceAplicativo ['enlace'] = "index.php";
-$enlaceAplicativo ['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $enlaceVisualizadorGeografico ['enlace'], $directorio );
-$enlaceAplicativo ['nombre'] = "Cerrar Sesion";
-
-?>
-<div class="container">
+$contenido = '<div class="container">
 	<nav>
 		<ul class="mcd-menu">
-			<li><a href="<?php echo $enlaceIndexAplicativo['urlCodificada'];  ?>">
-					<i class="fa fa-home"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/home.png"></i> <strong>Inicio</strong>
+			<li>
+				<a href="' . $enlaceIndexAplicativo['urlCodificada'] . '">
+					<i class="fa fa-home"><img SRC="' . $rutaBloque . '/css/images/home.png">
+					</i><strong>Inicio</strong>
 					<small>Página Principal</small>
-			</a></li>
-			<li><a href="" class=""> <i class="fa fa-edit"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/risk.png"></i> <strong>Análisis
-						Riesgos</strong> <small>Gestión Riesgos a la Navegación</small>
-			</a>
-				<ul>
-					<li><a href="<?php echo $enlaceZonaEstudio ['urlCodificada'];?>"><i
-							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/paisaje.png"></i><?php echo $enlaceZonaEstudio ['nombre'];?></a>
-					</li>
-					<li><a href="<?php echo $enlaceAnalisisRiesgo['urlCodificada']?>"><i
-							class="fa fa-group"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/analizar.png"></i><?php echo $enlaceAnalisisRiesgo['nombre']?></a>
-					</li>
-					<li><a href="<?php echo $enlaceInformeRiesgo['urlCodificada'];?>"><i
-							class="fa fa-group"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/report.png"></i><?php echo $enlaceInformeRiesgo['nombre']?></a>
-			        </li>
-				</ul>
-				
-				
+				</a>
+			</li>';
+
+$menu = '';
+if ($MenuGeneral) {
+    foreach ($MenuGeneral as $key => $value) {
+
+        $menu .= '<li>
+			<a>
+				<i class="fa fa-edit"><img SRC="' . $rutaBloque . $value['imagen_general'] . '">
+				</i>
+		    	<strong>' . $value['nombre_menu_general'] . '</strong>
+		    	<small>' . $value['nombre_subtitulo_menu_general'] . '</small>
+		    </a>
+			<ul>';
+
+        foreach ($paginas as $llave => $valor) {
+
+            if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
+
+                $menu .= '<li>
+						<a href="' . $valor['url']['urlCodificada'] . '">
+							<i class="fa fa-globe">
+							<img SRC="' . $rutaBloque . $valor['imagen_menu'] . '">
+							</i>' . $valor['url']['nombre'] . '
+						</a>
+				 </li>';
+            }
+
+        }
+
+        $menu .= '</ul>
+			</li>';
+
+    }
+
+}
+$contenido .= $menu;
+
+$contenido .= '<li>
+				<a href="' . $variablePerfil['urlCodificada'] . '">
+					<i class="fa fa-globe"><img SRC="' . $rutaBloque . '/css/images/usuario.png"></i>
+					<strong>' . $variablePerfil['nombre'] . '</strong>
+					<small>Perfil</small>
+				</a>
 			</li>
-			<li><a href=""> <i class="fa fa-gift"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i> <strong>Datos
-						Geográficos</strong> <small>Información Geográfica</small>
-			</a>
-				<ul>
-					<li><a
-						href="<?php echo $enlaceAdministradorGeografico ['urlCodificada'];?>"><i
-							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/administrador.png"></i><?php echo $enlaceAdministradorGeografico ['nombre'];?></a>
-					</li>
-					<li><a
-						href="<?php echo $enlaceVisualizadorGeografico ['urlCodificada'];?>"><i
-							class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/geoposition	.png"></i><?php echo $enlaceVisualizadorGeografico ['nombre'];?></a>
-					</li>
-				</ul></li>
-			<li><a href=""> <i class="fa fa-globe"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/users.png"></i> <strong>Usuarios</strong>
-					<small>Gestión Usuarios</small>
-			</a></li>
-			<li><a href="<?php echo $enlaceAplicativo['enlace']; ?>"> <i
-					class="fa fa-globe"><img
-						SRC="<?php echo $rutaBloque ?>/css/images/salir.png"></i> <strong><?php echo  $enlaceAplicativo['nombre']; ?></strong>
+			<li>
+				<a href="' . $enlaceAplicativo['urlCodificada'] . '">
+					<i class="fa fa-globe"><img SRC="' . $rutaBloque . '/css/images/salir.png"></i>
+					<strong>' . $enlaceAplicativo['nombre'] . '</strong>
 					<small>Salir</small>
-			</a></li>
-
-
-
-			<!--<li><a href=""> <i class="fa fa-comments-o"></i> <strong>Blog</strong>
-					<small>what they say</small>
-			</a>
-				<ul>
-					<li><a href="#"><i class="fa fa-globe"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>Mission</a></li>
-					<li><a href="#"><i class="fa fa-group"><img
-								SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>Our
-							Team</a>
-						<ul>
-							<li><a href="#"><i class="fa fa-female"><img
-										SRC="<?php echo $rutaBloque ?>/css/images/world.png"></i>Leyla
-									Sparks</a></li>
-							<li><a href="#"><i class="fa fa-male"></i>Gleb Ismailov</a>
-								<ul>
-									<li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
-									<li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
-								</ul></li>
-							<li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
-						</ul></li>
-					<li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
-					<li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
-				</ul></li> --!>
-			<!-- <li class="float">
-				<a class="search">
-					<input type="text" value="Buscar ...">
-					<button><i class="fa fa-search"></i><img SRC="<?php echo $rutaBloque ?>/css/images/find.png"></button>
 				</a>
-				<a href="" class="search-mobile">
-					<i class="fa fa-search"></i>
-				</a>
-			</li>-->
-		</ul>
+			</li>
+	</ul>
 	</nav>
 </div>
+';
+
+echo $contenido;
+
+?>

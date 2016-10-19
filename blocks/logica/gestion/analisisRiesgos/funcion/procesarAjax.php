@@ -170,13 +170,13 @@ if (isset ( $_REQUEST ['funcion'] )) {
 			if ($riesgo == 0) {
 				
 				$observacion = 'Sin Evaluar';
-			} elseif ($riesgo > 0 && $riesgo < 2) {
+			} elseif ($riesgo >=1 && $riesgo <= 2) {
 				
 				$observacion = 'Monitoreo';
-			} elseif ($riesgo < 4) {
+			} elseif ($riesgo >=3 && $riesgo <= 4) {
 				
 				$observacion = 'Especificar la Acción';
-			} else {
+			} elseif ($riesgo >=6 && $riesgo <= 9) {
 				$observacion = 'Medidas de Emergencia';
 			}
 			

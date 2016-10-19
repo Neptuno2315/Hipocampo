@@ -281,6 +281,7 @@
   left:280px;
   top: 0px;
   border-left: 4px solid #e67e22;
+  list-style: none;
   /* == */
 }
 .mcd-menu li ul:before {
