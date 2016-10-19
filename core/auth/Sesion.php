@@ -68,11 +68,22 @@ Class SessionUsuario {
 
     private function createSession($username) {
 
-        $arreglo_config = $this->miConfigurador->registro[18];
+        foreach ($this->miConfigurador->registro as $key => $value) {
+            $value['parametro'] = trim($value['parametro']);
+
+            if ($value['parametro'] === 'expiracion') {
+
+                $indice = $key;
+
+            }
+        }
+
+        $arreglo_config = $this->miConfigurador->registro[$indice];
 
         $tiempo_config = trim($arreglo_config['valor']);
 
         $time = $tiempo_config . 'M';
+
         $date = new DateTime();
         $date->setTimezone(new DateTimeZone('America/Bogota'));
         $date->add(new DateInterval('PT' . $time));
@@ -91,7 +102,18 @@ Class SessionUsuario {
 
     private function validateSession() {
 
-        $arreglo_config = $this->miConfigurador->registro[18];
+        foreach ($this->miConfigurador->registro as $key => $value) {
+            $value['parametro'] = trim($value['parametro']);
+
+            if ($value['parametro'] === 'expiracion') {
+
+                $indice = $key;
+
+            }
+        }
+
+        $arreglo_config = $this->miConfigurador->registro[$indice];
+
         $tiempo_config = trim($arreglo_config['valor']);
 
         $time = $tiempo_config . 'M';
