@@ -12,68 +12,71 @@
  * @license     GPL Version 3 o posterior
  *
  */
+
 class Autenticador {
-    
+
     private static $instancia;
-    
+
     /**
      * Arreglo que contiene los datos de la página que se va revisar
      *
      * @var String[]
      */
-    var $pagina;
-    
+    public $pagina;
+
     /**
      * Objeto.
      * Con los atributos y métodos para gestionar la sesión de usuario
      *
      * @var Sesion
      */
-    var $sesionUsuario;
-    
-    var $tipoError;
-    
-    var $configurador;
-    
-    const NIVEL='nivel';
-    
+    public $sesionUsuario;
+
+    public $tipoError;
+
+    public $configurador;
+
+    const NIVEL = 'nivel';
+
     private function __construct() {
-        
-        $this->configurador = Configurador::singleton ();
-        
-        require_once ($this->configurador->getVariableConfiguracion ( "raizDocumento" ) . "/core/auth/Sesion.class.php");
-        $this->sesionUsuario = Sesion::singleton ();
-        $this->sesionUsuario->setSesionUsuario ( $this->configurador->fabricaConexiones->miLenguaje->getCadena ( "usuarioAnonimo" ) );
-        $this->sesionUsuario->setConexion ( $this->configurador->fabricaConexiones->getRecursoDB ( "configuracion" ) );
-        $this->sesionUsuario->setTiempoExpiracion ( $this->configurador->getVariableConfiguracion ( "expiracion" ) );
-        $this->sesionUsuario->setPrefijoTablas ( $this->configurador->getVariableConfiguracion ( "prefijo" ) );
-        
-        
-    
+
+        $this->configurador = Configurador::singleton();
+
+        require_once $this->configurador->getVariableConfiguracion("raizDocumento") . "/core/auth/Sesion.class.php";
+        require_once $this->configurador->getVariableConfiguracion("raizDocumento") . "/core/auth/Sesion.php";
+
+        $this->sesionAplicativo = new \SessionUsuario();
+
+        $this->sesionUsuario = Sesion::singleton();
+        $this->sesionUsuario->setSesionUsuario($this->configurador->fabricaConexiones->miLenguaje->getCadena("usuarioAnonimo"));
+        $this->sesionUsuario->setConexion($this->configurador->fabricaConexiones->getRecursoDB("configuracion"));
+        $this->sesionUsuario->setTiempoExpiracion($this->configurador->getVariableConfiguracion("expiracion"));
+        $this->sesionUsuario->setPrefijoTablas($this->configurador->getVariableConfiguracion("prefijo"));
+
     }
-    
+
     public static function singleton() {
-        
-        if (! isset ( self::$instancia )) {
+
+        if (!isset(self::$instancia)) {
             $className = __CLASS__;
-            self::$instancia = new $className ();
+            self::$instancia = new $className();
         }
         return self::$instancia;
-    
+
     }
-    
-    function iniciarAutenticacion() {
-        
+
+    public function iniciarAutenticacion() {
+
         $respuesta = '';
-        
-        $resultado = $this->verificarExistenciaPagina ();
+
+        $resultado = $this->verificarExistenciaPagina();
         if ($resultado) {
-            $resultado = $this->cargarSesionUsuario ();
-            
+            $resultado = $this->cargarSesionUsuario();
+
             if ($resultado) {
                 // Verificar que el usuario está autorizado para el nivel de acceso de la página
-                
-                $resultado = $this->verificarAutorizacionUsuario ();
+
+                $resultado = $this->verificarAutorizacionUsuario();
                 if ($resultado) {
                     $respuesta = true;
                 } else {
@@ -85,74 +88,80 @@ class Autenticador {
                 $respuesta = false;
             }
         } else {
-            
+
             $this->tipoError = "paginaNoExiste";
             $respuesta = false;
         }
-        
+
         return $respuesta;
-    
+
     }
-    
-    function setPagina($pagina) {
-        
-        $this->pagina ["nombre"] = $pagina;
-    
+
+    public function setPagina($pagina) {
+
+        $this->pagina["nombre"] = $pagina;
+
     }
-    
+
     private function verificarExistenciaPagina() {
-        
-        $clausulaSQL = $this->sesionUsuario->miSql->getCadenaSql ( "seleccionarPagina", $this->pagina ["nombre"] );
-        
+
+        $clausulaSQL = $this->sesionUsuario->miSql->getCadenaSql("seleccionarPagina", $this->pagina["nombre"]);
+
         if ($clausulaSQL) {
-            $registro = $this->configurador->conexionDB->ejecutarAcceso ( $clausulaSQL, "busqueda" );
-            $totalRegistros = $this->configurador->conexionDB->getConteo ();
-            
+            $registro = $this->configurador->conexionDB->ejecutarAcceso($clausulaSQL, "busqueda");
+            $totalRegistros = $this->configurador->conexionDB->getConteo();
+
             if ($totalRegistros > 0) {
-                $this->pagina [self::NIVEL] = $registro [0] [0];
+                $this->pagina[self::NIVEL] = $registro[0][0];
                 return true;
             }
         }
         $this->tipoError = "paginaNoExiste";
         return false;
-    
+
     }
-    
-    function getError() {
-        
+
+    public function getError() {
+
         return $this->tipoError;
-    
+
     }
-    
+
     /**
      * Método.
      *
      * @return boolean
      */
-    function cargarSesionUsuario() {
-        
+    public function cargarSesionUsuario() {
+
         // Asignar el nivel de la sesión conforme al nivel de la página que se está visitando
-        $this->sesionUsuario->setSesionNivel ( $this->pagina [self::NIVEL] );
-        
-        $verificar = $this->sesionUsuario->verificarSesion ();
-        
-        if (! $verificar) {
+        //$this->sesionUsuario->setSesionNivel($this->pagina[self::NIVEL]);
+
+        //$verificar = $this->sesionUsuario->verificarSesion();
+
+        $this->sesionAplicativo->executeFuntion("Validar");
+
+        $verificar = isset($_SESSION);
+
+        if (!$verificar) {
             $this->tipoError = "sesionNoExiste";
             return false;
         }
-        
+
         return true;
-    
+
     }
-    
-    function verificarAutorizacionUsuario() {
-        
-        if ($this->sesionUsuario->getSesionNivel () == $this->pagina [self::NIVEL]) {
+
+    public function verificarAutorizacionUsuario() {
+
+        if ($this->pagina[self::NIVEL] === '0') {
+            return true;
+        } else if (isset($_SESSION['acceso']) && $this->pagina[self::NIVEL] != '0' && $_SESSION['acceso'] == $this->pagina[self::NIVEL]) {
             return true;
         }
-        
+
         return false;
-    
+
     }
 
 }

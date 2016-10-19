@@ -6,23 +6,26 @@ use acceso\login\funcion\Redireccionador;
 
 // Se incluye la clase para log de usuarios
 include_once "core/log/logger.class.php";
+include_once "core/auth/Sesion.php";
 include_once 'Redireccionador.php';
 
 // var_dump($_REQUEST);exit;
 class FormProcessor {
-    public $miConfigurador;
-    public $lenguaje;
-    public $miFormulario;
-    public $miSql;
-    public $conexion;
-    public $miSesion;
-    public $miLogger;
+    private $miConfigurador;
+    private $lenguaje;
+    private $miFormulario;
+    private $miSql;
+    private $conexion;
+    private $miSesion;
+    private $miLogger;
+    private $SesionUsuario;
     public function __construct($lenguaje, $sql) {
         $this->miConfigurador = \Configurador::singleton();
         $this->miConfigurador->fabricaConexiones->setRecursoDB('principal');
         $this->lenguaje = $lenguaje;
         $this->miSql = $sql;
         $this->miSesion = \Sesion::singleton();
+        $this->SesionUsuario = new \SessionUsuario();
         // Objeto de la clase Loger
         $this->miLogger = \logger::singleton();
     }
@@ -88,6 +91,7 @@ class FormProcessor {
 
                         $this->miLogger->log_usuario($log);
                         // Si estado dif Activo redirecciona a pagina decambio contraseña
+
                         if ($registro[0]['estado'] == 't') {
 
                             $arregloUsuario = array(
@@ -95,11 +99,12 @@ class FormProcessor {
                                 "registro" => $registro[0],
                             );
 
+                            //Crear Session Usuario
+
+                            $this->SesionUsuario->executeFuntion("Iniciar", $_REQUEST['usuario']);
+
                             Redireccionador::redireccionar('indexPrincipal', $arregloUsuario);
-                            exit();
-                        } else {
-                            exit();
-                            Redireccionador::redireccionar('claves', $registro);
+
                             exit();
                         }
                     }

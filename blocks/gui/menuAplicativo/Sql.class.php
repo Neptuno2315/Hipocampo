@@ -40,9 +40,10 @@ class Sql extends \Sql {
                 $cadenaSql .= " FROM " . $prefijo . "pagina as pn";
                 $cadenaSql .= " JOIN " . $prefijo . "rol_pagina as rp ON rp.id_pagina=pn.id_pagina AND rp.estado_registro=TRUE";
                 $cadenaSql .= " JOIN " . $prefijo . "rol as rl ON rl.id_rol=rp.id_rol AND rl.estado_registro=TRUE";
-                $cadenaSql .= " JOIN " . $prefijo . "usuario as us ON us.tipo=rl.id_rol";
+                $cadenaSql .= " JOIN " . $prefijo . "usuario as us ON us.tipo=rl.id_rol AND us.estado=TRUE ";
                 $cadenaSql .= " WHERE us.id_usuario='" . $_REQUEST['usuario'] . "' ";
                 $cadenaSql .= " ORDER BY  pn.nombre_menu_general, pn.orden  ASC; ";
+
                 break;
 
             case 'consultar_Menu_General':
@@ -50,7 +51,7 @@ class Sql extends \Sql {
                 $cadenaSql .= " FROM poseidon.hipocampo_pagina as pn";
                 $cadenaSql .= " JOIN hipocampo_rol_pagina as rp ON rp.id_pagina=pn.id_pagina AND rp.estado_registro=TRUE";
                 $cadenaSql .= " JOIN hipocampo_rol as rl ON rl.id_rol=rp.id_rol AND rl.estado_registro=TRUE";
-                $cadenaSql .= " JOIN hipocampo_usuario as us ON us.tipo=rl.id_rol";
+                $cadenaSql .= " JOIN hipocampo_usuario as us ON us.tipo=rl.id_rol AND us.estado=TRUE";
                 $cadenaSql .= " WHERE us.id_usuario='" . $_REQUEST['usuario'] . "' ";
                 $cadenaSql .= " AND pn.nombre_menu_general IS NOT NULL";
                 $cadenaSql .= " ORDER BY nombre_menu_general ASC;";

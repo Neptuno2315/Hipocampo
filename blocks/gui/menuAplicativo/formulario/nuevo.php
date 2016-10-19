@@ -1,4 +1,5 @@
 <?php
+
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
@@ -8,7 +9,7 @@ $directorio = $this->miConfigurador->getVariableConfiguracion("host");
 $directorio .= $this->miConfigurador->getVariableConfiguracion("site") . "/index.php?";
 $directorio .= $this->miConfigurador->getVariableConfiguracion("enlace");
 $miSesion = Sesion::singleton();
-//var_dump($_REQUEST);
+
 // Conexion de Base de Datos
 $conexion = "estructura";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
@@ -27,6 +28,7 @@ $enlaceIndexAplicativo['urlCodificada'] = $this->miConfigurador->fabricaConexion
 
 //**********************Cerrar Sesión Aplicativo**************//
 $enlaceAplicativo['enlace'] = "pagina=index";
+$enlaceAplicativo['enlace'] = "&variable=Finalizar";
 $enlaceAplicativo['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceAplicativo['enlace'], $directorio);
 $enlaceAplicativo['nombre'] = "Cerrar Sesion";
 
@@ -37,23 +39,25 @@ $variablePerfil['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
 $variablePerfil['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variablePerfil['enlace'], $directorio);
 $variablePerfil['nombre'] = "Mi Cuenta";
 
-foreach ($MenuGeneral as $key => $value) {
+if ($MenuGeneral) {
+    foreach ($MenuGeneral as $key => $value) {
 
-    foreach ($paginas as $llave => $valor) {
+        foreach ($paginas as $llave => $valor) {
 
-        if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
+            if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
 
-            $variable['enlace'] = "pagina=" . trim($valor['nombre_url_pagina']);
-            $variable['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
-            $variable['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variable['enlace'], $directorio);
-            $variable['nombre'] = $valor['nombre_menu'];
+                $variable['enlace'] = "pagina=" . trim($valor['nombre_url_pagina']);
+                $variable['enlace'] .= "&usuario=" . $_REQUEST['usuario'];
+                $variable['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variable['enlace'], $directorio);
+                $variable['nombre'] = $valor['nombre_menu'];
 
-            $paginas[$llave]['url'] = $variable;
+                $paginas[$llave]['url'] = $variable;
+
+            }
 
         }
 
     }
-
 }
 
 $contenido = '<div class="container">
@@ -68,10 +72,10 @@ $contenido = '<div class="container">
 			</li>';
 
 $menu = '';
+if ($MenuGeneral) {
+    foreach ($MenuGeneral as $key => $value) {
 
-foreach ($MenuGeneral as $key => $value) {
-
-    $menu .= '<li>
+        $menu .= '<li>
 			<a>
 				<i class="fa fa-edit"><img SRC="' . $rutaBloque . $value['imagen_general'] . '">
 				</i>
@@ -80,23 +84,25 @@ foreach ($MenuGeneral as $key => $value) {
 		    </a>
 			<ul>';
 
-    foreach ($paginas as $llave => $valor) {
+        foreach ($paginas as $llave => $valor) {
 
-        if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
+            if ($valor['nombre_menu_general'] == $value['nombre_menu_general']) {
 
-            $menu .= '<li>
+                $menu .= '<li>
 						<a href="' . $valor['url']['urlCodificada'] . '">
 							<i class="fa fa-globe">
 							<img SRC="' . $rutaBloque . $valor['imagen_menu'] . '">
 							</i>' . $valor['url']['nombre'] . '
 						</a>
 				 </li>';
+            }
+
         }
 
-    }
-
-    $menu .= '</ul>
+        $menu .= '</ul>
 			</li>';
+
+    }
 
 }
 $contenido .= $menu;

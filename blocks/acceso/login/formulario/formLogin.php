@@ -6,10 +6,15 @@ if (!isset($GLOBALS["autorizado"])) {
     include "../index.php";
     exit();
 }
+
+include_once "core/auth/Sesion.php";
+
 class Formulario {
     public $miConfigurador;
     public $lenguaje;
     public $miFormulario;
+    private $SesionUsuario;
+
     public function __construct($lenguaje, $formulario) {
         $this->miConfigurador = \Configurador::singleton();
 
@@ -18,6 +23,9 @@ class Formulario {
         $this->lenguaje = $lenguaje;
 
         $this->miFormulario = $formulario;
+
+        $this->SesionUsuario = new \SessionUsuario();
+
     }
     public function formulario() {
         $directorioImagenes = $this->miConfigurador->getVariableConfiguracion("rutaUrlBloque") . "/css/imagen";
@@ -27,6 +35,15 @@ class Formulario {
         $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
         $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
         $rutaBloque .= $esteBloque['grupo'] . "/" . $esteBloque['nombre'];
+
+        if (isset($_REQUEST['variable']) && $_REQUEST['variable'] === 'Finalizar') {
+
+            $this->SesionUsuario->executeFuntion("Finalizar");
+
+        } else {
+            $this->SesionUsuario->executeFuntion("Finalizar");
+
+        }
 
         ?>
 
