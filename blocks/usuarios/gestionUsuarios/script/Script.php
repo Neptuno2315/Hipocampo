@@ -6,6 +6,8 @@ $funcion[$indice++] = "jquery.validationEngine.js";
 $funcion[$indice++] = "jquery.validationEngine-es.js";
 $funcion[$indice++] = "select2.js";
 $funcion[$indice++] = "select2_locale_es.js";
+$funcion[$indice++] = "jSignature.js";
+$funcion[$indice++] = "jSignature.CompressorSVG.js";
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site");

@@ -60,3 +60,29 @@ $(function() {
 
 
 });
+
+
+
+var $sigdiv2 =$("#firma_digital").jSignature();
+
+
+$('#limpiarBn').bind('click', function(e){
+		$sigdiv2.jSignature('reset');
+
+		$("#<?php echo $this->campoSeguro('firmaUsuario');?>").val('');
+		$("#firma_digital").css("display","block");
+		$("#mensaje_firma_bn").css("display","none");
+		$("#guardarBn").css("display","block");
+	});
+
+
+
+$('#guardarBn').bind('click', function(e){
+
+ $("#<?php echo $this->campoSeguro('firmaUsuario');?>").val(btoa($sigdiv2.jSignature("getData", "svg")));
+
+$("#firma_digital").css("display","none");
+$("#mensaje_firma_bn").css("display","block");
+$("#guardarBn").css("display","none");
+
+	});

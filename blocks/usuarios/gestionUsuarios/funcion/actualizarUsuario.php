@@ -56,6 +56,12 @@ class FormProcessor {
             $_REQUEST['contrasenia'] = $usuario[0]['clave'];
         }
 
+        if ($_REQUEST['firmaUsuario'] == '') {
+
+            $_REQUEST['firmaUsuario'] = $usuario[0]['firma_usuario'];
+
+        }
+
         $arreglo = array(
             "num_ident" => $_REQUEST['num_identificacion'],
             "tipo_id" => $_REQUEST['tipo_ident'],
@@ -64,7 +70,7 @@ class FormProcessor {
             "email" => $_REQUEST['email'],
             "contrasena" => $_REQUEST['contrasenia'],
             "rol" => $usuario[0]['tipo'],
-
+            "firma_usuario" => $_REQUEST['firmaUsuario'],
         );
 
         $_REQUEST = array_merge($_REQUEST, $arreglo);

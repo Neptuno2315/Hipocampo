@@ -7,7 +7,15 @@ if (!isset($GLOBALS["autorizado"])) {
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 $Host = $this->miConfigurador->getVariableConfiguracion("host");
 
-$URL = $Host . ":8080/geoexplorer";
+if ($_SERVER['HTTPS'] == 'on') {
+
+    $URL = $Host . ":8443/geoexplorer";
+
+} else {
+
+    $URL = $Host . ":8080/geoexplorer";
+
+}
 
 $Visualizador = "<br>
 				<div class='fluidMedia'>
