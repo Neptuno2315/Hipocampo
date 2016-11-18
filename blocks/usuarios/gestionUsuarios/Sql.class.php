@@ -117,7 +117,7 @@ class Sql extends \Sql {
                 $cadenaSql .= " SET estado=FALSE ";
                 $cadenaSql .= " WHERE id_usuario='" . $_REQUEST['id'] . "'; ";
                 $cadenaSql .= " INSERT INTO " . $prefijo . "usuario(id_usuario, identificacion, tipo_identificacion, nombre, apellido, ";
-                $cadenaSql .= " correo, clave, tipo)";
+                $cadenaSql .= " correo, clave,firma_usuario , tipo)";
                 $cadenaSql .= " VALUES ('" . $_REQUEST['num_ident'] . "', ";
                 $cadenaSql .= " '" . $_REQUEST['num_ident'] . "',";
                 $cadenaSql .= " '" . $_REQUEST['tipo_id'] . "',";
@@ -125,7 +125,9 @@ class Sql extends \Sql {
                 $cadenaSql .= " '" . $_REQUEST['apellidos'] . "',";
                 $cadenaSql .= " '" . $_REQUEST['email'] . "',";
                 $cadenaSql .= " '" . $_REQUEST['contrasena'] . "',";
+                $cadenaSql .= " '" . $_REQUEST['firma_usuario'] . "',";
                 $cadenaSql .= " '" . $_REQUEST['rol'] . "');";
+
                 break;
 
             case 'consultar_usuario_particular':
