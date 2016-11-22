@@ -7,7 +7,7 @@ if (!isset($GLOBALS["autorizado"])) {
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 $Host = $this->miConfigurador->getVariableConfiguracion("host");
 
-if ($_SERVER['HTTPS'] == 'on') {
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 
     $URL = $Host . ":8443/geoexplorer";
 

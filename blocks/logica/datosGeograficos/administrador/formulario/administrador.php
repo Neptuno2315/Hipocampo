@@ -7,7 +7,7 @@ if (!isset($GLOBALS["autorizado"])) {
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 
-if ($_SERVER['HTTPS'] == 'on') {
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 
     $URL = $rutaBloque . ":8443";
 
