@@ -61,7 +61,7 @@ class Input extends HtmlBase {
 			$final = '</div>';
 		}
 		
-		if (isset ( $this->atributos [self::ETIQUETA] ) && $this->atributos [self::ETIQUETA] != "") {
+		if (isset ( $this->atributos [self::ETIQUETA] ) && $this->atributos [self::ETIQUETA] != "" && isset ( $this->atributos [self::TIPO] ) && $this->atributos [self::TIPO] != 'file') {
 			$this->cadenaHTML .= self::etiqueta ( $this->atributos );
 		}
 		if (isset ( $this->atributos ["dobleLinea"] ) && $this->atributos ["dobleLinea"]) {
@@ -77,7 +77,13 @@ class Input extends HtmlBase {
 		if ($atributos != '') {
 			$this->setAtributos ( $atributos );
 		}
-		$cadena = '<input ';
+		if (isset ( $this->atributos [self::TIPO] ) && $this->atributos [self::TIPO] == 'file') {
+			
+			$cadena = (($this->atributos [self::COLUMNAS] > 1) ? "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" : "") . $this->atributos [self::ETIQUETA] . ((isset ( $this->atributos ["etiquetaObligatorio"] ) && $this->atributos ["etiquetaObligatorio"] == true) ? "*" : "") . '&nbsp&nbsp&nbsp&nbsp<input ';
+		} else {
+			
+			$cadena = '<input ';
+		}
 		
 		if (! isset ( $this->atributos [self::TIPO] ) || $this->atributos [self::TIPO] != self::HIDDEN) {
 			

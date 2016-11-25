@@ -1,0 +1,109 @@
+#tablaInfoZonas {
+	font-size: 11px;
+}
+
+#ficheros_parte_1 {
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	display: block;
+	float: left;
+	padding: 3px 5px;
+	margin: 0 0 5px 0;
+	text-align: right;
+	border-width: 0px;
+	border-style: solid;
+	color: black;
+}
+
+#ficheros_parte_2 {
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	display: block;
+	float: left;
+	padding: 3px 5px;
+	margin: 0 0 5px 0;
+	text-align: right;
+	border-width: 0px;
+	border-style: solid;
+	color: black;
+}
+
+#informacion_proj4text {
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	font-size: 9px;
+	padding: 3px 5px;
+	border-width: 1px;
+	border-style: dotted;
+	color: black;
+	width: 46.85%;
+	float: left;
+}
+
+#informacion_srid {
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	font-size: 9px;
+	padding: 3px 5px;
+	border-width: 1px;
+	border-style: dotted;
+	color: black;
+	width: 50%;
+	float: left;
+}
+
+#divisionCarga {
+	width: 50.4%;
+	float: right;
+	padding: 15px 15px 15px 15px;
+	border-width: 1px;
+	text-align: center;
+	border-style: dotted;
+	margin: 22px 5px 15px 5px;
+}
+
+#divisionProjecto {
+	width: 44%;
+	float: left;
+	
+}
+
+#DivRegistro {
+	/**	width: 50%;
+	font-size: 8px;
+	border-style: groove;
+	background: whitesmoke;
+	float: left;
+	height: 300px;
+	*/
+	
+}
+
+#DivEstadistico {
+	/**	width: 48.85%;
+    font-size: 8px;
+    border-style: groove;
+    background: whitesmoke;
+    height: 300px;
+    float: right;*/
+	
+}
+
+#DivTabla {
+	border-style: groove;
+	background: whitesmoke;
+}
+
+#MensajeRespuesta {
+	position: fixed;
+	z-index: 1;
+	left: 45%;
+	top: 20%;
+	width: 350px;
+}
+
+#DivEstadistico svg {
+	height: 261px;
+}
